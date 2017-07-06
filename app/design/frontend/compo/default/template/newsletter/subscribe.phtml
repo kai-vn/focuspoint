@@ -1,0 +1,37 @@
+<?php
+/**
+ * @package     compo
+ * @copyright   Copyright (c) 2010-2015 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+ $rand = rand(0, 1500);
+?>
+<div class="block block-subscribe clearfix">
+    <div class="subscribe-wrapper">
+        <div class="block-title">
+            <strong><span><?php echo $this->__('Newsletter') ?></span></strong>
+        </div>
+        <form action="<?php echo $this->getFormActionUrl() ?>" method="post" id="newsletter-validate-detail-<?php echo $rand; ?>">
+            <div class="block-content">
+                <div class="form-subscribe-header">
+                    <label for="newsletter-<?php echo $rand; ?>"><?php echo $this->__('Subscribe to our newsletter and know first about all the promotions and discounts. Be always trendy.') ?></label>
+                </div>
+                <div class="input-wrapper">
+                    <div class="input-group">
+                    <div class="input-group-btn">
+                            <i class="meigee-envelope"></i>
+                        </div>
+                        <input type="text" name="email" id="newsletter-<?php echo $rand; ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Enter your email')) ?>" class="form-control required-entry validate-email" value="<?php echo $this->__('Enter your email') ?>" onblur="if (this.value=='') this.value = '<?php echo $this->__('Enter your email') ?>'" onfocus="if (this.value=='<?php echo $this->__('Enter your email') ?>') this.value = ''" />
+                        <div class="input-group-btn">
+                           <button type="submit" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Subscribe')) ?>" class="btn btn-primary"><span><i class="meigee-arrow-right"></i><span><?php echo $this->__('Subscribe'); ?></span></span></button>
+                       </div>
+                   </div>
+               </div>
+           </div>
+        </form>
+    </div>
+    <script type="text/javascript">
+    //<![CDATA[
+        var newsletterSubscriberFormDetail = new VarienForm('newsletter-validate-detail-<?php echo $rand; ?>');
+    //]]>
+    </script>
+</div>

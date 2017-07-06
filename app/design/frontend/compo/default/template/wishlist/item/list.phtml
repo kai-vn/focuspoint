@@ -1,0 +1,46 @@
+<?php
+/**
+ * @package     compo
+ * @copyright   Copyright (c) 2010-2015 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+?>
+<?php
+    $columns = $this->getColumns();
+?>
+<div class="table-responsive">
+	<table class="table table-bordered" id="wishlist-table">
+		<thead>
+			<tr>
+				<?php $curr_item = 1; $max_count = count($columns); foreach ($columns as $column): ?>
+					<?php if($curr_item != $max_count): ?><th><?php echo $column->getTitle();?></th><?php endif; ?>
+				<?php $curr_item++; endforeach; ?>
+			</tr>
+		</thead>
+			<tbody>
+				<?php if (count($this->getItems())): ?>
+					<?php foreach ($this->getItems() as $item): ?>
+						<tr id="item_<?php echo $item->getId();?>">
+						<?php $curr_item = 1; foreach ($columns as $column): ?>
+							<?php if($curr_item != $max_count): ?>
+							<td><?php $column->setItem($item); echo $column->toHtml($item);?></td>
+							<?php endif; ?>
+						<?php $curr_item++; endforeach; ?>
+						</tr>
+					<?php endforeach ?>
+				<?php else: ?>
+					<td colspan="<?php echo count($columns);?>" class="wishlist-empty"><?php echo $this->__('This Wishlist has no Items');?></td>
+				<?php endif; ?>
+			</tbody>
+	</table>
+</div>
+<?php foreach ($columns as $column): ?>
+    <?php echo $column->getAdditionalHtml();?>
+<?php endforeach; ?>
+<script type="text/javascript">
+//<![CDATA[
+    decorateTable('wishlist-table');
+<?php foreach ($columns as $column): ?>
+    <?php echo $column->getJs();?>
+<?php endforeach; ?>
+//]]>
+</script>

@@ -1,0 +1,140 @@
+<?php
+/**
+ * @package     compo
+ * @copyright   Copyright (c) 2010-2015 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+ $relatedTabs = $this->getProduct()->getRelatedTabs();
+ $lazyLoad = Mage::helper('thememanager/themeConfig')->getThemeConfigResultByAliase('ajax_product_images');
+?>
+<?php if($this->getItems()->getSize() && !$relatedTabs): ?>
+	<div class="related-bottom block-related <?php echo($this->getItems()->getSize() <= 4 ? 'products-grid' : ''); ?>">
+		<header class="widget-title">
+			<h3><?php echo $this->__('Related Products') ?></h3>
+			<span class="widget-subtitle more-link"><?php echo $this->__('Check items to add to the cart or') ?>&nbsp;<a href="#" onclick="selectAllRelatedBottom(this); return false;"><?php echo $this->__('select all') ?></a></span>
+		</header>
+		<div class="block-content">
+			<div id="related-bottom-slider">
+				<div class="products-grid carousel-ul clearfix owl-carousel owl-theme">
+				<?php foreach($this->getItems() as $_item): ?>
+					<div class="product">
+						<div class="indent type-1">
+							<div class="image-box">
+								<a href="<?php echo $_item->getProductUrl() ?>" title="<?php echo (Mage::app()->getLayout()->checkVersion('1.7.x.x') ? $this->htmlEscape : $this->escapeHtml).($_item->getName()) ?>" class="product-image">
+									<?php
+										$escaped_label = (Mage::app()->getLayout()->checkVersion('1.7.x.x') ? $this->htmlEscape : $this->escapeHtml).($_item->getName());
+										echo '<img '. $_item->getProductMediaResized(400, 'thumbnail', 'with-mobile', 385)
+											->addImageHtmlAttributte('alt', $escaped_label)
+											->addImageHtmlAttributte('width', 400)
+											->addImageHtmlAttributte('title', $escaped_label)
+											->addImageHtmlAttributte('class', 'lazyOwl')
+											// ->addImageHtmlAttributte('class', 'no_ajax_image_loader')
+											->addImageHtmlAttributte('data-src', $_item->getProductMediaResized(400, 'small_image')->getImageSrc())
+											->getImageHtmlAttributte().' />';
+									?>
+								</a>
+							</div>
+							<div class="product-details">
+								<h5 class="product-name clearfix">
+									<a href="<?php echo $_item->getProductUrl() ?>"><?php echo (Mage::app()->getLayout()->checkVersion('1.7.x.x') ? $this->htmlEscape : $this->escapeHtml).($_item->getName()) ?></a>
+								</h5>
+								<?php echo $this->getPriceHtml($_item, true, '-related') ?>
+								<?php if(!$_item->isComposite() && $_item->isSaleable()): ?>
+									<?php if (!$_item->getRequiredOptions()): ?>
+										<input type="checkbox" class="checkbox related-checkbox" id="related-checkbox<?php echo $_item->getId() ?>" name="related_products[]" value="<?php echo $_item->getId() ?>" />
+									<?php endif; ?>
+								<?php endif; ?>
+							</div>
+						</div>
+					</div>
+				<?php endforeach ?>
+				</div>
+				<script type="text/javascript">decorateList('related-bottom', 'none-recursive')</script>
+			</div>
+			<?php if($this->getItems()->getSize() > 4){ ?>
+				<div class="owl-buttons"></div>
+			<?php } ?>
+		</div>
+		<script type="text/javascript">
+			 //<![CDATA[
+			$$('.related-checkbox').each(function(elem){
+				Event.observe(elem, 'click', addRelatedToProduct)
+			});
+			var relatedProductsCheckFlag = false;
+			function selectAllRelatedBottom(txt){
+				if (relatedProductsCheckFlag == false) {
+					$$('.related-checkbox').each(function(elem){
+						elem.checked = true;
+					});
+					relatedProductsCheckFlag = true;
+					txt.innerHTML="<?php echo Mage::helper('core')->jsQuoteEscape($this->__('unselect all')); ?>";
+				} else {
+					$$('.related-checkbox').each(function(elem){
+						elem.checked = false;
+					});
+					relatedProductsCheckFlag = false;
+					txt.innerHTML="<?php echo Mage::helper('core')->jsQuoteEscape($this->__('select all')); ?>";
+				}
+				addRelatedToProduct();
+			}
+			function addRelatedToProduct(){
+				var checkboxes = $$('.related-checkbox');
+				var values = [];
+				for(var i=0;i<checkboxes.length;i++){
+					if(checkboxes[i].checked) values.push(checkboxes[i].value);
+				}
+				if($('related-products-field')){
+					$('related-products-field').value = values.join(',');
+				}
+			}
+			//]]>
+			jQuery(document).ready(function(){
+				/* Related Block Slider */
+				function relatedButtonsTop() {
+					if(jQuery('.related-bottom').length){
+						var maxHeight = 0;
+						var titleHeight = jQuery('.related-bottom .block-title').outerHeight();
+						jQuery('.related-bottom li.item .product-image img').each(function() {
+							if (jQuery(this).height() > maxHeight){
+								maxHeight = jQuery(this).height();
+							}
+							jQuery('.related-bottom .next, .related-bottom .prev').css('top', (maxHeight/2) + titleHeight);
+						});
+					}
+				}
+				relatedButtonsTop();
+				jQuery(window).resize(function(){relatedButtonsTop()});
+				relatedBottomSlider = jQuery('#related-bottom-slider .carousel-ul');
+				relatedBottomSlider.owlCarousel({
+					margin: 0,
+					nav:true,
+					responsive:{
+						0:{
+							items:1
+						},
+						767:{
+							items:2
+						},
+						1007:{
+							items:3
+						},
+						1331:{
+							items:4
+						}
+					},
+					dots: false,
+					lazyLoad: <?php echo ($lazyLoad == 'lazy_image_loader' ? 'true' : 'false'); ?>,
+					navContainer: '#related-bottom-slider .owl-buttons',
+					navText: ['<i class="meigee-arrow-left"></i>','<i class="meigee-arrow-right"></i>'],
+					onRefreshed: relatedButtonsTop(),
+					onResized: relatedButtonsTop(),
+					onInitialized: relatedButtonsTop()
+				});
+			});
+		</script>
+	</div>
+<?php elseif($relatedTabs):
+	foreach ($relatedTabs AS $tab) {
+		echo $tab->getTitle();
+		echo $tab->getContent();
+	}
+endif ?>

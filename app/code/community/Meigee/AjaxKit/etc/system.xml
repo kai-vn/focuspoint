@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+
+<config>
+    <sections>
+        <customer translate="label" module="customer">
+            <groups>
+                <startup translate="label">
+                    <fields>
+                        <redirect_dashboard translate="label comment">
+                            <comment>Notice: If you are using Meigee Ajax login, please set destination under Meigee -> Ajax kit -> Login/Registration section of your admin panel.</comment>
+                        </redirect_dashboard>
+                    </fields>
+                </startup>
+
+            </groups>
+        </customer>
+    </sections>
+</config>

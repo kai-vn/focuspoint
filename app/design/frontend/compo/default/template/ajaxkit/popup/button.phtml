@@ -1,0 +1,41 @@
+<?php
+
+$text = '';
+$classes = '';
+$html_attributes = $this->getAttributes();
+
+if ($this->getText())
+{
+    $text = $this->getText();
+}
+else
+{
+    switch($this->getType())
+    {
+        case "to_cart_button":
+            $text = $this->__('Go To Cart');
+			$classes = 'btn btn-default';
+            break;
+
+        case "to_checkout_button":
+            $text = $this->__('Go To Checkout');
+			$classes = 'btn btn-default';
+            break;
+
+        case "continue_shopping_button":
+            $text = '<i class="meigee-close"></i>';
+			$classes = '';
+            break;
+    }
+}
+?>
+<div class="buttons-wrapper clearfix">
+	<button class="<?php echo $html_attributes['class'] .' '. $classes; ?> " <?php echo $html_attributes['system']; ?>><?php echo $text; ?></button>
+	<?php if ($this->getTimer()) { ?>
+		<div class="popup-timer">
+			<?php echo $this->__('Will be closed in'); ?>
+			<span class="close-popup-timer"><?php echo (int)$this->getTimer(); ?></span>
+			<?php echo $this->__('sec'); ?>
+		</div>
+	<?php } ?>
+</div>

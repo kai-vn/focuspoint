@@ -1,0 +1,3628 @@
+<config>
+	<groups>
+		<meigee_compo_options>
+			<gTitle>Compo Options</gTitle>
+		</meigee_compo_options>
+		<meigee_modules>
+			<gTitle>Modules</gTitle>
+		</meigee_modules>
+	</groups>
+	<blocks>
+		<meigee_compo_general>
+			<bTitle><![CDATA[<i class="fa fa-university"></i>]]>General</bTitle>
+			<params>
+				<meigee_general_other>
+					<pTitle>Other options</pTitle>
+				</meigee_general_other>
+			</params>
+			<group>meigee_compo_options</group>
+		</meigee_compo_general>
+
+		<meigee_compo_layout>
+			<bTitle><![CDATA[<i class="fa fa-th"></i>]]>Layout</bTitle>
+			<params>
+				<meigee_layout>
+					<pTitle>Layout</pTitle>
+				</meigee_layout>
+			</params>
+			<group>meigee_compo_options</group>
+		</meigee_compo_layout>
+		<meigee_compo_images>
+			<bTitle><![CDATA[<i class="fa fa-picture-o"></i>]]>Images</bTitle>
+			<params>
+				<meigee_images>
+					<pTitle>Images</pTitle>
+				</meigee_images>
+				<meigee_hoverimages>
+					<pTitle>Product Hover Effect</pTitle>
+				</meigee_hoverimages>
+				<meigee_lightbox>
+					<pTitle>Lightbox</pTitle>
+				</meigee_lightbox>
+			</params>
+			<group>meigee_compo_options</group>
+		</meigee_compo_images>
+
+		<meigee_compo_listing>
+			<bTitle><![CDATA[<i class="fa fa-th-list"></i>]]>Product Listing/Widgets</bTitle>
+			<preview>
+                <title>Product Listing/Widgets</title>
+                <class>Meigee_Compo_Block_Adminhtml_PreviewListing</class>
+            </preview>
+			<params>
+				<meigee_listing>
+					<pTitle>Product Listing</pTitle>
+				</meigee_listing>
+				<meigee_productlabels>
+					<pTitle>Product Labels</pTitle>
+				</meigee_productlabels>
+				<meigee_timer>
+					<pTitle>Product Timer</pTitle>
+				</meigee_timer>
+			</params>
+			<group>meigee_compo_options</group>
+		</meigee_compo_listing>
+
+		<meigee_compo_product>
+			<bTitle><![CDATA[<i class="fa fa-newspaper-o"></i>]]>Product Page</bTitle>
+			<preview>
+                <title>Product Page</title>
+                <class>Meigee_Compo_Block_Adminhtml_PreviewProduct</class>
+            </preview>
+			<params>
+				<meigee_product_general>
+					<pTitle>General</pTitle>
+				</meigee_product_general>
+				<meigee_product_layout>
+					<pTitle>Layout</pTitle>
+				</meigee_product_layout>
+				<meigee_product_additional>
+					<pTitle>Additional Content on Product Page</pTitle>
+				</meigee_product_additional>
+				<meigee_product_rich_snippets>
+					<pTitle>Rich Snippets</pTitle>
+				</meigee_product_rich_snippets>
+			</params>
+			<group>meigee_compo_options</group>
+		</meigee_compo_product>
+
+		<meigee_compo_sidebar>
+			<bTitle><![CDATA[<i class="fa fa-columns"></i>]]>Sidebar</bTitle>
+			<params>
+				<meigee_sidebar_blocks>
+					<pTitle>Sidebar blocks</pTitle>
+				</meigee_sidebar_blocks>
+			</params>
+			<group>meigee_compo_options</group>
+		</meigee_compo_sidebar>
+
+		<meigee_compo_header>
+			<bTitle><![CDATA[<i class="fa fa-header"></i>]]>Header</bTitle>
+			<params>
+				<!-- <meigee_header_design>
+					<pTitle>Design</pTitle>
+				</meigee_header_design> -->
+				<meigee_headerlayout>
+					<pTitle>Header Layout</pTitle>
+				</meigee_headerlayout>
+				<meigee_stickyheader>
+					<pTitle>Sticky Header</pTitle>
+				</meigee_stickyheader>
+				<meigee_logo>
+					<pTitle>Logo</pTitle>
+				</meigee_logo>
+				<meigee_toplinks>
+					<pTitle>Top links</pTitle>
+				</meigee_toplinks>
+				<meigee_topcart>
+					<pTitle>Top Cart Options</pTitle>
+				</meigee_topcart>
+				<meigee_language>
+					<pTitle>Language Switcher</pTitle>
+				</meigee_language>
+				<meigee_currency>
+					<pTitle>Currency Switcher</pTitle>
+				</meigee_currency>
+			</params>
+			<group>meigee_compo_options</group>
+		</meigee_compo_header>
+
+		<meigee_compo_footer>
+			<bTitle><![CDATA[<i class="fa fa-bars"></i>]]>Footer</bTitle>
+			<params>
+				<meigee_footer>
+					<pTitle>Footer</pTitle>
+				</meigee_footer>
+			</params>
+			<group>meigee_compo_options</group>
+		</meigee_compo_footer>
+
+
+		<meigee_compo_contactmap>
+			<bTitle><![CDATA[<i class="fa fa-map-marker"></i>]]>Contact Map</bTitle>
+			<params>
+				<meigee_contactmap>
+					<pTitle>Contact Map</pTitle>
+				</meigee_contactmap>
+			</params>
+			<group>meigee_modules</group>
+		</meigee_compo_contactmap>
+
+		<meigee_compo_popup>
+			<bTitle><![CDATA[<i class="fa fa-comment"></i>]]>Popup Content</bTitle>
+			<params>
+				<meigee_popup>
+					<pTitle>Popup Content</pTitle>
+				</meigee_popup>
+			</params>
+			<group>meigee_modules</group>
+		</meigee_compo_popup>
+		<meigee_compo_bgslider>
+			<bTitle><![CDATA[<i class="fa fa-arrows-h"></i>]]>Background Slider</bTitle>
+			<params>
+				<meigee_bgslider_options>
+					<pTitle>Options</pTitle>
+				</meigee_bgslider_options>
+			</params>
+			<group>meigee_modules</group>
+		</meigee_compo_bgslider>
+	</blocks>
+	<predefined>
+        <default>
+            <name>Main Store</name>
+            <values></values>
+            <install>
+                <pages>
+                    <home><name>Compo - Responsive &amp; Retina Ready Magento theme (Main)</name><layout>one_column</layout><content_file>home.txt</content_file></home>
+                </pages>
+                <blocks>
+                    <compo_popup_content><name>Compo Popup Content</name><content_file>compo_popup_content.txt</content_file></compo_popup_content>
+                    <compo_header_custom_block><name>Compo Header Custom Block</name><content_file>compo_header_custom_block.txt</content_file></compo_header_custom_block>
+                    <compo_header_custom_links><name>Compo Header Custom Links</name><content_file>compo_header_custom_links.txt</content_file></compo_header_custom_links>
+                    <compo_header_social_links><name>Compo Header Social Links</name><content_file>compo_header_social_links.txt</content_file></compo_header_social_links>
+                    <compo_contact_map_block><name>Compo Contact Map Block</name><content_file>compo_contact_map_block.txt</content_file></compo_contact_map_block>
+                    <compo_product_custom><name>Compo Product Custom</name><content_file>compo_product_custom.txt</content_file></compo_product_custom>
+                    <compo_footer><name>Compo Footer</name><content_file>compo_footer.txt</content_file></compo_footer>
+                    <compo_sidebar_banner><name>Compo Sidebar Banner</name><content_file>compo_sidebar_banner.txt</content_file></compo_sidebar_banner>
+                    <compo_header_slider><name>Compo Header Slider</name><content_file>compo_header_slider.txt</content_file></compo_header_slider>
+                </blocks>
+                <config>
+                    <display>
+                        <key>design/footer/copyright</key>
+                        <value>&lt;a href=&quot;https://meigeeteam.com&quot; title=&quot;MeigeeTeam&quot;&gt;Meigee&lt;/a&gt; &amp;copy; 2016 &lt;a href=&quot;https://meigeeteam.com/magento-themes&quot; title=&quot;Magento Themes&quot;&gt;Magento Themes&lt;/a&gt;</value>
+                        <is_allowed>1</is_allowed>
+                    </display>
+                    <display1>
+                        <key>web/default/cms_home_page</key>
+                        <value>home</value>
+                    </display1>
+                </config>
+            </install>
+        </default>
+        <default_wide_layout>
+            <name>Main Store (Wide Layout)</name>
+            <values>
+                <container_width>1860</container_width>
+            </values>
+            <install>
+                <pages>
+                    <home-wide><name>Compo - Responsive &amp; Retina Ready Magento theme (Main Wide Layout)</name><layout>one_column</layout><content_file>home-wide.txt</content_file></home-wide>
+                </pages>
+                <blocks>
+                    <compo_popup_content><name>Compo Popup Content</name><content_file>compo_popup_content.txt</content_file></compo_popup_content>
+                    <compo_header_custom_block><name>Compo Header Custom Block</name><content_file>compo_header_custom_block.txt</content_file></compo_header_custom_block>
+                    <compo_header_custom_links><name>Compo Header Custom Links</name><content_file>compo_header_custom_links.txt</content_file></compo_header_custom_links>
+                    <compo_header_social_links><name>Compo Header Social Links</name><content_file>compo_header_social_links.txt</content_file></compo_header_social_links>
+                    <compo_contact_map_block><name>Compo Contact Map Block</name><content_file>compo_contact_map_block.txt</content_file></compo_contact_map_block>
+                    <compo_product_custom><name>Compo Product Custom</name><content_file>compo_product_custom.txt</content_file></compo_product_custom>
+                    <compo_footer><name>Compo Footer</name><content_file>compo_footer.txt</content_file></compo_footer>
+                    <compo_wide_sidebar_banner><name>Compo Wide Sidebar Banner</name><content_file>compo_wide_sidebar_banner.txt</content_file></compo_wide_sidebar_banner>
+                    <compo_header_slider><name>Compo Header Slider</name><content_file>compo_header_slider.txt</content_file></compo_header_slider>
+                </blocks>
+                <config>
+                    <display>
+                        <key>design/footer/copyright</key>
+                        <value>&lt;a href=&quot;https://meigeeteam.com&quot; title=&quot;MeigeeTeam&quot;&gt;Meigee&lt;/a&gt; &amp;copy; 2016 &lt;a href=&quot;https://meigeeteam.com/magento-themes&quot; title=&quot;Magento Themes&quot;&gt;Magento Themes&lt;/a&gt;</value>
+                        <is_allowed>1</is_allowed>
+                    </display>
+                    <display1>
+                        <key>web/default/cms_home_page</key>
+                        <value>home-wide</value>
+                    </display1>
+                </config>
+            </install>
+        </default_wide_layout>
+        <default_boxed_layout>
+            <name>Main Store (Boxed Layout)</name>
+            <values>
+                <headerlayout>boxed-header</headerlayout>
+                <breadcrumbs_layout>boxed-breadcrumbs</breadcrumbs_layout>
+                <content_layout>boxed-content</content_layout>
+                <footer_layout>boxed-footer</footer_layout>
+                <container_width>1332</container_width>
+                <bgslider_status>js/jquery.backstretch.min.js</bgslider_status>
+                <bgslider_slides>skin/frontend/compo/default/images/compo_boxed_bg.jpg</bgslider_slides>
+            </values>
+            <install>
+                <pages>
+                    <home-boxed><name>Compo - Responsive &amp; Retina Ready Magento theme (Main Boxed Layout)</name><layout>one_column</layout><content_file>home-boxed.txt</content_file></home-boxed>
+                </pages>
+                <blocks>
+                    <compo_popup_content><name>Compo Popup Content</name><content_file>compo_popup_content.txt</content_file></compo_popup_content>
+                    <compo_header_custom_block><name>Compo Header Custom Block</name><content_file>compo_header_custom_block.txt</content_file></compo_header_custom_block>
+                    <compo_header_custom_links><name>Compo Header Custom Links</name><content_file>compo_header_custom_links.txt</content_file></compo_header_custom_links>
+                    <compo_header_social_links><name>Compo Header Social Links</name><content_file>compo_header_social_links.txt</content_file></compo_header_social_links>
+                    <compo_contact_map_block><name>Compo Contact Map Block</name><content_file>compo_contact_map_block.txt</content_file></compo_contact_map_block>
+                    <compo_product_custom><name>Compo Product Custom</name><content_file>compo_product_custom.txt</content_file></compo_product_custom>
+                    <compo_footer><name>Compo Footer</name><content_file>compo_footer.txt</content_file></compo_footer>
+                    <compo_sidebar_banner><name>Compo Sidebar Banner</name><content_file>compo_sidebar_banner.txt</content_file></compo_sidebar_banner>
+                    <compo_header_slider><name>Compo Header Slider</name><content_file>compo_header_slider.txt</content_file></compo_header_slider>
+                </blocks>
+                <config>
+                    <display>
+                        <key>design/footer/copyright</key>
+                        <value>&lt;a href=&quot;https://meigeeteam.com&quot; title=&quot;MeigeeTeam&quot;&gt;Meigee&lt;/a&gt; &amp;copy; 2016 &lt;a href=&quot;https://meigeeteam.com/magento-themes&quot; title=&quot;Magento Themes&quot;&gt;Magento Themes&lt;/a&gt;</value>
+                        <is_allowed>1</is_allowed>
+                    </display>
+                    <display1>
+                        <key>web/default/cms_home_page</key>
+                        <value>home-boxed</value>
+                    </display1>
+                </config>
+            </install>
+        </default_boxed_layout>
+        <perfumes>
+            <name>Compo Perfumes Store</name>
+            <values>
+                <header_layout>page/html/header_2.phtml</header_layout>
+                <advanced_styling_base_css_file>perfumes.css</advanced_styling_base_css_file>
+                <custom_footer_block>compo_perfumes_footer</custom_footer_block>
+                <logo>skin/frontend/compo/default/images/compo_perfumes_logo.png</logo>
+                <small_logo>skin/frontend/compo/default/images/compo_perfumes_small_logo.png</small_logo>
+                <topcart_text>__empty__</topcart_text>
+                <header_wrapper_type>v2</header_wrapper_type>
+                <header_wrapper_bgimage>skin/frontend/compo/default/images/compo_perfumes_header_bg.jpg</header_wrapper_bgimage>
+            </values>
+            <install>
+                <pages>
+                    <perfumes-home><name>Compo - Responsive &amp; Retina Ready Magento theme (Perfumes)</name><layout>one_column</layout><content_file>compo-perfumes-home.txt</content_file></perfumes-home>
+                </pages>
+                <blocks>
+                    <compo_popup_content><name>Compo Popup Content</name><content_file>compo_popup_content.txt</content_file></compo_popup_content>
+                    <compo_header_social_links><name>Compo Header Social Links</name><content_file>compo_header_social_links.txt</content_file></compo_header_social_links>
+                    <compo_product_custom><name>Compo Product Custom</name><content_file>compo_product_custom.txt</content_file></compo_product_custom>
+                    <compo_sidebar_banner><name>Compo Sidebar Banner</name><content_file>compo_sidebar_banner.txt</content_file></compo_sidebar_banner>
+                    <compo_header_custom_block><name>Compo Header Custom Block</name><content_file>compo_header_custom_block.txt</content_file></compo_header_custom_block>
+                    <compo_contact_map_block><name>Compo Contact Map Block</name><content_file>compo_contact_map_block.txt</content_file></compo_contact_map_block>
+                    <compo_perfumes_footer><name>Compo Perfumes Footer</name><content_file>compo_perfumes_footer.txt</content_file></compo_perfumes_footer>
+                    <compo_perfumes_content_slider><name>Compo Perfumes Content Slider</name><content_file>compo_perfumes_content_slider.txt</content_file></compo_perfumes_content_slider>
+                </blocks>
+                <config>
+                    <display>
+                        <key>design/footer/copyright</key>
+                        <value>&lt;a href=&quot;https://meigeeteam.com&quot; title=&quot;MeigeeTeam&quot;&gt;Meigee&lt;/a&gt; &amp;copy; 2016 &lt;a href=&quot;https://meigeeteam.com/magento-themes&quot; title=&quot;Magento Themes&quot;&gt;Magento Themes&lt;/a&gt;</value>
+                        <is_allowed>1</is_allowed>
+                    </display>
+                    <display1>
+                        <key>web/default/cms_home_page</key>
+                        <value>perfumes-home</value>
+                    </display1>
+                </config>
+            </install>
+        </perfumes>
+		<electronics>
+			<name>Compo Electronics Store</name>
+			<values>
+                <header_layout>page/html/header_3.phtml</header_layout>
+                <advanced_styling_base_css_file>electronics.css</advanced_styling_base_css_file>
+                <custom_footer_block>compo_electronics_footer</custom_footer_block>
+                <logo>skin/frontend/compo/default/images/compo_electronics_logo.png</logo>
+                <small_logo>skin/frontend/compo/default/images/compo_electronics_logo.png</small_logo>
+            </values>
+            <install>
+                <pages>
+                    <electronics-home><name>Compo - Responsive &amp; Retina Ready Magento theme (Electronics)</name><layout>one_column</layout><content_file>compo-electronics-home.txt</content_file></electronics-home>
+                </pages>
+                <blocks>
+                    <compo_popup_content><name>Compo Popup Content</name><content_file>compo_popup_content.txt</content_file></compo_popup_content>
+                    <compo_header_social_links><name>Compo Header Social Links</name><content_file>compo_header_social_links.txt</content_file></compo_header_social_links>
+                    <compo_header_custom_links><name>Compo Header Custom Links</name><content_file>compo_header_custom_links.txt</content_file></compo_header_custom_links>
+                    <compo_product_custom><name>Compo Product Custom</name><content_file>compo_product_custom.txt</content_file></compo_product_custom>
+                    <compo_sidebar_banner><name>Compo Sidebar Banner</name><content_file>compo_sidebar_banner.txt</content_file></compo_sidebar_banner>
+                    <compo_header3_custom_block><name>Compo Header3 Custom Block</name><content_file>compo_header3_custom_block.txt</content_file></compo_header3_custom_block>
+                    <compo_header3_custom_menu_list><name>Compo Header3 Custom Menu List</name><content_file>compo_header3_custom_menu_list.txt</content_file></compo_header3_custom_menu_list>
+                    <compo_contact_map_block><name>Compo Contact Map Block</name><content_file>compo_contact_map_block.txt</content_file></compo_contact_map_block>
+                    <compo_electronics_footer><name>Compo Electronics Footer</name><content_file>compo_electronics_footer.txt</content_file></compo_electronics_footer>
+                    <compo_electronics_content_slider><name>Compo Electronics Content Slider</name><content_file>compo_electronics_content_slider.txt</content_file></compo_electronics_content_slider>
+                </blocks>
+				<config>
+                    <display>
+                        <key>design/footer/copyright</key>
+                        <value>&lt;a href=&quot;https://meigeeteam.com&quot; title=&quot;MeigeeTeam&quot;&gt;Meigee&lt;/a&gt; &amp;copy; 2016 &lt;a href=&quot;https://meigeeteam.com/magento-themes&quot; title=&quot;Magento Themes&quot;&gt;Magento Themes&lt;/a&gt;</value>
+						<is_allowed>1</is_allowed>
+                    </display>
+                    <display1>
+                        <key>web/default/cms_home_page</key>
+                        <value>electronics-home</value>
+                    </display1>
+                </config>
+            </install>
+		</electronics>
+		<lingerie>
+			<name>Compo Lingerie Store</name>
+			<values>
+                <header_layout>page/html/header_4.phtml</header_layout>
+                <advanced_styling_base_css_file>lingerie.css</advanced_styling_base_css_file>
+                <custom_footer_block>compo_lingerie_footer</custom_footer_block>
+                <logo>skin/frontend/compo/default/images/compo_lingerie_logo.png</logo>
+                <small_logo>skin/frontend/compo/default/images/compo_lingerie_logo.png</small_logo>
+				<topcart_text>__empty__</topcart_text>
+            </values>
+            <install>
+                <pages>
+                    <lingerie-home><name>Compo - Responsive &amp; Retina Ready Magento theme (Lingerie)</name><layout>one_column</layout><content_file>compo-lingerie-home.txt</content_file></lingerie-home>
+                </pages>
+                <blocks>
+                    <compo_popup_content><name>Compo Popup Content</name><content_file>compo_popup_content.txt</content_file></compo_popup_content>
+                    <compo_header_custom_block><name>Compo Header Custom Block</name><content_file>compo_header_custom_block.txt</content_file></compo_header_custom_block>
+                    <compo_header_social_links><name>Compo Header Social Links</name><content_file>compo_lingerie_header_social_links.txt</content_file></compo_header_social_links>
+                    <compo_header_custom_links><name>Compo Header Custom Links</name><content_file>compo_lingerie_header_custom_links.txt</content_file></compo_header_custom_links>
+                    <compo_product_custom><name>Compo Product Custom</name><content_file>compo_product_custom.txt</content_file></compo_product_custom>
+                    <compo_sidebar_banner><name>Compo Sidebar Banner</name><content_file>compo_sidebar_banner.txt</content_file></compo_sidebar_banner>
+                    <compo_contact_map_block><name>Compo Contact Map Block</name><content_file>compo_contact_map_block.txt</content_file></compo_contact_map_block>
+                    <compo_lingerie_footer><name>Compo Lingerie Footer</name><content_file>compo_lingerie_footer.txt</content_file></compo_lingerie_footer>
+                    <compo_lingerie_header_slider><name>Compo Lingerie Content Slider</name><content_file>compo_lingerie_header_slider.txt</content_file></compo_lingerie_header_slider>
+                </blocks>
+				<config>
+                    <display>
+                        <key>design/footer/copyright</key>
+                        <value>&lt;a href=&quot;https://meigeeteam.com&quot; title=&quot;MeigeeTeam&quot;&gt;Meigee&lt;/a&gt; &amp;copy; 2016 &lt;a href=&quot;https://meigeeteam.com/magento-themes&quot; title=&quot;Magento Themes&quot;&gt;Magento Themes&lt;/a&gt;</value>
+						<is_allowed>1</is_allowed>
+                    </display>
+                    <display1>
+                        <key>web/default/cms_home_page</key>
+                        <value>lingerie-home</value>
+                    </display1>
+                </config>
+            </install>
+		</lingerie>
+		<jewerly>
+			<name>Compo Jewerly Store</name>
+			<values>
+                <advanced_styling_base_css_file>jewerly.css</advanced_styling_base_css_file>
+                <logo>skin/frontend/compo/default/images/compo_jewerly_logo.png</logo>
+                <small_logo>skin/frontend/compo/default/images/compo_jewerly_logo.png</small_logo>
+                <custom_footer_block>compo_jewerly_footer</custom_footer_block>
+                <header_layout>page/html/header_5.phtml</header_layout>
+				<headerlayout>boxed-header</headerlayout>
+				<breadcrumbs_layout>boxed-breadcrumbs</breadcrumbs_layout>
+				<content_layout>boxed-content</content_layout>
+				<footer_layout>boxed-footer</footer_layout>
+				<container_width>1332</container_width>
+            </values>
+            <install>
+                <pages>
+                    <jewerly-home><name>Compo - Responsive &amp; Retina Ready Magento theme (Jewerly)</name><layout>one_column</layout><content_file>compo-jewerly-home.txt</content_file></jewerly-home>
+                </pages>
+                <blocks>
+                    <compo_popup_content><name>Compo Popup Content</name><content_file>compo_popup_content.txt</content_file></compo_popup_content>
+                    <compo_header_social_links><name>Compo Header Social Links</name><content_file>compo_header_social_links.txt</content_file></compo_header_social_links>
+                    <compo_header_custom_links><name>Compo Header Custom Links</name><content_file>compo_header_custom_links.txt</content_file></compo_header_custom_links>
+                    <compo_product_custom><name>Compo Product Custom</name><content_file>compo_product_custom.txt</content_file></compo_product_custom>
+                    <compo_sidebar_banner><name>Compo Sidebar Banner</name><content_file>compo_sidebar_banner.txt</content_file></compo_sidebar_banner>
+                    <compo_contact_map_block><name>Compo Contact Map Block</name><content_file>compo_contact_map_block.txt</content_file></compo_contact_map_block>
+                    <compo_jewerly_footer><name>Compo Jewerly Footer</name><content_file>compo_jewerly_footer.txt</content_file></compo_jewerly_footer>
+                    <compo_jewerly_header_slider><name>Compo Jewerly Content Slider</name><content_file>compo_jewerly_header_slider.txt</content_file></compo_jewerly_header_slider>
+                </blocks>
+				<config>
+                    <display>
+                        <key>design/footer/copyright</key>
+                        <value>&lt;a href=&quot;https://meigeeteam.com&quot; title=&quot;MeigeeTeam&quot;&gt;Meigee&lt;/a&gt; &amp;copy; 2016 &lt;a href=&quot;https://meigeeteam.com/magento-themes&quot; title=&quot;Magento Themes&quot;&gt;Magento Themes&lt;/a&gt;</value>
+						<is_allowed>1</is_allowed>
+                    </display>
+                    <display1>
+                        <key>web/default/cms_home_page</key>
+                        <value>jewerly-home</value>
+                    </display1>
+                </config>
+            </install>
+		</jewerly>
+	</predefined>
+	<configs>
+		<advanced_styling_custom_css_file></advanced_styling_custom_css_file>
+		<advanced_styling_base_css_file></advanced_styling_base_css_file>
+		<advanced_styling_custom_css_google_fonts></advanced_styling_custom_css_google_fonts>
+		<!-- product_hover_image -->
+		<product_hover_image>
+			<type_adminhtml>Select_Bool</type_adminhtml>
+			<type_frontend>setTemplate</type_frontend>
+			<title>Effect Type</title>
+			<note>Choose effect for appearing hover images. Refer to the theme documentation before enabling this option</note>
+			<values>
+				<v1><name>Simple</name><value>catalog/product/view/hover/simple.phtml</value></v1>
+				<v2><name>Scale</name><value>catalog/product/view/hover/scale.phtml</value></v2>
+			</values>
+			<default>catalog/product/view/hover/simple.phtml</default>
+			<block>meigee_hoverimages</block>
+		</product_hover_image>
+
+		<!-- product images -->
+		<ajax_product_images>
+            <type_adminhtml>Select_Bool</type_adminhtml>
+			<type_frontend>Bool</type_frontend>
+            <title>Using ajax image loader</title>
+            <values>
+                <v1><name>Ajax</name><value>ajax_image_loader</value></v1>
+                <v2><name>Lazy Load</name><value>lazy_image_loader</value></v2>
+            </values>
+            <default>__empty__</default>
+            <block>meigee_images</block>
+        </ajax_product_images>
+        <retina_product_images>
+            <type_adminhtml>Select_Bool</type_adminhtml>
+			<type_frontend>Bool</type_frontend>
+            <title>Use Retina</title>
+			<note>Enabling of this option will make your images look sharp on devices that have a retina displays instead of blurry due to the higher pixel ratio of the devices display. Refer to to the theme documentation before enabling this option</note>
+            <values>
+                <v2><name>Enable</name><value>1</value></v2>
+            </values>
+            <default>1</default>
+            <block>meigee_images</block>
+            <depends>
+                <ajax_product_images>v1</ajax_product_images>
+                <ajax_product_images>v2</ajax_product_images>
+            </depends>
+        </retina_product_images>
+        <aspect_ratio>
+            <type_adminhtml>Select</type_adminhtml>
+			<type_frontend>Bool</type_frontend>
+            <title>Aspect Ratio</title>
+			<note><![CDATA[<strong style="color:red;">As Is</strong>
+			means all of your images will be displayed as is without any transformation. The width is set in .phtml templates, the height is calculated automatically
+			<br>
+			<strong style="color:red;">Keep The Same Height</strong>
+			the best option if your images have different proportions, in that case all of them will have the same height but with keeping correct aspect ratio (spaces will be added if required)
+			<br>
+			<strong style="color:red;">Width x Height </strong>
+			- there are a few predefined aspect ratios you can choose from the list ]]></note>
+            <values>
+                <as_is><name>As Is</name><value>-1</value></as_is>
+                <keep_same_height><name>Keep The Same Height</name><value>-2</value></keep_same_height>
+                <val1x1><name>1 X 1</name><value>1</value></val1x1>
+                <val1x125><name>1 X 1.25</name><value>1.25</value></val1x125>
+                <val1x15><name>1 X 1.5</name><value>1.75</value></val1x15>
+                <val1x2><name>1 X 2</name><value>2</value></val1x2>
+                <val2x1><name>2 X 1</name><value>0.5</value></val2x1>
+                <val1x075><name>1 X 0.75</name><value>0.75</value></val1x075>
+                <val1x025><name>1 X 0.25</name><value>0.25</value></val1x025>
+                <custom><name>Set your own ratio value...</name><value>-3</value></custom>
+            </values>
+            <default>-1</default>
+            <block>meigee_images</block>
+        </aspect_ratio>
+		<custom_aspect_ratio_height>
+            <depends>
+                <aspect_ratio>custom</aspect_ratio>
+            </depends>
+            <type_adminhtml>Input</type_adminhtml>
+			<type_frontend>Bool</type_frontend>
+            <title>Set your own value of height ratio to width...</title>
+            <default>0</default>
+            <block>meigee_images</block>
+        </custom_aspect_ratio_height>
+		<custom_grid_img_width>
+            <type_adminhtml>Input</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+            <title>Define image size for grid view</title>
+            <default>400</default>
+            <block>meigee_images</block>
+        </custom_grid_img_width>
+		<custom_list_img_width>
+            <type_adminhtml>Input</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+            <title>Define image size for list view</title>
+            <default>296</default>
+            <block>meigee_images</block>
+        </custom_list_img_width>
+
+		<!-- lightbox -->
+		<lightbox_status>
+			<type_adminhtml>Select</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>Status</title>
+			<note>This option allows to open full size popup with product image. You can activate it for product images on product listing page and/or on product pages</note>
+			<values>
+				<v1>
+					<name>Disable</name>
+					<value>
+						<sv1>
+							<type_frontend>getData</type_frontend>
+							<value>0</value>
+						</sv1>
+					</value>
+				</v1>
+				<v2>
+					<name>Enable</name>
+					<value>
+						<sv1>
+							<type_frontend>getData</type_frontend>
+							<value>1</value>
+						</sv1>
+						<sv2>
+							<type_frontend>addItem</type_frontend>
+							<value>js/ekko-lightbox.js</value>
+						</sv2>
+					</value>
+				</v2>
+			</values>
+			<use_key>1</use_key>
+			<default>v2</default>
+			<block>meigee_lightbox</block>
+		</lightbox_status>
+		<lightbox_listing>
+			<depends>
+				<lightbox_status>v2</lightbox_status>
+			</depends>
+			<type_adminhtml>Select_Bool</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>Lightbox on Product Listing</title>
+			<values>
+				<v1><name>Enable</name><value>1</value></v1>
+			</values>
+			<default>1</default>
+			<block>meigee_lightbox</block>
+		</lightbox_listing>
+		<lightbox_product>
+			<depends>
+				<lightbox_status>v2</lightbox_status>
+			</depends>
+			<type_adminhtml>Select_Bool</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>Lightbox on Product Page</title>
+			<values>
+				<v1><name>Enable</name><value>1</value></v1>
+			</values>
+			<default>1</default>
+			<block>meigee_lightbox</block>
+		</lightbox_product>
+		<!-- timer -->
+
+		<timer_status>
+			<type_adminhtml>Select_Bool</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>Price countdown:</title>
+			<note>Activate Price Countdown Timer. Make sure that sale date is set in field "Special Price From Date" on product edit page in section Prices.</note>
+			<values>
+				<v1><name>Enable</name><value>1</value></v1>
+			</values>
+			<default>1</default>
+			<block>meigee_timer</block>
+		</timer_status>
+		<timer_listing_status>
+			<depends>
+				<timer_status>v1</timer_status>
+			</depends>
+			<type_adminhtml>Select_Bool</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>Timer on listing status</title>
+			<note>Timer will be disaplyed on category page</note>
+			<values>
+				<v1><name>Enable</name><value>1</value></v1>
+			</values>
+			<default>1</default>
+			<block>meigee_timer</block>
+		</timer_listing_status>
+		<timer_listing_title>
+			<depends>
+				<timer_status>v1</timer_status>
+				<timer_listing_status>v1</timer_listing_status>
+			</depends>
+			<type_adminhtml>Select_Bool</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>Timer on listing title</title>
+			<note>Will be shown above countdown timer</note>
+			<values>
+				<v1><name>Enable</name><value>1</value></v1>
+			</values>
+			<default>1</default>
+			<block>meigee_timer</block>
+		</timer_listing_title>
+		<timer_listing_format>
+			<depends>
+				<timer_status>v1</timer_status>
+				<timer_listing_status>v1</timer_listing_status>
+			</depends>
+			<type_adminhtml>Select</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>Timer on listing format</title>
+			<note>Choose 1 of 2 available formats</note>
+			<values>
+				<v1><name>11:11:11:11</name><value>0</value></v1>
+				<v2><name>11d:11h:11m:11s</name><value>1</value></v2>
+			</values>
+			<default>0</default>
+			<block>meigee_timer</block>
+		</timer_listing_format>
+		<timer_listing_display>
+			<depends>
+				<timer_status>v1</timer_status>
+				<timer_listing_status>v1</timer_listing_status>
+			</depends>
+			<type_adminhtml>Select</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>Timer on listing display options</title>
+			<note>Choose if you want to show full format or just hours, minutes and seconds on product page</note>
+			<values>
+				<v1><name>Hours: Minutes: Seconds</name><value>0</value></v1>
+				<v2><name>Days: Hours: Minutes: Seconds</name><value>1</value></v2>
+			</values>
+			<default>1</default>
+			<block>meigee_timer</block>
+		</timer_listing_display>
+
+		<timer_product_status>
+			<depends>
+				<timer_status>v1</timer_status>
+			</depends>
+			<type_adminhtml>Select_Bool</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>Timer on product status</title>
+			<note>Timer will be disaplyed on category page</note>
+			<values>
+				<v1><name>Enable</name><value>1</value></v1>
+			</values>
+			<default>1</default>
+			<block>meigee_timer</block>
+		</timer_product_status>
+		<timer_product_title>
+			<depends>
+				<timer_status>v1</timer_status>
+				<timer_product_status>v1</timer_product_status>
+			</depends>
+			<type_adminhtml>Select_Bool</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>Timer on product title</title>
+			<note>Will be shown above countdown timer</note>
+			<values>
+				<v1><name>Enable</name><value>1</value></v1>
+			</values>
+			<default>1</default>
+			<block>meigee_timer</block>
+		</timer_product_title>
+		<timer_product_format>
+			<depends>
+				<timer_status>v1</timer_status>
+				<timer_product_status>v1</timer_product_status>
+			</depends>
+			<type_adminhtml>Select</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>Timer on product format</title>
+			<note>Choose 1 of 3 available formats</note>
+			<values>
+				<v1><name>11:11:11:11</name><value>0</value></v1>
+				<v2><name>11d:11h:11m:11s</name><value>1</value></v2>
+				<v3><name>11days:11hours:11minutes:11seconds</name><value>2</value></v3>
+			</values>
+			<default>0</default>
+			<block>meigee_timer</block>
+		</timer_product_format>
+		<timer_product_display>
+			<depends>
+				<timer_status>v1</timer_status>
+				<timer_product_status>v1</timer_product_status>
+			</depends>
+			<type_adminhtml>Select</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>Timer on product display options</title>
+			<note>Choose if you want to show full format or just hours, minutes and seconds on product page</note>
+			<values>
+				<v1><name>Hours: Minutes: Seconds</name><value>0</value></v1>
+				<v2><name>Days: Hours: Minutes: Seconds</name><value>1</value></v2>
+			</values>
+			<default>1</default>
+			<block>meigee_timer</block>
+		</timer_product_display>
+
+		<!-- labels -->
+		<product_label_new>
+			<type_adminhtml>Select_Bool</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>Label "New"</title>
+			<note>Make sure that you have products marked as new in field "Set Product as New from Date" on product edit page</note>
+			<values>
+				<v1><name>Enable</name><value>1</value></v1>
+			</values>
+			<default>1</default>
+			<block>meigee_productlabels</block>
+		</product_label_new>
+		<product_label_sale>
+			<type_adminhtml>Select_Bool</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>Label "On Sale"</title>
+			<note>Make sure that you have products marked as products with special price. To change special price navigate to Catalog -> Manage products -> Product edit page -> Prices vertical tab</note>
+			<values>
+				<v1><name>Enable</name><value>1</value></v1>
+			</values>
+			<default>1</default>
+			<block>meigee_productlabels</block>
+		</product_label_sale>
+		<product_label_only_xleft>
+			<type_adminhtml>Select_Bool</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>Label "Only X left</title>
+			<note>Will be shown instead of "On sale" label. Refer to the theme documentation to know how to configure magento settings in order to display that label</note>
+			<values>
+				<v1><name>Enable</name><value>1</value></v1>
+			</values>
+			<default>1</default>
+			<block>meigee_productlabels</block>
+		</product_label_only_xleft>
+		<product_label_sale_percentage>
+			<type_adminhtml>Select_Bool</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>Show Sale Percentage</title>
+			<note>Pecentage will be shown if the value set in Product Special Price field on product edit page is differ than value set in Product Price field</note>
+			<values>
+				<v1><name>Enable</name><value>1</value></v1>
+			</values>
+			<default>1</default>
+			<block>meigee_productlabels</block>
+		</product_label_sale_percentage>
+		<product_label_order>
+			<type_adminhtml>Select</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>Labels Order</title>
+			<note>Choose one of 2 available variants</note>
+			<values>
+				<v1><name>On sale, New</name><value>0</value></v1>
+				<v2><name>New, On sale</name><value>1</value></v2>
+			</values>
+			<default>1</default>
+			<block>meigee_productlabels</block>
+		</product_label_order>
+<!-- 		<product_label_pos>
+			<type_adminhtml>Select</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>Labels position</title>
+			<note>You can show product labels at the top or in the bottom of product thumbnails</note>
+			<values>
+				<v1><name>Top</name><value>top</value></v1>
+				<v2><name>Bottom</name><value>bottom</value></v2>
+			</values>
+			<default>top</default>
+			<block>meigee_productlabels</block>
+		</product_label_pos> -->
+		<!-- <product_label_view>
+            <type_adminhtml>Radio_Ico</type_adminhtml>
+            <type_frontend>getData</type_frontend>
+            <title>Label View</title>
+            <note>You can choose one of four available layouts of product labels</note>
+            <values>
+                <v1><name></name><value>label-type-1</value></v1>
+                <v2><name></name><value>label-type-2</value></v2>
+                <v3><name></name><value>label-type-3</value></v3>
+                <v4><name></name><value>label-type-4</value></v4>
+            </values>
+            <default>label-type-2</default>
+            <block>meigee_productlabels</block>
+        </product_label_view> -->
+
+		<!-- contact map -->
+		<google_contact_map>
+			<type_adminhtml>Select_Bool</type_adminhtml>
+			<type_frontend>defaultFrontendBlock</type_frontend>
+			<title>Map</title>
+			<note>By default it is showing on Contact us page</note>
+			<values>
+				<v1><name>Enable</name><value>google_contactMap</value></v1>
+			</values>
+			<default>google_contactMap</default>
+			<block>meigee_contactmap</block>
+		</google_contact_map>
+		<google_api>
+			<depends>
+				<google_contact_map>v1</google_contact_map>
+			</depends>
+			<type_adminhtml>Input</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>Google Maps API</title>
+			<note>Please enter API Key. More information: https://developers.google.com/maps/documentation/javascript/get-api-key</note>
+			<default></default>
+			<block>meigee_contactmap</block>
+		</google_api>
+		<google_latitude>
+			<depends>
+				<google_contact_map>v1</google_contact_map>
+			</depends>
+			<type_adminhtml>Input</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>Latitude</title>
+			<note>Please enter Latitude</note>
+			<default>40.69370</default>
+			<block>meigee_contactmap</block>
+		</google_latitude>
+		<google_longitude>
+			<depends>
+				<google_contact_map>v1</google_contact_map>
+			</depends>
+			<type_adminhtml>Input</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>Longitude</title>
+			<note>Please enter Longitude</note>
+			<default>-73.94738</default>
+			<block>meigee_contactmap</block>
+		</google_longitude>
+		<google_map_zoom>
+			<depends>
+				<google_contact_map>v1</google_contact_map>
+			</depends>
+			<type_adminhtml>Input</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>Map Zoom</title>
+			<note>Please specify map zoom</note>
+			<default>15</default>
+			<block>meigee_contactmap</block>
+		</google_map_zoom>
+		<google_map_type>
+			<depends>
+				<google_contact_map>v1</google_contact_map>
+			</depends>
+			<type_adminhtml>Select</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>Map Type</title>
+			<note>Please specify map type</note>
+			<values>
+				<v1><name>Normal street map</name><value>ROADMAP</value></v1>
+				<v2><name>Satellite images</name><value>SATELLITE</value></v2>
+				<v3><name>Map with physical features</name><value>TERRAIN</value></v3>
+			</values>
+			<default>ROADMAP</default>
+			<block>meigee_contactmap</block>
+		</google_map_type>
+		<google_marker>
+			<depends>
+				<google_contact_map>v1</google_contact_map>
+			</depends>
+			<type_adminhtml>Select_Bool</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>Marker</title>
+			<note>Enable or Disable Marker</note>
+			<values>
+				<v1><name>Enable</name><value>1</value></v1>
+			</values>
+			<default>1</default>
+			<block>meigee_contactmap</block>
+		</google_marker>
+		<google_marker_title>
+			<depends>
+				<google_contact_map>v1</google_contact_map>
+				<google_marker>v1</google_marker>
+			</depends>
+			<type_adminhtml>Input</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>Marker Title</title>
+			<default>Brooklyn, NY, United States</default>
+			<block>meigee_contactmap</block>
+		</google_marker_title>
+		<google_details_block_status>
+			<depends>
+				<google_contact_map>v1</google_contact_map>
+			</depends>
+			<type_adminhtml>Select_Bool</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>Details block status</title>
+			<note>Will show block with detailed information over the Google map</note>
+			<values>
+				<v1><name>Enable</name><value>1</value></v1>
+			</values>
+			<default>1</default>
+			<block>meigee_contactmap</block>
+		</google_details_block_status>
+		<google_static_block_for_details>
+			<depends>
+				<google_contact_map>v1</google_contact_map>
+				<google_details_block_status>v1</google_details_block_status>
+			</depends>
+			<type_adminhtml>Select_StaticBlock</type_adminhtml>
+			<type_frontend>getBlockHtml</type_frontend>
+			<title>Static Block for Details</title>
+			<note>Choose static block with detailed information which will be shown over Google map</note>
+			<default>compo_contact_map_block</default>
+			<block>meigee_contactmap</block>
+		</google_static_block_for_details>
+		<google_details_block_width>
+			<depends>
+				<google_contact_map>v1</google_contact_map>
+				<google_details_block_status>v1</google_details_block_status>
+			</depends>
+			<type_adminhtml>Input</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>Details Block Width</title>
+			<note>Please specify block width in pixels</note>
+			<default>270</default>
+			<block>meigee_contactmap</block>
+		</google_details_block_width>
+		<google_details_block_height>
+			<depends>
+				<google_contact_map>v1</google_contact_map>
+				<google_details_block_status>v1</google_details_block_status>
+			</depends>
+			<type_adminhtml>Input</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>Details Block Height</title>
+			<note>Please specify block height in pixels</note>
+			<default>130</default>
+			<block>meigee_contactmap</block>
+		</google_details_block_height>
+		<google_details_block_position>
+			<depends>
+				<google_contact_map>v1</google_contact_map>
+				<google_details_block_status>v1</google_details_block_status>
+			</depends>
+			<type_adminhtml>Select</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>Details Block Position</title>
+			<note>Please set one of four available details block position over the Gmap</note>
+			<values>
+				<v1><name>Left Top</name><value>left-top</value></v1>
+				<v2><name>Right Top</name><value>right-top</value></v2>
+				<v3><name>Left Bottom</name><value>left-bottom</value></v3>
+				<v4><name>Right Bottom</name><value>right-bottom</value></v4>
+			</values>
+			<default>right-bottom</default>
+			<block>meigee_contactmap</block>
+		</google_details_block_position>
+		<!-- popup content -->
+		<popup_status>
+			<type_adminhtml>Select_Bool</type_adminhtml>
+			<type_frontend>setTemplate</type_frontend>
+			<title>Status</title>
+			<note>Enable or Disable Popup Content</note>
+			<values>
+				<v1><name>Enable</name><value>meigee/popup_content.phtml</value></v1>
+			</values>
+			<default>meigee/popup_content.phtml</default>
+			<block>meigee_popup</block>
+		</popup_status>
+		<popup_static>
+			<depends>
+				<popup_status>v1</popup_status>
+			</depends>
+			<type_adminhtml>Select_StaticBlock</type_adminhtml>
+			<type_frontend>getBlockHtml</type_frontend>
+			<title>Popup Content Static Block</title>
+			<default>compo_popup_content</default>
+			<block>meigee_popup</block>
+		</popup_static>
+		<popup_delay>
+			<depends>
+				<popup_status>v1</popup_status>
+			</depends>
+			<type_adminhtml>Input</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>Delay before popup opens, sec</title>
+			<note>Set delay time in seconds after which popup window will appears. If set 0, then popup will appear right after website is loaded.</note>
+			<default>10</default>
+			<block>meigee_popup</block>
+		</popup_delay>
+		<popup_expires>
+			<depends>
+				<popup_status>v1</popup_status>
+			</depends>
+			<type_adminhtml>Input</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>Popup expires end</title>
+			<note>Set period in days after which popup will be shown again if customer has already subscribed or chosen option "Don't show this popup again". Set from 1 to infinite.</note>
+			<default>30</default>
+			<block>meigee_popup</block>
+		</popup_expires>
+		<popup_onlyhome>
+			<depends>
+				<popup_status>v1</popup_status>
+			</depends>
+			<type_adminhtml>Select_Bool</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>Show only on the homepage</title>
+			<note>If set yes, popup will be shown only on home page.</note>
+			<values>
+				<v1><name>Enable</name><value>1</value></v1>
+			</values>
+			<default>meigee/popup_content.phtml</default>
+			<block>meigee_popup</block>
+		</popup_onlyhome>
+		<popup_width>
+			<depends>
+				<popup_status>v1</popup_status>
+			</depends>
+			<type_adminhtml>Input</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>Popup width</title>
+			<note>Set width in pixels. min:535</note>
+			<default>384</default>
+			<block>meigee_popup</block>
+		</popup_width>
+		<popup_height>
+			<depends>
+				<popup_status>v1</popup_status>
+			</depends>
+			<type_adminhtml>Input</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>Popup height</title>
+			<note>Set height in pixels. min:385</note>
+			<default>602</default>
+			<block>meigee_popup</block>
+		</popup_height>
+		<popup_mobile>
+			<depends>
+				<popup_status>v1</popup_status>
+			</depends>
+			<type_adminhtml>Select_Bool</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>Popup for Mobile:</title>
+			<values>
+				<v1><name>Enable</name><value>1</value></v1>
+			</values>
+			<default>1</default>
+			<block>meigee_popup</block>
+		</popup_mobile>
+		<popup_tablet>
+			<depends>
+				<popup_status>v1</popup_status>
+			</depends>
+			<type_adminhtml>Select_Bool</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>Popup for Tablet:</title>
+			<values>
+				<v1><name>Enable</name><value>1</value></v1>
+			</values>
+			<default>1</default>
+			<block>meigee_popup</block>
+		</popup_tablet>
+
+		<!-- other options -->
+		<totop_button>
+			<type_adminhtml>Select</type_adminhtml>
+			<type_frontend>addBodyClass</type_frontend>
+			<title>To top Button</title>
+			<note>This "Back to top" link allows users to smoothly scroll back to the top of the page</note>
+			<values>
+				<v1><name>Disable</name><value>__empty__</value></v1>
+				<v2><name>Enable</name><value>totop-button</value></v2>
+			</values>
+			<default>totop-button</default>
+			<block>meigee_general_other</block>
+		</totop_button>
+
+
+		<!-- Appearance -->
+
+		<!-- layout -->
+		<!-- <sitelayout>
+			<type_adminhtml>Select</type_adminhtml>
+			<type_frontend>addBodyClass</type_frontend>
+            <title>Site Layout</title>
+			<note> The layout style will be applied throughout the entire site. When you have the boxed version activated, you can choose to have the background be a custom image, a backgorund slider, a pattern or a solid color</note>
+			<values>
+				<v1><name>Wide</name><value>wide-layout</value></v1>
+				<v2><name>Boxed</name><value>boxed-layout</value></v2>
+			</values>
+			<default>boxed-layout</default>
+			<block>meigee_layout</block>
+		</sitelayout> -->
+
+		<headerlayout>
+			<type_adminhtml>Select</type_adminhtml>
+			<type_frontend>addBodyClass</type_frontend>
+            <title>Header Layout</title>
+			<values>
+				<v1><name>Wide</name><value>wide-header</value></v1>
+				<v2><name>Boxed</name><value>boxed-header</value></v2>
+			</values>
+			<default>wide-header</default>
+			<block>meigee_layout</block>
+		</headerlayout>
+		<breadcrumbs_layout>
+			<type_adminhtml>Select</type_adminhtml>
+			<type_frontend>addBodyClass</type_frontend>
+            <title>Breadcrumbs Layout</title>
+			<values>
+				<v1><name>Wide</name><value>wide-breadcrumbs</value></v1>
+				<v2><name>Boxed</name><value>boxed-breadcrumbs</value></v2>
+			</values>
+			<default>wide-breadcrumbs</default>
+			<block>meigee_layout</block>
+		</breadcrumbs_layout>
+		<content_layout>
+			<type_adminhtml>Select</type_adminhtml>
+			<type_frontend>addBodyClass</type_frontend>
+            <title>Content Layout</title>
+			<values>
+				<v1><name>Wide</name><value>wide-content</value></v1>
+				<v2><name>Boxed</name><value>boxed-content</value></v2>
+			</values>
+			<default>wide-content</default>
+			<block>meigee_layout</block>
+		</content_layout>
+		<footer_layout>
+			<type_adminhtml>Select</type_adminhtml>
+			<type_frontend>addBodyClass</type_frontend>
+            <title>Footer Layout</title>
+			<values>
+				<v1><name>Wide</name><value>wide-footer</value></v1>
+				<v2><name>Boxed</name><value>boxed-footer</value></v2>
+			</values>
+			<default>wide-footer</default>
+			<block>meigee_layout</block>
+		</footer_layout>
+		<responsive>
+			<type_adminhtml>Select</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+            <title>Responsive Layout</title>
+			<values>
+				<v1>
+					<name>Enable</name>
+					<value>
+						<sv1>
+							<type_frontend>addCss</type_frontend>
+							<value>css/bootstrap.min.css</value>
+						</sv1>
+						<sv2>
+							<type_frontend>addCss</type_frontend>
+							<value>css/grid_responsive.css</value>
+						</sv2>
+						<sv3>
+							<type_frontend>getData</type_frontend>
+							<value>1</value>
+						</sv3>
+					</value>
+				</v1>
+				<v2>
+					<name>Disabled. Site width will be set as 1024px</name>
+					<value>
+						<sv1>
+							<type_frontend>addCss</type_frontend>
+							<value>css/bootstrap.min.css</value>
+						</sv1>
+						<sv2>
+							<type_frontend>addCss</type_frontend>
+							<value>css/1024.css</value>
+						</sv2>
+						<sv3>
+							<type_frontend>getData</type_frontend>
+							<value>0</value>
+						</sv3>
+					</value>
+				</v2>
+				<v3>
+					<name>Disabled. Site width will be set as 1280px</name>
+					<value>
+						<sv1>
+							<type_frontend>addCss</type_frontend>
+							<value>css/bootstrap.min.css</value>
+						</sv1>
+						<sv2>
+							<type_frontend>addCss</type_frontend>
+							<value>css/1280.css</value>
+						</sv2>
+						<sv3>
+							<type_frontend>getData</type_frontend>
+							<value>0</value>
+						</sv3>
+					</value>
+				</v3>
+			</values>
+			<use_key>1</use_key>
+			<default>v1</default>
+			<block>meigee_layout</block>
+		</responsive>
+		<container_width>
+			<depends>
+				<responsive>v1</responsive>
+			</depends>
+			<type_adminhtml>Input</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>Container Width</title>
+			<note>Specify value in pixels, do not add "px" suffix</note>
+			<values>
+			</values>
+			<default>1272</default>
+			<block>meigee_layout</block>
+		</container_width>
+		<cartlayout>
+			<type_adminhtml>Select</type_adminhtml>
+			<type_frontend>setTemplate</type_frontend>
+			<title>My cart page</title>
+			<note>Choose one of 3 cart page layouts</note>
+			<values>
+				<v1><name>Default Cart</name><value>checkout/cart.phtml</value></v1>
+				<v2><name>Accordion</name><value>checkout/cart_accordion.phtml</value></v2>
+				<v3><name>New Default Cart</name><value>checkout/cart_new.phtml</value></v3>
+			</values>
+			<default>checkout/cart_new.phtml</default>
+			<block>meigee_layout</block>
+		</cartlayout>
+		<!-- <rtl>
+			<type_adminhtml>Select</type_adminhtml>
+			<title>Right to Left direction</title>
+			<note>If option is enabled then layout will be mirrored: "left is right and right is left". Should be enabled if you are using Middle eastern languages</note>
+			<values>
+				<v1>
+					<name>Disable</name>
+					<value>
+						<sv1>
+							<type_frontend>addItem</type_frontend>
+							<value>js/owl.carousel.js</value>
+						</sv1>
+					</value>
+				</v1>
+				<v2>
+					<name>Enable</name>
+					<value>
+						<sv1>
+							<type_frontend>addCss</type_frontend>
+							<value>css/rtl.css</value>
+						</sv1>
+						<sv2>
+							<type_frontend>addCss</type_frontend>
+							<value>css/bootstrap_rtl.css</value>
+						</sv2>
+						<sv3>
+							<type_frontend>addCss</type_frontend>
+							<value>css/grid_responsive_rtl.css</value>
+						</sv3>
+						<sv4>
+							<type_frontend>addItem</type_frontend>
+							<value>js/owl.carousel_rtl.js</value>
+						</sv4>
+					</value>
+				</v2>
+			</values>
+			<use_key>1</use_key>
+			<default>v1</default>
+			<block>meigee_layout</block>
+		</rtl> -->
+		<catalog_mode>
+			<type_adminhtml>Select</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>Catalog Mode</title>
+			<note>Enable or Disable Catalog Mode</note>
+			<values>
+				<v1>
+					<name>Disable</name>
+					<value>
+						<template>
+							<type_frontend>setTemplate</type_frontend>
+							<value>catalog/product/view/addtocart.phtml</value>
+						</template>
+						<sv2>
+							<type_frontend>getData</type_frontend>
+							<value>0</value>
+						</sv2>
+						<classname>
+							<type_frontend>addBodyClass</type_frontend>
+							<value>__empty__</value>
+						</classname>
+					</value>
+				</v1>
+				<v2>
+					<name>Enable</name>
+					<value>
+						<template>
+							<type_frontend>setTemplate</type_frontend>
+							<value>__empty__</value>
+						</template>
+						<sv2>
+							<type_frontend>getData</type_frontend>
+							<value>1</value>
+						</sv2>
+						<classname>
+							<type_frontend>addBodyClass</type_frontend>
+							<value>catalog-mode</value>
+						</classname>
+					</value>
+				</v2>
+			</values>
+			<use_key>1</use_key>
+			<default>v1</default>
+			<block>meigee_layout</block>
+		</catalog_mode>
+		<breadcrumbs_type>
+			<type_adminhtml>Select</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>Breadcrumbs Type</title>
+			<note>Default background type is layout with breadcrumbs located under header. Custom breabcrumbs are breadcrumbs with image and left-aligned page title. Custom 2 breadcrumbs are breadcrumbs with image and centered page title. To upload image choose either custom or custom 2 breadcrumbs.</note>
+			<values>
+				<v1>
+					<name>Default</name>
+					<value>
+						<sv1>
+							<type_frontend>getData</type_frontend>
+							<value>0</value>
+						</sv1>
+						<classname>
+							<type_frontend>addBodyClass</type_frontend>
+							<value>__empty__</value>
+						</classname>
+					</value>
+				</v1>
+				<v3>
+					<name>Custom</name>
+					<value>
+						<sv1>
+							<type_frontend>getData</type_frontend>
+							<value>2</value>
+						</sv1>
+						<classname>
+							<type_frontend>addBodyClass</type_frontend>
+							<value>breadcrumbs-type-3</value>
+						</classname>
+					</value>
+				</v3>
+			</values>
+			<use_key>1</use_key>
+			<default>v3</default>
+			<block>meigee_layout</block>
+		</breadcrumbs_type>
+		<breadcrumbs_bgimage>
+			<depends>
+				<breadcrumbs_type>v2</breadcrumbs_type>
+				<breadcrumbs_type>v3</breadcrumbs_type>
+			</depends>
+			<type_adminhtml>Input_File</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>Upload your breabcrumbs backgorund image</title>
+			<default></default>
+			<note><![CDATA[JPG,GIF,PNG<br />This logo is shown on home page and all other pages if second logo is not loaded]]></note>
+			<element_property>
+				<formats>gif,jpg,tiff,png</formats>
+			</element_property>
+			<block>meigee_layout</block>
+		</breadcrumbs_bgimage>
+		<!-- <breadcrumbs_type>
+			<type_adminhtml>Select</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>Breadcrumbs Type</title>
+			<note>To change background image of Custom and Custom Large type of breadcrumbs please use Advacned styling module</note>
+			<values>
+				<v1>
+					<name>Default</name>
+					<value>
+						<sv1>
+							<type_frontend>getData</type_frontend>
+							<value>0</value>
+						</sv1>
+						<classname>
+							<type_frontend>addBodyClass</type_frontend>
+							<value>__empty__</value>
+						</classname>
+					</value>
+				</v1>
+				<v2>
+					<name>Custom</name>
+					<value>
+						<sv1>
+							<type_frontend>getData</type_frontend>
+							<value>1</value>
+						</sv1>
+						<classname>
+							<type_frontend>addBodyClass</type_frontend>
+							<value>breadcrumbs-type-2</value>
+						</classname>
+					</value>
+				</v2>
+				<v3>
+					<name>Custom Large</name>
+					<value>
+						<sv1>
+							<type_frontend>getData</type_frontend>
+							<value>2</value>
+						</sv1>
+						<classname>
+							<type_frontend>addBodyClass</type_frontend>
+							<value>breadcrumbs-type-3</value>
+						</classname>
+					</value>
+				</v3>
+			</values>
+			<use_key>1</use_key>
+			<default>v2</default>
+			<block>meigee_layout</block>
+		</breadcrumbs_type> -->
+		<!-- header -->
+
+
+		<header_wrapper_type>
+			<type_adminhtml>Select</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>Header Wrapper layout</title>
+			<values>
+				<v1>
+					<name>Default</name>
+					<value>
+						<sv1>
+							<type_frontend>getData</type_frontend>
+							<value>0</value>
+						</sv1>
+					</value>
+				</v1>
+				<v2>
+					<name>With Background Image</name>
+					<value>
+						<sv1>
+							<type_frontend>getData</type_frontend>
+							<value>1</value>
+						</sv1>
+						<classname>
+							<type_frontend>addBodyClass</type_frontend>
+							<value>header-with-image</value>
+						</classname>
+					</value>
+				</v2>
+			</values>
+			<use_key>1</use_key>
+			<default>v1</default>
+			<block>meigee_headerlayout</block>
+		</header_wrapper_type>
+		<header_wrapper_bgimage>
+			<depends>
+				<header_wrapper_type>v2</header_wrapper_type>
+			</depends>
+			<type_adminhtml>Input_File</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>Upload your header backgorund image</title>
+			<default></default>
+			<note><![CDATA[JPG,GIF,PNG<br />This logo is shown on home page and all other pages if second logo is not loaded]]></note>
+			<element_property>
+				<formats>gif,jpg,tiff,png</formats>
+			</element_property>
+			<block>meigee_headerlayout</block>
+		</header_wrapper_bgimage>
+		<!-- <header_search_type>
+			<type_adminhtml>Select</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>Header Search Type</title>
+			<values>
+				<v1><name>Type 1</name><value>type-1</value></v1>
+				<v2><name>Type 2</name><value>type-2</value></v2>
+				<v3><name>Type 3</name><value>type-3</value></v3>
+			</values>
+			<default>type-2</default>
+			<block>meigee_headerlayout</block>
+		</header_search_type> -->
+		<header_layout>
+			<type_adminhtml>Select</type_adminhtml>
+			<type_frontend>setTemplate</type_frontend>
+			<title>Header layout</title>
+			<values>
+				<default>
+					<name>Header Default</name>
+					<value>page/html/header.phtml</value>
+				</default>
+				<header_2>
+					<name>Header #2</name>
+					<value>page/html/header_2.phtml</value>
+				</header_2>
+				<header_3>
+					<name>Header #3</name>
+					<value>page/html/header_3.phtml</value>
+				</header_3>
+				<header_4>
+					<name>Header #4</name>
+					<value>page/html/header_4.phtml</value>
+				</header_4>
+                <header_5>
+                    <name>Header #5</name>
+                    <value>page/html/header_5.phtml</value>
+                </header_5>
+			</values>
+			<default>page/html/header.phtml</default>
+			<block>meigee_headerlayout</block>
+		</header_layout>
+		<header_sticky>
+			<type_adminhtml>Select_Bool</type_adminhtml>
+			<type_frontend>setTemplate</type_frontend>
+			<title>Sticky</title>
+			<note>Will be displayed on devices up to 767px</note>
+			<values>
+				<v1><name>Enable</name><value>page/html/header_sticky.phtml</value></v1>
+			</values>
+			<default>page/html/header_sticky.phtml</default>
+			<block>meigee_stickyheader</block>
+		</header_sticky>
+		<header_sticky_logo>
+			<depends>
+				<header_sticky>v1</header_sticky>
+			</depends>
+			<type_adminhtml>Select_Bool</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>Logo on sticky header</title>
+			<values>
+				<v1><name>Enable</name><value>1</value></v1>
+			</values>
+			<default>1</default>
+			<block>meigee_stickyheader</block>
+		</header_sticky_logo>
+		<header_sticky_menu>
+			<depends>
+				<header_sticky>v1</header_sticky>
+			</depends>
+			<type_adminhtml>Select_Bool</type_adminhtml>
+			<type_frontend>setTemplate</type_frontend>
+			<title>Menu on sticky header</title>
+			<values>
+				<v1><name>Enable</name><value>page/html/topmenu.phtml</value></v1>
+			</values>
+			<default>page/html/topmenu.phtml</default>
+			<block>meigee_stickyheader</block>
+		</header_sticky_menu>
+		<header_sticky_search>
+			<depends>
+				<header_sticky>v1</header_sticky>
+			</depends>
+			<type_adminhtml>Select_Bool</type_adminhtml>
+			<type_frontend>setTemplate</type_frontend>
+			<title>Search on sticky header</title>
+			<values>
+				<v1><name>Enable</name><value>catalogsearch/form.mini.phtml</value></v1>
+			</values>
+			<default>__empty__</default>
+			<block>meigee_stickyheader</block>
+		</header_sticky_search>
+		<header_sticky_cart>
+			<depends>
+				<header_sticky>v1</header_sticky>
+			</depends>
+			<type_adminhtml>Select_Bool</type_adminhtml>
+			<type_frontend>setTemplate</type_frontend>
+			<title>Cart on sticky header</title>
+			<values>
+				<v1><name>Enable</name><value>checkout/cart/topcart.phtml</value></v1>
+			</values>
+			<default>checkout/cart/topcart.phtml</default>
+			<block>meigee_stickyheader</block>
+		</header_sticky_cart>
+
+		<!-- logo -->
+		<logo>
+			<type_adminhtml>Input_File</type_adminhtml>
+			<type_frontend>retinaImage</type_frontend>
+			<title>Upload your logo</title>
+			<default>skin/frontend/compo/default/images/logo.png</default>
+			<note><![CDATA[JPG,GIF,PNG<br />This logo is shown on home page and all other pages if second logo is not loaded]]></note>
+			<element_property>
+				<formats>gif,jpg,tiff,png</formats>
+			</element_property>
+			<block>meigee_logo</block>
+		</logo>
+		<logo_X2>
+			<type_adminhtml>Input_File</type_adminhtml>
+			<type_frontend>retinaImage</type_frontend>
+			<title>Upload your retina logo</title>
+			<default>skin/frontend/compo/default/images/logo@x2.png</default>
+			<note><![CDATA[JPG,GIF,PNG<br />This logo is shown on home page and all other pages if second logo is not loaded]]></note>
+			<element_property>
+				<formats>gif,jpg,tiff,png</formats>
+			</element_property>
+			<block>meigee_logo</block>
+		</logo_X2>
+		<logo_alt>
+			<type_adminhtml>Input</type_adminhtml>
+			<title>Logo Alt</title>
+			<default>Compo</default>
+			<block>meigee_logo</block>
+		</logo_alt>
+
+		<second_logo>
+			<type_adminhtml>Input_File</type_adminhtml>
+			<type_frontend>retinaImage</type_frontend>
+			<title>Second Logo</title>
+			<default></default>
+			<note><![CDATA[JPG,GIF,PNG<br />This logo is shown on all pages except home page]]></note>
+			<block>meigee_logo</block>
+			<element_property>
+				<formats>gif,jpg,tiff,png</formats>
+			</element_property>
+		</second_logo>
+		<second_logo_X2>
+			<type_adminhtml>Input_File</type_adminhtml>
+			<type_frontend>retinaImage</type_frontend>
+			<title>Second Retina Logo</title>
+			<default></default>
+			<note><![CDATA[JPG,GIF,PNG<br />This logo is shown on all pages except home page]]></note>
+			<block>meigee_logo</block>
+			<element_property>
+				<formats>gif,jpg,tiff,png</formats>
+			</element_property>
+		</second_logo_X2>
+		<second_logo_alt>
+			<type_adminhtml>Input</type_adminhtml>
+			<title>Second Logo Alt</title>
+			<default>Compo</default>
+			<block>meigee_logo</block>
+		</second_logo_alt>
+
+		<small_logo>
+			<type_adminhtml>Input_File</type_adminhtml>
+			<type_frontend>retinaImage</type_frontend>
+			<title>Small Logo</title>
+			<default>skin/frontend/compo/default/images/logo.png</default>
+			<note><![CDATA[JPG,GIF,PNG<br />This logo is shown on sticky header]]></note>
+			<block>meigee_logo</block>
+			<element_property>
+				<formats>gif,jpg,tiff,png</formats>
+			</element_property>
+		</small_logo>
+		<small_logo_X2>
+			<type_adminhtml>Input_File</type_adminhtml>
+			<type_frontend>retinaImage</type_frontend>
+			<title>Small Retina Logo</title>
+			<default>skin/frontend/compo/default/images/logo@x2.png</default>
+			<note><![CDATA[JPG,GIF,PNG<br />This logo is shown on sticky header]]></note>
+			<block>meigee_logo</block>
+			<element_property>
+				<formats>gif,jpg,tiff,png</formats>
+			</element_property>
+		</small_logo_X2>
+
+		<!-- top links -->
+		<!-- <toplinks_type>
+            <type_adminhtml>Select</type_adminhtml>
+            <type_frontend>setTemplate</type_frontend>
+            <title>Top links type</title>
+            <values>
+                <v1><name>Custom</name><value>page/template/links.phtml</value></v1>
+                <v2><name>Default</name><value>page/template/default_links.phtml</value></v2>
+            </values>
+            <default>page/template/links.phtml</default>
+            <block>meigee_toplinks</block>
+        </toplinks_type> -->
+		<toplinks_account>
+			<type_adminhtml>Select_Bool</type_adminhtml>
+			<type_frontend>Bool</type_frontend>
+			<title>My Account Link</title>
+			<values>
+				<v1><name>Enable</name><value>1</value></v1>
+			</values>
+			<default>1</default>
+			<block>meigee_toplinks</block>
+		</toplinks_account>
+		<toplinks_wishlist>
+			<type_adminhtml>Select_Bool</type_adminhtml>
+			<type_frontend>Bool</type_frontend>
+			<title>My Wishlist Link</title>
+			<values>
+				<v1><name>Enable</name><value>1</value></v1>
+			</values>
+			<default>1</default>
+			<block>meigee_toplinks</block>
+		</toplinks_wishlist>
+		<toplinks_checkout>
+			<type_adminhtml>Select_Bool</type_adminhtml>
+			<type_frontend>Bool</type_frontend>
+			<title>Checkout Link</title>
+			<values>
+				<v1><name>Enable</name><value>1</value></v1>
+			</values>
+			<default>1</default>
+			<block>meigee_toplinks</block>
+		</toplinks_checkout>
+
+		<!-- top cart -->
+<!-- 		<topcart_kind>
+			<type_adminhtml>Select</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>Type of cart</title>
+			<values>
+				<v1><name>Horizontal</name><value>0</value></v1>
+				<v2><name>Vertical</name><value>1</value></v2>
+			</values>
+			<default>0</default>
+			<block>meigee_topcart</block>
+		</topcart_kind> -->
+		<topcart_price>
+			<type_adminhtml>Select_Bool</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>Button Price</title>
+			<values>
+				<v1><name>Enable</name><value>1</value></v1>
+			</values>
+			<default>1</default>
+			<block>meigee_topcart</block>
+		</topcart_price>
+		<topcart_icon>
+			<type_adminhtml>Select_Bool</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>Button Icon</title>
+			<values>
+				<v1><name>Enable</name><value>1</value></v1>
+			</values>
+			<default>1</default>
+			<block>meigee_topcart</block>
+		</topcart_icon>
+		<topcart_text>
+			<type_adminhtml>Select_Bool</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>Button Text</title>
+			<values>
+				<v1><name>Enable</name><value>1</value></v1>
+			</values>
+			<default>1</default>
+			<block>meigee_topcart</block>
+		</topcart_text>
+		<topcart_counter>
+			<type_adminhtml>Select_Bool</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>Button Counter</title>
+			<values>
+				<v1><name>Enable</name><value>1</value></v1>
+			</values>
+			<default>1</default>
+			<block>meigee_topcart</block>
+		</topcart_counter>
+		<topcart_hover>
+			<type_adminhtml>Select_Bool</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>Open cart on hover</title>
+			<note>Hover cart will work only on desktop. Default "On click" top cart will work on mobile devices.</note>
+			<values>
+				<v1><name>Enable</name><value>1</value></v1>
+			</values>
+			<default>0</default>
+			<block>meigee_topcart</block>
+		</topcart_hover>
+		<!-- footer -->
+		<custom_footer>
+			<type_adminhtml>Select</type_adminhtml>
+			<type_frontend>setTemplate</type_frontend>
+			<title>Footer</title>
+				<note>If custom footer is chosen make sure that static which will be responsible for the footer is active and assigned to appropriate store.</note>
+			<values>
+				<v1><name>Disable</name><value>page/html/footer_disable.phtml</value></v1>
+				<v2><name>Default</name><value>page/html/footer_default.phtml</value></v2>
+				<v3><name>Enable</name><value>page/html/footer.phtml</value></v3>
+			</values>
+			<default>page/html/footer.phtml</default>
+			<block>meigee_footer</block>
+		</custom_footer>
+		<custom_footer_block>
+			<depends>
+				<custom_footer>v3</custom_footer>
+			</depends>
+			<type_adminhtml>Select_StaticBlock</type_adminhtml>
+			<type_frontend>getBlockHtml</type_frontend>
+			<title>Custom Footer Static Block</title>
+			<default>compo_footer</default>
+			<block>meigee_footer</block>
+		</custom_footer_block>
+		<!-- product listing -->
+		<listing_columns>
+			<type_adminhtml>Select</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>Number of columns in grid view</title>
+			<values>
+				<v1><name>2</name><value>2</value></v1>
+				<v2><name>3</name><value>3</value></v2>
+				<v3><name>4</name><value>4</value></v3>
+				<v4><name>5</name><value>5</value></v4>
+				<v5><name>6</name><value>6</value></v5>
+				<v6><name>7</name><value>7</value></v6>
+				<v7><name>8</name><value>8</value></v7>
+			</values>
+			<default>3</default>
+			<block>meigee_listing</block>
+		</listing_columns>
+		<listing_desc>
+			<type_adminhtml>Select</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>Short description</title>
+			<note>Enable or disable short description. Make sure that product short description is filled with product information on product edit page</note>
+			<values>
+				<v1><name>Grid Only</name><value>1</value></v1>
+				<v2><name>List Only</name><value>2</value></v2>
+				<v3><name>Grid and List Only</name><value>3</value></v3>
+				<v4><name>Disable</name><value>0</value></v4>
+			</values>
+			<default>2</default>
+			<block>meigee_listing</block>
+		</listing_desc>
+        <listing_product_type>
+            <type_adminhtml>Radio_Ico</type_adminhtml>
+            <type_frontend>getData</type_frontend>
+            <title>Grid View Types</title>
+            <values>
+                <v1><name>Default</name><value>catalog/product/grids/default.phtml</value></v1>
+                <v2><name>Type 2</name><value>catalog/product/grids/type_2.phtml</value></v2>
+                <v3><name>Type 3</name><value>catalog/product/grids/type_3.phtml</value></v3>
+            </values>
+            <default>catalog/product/grids/default.phtml</default>
+            <block>meigee_listing</block>
+            <adminhtml_class>grid-preview</adminhtml_class>
+        </listing_product_type>
+		<listing_indents>
+			<type_adminhtml>Input_Checkbox</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>Space around product thumbnail</title>
+			<note>This option will remove spaces around product thumbnails. Your product images must be the same height, otherwise for the small product images white space will be added automatically</note>
+			<data_values>1</data_values>
+			<default>1</default>
+			<block>meigee_listing</block>
+		</listing_indents>
+		<listing_name>
+			<type_adminhtml>Input_Checkbox</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>Product Name</title>
+			<note>Enable or disable Product Name</note>
+			<data_values>1</data_values>
+			<default>1</default>
+			<block>meigee_listing</block>
+		</listing_name>
+		<listing_rating_stars>
+			<type_adminhtml>Input_Checkbox</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>Rating Stars</title>
+			<note>Enable or disable Rating Stars. Make sure that ratings are enabled and configured in Catalog -> Reviews and Ratings -> Manage Ratings</note>
+			<data_values>1</data_values>
+			<default>1</default>
+			<block>meigee_listing</block>
+		</listing_rating_stars>
+		<listing_rating_customer>
+			<type_adminhtml>Input_Checkbox</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>Rating Customer Link</title>
+			<note>Enable or disable Rating Stars. Make sure that ratings are enabled and configured in Catalog -> Reviews and Ratings -> Manage Ratings</note>
+			<data_values>1</data_values>
+			<default>1</default>
+			<block>meigee_listing</block>
+		</listing_rating_customer>
+		<listing_rating_review>
+			<type_adminhtml>Input_Checkbox</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>"Add your review" link</title>
+			<note>Enable or disable "Add your review" link. Make sure that ratings are enabled and configured in Catalog -> Reviews and Ratings -> Manage Ratings</note>
+			<data_values>1</data_values>
+			<default>1</default>
+			<block>meigee_listing</block>
+		</listing_rating_review>
+		<listing_stock>
+			<type_adminhtml>Input_Checkbox</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>Stock status</title>
+			<note>Enable or disable product stock status icon</note>
+			<data_values>1</data_values>
+			<default>__empty__</default>
+			<block>meigee_listing</block>
+		</listing_stock>
+		<listing_price>
+			<type_adminhtml>Input_Checkbox</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>Product Price</title>
+			<note>Enable or disable Product Price</note>
+			<data_values>1</data_values>
+			<default>1</default>
+			<block>meigee_listing</block>
+		</listing_price>
+		<listing_cart_btn>
+			<type_adminhtml>Input_Checkbox</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>Button "Add to cart"</title>
+			<note>Enable or disable Button "Add to cart"</note>
+			<data_values>1</data_values>
+			<default>1</default>
+			<block>meigee_listing</block>
+		</listing_cart_btn>
+		<listing_compare_btn>
+			<type_adminhtml>Input_Checkbox</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>Button "Compare products"</title>
+			<note>Enable or disable Button "Compare products"</note>
+			<data_values>1</data_values>
+			<default>1</default>
+			<block>meigee_listing</block>
+		</listing_compare_btn>
+		<listing_wishlist_btn>
+			<type_adminhtml>Input_Checkbox</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>Button "Wishlist"</title>
+			<note>Enable or disable Button "Wishlist"</note>
+			<data_values>1</data_values>
+			<default>1</default>
+			<block>meigee_listing</block>
+		</listing_wishlist_btn>
+		<listing_quickview>
+			<type_adminhtml>Input_Checkbox</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>Button "Quick view"</title>
+			<note>Enable or disable Button "Quick view"</note>
+			<data_values>1</data_values>
+			<default>1</default>
+			<block>meigee_listing</block>
+		</listing_quickview>
+		<!-- language -->
+		<language_switcher>
+			<type_adminhtml>Radio_Ico</type_adminhtml>
+			<type_frontend>setTemplate</type_frontend>
+            <title>Status</title>
+			<values>
+				<v1><name>Select Box</name><value>page/switch/languages.phtml</value></v1>
+				<v2><name>Flags</name><value>page/switch/languages_list.phtml</value></v2>
+			</values>
+			<default>page/switch/languages.phtml</default>
+			<block>meigee_language</block>
+		</language_switcher>
+		<language_label>
+			<type_adminhtml>Select_Bool</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+            <title>Language label</title>
+			<note>Will appear only if you have several stores with different langages</note>
+			<values>
+				<v1><name>Enable</name><value>1</value></v1>
+			</values>
+			<default>0</default>
+			<block>meigee_language</block>
+		</language_label>
+		<!-- currency -->
+		<currency_switcher>
+			<type_adminhtml>Radio_Ico</type_adminhtml>
+			<type_frontend>setTemplate</type_frontend>
+			<note>Will appear only if you have several active currencies</note>
+            <title>Status</title>
+			<values>
+				<v1><name>Select Box</name><value>directory/currency_header.phtml</value></v1>
+				<v2><name>Flags</name><value>directory/currency_header_list.phtml</value></v2>
+			</values>
+			<default>directory/currency_header.phtml</default>
+			<block>meigee_currency</block>
+		</currency_switcher>
+		<currency_label>
+			<type_adminhtml>Select_Bool</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+            <title>Currency label</title>
+			<values>
+				<v1><name>Enable</name><value>1</value></v1>
+			</values>
+			<default>0</default>
+			<block>meigee_currency</block>
+		</currency_label>
+
+		<!-- Product -->
+		<prev_next_buttons>
+			<type_adminhtml>Radio_Ico</type_adminhtml>
+			<type_frontend>setTemplate</type_frontend>
+            <title>Prev and Next product buttons</title>
+            <note>Buttons allow you to move between products within a category just in one click. Here you can also change layout of those buttons</note>
+			<values>
+				<v1><name>Disable</name><value>__empty__</value></v1>
+				<v2><name>Default</name><value>catalog/product/view/product_buttons_default.phtml</value></v2>
+			</values>
+			<default>catalog/product/view/product_buttons_default.phtml</default>
+			<block>meigee_product_general</block>
+		</prev_next_buttons>
+		<product_sku>
+			<type_adminhtml>Select_Bool</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+            <title>Product SKU</title>
+            <note>Will be displayed under product title</note>
+			<values>
+				<v1><name>Enable</name><value>1</value></v1>
+			</values>
+			<default>1</default>
+			<block>meigee_product_general</block>
+		</product_sku>
+		<more_views>
+			<type_adminhtml>Radio_Ico</type_adminhtml>
+			<type_frontend>setTemplate</type_frontend>
+            <title>More Views Type</title>
+            <note>Slider option will work if product has 4+ images</note>
+			<values>
+				<v1><name>Slider</name><value>catalog/product/view/more_views_slider.phtml</value></v1>
+				<v2><name>List</name><value>catalog/product/view/more_views.phtml</value></v2>
+			</values>
+			<default>catalog/product/view/more_views_slider.phtml</default>
+			<block>meigee_product_general</block>
+		</more_views>
+<!--
+		<related_products_position>
+			<type_adminhtml>Select</type_adminhtml>
+			<title>Related Products Position</title>
+			<note>Some note</note>
+			<values>
+				<v1><name>Sidebar</name><value>1</value></v1>
+				<v2><name>Bottom</name><value>2</value></v2>
+			</values>
+			<default>1</default>
+			<block>meigee_product_general</block>
+		</related_products_position> -->
+
+
+		<!-- layout -->
+
+		<product_shop_col_xs_size>
+			<type_adminhtml>Radio_Ico</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>Product Page layout</title>
+			<note>Allows to choose layout for product page. Layouts has different ratio of product image and product content. </note>
+			<values>
+				  <v1>
+					<name>Small</name>
+					<value>
+						<size>
+							<type_frontend>getData</type_frontend>
+							<value>5</value>
+						</size>
+						<class>
+							<type_frontend>getData</type_frontend>
+							<value>small-layout</value>
+						</class>
+						<pm_image_size>
+							<type_frontend>getData</type_frontend>
+							<value>800</value>
+						</pm_image_size>
+						<more_views_count>
+							<type_frontend>getData</type_frontend>
+							<value>4</value>
+						</more_views_count>
+					</value>
+				</v1>
+				<v2>
+					<name>Medium</name>
+					<value>
+						<size>
+							<type_frontend>getData</type_frontend>
+							<value>6</value>
+						</size>
+						<class>
+							<type_frontend>getData</type_frontend>
+							<value>medium-layout</value>
+						</class>
+						<pm_image_size>
+							<type_frontend>getData</type_frontend>
+							<value>636</value>
+						</pm_image_size>
+						<more_views_count>
+							<type_frontend>getData</type_frontend>
+							<value>4</value>
+						</more_views_count>
+					</value>
+				</v2>
+				<v3>
+					<name>Large</name>
+					<value>
+						<size>
+							<type_frontend>getData</type_frontend>
+							<value>7</value>
+						</size>
+						<class>
+							<type_frontend>getData</type_frontend>
+							<value>large-layout</value>
+						</class>
+						<pm_image_size>
+							<type_frontend>getData</type_frontend>
+							<value>530</value>
+						</pm_image_size>
+						<more_views_count>
+							<type_frontend>getData</type_frontend>
+							<value>4</value>
+						</more_views_count>
+					</value>
+				</v3>
+				<v4>
+					<name>Extra large</name>
+					<value>
+						<size>
+							<type_frontend>getData</type_frontend>
+							<value>12</value>
+						</size>
+						<class>
+							<type_frontend>getData</type_frontend>
+							<value>extralarge-layout</value>
+						</class>
+						<pm_image_size>
+							<type_frontend>getData</type_frontend>
+							<value>1300</value>
+						</pm_image_size>
+						<more_views_count>
+							<type_frontend>getData</type_frontend>
+							<value>8</value>
+						</more_views_count>
+					</value>
+				</v4>
+			</values>
+			<default>v3</default>
+			<use_key>1</use_key>
+			<block>meigee_product_layout</block>
+		</product_shop_col_xs_size>
+		<product_sidebar_position>
+			<type_adminhtml>Select</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>Custom Sidebar</title>
+			<note>Custom sidebar will be displayed only on 1- and 2-column design of product page.</note>
+			<values>
+				<v1><name>Left</name><value>left</value></v1>
+				<v2><name>Right</name><value>right</value></v2>
+				<v3><name>No sidebar</name><value>__empty__</value></v3>
+			</values>
+			<default>right</default>
+			<block>meigee_product_layout</block>
+		</product_sidebar_position>
+		<product_compare>
+			<type_adminhtml>Select</type_adminhtml>
+			<type_frontend>Bool</type_frontend>
+			<title>Compare products block</title>
+			<note>Choose sideabar column where this block will be displayed. Make sure that you have enabled custom sidebar if you choose to display block in custom sidebar and make sure that product page layout set as 2- or 3-columns design if you choose to show this block in left or right sidebar</note>
+			<values>
+				<v1>
+					<name>Disable</name>
+					<value>
+						<left>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</left>
+						<right>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</right>
+						<custom>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</custom>
+					</value>
+				</v1>
+				<v2>
+					<name>Left Sidebar</name>
+					<value>
+						<left>
+							<type_frontend>Bool</type_frontend>
+							<value>0</value>
+						</left>
+						<right>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</right>
+						<custom>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</custom>
+					</value>
+				</v2>
+				<v3>
+					<name>Right Sidebar</name>
+					<value>
+						<left>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</left>
+						<right>
+							<type_frontend>Bool</type_frontend>
+							<value>0</value>
+						</right>
+						<custom>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</custom>
+					</value>
+				</v3>
+				<v4>
+					<name>Custom Sidebar</name>
+					<value>
+						<left>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</left>
+						<right>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</right>
+						<custom>
+							<type_frontend>Bool</type_frontend>
+							<value>0</value>
+						</custom>
+					</value>
+				</v4>
+			</values>
+			<default>v1</default>
+			<use_key>1</use_key>
+			<block>meigee_product_layout</block>
+		</product_compare>
+		<product_related>
+			<type_adminhtml>Select</type_adminhtml>
+			<type_frontend>Bool</type_frontend>
+			<title>Related Products position</title>
+			<note>Choose location where this block will be displayed. Make sure that you have enabled custom sidebar if you choose to display block in custom sidebar and make sure that product page layout set as 2- or 3-columns design if you choose to show this block in left or right sidebar. If you set to show related products in bottom position they will be shown after product tabs on product page. You must have related products assigned to the product on product edit page, otherwise that block will show nothing</note>
+			<values>
+				<v1>
+					<name>Bottom</name>
+					<value>
+						<left>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</left>
+						<right>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</right>
+						<custom>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</custom>
+						<bottom>
+							<type_frontend>Bool</type_frontend>
+							<value>0</value>
+						</bottom>
+					</value>
+				</v1>
+				<v2>
+					<name>Left Sidebar</name>
+					<value>
+						<left>
+							<type_frontend>Bool</type_frontend>
+							<value>0</value>
+						</left>
+						<right>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</right>
+						<custom>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</custom>
+						<bottom>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</bottom>
+					</value>
+				</v2>
+				<v3>
+					<name>Right Sidebar</name>
+					<value>
+						<left>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</left>
+						<right>
+							<type_frontend>Bool</type_frontend>
+							<value>0</value>
+						</right>
+						<custom>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</custom>
+						<bottom>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</bottom>
+					</value>
+				</v3>
+				<v4>
+					<name>Custom Sidebar</name>
+					<value>
+						<left>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</left>
+						<right>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</right>
+						<custom>
+							<type_frontend>Bool</type_frontend>
+							<value>0</value>
+						</custom>
+						<bottom>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</bottom>
+					</value>
+				</v4>
+			</values>
+			<default>v1</default>
+			<use_key>1</use_key>
+			<block>meigee_product_layout</block>
+		</product_related>
+		<related_products>
+			<depends>
+				<product_related>v2</product_related>
+				<product_related>v3</product_related>
+				<product_related>v4</product_related>
+			</depends>
+			<type_adminhtml>Radio_Ico</type_adminhtml>
+			<type_frontend>setTemplate</type_frontend>
+			<title>Related Products display mode</title>
+			<note>You can display your related products block as slider or simple list. Make sure that you have more than 2 related products if you choose slider value</note>
+			<values>
+				<v1><name>Slider</name><value>catalog/product/list/related_slider.phtml</value></v1>
+				<v2><name>List</name><value>catalog/product/list/related.phtml</value></v2>
+			</values>
+			<default>catalog/product/list/related_slider.phtml</default>
+			<block>meigee_product_layout</block>
+		</related_products>
+		<related_products_bottom>
+			<depends>
+				<product_related>v1</product_related>
+			</depends>
+			<type_adminhtml>Radio_Ico</type_adminhtml>
+			<type_frontend>setTemplate</type_frontend>
+			<title>Related Products display mode</title>
+			<note>Some note</note>
+			<values>
+				<v1><name>Slider</name><value>catalog/product/list/related_bottom_slider.phtml</value></v1>
+				<v2><name>List</name><value>catalog/product/list/related_bottom.phtml</value></v2>
+			</values>
+			<default>catalog/product/list/related_bottom_slider.phtml</default>
+			<block>meigee_product_layout</block>
+		</related_products_bottom>
+		<product_poll>
+			<type_adminhtml>Select</type_adminhtml>
+			<type_frontend>Bool</type_frontend>
+			<title>Polls block</title>
+			<note>Choose sideabar column where this block will be displayed. Make sure that you have enabled custom sidebar if you choose to display block in custom sidebar and make sure that product page layout set as 2- or 3-columns design if you choose to show this block in left or right sidebar. Make sure that you have at least 1 enabled poll (CMS -> Polls) </note>
+			<values>
+				<v1>
+					<name>Disable</name>
+					<value>
+						<left>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</left>
+						<right>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</right>
+					</value>
+				</v1>
+				<v2>
+					<name>Left Sidebar</name>
+					<value>
+						<left>
+							<type_frontend>Bool</type_frontend>
+							<value>0</value>
+						</left>
+						<right>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</right>
+					</value>
+				</v2>
+				<v3>
+					<name>Right Sidebar</name>
+					<value>
+						<left>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</left>
+						<right>
+							<type_frontend>Bool</type_frontend>
+							<value>0</value>
+						</right>
+					</value>
+				</v3>
+			</values>
+			<default>v1</default>
+			<use_key>1</use_key>
+			<block>meigee_product_layout</block>
+		</product_poll>
+		<product_tags>
+			<type_adminhtml>Select</type_adminhtml>
+			<type_frontend>Bool</type_frontend>
+			<title>Product tags block</title>
+			<note>Choose sideabar column where this block will be displayed. Make sure that you have enabled custom sidebar if you choose to display block in custom sidebar and make sure that product page layout set as 2- or 3-columns design if you choose to show this block in left or right sidebar. Make sure that you have at least 1 product tag. </note>
+			<values>
+				<v1>
+					<name>Disable</name>
+					<value>
+						<left>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</left>
+						<right>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</right>
+						<custom>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</custom>
+					</value>
+				</v1>
+				<v2>
+					<name>Left Sidebar</name>
+					<value>
+						<left>
+							<type_frontend>Bool</type_frontend>
+							<value>0</value>
+						</left>
+						<right>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</right>
+						<custom>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</custom>
+					</value>
+				</v2>
+				<v3>
+					<name>Right Sidebar</name>
+					<value>
+						<left>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</left>
+						<right>
+							<type_frontend>Bool</type_frontend>
+							<value>0</value>
+						</right>
+						<custom>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</custom>
+					</value>
+				</v3>
+				<v4>
+					<name>Custom Sidebar</name>
+					<value>
+						<left>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</left>
+						<right>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</right>
+						<custom>
+							<type_frontend>Bool</type_frontend>
+							<value>0</value>
+						</custom>
+					</value>
+				</v4>
+			</values>
+			<default>v1</default>
+			<use_key>1</use_key>
+			<block>meigee_product_layout</block>
+		</product_tags>
+		<product_viewed>
+			<type_adminhtml>Select</type_adminhtml>
+			<type_frontend>Bool</type_frontend>
+			<title>Viewed Products block</title>
+			<note>Choose sideabar column where this block will be displayed. Make sure that you have enabled custom sidebar if you choose to display block in custom sidebar and make sure that product page layout set as 2- or 3-columns design if you choose to show this block in left or right sidebar. Products in this block will be displayed only if customer have already visited some other product page</note>
+			<values>
+				<v1>
+					<name>Disable</name>
+					<value>
+						<left>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</left>
+						<right>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</right>
+						<custom>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</custom>
+					</value>
+				</v1>
+				<v2>
+					<name>Left Sidebar</name>
+					<value>
+						<left>
+							<type_frontend>Bool</type_frontend>
+							<value>0</value>
+						</left>
+						<right>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</right>
+						<custom>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</custom>
+					</value>
+				</v2>
+				<v3>
+					<name>Right Sidebar</name>
+					<value>
+						<left>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</left>
+						<right>
+							<type_frontend>Bool</type_frontend>
+							<value>0</value>
+						</right>
+						<custom>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</custom>
+					</value>
+				</v3>
+				<v4>
+					<name>Custom Sidebar</name>
+					<value>
+						<left>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</left>
+						<right>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</right>
+						<custom>
+							<type_frontend>Bool</type_frontend>
+							<value>0</value>
+						</custom>
+					</value>
+				</v4>
+			</values>
+			<default>v1</default>
+			<use_key>1</use_key>
+			<block>meigee_product_layout</block>
+		</product_viewed>
+		<product_subscribe>
+			<type_adminhtml>Select</type_adminhtml>
+			<type_frontend>Bool</type_frontend>
+			<title>Newsletter subscribe block</title>
+			<note>Choose sideabar column where this block will be displayed. Make sure that you have enabled custom sidebar if you choose to display block in custom sidebar and make sure that product page layout set as 2- or 3-columns design if you choose to show this block in left or right sidebar</note>
+			<values>
+				<v1>
+					<name>Disable</name>
+					<value>
+						<left>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</left>
+						<right>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</right>
+					</value>
+				</v1>
+				<v2>
+					<name>Left Sidebar</name>
+					<value>
+						<left>
+							<type_frontend>Bool</type_frontend>
+							<value>0</value>
+						</left>
+						<right>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</right>
+					</value>
+				</v2>
+				<v3>
+					<name>Right Sidebar</name>
+					<value>
+						<left>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</left>
+						<right>
+							<type_frontend>Bool</type_frontend>
+							<value>0</value>
+						</right>
+					</value>
+				</v3>
+			</values>
+			<default>v1</default>
+			<use_key>1</use_key>
+			<block>meigee_product_layout</block>
+		</product_subscribe>
+		<product_wishlist>
+			<type_adminhtml>Select</type_adminhtml>
+			<type_frontend>Bool</type_frontend>
+			<title>Wishlist block</title>
+			<note>Choose sideabar column where this block will be displayed. Make sure that you have enabled custom sidebar if you choose to display block in custom sidebar and make sure that product page layout set as 2- or 3-columns design if you choose to show this block in left or right sidebar</note>
+			<values>
+				<v1>
+					<name>Disable</name>
+					<value>
+						<left>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</left>
+						<right>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</right>
+						<custom>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</custom>
+					</value>
+				</v1>
+				<v2>
+					<name>Left Sidebar</name>
+					<value>
+						<left>
+							<type_frontend>Bool</type_frontend>
+							<value>0</value>
+						</left>
+						<right>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</right>
+						<custom>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</custom>
+					</value>
+				</v2>
+				<v3>
+					<name>Right Sidebar</name>
+					<value>
+						<left>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</left>
+						<right>
+							<type_frontend>Bool</type_frontend>
+							<value>0</value>
+						</right>
+						<custom>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</custom>
+					</value>
+				</v3>
+				<v4>
+					<name>Custom Sidebar</name>
+					<value>
+						<left>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</left>
+						<right>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</right>
+						<custom>
+							<type_frontend>Bool</type_frontend>
+							<value>0</value>
+						</custom>
+					</value>
+				</v4>
+			</values>
+			<default>v1</default>
+			<use_key>1</use_key>
+			<block>meigee_product_layout</block>
+		</product_wishlist>
+		<product_wishlist_type>
+			<depends>
+				<product_wishlist>v2</product_wishlist>
+				<product_wishlist>v3</product_wishlist>
+				<product_wishlist>v4</product_wishlist>
+			</depends>
+			<type_adminhtml>Select</type_adminhtml>
+			<type_frontend>setTemplate</type_frontend>
+			<title>Wishlist Display mode</title>
+			<note>Here you can choose one of two avalable display mode of wishlist block</note>
+			<values>
+				<v1><name>Slider</name><value>wishlist/sidebar_slider.phtml</value></v1>
+				<v2><name>List</name><value>wishlist/sidebar.phtml</value></v2>
+			</values>
+			<default>wishlist/sidebar_slider.phtml</default>
+			<block>meigee_product_layout</block>
+		</product_wishlist_type>
+		<product_facebook>
+			<type_adminhtml>Select</type_adminhtml>
+			<type_frontend>Bool</type_frontend>
+			<title>Facebook block</title>
+			<note>Choose sideabar column where this block will be displayed. Make sure that you have enabled custom sidebar if you choose to display block in custom sidebar and make sure that product page layout set as 2- or 3-columns design if you choose to show this block in left or right sidebar. To enable facebook like box navigate to Meigee -> Theme manager -> Theme edit page -> Sidebar -> Facebook Like Box Block </note>
+			<values>
+				<v1>
+					<name>Disable</name>
+					<value>
+						<left>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</left>
+						<right>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</right>
+						<custom>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</custom>
+					</value>
+				</v1>
+				<v2>
+					<name>Left Sidebar</name>
+					<value>
+						<left>
+							<type_frontend>Bool</type_frontend>
+							<value>0</value>
+						</left>
+						<right>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</right>
+						<custom>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</custom>
+					</value>
+				</v2>
+				<v3>
+					<name>Right Sidebar</name>
+					<value>
+						<left>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</left>
+						<right>
+							<type_frontend>Bool</type_frontend>
+							<value>0</value>
+						</right>
+						<custom>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</custom>
+					</value>
+				</v3>
+				<v4>
+					<name>Custom Sidebar</name>
+					<value>
+						<left>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</left>
+						<right>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</right>
+						<custom>
+							<type_frontend>Bool</type_frontend>
+							<value>0</value>
+						</custom>
+					</value>
+				</v4>
+			</values>
+			<default>v1</default>
+			<use_key>1</use_key>
+			<block>meigee_product_layout</block>
+		</product_facebook>
+		<product_collateral>
+			<type_adminhtml>Radio_Ico</type_adminhtml>
+			<type_frontend>setTemplate</type_frontend>
+			<title>Collateral block</title>
+			<note> You can set 1 of 4 available collateral block layouts</note>
+			<values>
+				<v1><name>Simple List</name><value>catalog/product/view/collateral/simple_list.phtml</value></v1>
+				<v2><name>Tabs</name><value>catalog/product/view/collateral/tabs.phtml</value></v2>
+				<v4><name>Accordion </name><value>catalog/product/view/collateral/accordion.phtml</value></v4>
+			</values>
+			<default>catalog/product/view/collateral/tabs.phtml</default>
+			<block>meigee_product_layout</block>
+		</product_collateral>
+		<product_collateral_pos>
+			<type_adminhtml>Select</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>Collateral block position</title>
+			<note>On some of layouts of product page it isn't recommended to put collateral into details block due to limited space</note>
+			<values>
+				<v1><name>Product Details Col</name><value>product-details</value></v1>
+				<v2><name>Under Product Details Col</name><value>bottom</value></v2>
+			</values>
+			<default>bottom</default>
+			<block>meigee_product_layout</block>
+		</product_collateral_pos>
+		<product_upsell_pos>
+			<type_adminhtml>Select</type_adminhtml>
+			<type_frontend>setTemplate</type_frontend>
+			<title>Upsell products blocks position</title>
+			<note>Make suree that upsell products has been assigned to products</note>
+			<values>
+				<in_tabs>
+					<name>Tabs</name>
+					<value>
+						<tabs>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</tabs>
+						<bottom>
+							<type_frontend>Bool</type_frontend>
+							<value>0</value>
+						</bottom>
+					</value>
+				</in_tabs>
+				<under_tabs>
+					<name>Above Footer</name>
+					<value>
+						<tabs>
+							<type_frontend>Bool</type_frontend>
+							<value>0</value>
+						</tabs>
+						<bottom>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</bottom>
+					</value>
+				</under_tabs>
+			</values>
+			<use_key>1</use_key>
+			<default>in_tabs</default>
+			<block>meigee_product_layout</block>
+		</product_upsell_pos>
+		<!-- additional content -->
+		<additional_content_under_product_description_static_blocks>
+			<type_adminhtml>Select_StaticBlock</type_adminhtml>
+			<title>Under product description</title>
+			<note>These static blocks will be displayed one below the other. By default static block with social icons code is displaying under product description</note>
+			<default>compo_product_custom</default>
+			<block>meigee_product_additional</block>
+			<multi>8</multi>
+		</additional_content_under_product_description_static_blocks>
+		<additional_content_product_tabs_static_blocks>
+			<type_adminhtml>Select_StaticBlock</type_adminhtml>
+			<title>Products Tabs</title>
+			<note>You can add any static block as your custom product tab. Title of that static block will be used as product tab title</note>
+			<default>__empty__</default>
+			<block>meigee_product_additional</block>
+			<multi>8</multi>
+		</additional_content_product_tabs_static_blocks>
+		<additional_content_related_static_blocks>
+			<type_adminhtml>Select_StaticBlock</type_adminhtml>
+			<title>"Related" static block</title>
+			<note>Will replace related products block ot its position</note>
+			<default>__empty__</default>
+			<block>meigee_product_additional</block>
+			<multi>8</multi>
+		</additional_content_related_static_blocks>
+		<!-- rich snippets -->
+		<snippets_status>
+			<type_adminhtml>Select_Bool</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>Status</title>
+			<note>Adds rich data-markup to your product pages so search engines will show richer item preview with information about price, reviews and breadcrumbs</note>
+			<values>
+				<v1><name>Enable</name><value>1</value></v1>
+			</values>
+			<default>1</default>
+			<block>meigee_product_rich_snippets</block>
+		</snippets_status>
+		<snippets_breadcrumbs>
+			<depends>
+				<snippets_status>v1</snippets_status>
+			</depends>
+			<type_adminhtml>Select_Bool</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+            <title>Breadcrumbs</title>
+            <note>Will show paths to your product pages on search pages of search engines</note>
+			<values>
+				<v1><name>Enable</name><value>1</value></v1>
+			</values>
+			<default>1</default>
+			<block>meigee_product_rich_snippets</block>
+		</snippets_breadcrumbs>
+		<snippets_reviews>
+			<depends>
+				<snippets_status>v1</snippets_status>
+			</depends>
+			<type_adminhtml>Select_Bool</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+            <title>Reviews and Ratings</title>
+            <note>Will show reviews and ratings on search pages of search engines</note>
+			<values>
+				<v1><name>Enable</name><value>1</value></v1>
+			</values>
+			<default>1</default>
+			<block>meigee_product_rich_snippets</block>
+		</snippets_reviews>
+		<snippets_price>
+			<depends>
+				<snippets_status>v1</snippets_status>
+			</depends>
+			<type_adminhtml>Select_Bool</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+            <title>Price</title>
+            <note>Will show price on search pages of search engines</note>
+			<values>
+				<v1><name>Enable</name><value>1</value></v1>
+			</values>
+			<default>1</default>
+			<block>meigee_product_rich_snippets</block>
+		</snippets_price>
+		<snippets_availability>
+			<depends>
+				<snippets_status>v1</snippets_status>
+			</depends>
+			<type_adminhtml>Select_Bool</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+            <title>Availability</title>
+            <note>Will show availability on search pages of search engines</note>
+			<values>
+				<v1><name>Enable</name><value>1</value></v1>
+			</values>
+			<default>1</default>
+			<block>meigee_product_rich_snippets</block>
+		</snippets_availability>
+		<!-- Sidebar -->
+		<block_shopby>
+			<type_adminhtml>Select</type_adminhtml>
+			<type_frontend>Bool</type_frontend>
+			<title>Shop By Block</title>
+			<note>Categories must be anchored (Catalog -> Manage Categories -> Category edit page -> Design tab) to display that block</note>
+			<values>
+				<v1>
+					<name>Disable</name>
+					<value>
+						<left>
+							<type_frontend>Bool</type_frontend>
+							<value>0</value>
+						</left>
+						<right>
+							<type_frontend>Bool</type_frontend>
+							<value>0</value>
+						</right>
+					</value>
+				</v1>
+				<v2>
+					<name>Left Sidebar</name>
+					<value>
+						<left>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</left>
+						<right>
+							<type_frontend>Bool</type_frontend>
+							<value>0</value>
+						</right>
+					</value>
+				</v2>
+				<v3>
+					<name>Right Sidebar</name>
+					<value>
+						<left>
+							<type_frontend>Bool</type_frontend>
+							<value>0</value>
+						</left>
+						<right>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</right>
+					</value>
+				</v3>
+			</values>
+			<default>v2</default>
+			<use_key>1</use_key>
+			<block>meigee_sidebar_blocks</block>
+		</block_shopby>
+		<!-- <block_shopby_layout>
+			<depends>
+				<block_shopby>v2</block_shopby>
+				<block_shopby>v3</block_shopby>
+			</depends>
+			<type_adminhtml>Select</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>Shop By Block Layout</title>
+			<values>
+				<v1><name>Horizontal</name><value>horizontal</value></v1>
+				<v2><name>Vertical</name><value>vertical</value></v2>
+			</values>
+			<default>horizontal</default>
+			<block>meigee_sidebar_blocks</block>
+		</block_shopby_layout> -->
+		<block_compare>
+			<type_adminhtml>Select</type_adminhtml>
+			<type_frontend>Bool</type_frontend>
+			<title>Compare products block</title>
+			<note>Choose sideabar column where this block will be displayed. Make sure that product page layout set as 2- or 3-columns design if you choose to show this block in left or right sidebar</note>
+			<values>
+				<v1>
+					<name>Disable</name>
+					<value>
+						<left>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</left>
+						<right>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</right>
+					</value>
+				</v1>
+				<v2>
+					<name>Left Sidebar</name>
+					<value>
+						<left>
+							<type_frontend>Bool</type_frontend>
+							<value>0</value>
+						</left>
+						<right>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</right>
+					</value>
+				</v2>
+				<v3>
+					<name>Right Sidebar</name>
+					<value>
+						<left>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</left>
+						<right>
+							<type_frontend>Bool</type_frontend>
+							<value>0</value>
+						</right>
+					</value>
+				</v3>
+			</values>
+			<default>v2</default>
+			<use_key>1</use_key>
+			<block>meigee_sidebar_blocks</block>
+		</block_compare>
+		<block_viewed>
+			<type_adminhtml>Select</type_adminhtml>
+			<type_frontend>Bool</type_frontend>
+			<title>Viewed Products block</title>
+			<note>Choose sideabar column where this block will be displayed. Make sure that product page layout set as 2- or 3-columns design if you choose to show this block in left or right sidebar. Products in this block will be displayed only if customer have already visited some other product page</note>
+			<values>
+				<v1>
+					<name>Disable</name>
+					<value>
+						<left>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</left>
+						<right>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</right>
+					</value>
+				</v1>
+				<v2>
+					<name>Left Sidebar</name>
+					<value>
+						<left>
+							<type_frontend>Bool</type_frontend>
+							<value>0</value>
+						</left>
+						<right>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</right>
+					</value>
+				</v2>
+				<v3>
+					<name>Right Sidebar</name>
+					<value>
+						<left>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</left>
+						<right>
+							<type_frontend>Bool</type_frontend>
+							<value>0</value>
+						</right>
+					</value>
+				</v3>
+			</values>
+			<default>v2</default>
+			<use_key>1</use_key>
+			<block>meigee_sidebar_blocks</block>
+		</block_viewed>
+		<block_tag>
+			<type_adminhtml>Select</type_adminhtml>
+			<type_frontend>Bool</type_frontend>
+			<title>Product tags block</title>
+			<note>Choose sideabar column where this block will be displayed. Make sure that product page layout set as 2- or 3-columns design if you choose to show this block in left or right sidebar. Make sure that you have at least 1 product tag. </note>
+			<values>
+				<v1>
+					<name>Disable</name>
+					<value>
+						<left>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</left>
+						<right>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</right>
+					</value>
+				</v1>
+				<v2>
+					<name>Left Sidebar</name>
+					<value>
+						<left>
+							<type_frontend>Bool</type_frontend>
+							<value>0</value>
+						</left>
+						<right>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</right>
+					</value>
+				</v2>
+				<v3>
+					<name>Right Sidebar</name>
+					<value>
+						<left>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</left>
+						<right>
+							<type_frontend>Bool</type_frontend>
+							<value>0</value>
+						</right>
+					</value>
+				</v3>
+			</values>
+			<default>v2</default>
+			<use_key>1</use_key>
+			<block>meigee_sidebar_blocks</block>
+		</block_tag>
+		<block_orders>
+			<type_adminhtml>Select</type_adminhtml>
+			<type_frontend>Bool</type_frontend>
+			<title>My orders Block</title>
+			<values>
+				<v1>
+					<name>Disable</name>
+					<value>
+						<left>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</left>
+						<right>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</right>
+					</value>
+				</v1>
+				<v2>
+					<name>Left Sidebar</name>
+					<value>
+						<left>
+							<type_frontend>Bool</type_frontend>
+							<value>0</value>
+						</left>
+						<right>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</right>
+					</value>
+				</v2>
+				<v3>
+					<name>Right Sidebar</name>
+					<value>
+						<left>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</left>
+						<right>
+							<type_frontend>Bool</type_frontend>
+							<value>0</value>
+						</right>
+					</value>
+				</v3>
+			</values>
+			<default>v2</default>
+			<use_key>1</use_key>
+			<block>meigee_sidebar_blocks</block>
+		</block_orders>
+		<block_subscribe>
+			<type_adminhtml>Select</type_adminhtml>
+			<type_frontend>Bool</type_frontend>
+			<title>Newsletter subscribe block</title>
+			<note>Choose sideabar column where this block will be displayed. Make sure that product page layout set as 2- or 3-columns design if you choose to show this block in left or right sidebar</note>
+			<values>
+				<v1>
+					<name>Disable</name>
+					<value>
+						<left>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</left>
+						<right>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</right>
+					</value>
+				</v1>
+				<v2>
+					<name>Left Sidebar</name>
+					<value>
+						<left>
+							<type_frontend>Bool</type_frontend>
+							<value>0</value>
+						</left>
+						<right>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</right>
+					</value>
+				</v2>
+				<v3>
+					<name>Right Sidebar</name>
+					<value>
+						<left>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</left>
+						<right>
+							<type_frontend>Bool</type_frontend>
+							<value>0</value>
+						</right>
+					</value>
+				</v3>
+			</values>
+			<default>v2</default>
+			<use_key>1</use_key>
+			<block>meigee_sidebar_blocks</block>
+		</block_subscribe>
+		<block_poll>
+			<type_adminhtml>Select</type_adminhtml>
+			<type_frontend>Bool</type_frontend>
+			<title>Poll block</title>
+			<values>
+				<v1>
+					<name>Disable</name>
+					<value>
+						<left>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</left>
+						<right>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</right>
+					</value>
+				</v1>
+				<v2>
+					<name>Left Sidebar</name>
+					<value>
+						<left>
+							<type_frontend>Bool</type_frontend>
+							<value>0</value>
+						</left>
+						<right>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</right>
+					</value>
+				</v2>
+				<v3>
+					<name>Right Sidebar</name>
+					<value>
+						<left>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</left>
+						<right>
+							<type_frontend>Bool</type_frontend>
+							<value>0</value>
+						</right>
+					</value>
+				</v3>
+			</values>
+			<default>v2</default>
+			<use_key>1</use_key>
+			<block>meigee_sidebar_blocks</block>
+		</block_poll>
+		<block_banner>
+			<type_adminhtml>Select</type_adminhtml>
+			<type_frontend>Bool</type_frontend>
+			<title>Banner block</title>
+			<values>
+				<v1>
+					<name>Disable</name>
+					<value>
+						<left>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</left>
+						<right>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</right>
+					</value>
+				</v1>
+				<v2>
+					<name>Left Sidebar</name>
+					<value>
+						<left>
+							<type_frontend>Bool</type_frontend>
+							<value>0</value>
+						</left>
+						<right>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</right>
+					</value>
+				</v2>
+				<v3>
+					<name>Right Sidebar</name>
+					<value>
+						<left>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</left>
+						<right>
+							<type_frontend>Bool</type_frontend>
+							<value>0</value>
+						</right>
+					</value>
+				</v3>
+			</values>
+			<default>v2</default>
+			<use_key>1</use_key>
+			<block>meigee_sidebar_blocks</block>
+		</block_banner>
+		<facebook_like_box>
+			<type_adminhtml>Select_Bool</type_adminhtml>
+			<type_frontend>defaultFrontendBlock</type_frontend>
+			<title>Facebook Like Box Block</title>
+			<values>
+				<v1><name>Enable</name><value>socialNetwork_facebookLikeBox</value></v1>
+			</values>
+			<!-- <data_values>socialNetwork_facebookLikeBox</data_values> -->
+			<default>__empty__</default>
+			<block>meigee_sidebar_blocks</block>
+		</facebook_like_box>
+		<facebook_like_box_pos>
+			<depends><facebook_like_box>v1</facebook_like_box></depends>
+			<type_adminhtml>Select</type_adminhtml>
+			<type_frontend>Bool</type_frontend>
+			<title>Facebook Like Box Block Position</title>
+			<values>
+				<v1>
+					<name>Left Sidebar</name>
+					<value>
+						<left>
+							<type_frontend>Bool</type_frontend>
+							<value>0</value>
+						</left>
+						<right>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</right>
+					</value>
+				</v1>
+				<v2>
+					<name>Right Sidebar</name>
+					<value>
+						<left>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</left>
+						<right>
+							<type_frontend>Bool</type_frontend>
+							<value>0</value>
+						</right>
+					</value>
+				</v2>
+			</values>
+			<default>v1</default>
+			<use_key>1</use_key>
+			<block>meigee_sidebar_blocks</block>
+		</facebook_like_box_pos>
+		<facebook_like_box_facebook_page_url>
+			<type_adminhtml>Input</type_adminhtml>
+			<depends><facebook_like_box>v1</facebook_like_box></depends>
+			<title>Facebook Page URL</title>
+			<default><![CDATA[https://www.facebook.com/meigeeteam]]></default>
+			<block>meigee_sidebar_blocks</block>
+		</facebook_like_box_facebook_page_url>
+		<facebook_like_box_height>
+			<type_adminhtml>Input</type_adminhtml>
+			<depends><facebook_like_box>v1</facebook_like_box></depends>
+			<title>Height</title>
+			<default>340</default>
+			<block>meigee_sidebar_blocks</block>
+		</facebook_like_box_height>
+		<facebook_like_box_show_friends_faces>
+			<type_adminhtml>Select</type_adminhtml>
+			<depends><facebook_like_box>v1</facebook_like_box></depends>
+			<title>Show Friends Faces</title>
+			<values>
+				<v1><name>Yes</name><value>1</value></v1>
+				<v2><name>No</name><value>0</value></v2>
+			</values>
+			<default>1</default>
+			<block>meigee_sidebar_blocks</block>
+		</facebook_like_box_show_friends_faces>
+		<facebook_like_box_smallheader>
+			<type_adminhtml>Select</type_adminhtml>
+			<depends><facebook_like_box>v1</facebook_like_box></depends>
+			<title>Show Small Header</title>
+			<values>
+				<v1><name>Yes</name><value>1</value></v1>
+				<v2><name>No</name><value>0</value></v2>
+			</values>
+			<default>0</default>
+			<block>meigee_sidebar_blocks</block>
+		</facebook_like_box_smallheader>
+		<facebook_like_box_show_posts>
+			<type_adminhtml>Select</type_adminhtml>
+			<depends><facebook_like_box>v1</facebook_like_box></depends>
+			<title>Show Posts</title>
+			<values>
+				<v1><name>Yes</name><value>1</value></v1>
+				<v2><name>No</name><value>0</value></v2>
+			</values>
+			<default>1</default>
+			<block>meigee_sidebar_blocks</block>
+		</facebook_like_box_show_posts>
+		<facebook_like_box_hide_cover>
+			<type_adminhtml>Select</type_adminhtml>
+			<depends><facebook_like_box>v1</facebook_like_box></depends>
+			<title>Hide Cover</title>
+			<values>
+				<v1><name>Yes</name><value>1</value></v1>
+				<v2><name>No</name><value>0</value></v2>
+			</values>
+			<default>0</default>
+			<block>meigee_sidebar_blocks</block>
+		</facebook_like_box_hide_cover>
+		<facebook_like_box_adaptive_width>
+			<type_adminhtml>Select</type_adminhtml>
+			<depends><facebook_like_box>v1</facebook_like_box></depends>
+			<title>Adaptive WIdth</title>
+			<values>
+				<v1><name>Yes</name><value>1</value></v1>
+				<v2><name>No</name><value>0</value></v2>
+			</values>
+			<default>1</default>
+			<block>meigee_sidebar_blocks</block>
+		</facebook_like_box_adaptive_width>
+		<block_wishlist>
+			<type_adminhtml>Select</type_adminhtml>
+			<type_frontend>Bool</type_frontend>
+			<title>Wishlist block</title>
+			<note>Choose sideabar column where this block will be displayed. Make sure that product page layout set as 2- or 3-columns design if you choose to show this block in left or right sidebar</note>
+			<values>
+				<v1>
+					<name>Disable</name>
+					<value>
+						<left>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</left>
+						<right>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</right>
+					</value>
+				</v1>
+				<v2>
+					<name>Left Sidebar</name>
+					<value>
+						<left>
+							<type_frontend>Bool</type_frontend>
+							<value>0</value>
+						</left>
+						<right>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</right>
+					</value>
+				</v2>
+				<v3>
+					<name>Right Sidebar</name>
+					<value>
+						<left>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</left>
+						<right>
+							<type_frontend>Bool</type_frontend>
+							<value>0</value>
+						</right>
+					</value>
+				</v3>
+			</values>
+			<default>v2</default>
+			<use_key>1</use_key>
+			<block>meigee_sidebar_blocks</block>
+		</block_wishlist>
+		<block_wishlist_template>
+			<depends>
+				<block_wishlist>v2</block_wishlist>
+				<block_wishlist>v3</block_wishlist>
+			</depends>
+			<type_adminhtml>Select</type_adminhtml>
+			<type_frontend>setTemplate</type_frontend>
+			<title>Wishlist Block Display Mode </title>
+			<values>
+				<v1><name>Slider</name><value>wishlist/sidebar_slider.phtml</value></v1>
+				<v2><name>List</name><value>wishlist/sidebar.phtml</value></v2>
+			</values>
+			<default>wishlist/sidebar_slider.phtml</default>
+			<block>meigee_sidebar_blocks</block>
+		</block_wishlist_template>
+		<block_cart>
+			<type_adminhtml>Select</type_adminhtml>
+			<type_frontend>Bool</type_frontend>
+			<title>Cart block</title>
+			<values>
+				<v1>
+					<name>Left Sidebar</name>
+					<value>
+						<left>
+							<type_frontend>Bool</type_frontend>
+							<value>0</value>
+						</left>
+						<right>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</right>
+					</value>
+				</v1>
+				<v2>
+					<name>Right Sidebar</name>
+					<value>
+						<left>
+							<type_frontend>Bool</type_frontend>
+							<value>1</value>
+						</left>
+						<right>
+							<type_frontend>Bool</type_frontend>
+							<value>0</value>
+						</right>
+					</value>
+				</v2>
+			</values>
+			<default>v1</default>
+			<use_key>1</use_key>
+			<block>meigee_sidebar_blocks</block>
+		</block_cart>
+
+		<!-- Background slider -->
+		<bgslider_status>
+			<type_adminhtml>Select_Bool</type_adminhtml>
+			<type_frontend>addItem</type_frontend>
+			<title>Status</title>
+			<note> Will be shown only if boxed layout is chosen</note>
+			<values>
+				<v1><name>Enable</name><value>js/jquery.backstretch.min.js</value></v1>
+			</values>
+			<default>__empty__</default>
+			<block>meigee_bgslider_options</block>
+		</bgslider_status>
+		<bgslider_fade>
+			<depends>
+				<bgslider_status>v1</bgslider_status>
+			</depends>
+			<type_adminhtml>Input</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>Fade</title>
+			<default>750</default>
+			<block>meigee_bgslider_options</block>
+		</bgslider_fade>
+		<bgslider_duration>
+			<depends>
+				<bgslider_status>v1</bgslider_status>
+			</depends>
+			<type_adminhtml>Input</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>Duration</title>
+			<default>4000</default>
+			<block>meigee_bgslider_options</block>
+		</bgslider_duration>
+		<bgslider_slides>
+			<depends>
+				<bgslider_status>v1</bgslider_status>
+			</depends>
+			<type_adminhtml>Input_FileArray</type_adminhtml>
+			<type_frontend>getData</type_frontend>
+			<title>Slides</title>
+			<multi>1</multi>
+			<element_property>
+				<formats>gif,jpg,tiff,png</formats>
+			</element_property>
+			<block>meigee_bgslider_options</block>
+		</bgslider_slides>
+	</configs>
+	<theme_settings>
+		<installation_instructions_url>
+			http://docs.meigeeteam.com/index.php?theme=compo
+		</installation_instructions_url>
+		<_modules>
+			<IWD_Opc />
+			<AW_Blog />
+		</_modules>
+	</theme_settings>
+</config>

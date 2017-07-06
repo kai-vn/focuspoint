@@ -1,0 +1,28 @@
+<div class="mobile-menu-wrapper">
+	<button class="menu-button" type="button"><i class="meigee-menu"></i> <span>Menu</span></button>
+	<div class="mobile-menu-inner">
+		<ul class="menu-tabs clearfix" role="tablist">
+			<li class="menu-item-title active" role="presentation">
+				<a href="#mobile-menu" aria-controls="mobile-menu" role="tab" data-toggle="tab"><?php echo $this->__('Menu'); ?></a>
+			</li>
+			<li class="menu-item-title" role="presentation">
+				<a href="#mobile-account" aria-controls="mobile-account" role="tab" data-toggle="tab"><?php echo $this->__('Account'); ?></a>
+			</li>
+			<li class="menu-item-title" role="presentation">
+				<a href="#mobile-settings" aria-controls="mobile-settings" role="tab" data-toggle="tab"><?php echo $this->__('Settings'); ?></a>
+			</li>
+		</ul>
+		<div class="tab-content">
+			<div class="menu-item-content fade active in" role="tabpanel" id="mobile-menu">
+				<?php echo $this->getLayout()->createBlock('page/html_topmenu')->setTemplate('page/html/topmenu_mobile.phtml')->toHtml(); ?>
+			</div>
+			<div class="menu-item-content fade" role="tabpanel" id="mobile-account">
+				<?php echo $this->getLayout()->getBlock('top.links2')->toHtml(); ?>
+			</div>
+			<div class="menu-item-content fade" role="tabpanel" id="mobile-settings">
+				<?php echo $this->getLayout()->createBlock('page/switch')->setTemplate('page/switch/languages.phtml')->toHtml(); ?>
+				<?php echo $this->getLayout()->createBlock('directory/currency')->setTemplate('directory/currency_header.phtml')->toHtml(); ?>
+			</div>
+		</div>
+	</div>
+</div>

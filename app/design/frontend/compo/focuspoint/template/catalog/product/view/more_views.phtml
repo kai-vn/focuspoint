@@ -1,0 +1,94 @@
+<?php
+/**
+ * @package     compo
+ * @copyright   Copyright (c) 2010-2015 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+
+	if (count($this->getGalleryImages()) > 0):
+	$_product = Mage::registry('product');
+	$gallery_resized = $_product->getProductMediaGalleryResized(150);
+	$moreViews = $this->getLayout()->getMConfigResultByAlias('product_shop_col_xs_size');
+	$img = $this->getLayout()->getMConfigResultByAlias('product_shop_col_xs_size');
+	$layout = $img['value']['size']['value'];
+	$container_width = $this->getLayout()->getMConfigResultByAlias('container_width');
+	$percent = (12-$layout)*100/12;
+	$imgSize = intval($container_width * $percent / 100);
+?>
+	<div class="more-views no-slider">
+		<h3><?php echo $this->__('More Views') ?></h3>
+		<div class="more-views-inner clearfix">
+		<?php foreach ($gallery_resized as $_image): ?>
+			<div class="item">
+				<a href="javascript:void(0);"
+				title="<?php echo (Mage::app()->getLayout()->checkVersion('1.7.x.x') ? $this->htmlEscape : $this->escapeHtml).($_image->getLabel()) ?>"
+				data-bigimg="<?php echo $_image->resizeImageFile('image', $imgSize); ?>"
+				data-zoomimg="<?php echo (string)$_image->getFileBaseImageUrl('image') ?>">
+					<?php
+						$_image->addImageHtmlAttributte('class', 'gallery-image');
+						$escaped_label = (Mage::app()->getLayout()->checkVersion('1.7.x.x') ? $this->htmlEscape : $this->escapeHtml).($_image->getImage()->getLabel());
+						$_image->addImageHtmlAttributte('alt', $escaped_label);
+						$_image->addImageHtmlAttributte('title', $escaped_label);
+						echo '<img '.$_image->getImageHtmlAttributte().' />'
+					?>
+				</a>
+			</div>
+		<?php endforeach; ?>
+		</div>
+	</div>
+	<script type="text/javascript">
+		jQuery(window).load(function(){
+			if(jQuery('.more-views').length && jQuery(document.body).width() > 767){
+				var thisItem;
+				var image = jQuery('#image');
+				jQuery('.more-views .item a').on('click', function(){
+					var thisItem = jQuery(this);
+					bigImgUrl = thisItem.data('bigimg');
+					zoomImgUrl = thisItem.data('zoomimg');
+					jQuery.removeData(image, 'elevateZoom'); //remove zoom instance from image
+					jQuery('.zoomContainer').remove(); // remove zoom container from DOM
+					zoomImg = new Image;
+					bigImg = new Image;
+					zoomImg.src = zoomImgUrl;
+					bigImg.src = bigImgUrl;
+					zoomLoaded = false;
+					bigLoaded = false;
+					function loader(){
+						zoomImgWidth = zoomImg.width;
+						imgWidth = bigImg.width;
+						mainImg = jQuery('#image');
+						mainImg.attr('src', bigImgUrl).data('zoomImage', zoomImgUrl);
+						productImageSize();
+						if(jQuery('.product-image').width() < zoomImgWidth){
+							if(!(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))){
+								mainImg.elevateZoom({ zoomType: "inner", cursor: "crosshair" });
+							}
+						}
+					}
+					zoomImg.onload = function(){
+						zoomLoaded = true;
+						if(zoomLoaded && bigLoaded){
+							loader();
+						}
+					}
+					bigImg.onload = function(){
+						bigLoaded = true;
+						if(zoomLoaded && bigLoaded){
+							loader();
+						}
+					}
+
+					productImageSize();
+					itemIndex = thisItem.parents('.more-views').find('.item').index(thisItem.parent());
+					jQuery('.product-view .product-image a.lightbox-button').removeClass('active').eq(itemIndex).addClass('active');
+
+				});
+				bigImgUrl = jQuery('#image').data('zoomImage');
+				jQuery('.more-views .item a').each(function(index){
+					if(jQuery(this).data('zoomimg').indexOf(bigImgUrl) !=-1){
+						jQuery('.product-view .product-image a.lightbox-button').eq(index).addClass('active');
+					}
+				});
+			}
+		});
+	</script>
+<?php endif; ?>

@@ -1,0 +1,28 @@
+<?php
+/**
+ * @package     compo
+ * @copyright   Copyright (c) 2010-2015 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+
+ // var_dump( Mage::helper('thememanager/themeConfig')->getThemeConfigResultByAliase('bgslider_status'));
+$html = '';
+if(Mage::helper('thememanager/themeConfig')->getThemeConfigResultByAliase('bgslider_status') != false){
+	$slider = Mage::helper('thememanager/themeConfig')->getThemeConfigResultByAliase('bgslider_slides');
+	$duration = Mage::helper('thememanager/themeConfig')->getThemeConfigResultByAliase('bgslider_duration');
+	$fade = Mage::helper('thememanager/themeConfig')->getThemeConfigResultByAliase('bgslider_fade');
+	if (!empty($slider) && is_array($slider)) {
+		$base_url = Mage::getConfig()->substDistroServerVars('{{base_url}}');
+		$html_arr = array();
+		foreach ($slider AS $slide) {
+			$html_arr[] = '"'.$base_url . $slide . '"';
+		}
+		$html .= implode(',', $html_arr);
+		?>
+		<script>
+			jQuery(window).load(function() {
+				jQuery.backstretch([<?php echo $html;?>], {duration: <?php echo $duration; ?>, fade: <?php echo $fade; ?>});
+			});
+		</script>
+		<?php
+	}
+}

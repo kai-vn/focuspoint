@@ -1,0 +1,109 @@
+<?php
+/**
+ * @package     compo
+ * @copyright   Copyright (c) 2010-2015 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+?>
+<?php
+$_product = $this->getProduct();
+$meigeeOptions = $this->getLayout();
+$timerStatus = $meigeeOptions->getMConfigResultByAlias('timer_status');
+$timerProductStatus = $meigeeOptions->getMConfigResultByAlias('timer_product_status');
+$timerTitle = $meigeeOptions->getMConfigResultByAlias('timer_product_title');
+$timerFormat = $meigeeOptions->getMConfigResultByAlias('timer_product_format');
+$timerDisplay = $meigeeOptions->getMConfigResultByAlias('timer_product_display');
+$specialprice = $_product->getSpecialPrice();
+$specialPriceFromDate = $_product->getSpecialFromDate();
+$specialPriceToDate = $_product->getSpecialToDate();
+$today =  time();
+?>
+<?php $buttonTitle = $this->__('Add to Cart'); ?>
+<?php if($_product->isSaleable()): ?>
+	<?php if($timerStatus && $timerProductStatus) {
+		if ($specialprice && isset($specialPriceFromDate) && isset($specialPriceToDate)):
+		if($today >= strtotime($specialPriceFromDate) && $today <= strtotime($specialPriceToDate) || $today >= strtotime( $specialPriceFromDate) && is_null($specialPriceToDate)):
+		?>
+			<div class="timer-<?php echo $_product->getId(); ?> timer-box clearfix<?php if($timerDisplay == 0): ?> no-days<?php endif; ?>">
+				<?php if($timerTitle): ?>
+					<span class="title"><?php echo $this->__('Offer ends in:') ?></span>
+				<?php endif; ?>
+				<?php if ($timerFormat == 0) { ?>
+					<div class="days"><span>00</span></div>
+					<div class="hours"><span>00</span></div>
+					<div class="minutes"><span>00</span></div>
+					<div class="seconds"><span>00</span></div>
+				<?php } elseif ($timerFormat == 1) { ?>
+					<div class="days"><span>00</span><?php echo $this->__('d'); ?></div>
+					<div class="hours"><span>00</span><?php echo $this->__('h'); ?></div>
+					<div class="minutes"><span>00</span><?php echo $this->__('m'); ?></div>
+					<div class="seconds"><span>00</span><?php echo $this->__('s'); ?></div>
+				<?php } elseif ($timerFormat == 2) { ?>
+					<div class="days"><span>00</span><strong><?php echo $this->__('Days'); ?></strong></div>
+					<div class="hours"><span>00</span><strong><?php echo $this->__('Hours'); ?></strong></div>
+					<div class="minutes"><span>00</span><strong><?php echo $this->__('Min'); ?></strong></div>
+					<div class="seconds"><span>00</span><strong><?php echo $this->__('Sec'); ?></strong></div>
+				<?php } ?>
+			</div>
+			<script type="text/javascript">
+				endDate = new Date("<?php echo Date("m/d/y", strtotime($specialPriceToDate)).' 11:59:00 PM'; ?>");
+				startDate = new Date(Date.parse("<?php echo Date("m/d/y h:i:s A", strtotime(Mage::app()->getLocale()->date(null, null, "en_US", true))); ?>"));
+				dateDiff = new Date((endDate)-(startDate));
+				secondsDiff = Math.floor(dateDiff.valueOf()/1000);
+				minutesDiff = Math.floor(secondsDiff.valueOf()/60);
+				new productTimer.init(secondsDiff, <?php echo $_product->getId(); ?>);
+			</script>
+	<?php
+		endif;
+	endif;
+	} ?>
+		<div class="add-to-cart">
+			<?php if(!$_product->isGrouped()): ?>
+				<div class="quantity-wrapper clearfix">
+					<label for="qty"><?php echo $this->__('Qty:') ?></label>
+					<input type="text" name="qty" id="qty" maxlength="12" value="<?php echo $this->getProductDefaultQty() * 1 ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Qty')); ?>" class="form-control qty" />
+					<div class="btn-qty-wrapper">
+						<div class="quantity-increase btn-qty" onclick="qtyUp()"><i class="meigee-arrow-up"></i></div>
+						<div class="quantity-decrease btn-qty" onclick="qtyDown()"><i class="meigee-arrow-down"></i></div>
+					</div>
+				</div>
+			<?php endif; ?>
+			<button type="button" title="<?php echo $buttonTitle ?>" id="product-addtocart-button" class="btn btn-primary type-2" onclick="productAddToCartForm.submit(this)"><span><span><?php echo $buttonTitle ?></span></span></button>
+			<?php echo $this->getChildHtml('', true, true) ?>
+		</div>
+	<?php if(!$_product->isGrouped()): ?>
+		<script type="text/javascript">
+			var qty_el = document.getElementById('qty');
+			var qty = qty_el.value;
+			if(qty < 2){
+				jQuery('.quantity_box_button_down').css({
+				'visibility' : 'hidden'
+				});
+			}
+			function qtyDown(){
+				var qty_el = document.getElementById('qty');
+				var qty = qty_el.value;
+				if( qty == 2) {
+				jQuery('.quantity_box_button_down').css({
+					'visibility' : 'hidden'
+				});
+				}
+				if( !isNaN( qty ) && qty > 0 ){
+				qty_el.value--;
+				}
+				return false;
+			}
+
+			function qtyUp(){
+				var qty_el = document.getElementById('qty');
+				var qty = qty_el.value;
+				if( !isNaN( qty )) {
+				qty_el.value++;
+				}
+				jQuery('.quantity_box_button_down').css({
+				'visibility' : 'visible'
+				});
+				return false;
+			}
+		</script>
+	<?php endif; ?>
+<?php endif; ?>

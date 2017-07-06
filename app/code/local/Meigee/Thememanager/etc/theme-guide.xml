@@ -1,0 +1,131 @@
+<guide>
+
+    <_module_guide>
+        <AdvancedStyling>
+            <some_test_1>
+                <title>title 1 AdvancedStyling </title>
+                <description>Description 1 AdvancedStyling</description>
+                <position_x>22</position_x>
+                <position_y>52</position_y>
+                <bg_size>59</bg_size>
+                <bg_opacity>60</bg_opacity>
+            </some_test_1>
+            <some_test_2>
+                <title>title 2 AdvancedStyling </title>
+                <description>Description 2 AdvancedStyling</description>
+                <position_x>22</position_x>
+                <position_y>33</position_y>
+                <bg_size>59</bg_size>
+                <bg_opacity>40</bg_opacity>
+            </some_test_2>
+        </AdvancedStyling>
+
+        <Products>
+            <some_test_1>
+                <title>title 1 Products </title>
+                <description>Description 1 Products</description>
+                <position_x>22</position_x>
+                <position_y>52</position_y>
+                <bg_size>59</bg_size>
+                <bg_opacity>60</bg_opacity>
+            </some_test_1>
+            <some_test_2>
+                <title>title 2 Products </title>
+                <description>Description 2 Products</description>
+                <position_x>22</position_x>
+                <position_y>33</position_y>
+                <bg_size>59</bg_size>
+                <bg_opacity>40</bg_opacity>
+            </some_test_2>
+        </Products>
+
+
+        <Categories>
+            <some_test_1>
+                <title>title 1 Categories </title>
+                <description>Description 1 Categories</description>
+                <position_x>22</position_x>
+                <position_y>52</position_y>
+                <bg_size>59</bg_size>
+                <bg_opacity>60</bg_opacity>
+            </some_test_1>
+            <some_test_2>
+                <title>title 2 Categories </title>
+                <description>Description 2 Categories</description>
+                <position_x>22</position_x>
+                <position_y>33</position_y>
+                <bg_size>59</bg_size>
+                <bg_opacity>40</bg_opacity>
+            </some_test_2>
+        </Categories>
+
+
+        <CmsPages>
+            <some_test_1>
+                <title>title 1 CmsPages </title>
+                <description>Description 1 CmsPages</description>
+                <position_x>22</position_x>
+                <position_y>52</position_y>
+                <bg_size>59</bg_size>
+                <bg_opacity>60</bg_opacity>
+            </some_test_1>
+            <some_test_2>
+                <title>title 2 CmsPages </title>
+                <description>Description 2 CmsPages</description>
+                <position_x>22</position_x>
+                <position_y>33</position_y>
+                <bg_size>59</bg_size>
+                <bg_opacity>40</bg_opacity>
+            </some_test_2>
+        </CmsPages>
+
+
+        <ConfigList>
+            <some_test_1>
+                <title>title 1 ConfigList </title>
+                <description>Description 1 ConfigList</description>
+                <position_x>22</position_x>
+                <position_y>52</position_y>
+                <bg_size>59</bg_size>
+                <bg_opacity>60</bg_opacity>
+            </some_test_1>
+            <some_test_2>
+                <title>title 2 ConfigList </title>
+                <description>Description 2 ConfigList</description>
+                <position_x>22</position_x>
+                <position_y>33</position_y>
+                <bg_size>59</bg_size>
+                <bg_opacity>40</bg_opacity>
+            </some_test_2>
+        </ConfigList>
+
+
+
+        <SelectInstalledThems>
+            <some_test_1>
+                <title>title 1 SelectInstalledThems </title>
+                <description>Description 1 SelectInstalledThems</description>
+                <position_x>22</position_x>
+                <position_y>52</position_y>
+                <bg_size>59</bg_size>
+                <bg_opacity>60</bg_opacity>
+            </some_test_1>
+            <some_test_2>
+                <title>title 2 SelectInstalledThems </title>
+                <description>Description 2 SelectInstalledThems</description>
+                <position_x>22</position_x>
+                <position_y>33</position_y>
+                <bg_size>59</bg_size>
+                <bg_opacity>40</bg_opacity>
+            </some_test_2>
+        </SelectInstalledThems>
+
+
+
+    </_module_guide>
+
+
+
+
+
+</guide>

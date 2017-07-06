@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <adminhtml_brand_index>
+        <reference name="content">
+            <block type="profile/adminhtml_brand" name="brand" />
+        </reference>
+    </adminhtml_brand_index>
+    <adminhtml_brand_edit>
+        <reference name="head">
+            <action method="addjs"> 
+                <script>tiny_mce/tiny_mce_prototype.js</script>
+            </action>
+        </reference>
+    </adminhtml_brand_edit>
+    <adminhtml_catalog_product_edit>
+        <reference name="product_tabs">
+            <action method="addTab">
+                <name>profile_brand</name>
+                <block>profile/adminhtml_product_brand</block>
+            </action>
+        </reference>
+    </adminhtml_catalog_product_edit>
+</layout>

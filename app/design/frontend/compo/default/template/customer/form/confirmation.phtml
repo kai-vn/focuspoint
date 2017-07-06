@@ -1,0 +1,34 @@
+<?php
+/**
+ * @package     compo
+ * @copyright   Copyright (c) 2010-2015 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+?>
+<div class="page-title">
+    <h2><?php echo $this->__('Send confirmation link') ?></h2>
+</div>
+<?php echo (Mage::app()->getLayout()->checkVersion(array('1.9.1.x', '1.9.2.x', '1.9.3.x')) ? $this->getMessagesBlock()->toHtml() : $this->getMessagesBlock()->getGroupedHtml()); ?>
+<form action="" method="post" id="form-validate">
+    <div class="fieldset">
+        <h2 class="legend"><?php echo $this->__('Retrieve your confirmation link here') ?></h2>
+        <p><?php echo $this->__('Please enter your email below and we\'ll send you confirmation link for it.') ?></p>
+        <ul class="form-list">
+            <li>
+                <label for="email_address" class="required"><em>*</em><?php echo $this->__('Email Address') ?></label>
+                <div class="input-box">
+                    <input type="text" name="email" id="email_address" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Email Address')) ?>" class="form-control required-entry validate-email" value="<?php echo (Mage::app()->getLayout()->checkVersion('1.7.x.x') ? $this->htmlEscape : $this->escapeHtml).($this->getEmail()) ?>" />
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="buttons-set">
+        <p class="required"><?php echo $this->__('* Required Fields') ?></p>
+        <p class="back-link"><a href="<?php echo $this->helper('customer')->getLoginUrl() ?>"><small>&laquo; </small><?php echo $this->__('Back to Login') ?></a></p>
+        <button type="submit" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Submit')) ?>" class="btn btn-default"><span><span><?php echo $this->__('Submit') ?></span></span></button>
+    </div>
+</form>
+<script type="text/javascript">
+//<![CDATA[
+    var dataForm = new VarienForm('form-validate', true);
+//]]>
+</script>

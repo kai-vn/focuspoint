@@ -1,0 +1,14 @@
+<ul class="header-text-blocks clearfix">
+	<li class="item first">
+		<a href="#" title="">
+			<span class="compo-icon open"></span>
+			<span class="title">Mon - Sat 8.00 - 18.00<br><strong>Sunday CLOSED</strong></span>
+		</a>
+	</li>
+	<li class="item last">
+		<a href="#" title="">
+			<span class="compo-icon ellipse"></span>
+			<span class="title">Have a Questions?<br> Call: <span class="phone">1-800-496-1779</span></span>
+		</a>
+	</li>
+</ul>

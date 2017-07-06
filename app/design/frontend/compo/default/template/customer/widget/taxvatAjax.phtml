@@ -1,0 +1,7 @@
+<?php
+/**
+ * @package     compo
+ * @copyright   Copyright (c) 2010-2015 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+?>
+<input type="text" id="<?php echo $this->getFieldId('taxvat')?>" name="<?php echo $this->getFieldName('taxvat')?>" placeholder="<?php echo $this->__('Tax/VAT number') ?>" value="<?php echo $this->escapeHtml($this->getTaxvat()) ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Tax/VAT number')); ?>" class="form-control <?php echo $this->helper('customer/address')->getAttributeValidationClass('taxvat') ?>" <?php echo $this->getFieldParams() ?> />

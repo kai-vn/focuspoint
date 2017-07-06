@@ -1,0 +1,253 @@
+<?php
+/**
+ * @package     compo
+ * @copyright   Copyright (c) 2010-2015 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+/**
+ * Product view template
+ *
+ * @see Mage_Catalog_Block_Product_View
+ * @see Mage_Review_Block_Product_View
+ */
+?>
+<?php
+ $_helper = $this->helper('catalog/output');
+ $_product = $this->getProduct();
+ $meigeeOptions = $this->getLayout();
+ $productSku = $meigeeOptions->getMConfigResultByAlias('product_sku');
+ $collateralPos = $meigeeOptions->getMConfigResultByAlias('product_collateral_pos');
+ $sidebarPos = $meigeeOptions->getMConfigResultByAlias('product_collateral_pos');
+ $richSnippetsStatus = $meigeeOptions->getMConfigResultByAlias('snippets_status');
+ $richSnippetsAvailability = $meigeeOptions->getMConfigResultByAlias('snippets_availability');
+ $richSnippetsPrice = $meigeeOptions->getMConfigResultByAlias('snippets_price');
+ $timerStatus = $meigeeOptions->getMConfigResultByAlias('timer_status');
+ $timerProductStatus = $meigeeOptions->getMConfigResultByAlias('timer_product_status');
+ $timerFormat = $meigeeOptions->getMConfigResultByAlias('timer_product_format');
+ $specialprice = $_product->getSpecialPrice();
+ $specialPriceFromDate = $_product->getSpecialFromDate();
+ $specialPriceToDate = $_product->getSpecialToDate();
+ $today =  time();
+ $breadcrumbsTypeWrapper = $meigeeOptions->getMConfigResultByAlias('breadcrumbs_type');
+ $breadcrumbsType = $breadcrumbsTypeWrapper['value']['sv1']['value'];
+?>
+<script type="text/javascript">
+    var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
+</script>
+<div id="messages_product_view"><?php echo (Mage::app()->getLayout()->checkVersion(array('1.9.1.x', '1.9.2.x', '1.9.3.x')) ? $this->getMessagesBlock()->toHtml() : $this->getMessagesBlock()->getGroupedHtml()); ?></div>
+<div class="product-view"<?php if($richSnippetsStatus): ?> itemscope itemtype="http://schema.org/Product"<?php endif; ?>>
+	<?php if($richSnippetsStatus): ?>
+		<meta itemprop="name" content="<?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>" />
+	<?php endif; ?>
+	<?php if(($richSnippetsStatus) and (($richSnippetsAvailability) or ($richSnippetsPrice))): ?>
+		<div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+	<?php endif; ?>
+	<div class="product-essential">
+		<div class="row clearfix<?php echo ($this->isProductSidebar() ? ' with-sidebar' : ' no-sidebar');?>">
+			<?php if($this->isProductSidebar('left')): ?>
+				<div class="product-sidebar sidebar sidebar-left col-sm-3">
+					<div class="sidebar-inner">
+						<?php echo $this->getProductSidebar('left'); ?>
+					</div>
+				</div>
+			<?php endif; ?>
+			<div class="col-sm-<?php echo $this->getProductColXsSize(); ?>">
+				<div class="row top-wrapper">
+					<div class="product-img-box col-sm-<?php echo $this->getProductImgBoxColXsSize(); ?>">
+						<?php echo $this->getChildHtml('media') ?>
+					</div>
+					<?php if($this->isProductSidebar('left', true)): ?>
+						<div class="product-sidebar sidebar sidebar-left col-sm-3">
+							<div class="sidebar-inner">
+								<?php echo $this->getProductSidebar('left', true); ?>
+							</div>
+						</div>
+					<?php endif; ?>
+					<div class="product-shop col-sm-<?php echo $this->getProductShopColXsSize(); ?>">
+						<div class="product-shop-inner">
+							<?php // if ($breadcrumbsType == 0) { ?>
+								<div class="product-name">
+									<h1<?php if($richSnippetsStatus): ?> itemprop="name"<?php endif; ?>><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
+								</div>
+							<?php // } ?>
+							<?php echo $this->getChildHtml('product_buttons') ?>
+							<div class="price-availability-block clearfix">
+								<div class="top-block clearfix">
+									<?php if(!$_product->isGrouped()) {
+										echo $this->getChildHtml('product_type_data');
+									} ?>
+									<?php if (!Mage::app()->getLayout()->checkVersion('1.7.x.x') && $this->displayProductStockStatus()) { ?>
+										<?php if ($_product->isAvailable()): ?>
+											<p class="availability in-stock"><span<?php if(($richSnippetsStatus) and ($richSnippetsAvailability)){ ?> itemprop="availability"<?php } ?>><?php echo $this->__('In stock') ?></span></p>
+										<?php else: ?>
+											<p class="availability out-of-stock"><span<?php if(($richSnippetsStatus) and ($richSnippetsAvailability)){ ?> itemprop="availability"<?php } ?>><?php echo $this->__('Out of stock') ?></span></p>
+										<?php endif; ?>
+									<?php } ?>
+									<?php if($productSku): ?>
+										<div class="sku"><?php echo $this->__('SKU') . ':<span>' . $_product->getSku() . '</span>'; ?></div>
+									<?php endif; ?>
+								</div>
+								<div class="bottom-block clearfix">
+									<?php echo $this->getReviewsSummaryHtml($_product, false, true)?>
+								</div>
+							</div>
+							<?php if ($_product->getShortDescription()):?>
+								<div class="short-description">
+									<h5><?php echo $this->__('Quick overview:'); ?></h5>
+									<div class="std"<?php if($richSnippetsStatus): ?> itemprop="description"<?php endif; ?>><?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?></div>
+								</div>
+							<?php endif;?>
+							<?php if((($_product->isSaleable() && $this->hasOptions()) and $this->getChildChildHtml('container1', '', true, true)) or !($_product->isSaleable() && $this->hasOptions())){ ?>
+								<form action="<?php echo (Mage::app()->getLayout()->checkVersion(array('1.9.2.x', '1.9.3.x')) ? $this->getSubmitUrl($_product, array('_secure' => $this->_isSecure())) : $this->getSubmitUrl($_product)); ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+								<?php echo (Mage::app()->getLayout()->checkVersion('1.7.x.x') ? '' : $this->getBlockHtml('formkey')) ?>
+								<div class="no-display">
+									<input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
+									<input type="hidden" name="related_product" id="related-products-field" value="" />
+								</div>
+								<?php if($_product->isGrouped()) {
+									 echo $this->getChildHtml('product_type_data');
+								} ?>
+							<?php } ?>
+							<?php echo $this->getChildHtml('alert_urls') ?>
+							<?php echo $this->getTierPriceHtml() ?>
+							<?php echo $this->getChildHtml('extrahint') ?>
+							<?php if (!$this->hasOptions()):?>
+								<div class="add-to-box">
+									<?php echo $this->getChildHtml('price_clone_default'); ?>
+									<?php if($_product->isSaleable()): ?>
+										<?php if($timerStatus && $timerProductStatus) {
+											if ($specialprice && isset($specialPriceFromDate) && isset($specialPriceToDate)):
+												if($today >= strtotime($specialPriceFromDate) && $today <= strtotime($specialPriceToDate) || $today >= strtotime( $specialPriceFromDate) && is_null($specialPriceToDate)): ?>
+													<div class="timer-wrapper clearfix<?php if($timerFormat == 2):?> full<?php endif; ?>">
+														<?php echo $this->getChildHtml('addtocart'); ?>
+													</div>
+												<?php else:
+													echo $this->getChildHtml('addtocart');
+												endif;
+											else:
+												echo $this->getChildHtml('addtocart');
+											endif;
+										} else {
+											echo $this->getChildHtml('addtocart');
+										} ?>
+									<?php endif; ?>
+									<?php echo $this->getChildHtml('addto') ?>
+								</div>
+								<?php echo $this->getChildHtml('extra_buttons') ?>
+							<?php endif; ?>
+							<?php echo $this->getChildHtml('other');?>
+							<?php if ($_product->isSaleable() && $this->hasOptions()):?>
+								<?php echo $this->getChildChildHtml('container1', '', true, true) ?>
+							<?php endif;?>
+							<?php
+								if($this->getIsNotShowUnderProductDescriptionTab() != 1){
+									$UnderProductDescriptionTab = $_product->getUnderProductDescriptionTab();
+										foreach($UnderProductDescriptionTab as $content){
+											echo $this->getLayout()->createBlock('cms/block')->setBlockId($content->getIdentifier())->toHtml();
+									}
+								} ?>
+							<?php if((($_product->isSaleable() && $this->hasOptions()) and $this->getChildChildHtml('container1', '', true, true)) or !($_product->isSaleable() && $this->hasOptions())){ ?>
+								</form>
+							<?php } ?>
+
+						<?php if($collateralPos == 'product-details'){ ?>
+							<div class="product-collateral">
+								<?php echo $this->getChildHtml('info_tabs');?>
+							</div>
+						<?php } ?>
+						</div>
+					</div>
+					<?php if($this->isProductSidebar('right', true)): ?>
+						<div class="product-sidebar sidebar col-sm-3">
+							<div class="sidebar-inner">
+								<?php echo $this->getProductSidebar('right', true); ?>
+							</div>
+						</div>
+					<?php endif; ?>
+				</div>
+
+			</div>
+			<?php if($this->isProductSidebar('right')): ?>
+				<div class="product-sidebar sidebar col-sm-3">
+					<div class="sidebar-inner">
+						<?php echo $this->getProductSidebar('right'); ?>
+					</div>
+				</div>
+			<?php endif; ?>
+		</div>
+		<?php if ($_product->isSaleable() && $this->hasOptions()):?>
+			 <?php if (($_product->isSaleable() && $this->hasOptions()) and !$this->getChildChildHtml('container1', '', true, true)){ ?>
+				<form action="<?php echo (Mage::app()->getLayout()->checkVersion(array('1.9.2.x', '1.9.3.x')) ? $this->getSubmitUrl($_product, array('_secure' => $this->_isSecure())) : $this->getSubmitUrl($_product)); ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+					<?php echo (Mage::app()->getLayout()->checkVersion('1.7.x.x') ? '' : $this->getBlockHtml('formkey')) ?>
+					<div class="no-display">
+						<input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
+						<input type="hidden" name="related_product" id="related-products-field" value="" />
+					</div>
+			 <?php } ?>
+				<?php echo $this->getChildChildHtml('container2', '', true, true) ?>
+			<?php if (($_product->isSaleable() && $this->hasOptions()) and !$this->getChildChildHtml('container1', '', true, true)){ ?>
+				</form>
+			 <?php } ?>
+		<?php endif;?>
+    <script type="text/javascript">
+    //<![CDATA[
+        var productAddToCartForm = new VarienForm('product_addtocart_form');
+        productAddToCartForm.submit = function(button, url) {
+            if (this.validator.validate()) {
+                var form = this.form;
+                var oldUrl = form.action;
+                if (url) {
+                   form.action = url;
+                }
+                var e = null;
+                try {
+                    this.form.submit();
+                } catch (e) {
+                }
+                this.form.action = oldUrl;
+                if (e) {
+                    throw e;
+                }
+                if (button && button != 'undefined') {
+                    button.disabled = true;
+                }
+            }
+        }.bind(productAddToCartForm);
+        productAddToCartForm.submitLight = function(button, url){
+            if(this.validator) {
+                var nv = Validation.methods;
+                delete Validation.methods['required-entry'];
+                delete Validation.methods['validate-one-required'];
+                delete Validation.methods['validate-one-required-by-name'];
+                // Remove custom datetime validators
+                for (var methodName in Validation.methods) {
+                    if (methodName.match(/^validate-datetime-.*/i)) {
+                        delete Validation.methods[methodName];
+                    }
+                }
+                if (this.validator.validate()) {
+                    if (url) {
+                        this.form.action = url;
+                    }
+                    this.form.submit();
+                }
+                Object.extend(Validation.methods, nv);
+            }
+        }.bind(productAddToCartForm);
+    //]]>
+    </script>
+    </div>
+	<?php if($collateralPos == 'bottom'){ ?>
+			<div class="product-collateral">
+				<?php echo $this->getChildHtml('info_tabs');?>
+			</div>
+		<?php } ?>
+		<div id="reviews-link"></div>
+
+	<?php echo $this->getChildHtml('under_product_description'); ?>
+	<?php echo $this->getChildHtml('catalog.product.related.bottom'); ?>
+	<?php echo $this->getChildHtml('upsell_bottom'); ?>
+	<?php echo $this->getChildHtml('product.info.review_list'); ?>
+	<?php if(($richSnippetsStatus) and (($richSnippetsAvailability) or ($richSnippetsPrice))): ?>
+		</div>
+	<?php endif; ?>
+</div>

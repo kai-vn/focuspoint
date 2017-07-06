@@ -1,0 +1,14 @@
+.grid-preview .meigee-radio {width: 30%; margin-bottom: 20px;}
+.grid-preview .meigee-radio:nth-child(10) {margin-bottom: 0;}
+.grid-preview .meigee-radio:nth-child(3n+1) {margin-left: 0;}
+.grid-preview .meigee-thumb > img {max-width: 100%;}
+.grid-preview .meigee-thumb:hover > img {
+	transform: scale(1.05);
+	-moz-transform: scale(1.05);
+	-webkit-transform: scale(1.05);
+	-ms-transform: scale(1.05);
+	transition: transform 300ms ease;
+	-moz-transition: transform 300ms ease;
+	-webkit-transition: transform 300ms ease;
+}
+#css_editor {display: none!important;}

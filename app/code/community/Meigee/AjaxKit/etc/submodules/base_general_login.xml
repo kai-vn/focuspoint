@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<config>
+    <global namespace="general_login" version_type="base"></global>
+    <adminhtml>
+        <group_title>Module Components</group_title>
+        <group_name><![CDATA[<i class="fa fa-university"></i>]]>Module Components</group_name>
+        <submodule_name><![CDATA[<i class="fa fa-university"></i>]]>Login</submodule_name>
+        <submodule_title>Login</submodule_title>
+    </adminhtml>
+    <groups>
+        <general><title>General</title></general>
+    </groups>
+    <addJs>
+        <js>general_login.js</js>
+    </addJs>
+    <options>
+        <header_selector>
+            <default>.header</default>
+        </header_selector>
+        <after_login delimiter="1">
+            <default>reload</default>
+        </after_login>
+        <after_login_custom_url>
+            <default></default>
+       </after_login_custom_url>
+        <after_login_magento_pages>
+            <default>no_redirection</default>
+        </after_login_magento_pages>
+        <after_login_static_pages>
+            <default></default>
+        </after_login_static_pages>
+        <after_logout delimiter="1">
+            <default>reload</default>
+        </after_logout>
+        <after_logout_custom_url>
+            <default></default>
+        </after_logout_custom_url>
+        <after_logout_magento_pages>
+            <default>no_redirection</default>
+        </after_logout_magento_pages>
+        <after_logout_static_pages>
+            <default></default>
+s        </after_logout_static_pages>
+       <after_registration delimiter="1">
+            <default>reload</default>
+        </after_registration>
+        <after_registration_custom_url>
+            <default></default>
+        </after_registration_custom_url>
+        <after_registration_magento_pages>
+            <default>no_redirection</default>
+        </after_registration_magento_pages>
+        <after_registration_static_pages>
+            <default></default>
+        </after_registration_static_pages>
+        <after_forgot_password delimiter="1">
+            <default>reload</default>
+        </after_forgot_password>
+        <after_forgot_password_custom_url>
+            <default></default>
+        </after_forgot_password_custom_url>
+        <after_forgot_password_magento_pages>
+            <default>no_redirection</default>
+        </after_forgot_password_magento_pages>
+        <after_forgot_password_static_pages>
+            <default></default>
+        </after_forgot_password_static_pages>
+    </options>
+</config>
+
+

@@ -1,0 +1,60 @@
+<?php
+/**
+ * @package     compo
+ * @copyright   Copyright (c) 2010-2015 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+?>
+<div id="messages_product_view"><?php echo (Mage::app()->getLayout()->checkVersion(array('1.9.1.x', '1.9.2.x', '1.9.3.x')) ? $this->getMessagesBlock()->toHtml() : $this->getMessagesBlock()->getGroupedHtml()); ?></div>
+<div class="page-title">
+	<h2><?php echo Mage::helper('contacts')->__('Contact Us') ?></h2>
+</div>
+<?php echo $this->getLayout()->createBlock('page/html')->setTemplate('meigee/blockmap_wrapper.phtml')->toHtml(); ?>
+<form action="<?php echo $this->getFormAction(); ?>" id="contactForm" method="post" class="form-horizontal form-contact">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h2 class="panel-title"><?php echo Mage::helper('contacts')->__('Contact Information') ?></h2>
+		</div>
+		<div class="panel-body">
+			<ul class="form-list">
+				<li class="fields">
+					<div class="field form-group">
+						<div class="col-md-6">
+							<label for="name" class="required"><em>*</em><?php echo Mage::helper('contacts')->__('Name') ?></label>
+							<input name="name" id="name" title="<?php echo Mage::helper('core')->quoteEscape(Mage::helper('contacts')->__('Name')) ?>" value="<?php echo (Mage::app()->getLayout()->checkVersion('1.7.x.x') ? $this->htmlEscape : $this->escapeHtml).($this->helper('contacts')->getUserName()) ?>" class="form-control required-entry" type="text" />
+						</div>
+						<div class="col-md-6">
+							<label for="email" class="required"><em>*</em><?php echo Mage::helper('contacts')->__('Email') ?></label>
+							<input name="email" id="email" title="<?php echo Mage::helper('core')->quoteEscape(Mage::helper('contacts')->__('Email')) ?>" value="<?php echo (Mage::app()->getLayout()->checkVersion('1.7.x.x') ? $this->htmlEscape : $this->escapeHtml).($this->helper('contacts')->getUserEmail()) ?>" class="form-control required-entry validate-email" type="text" />
+						</div>
+					</div>
+				</li>
+				<li class="form-group">
+					<div class="col-md-6">
+						<label for="telephone"><?php echo Mage::helper('contacts')->__('Telephone') ?></label>
+						<input name="telephone" id="telephone" title="<?php echo Mage::helper('core')->quoteEscape(Mage::helper('contacts')->__('Telephone')) ?>" value="" class="form-control" type="text" />
+					</div>
+				</li>
+				<li class="wide form-group">
+					<div class="col-md-12">
+						<label for="comment" class="required"><em>*</em><?php echo Mage::helper('contacts')->__('Comment') ?></label>
+						<textarea name="comment" id="comment" title="<?php echo Mage::helper('core')->quoteEscape(Mage::helper('contacts')->__('Comment')) ?>" class="required-entry form-control" cols="5" rows="9"></textarea>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-md-12">
+			<p class="required"><?php echo Mage::helper('contacts')->__('* Required Fields') ?></p>
+		</div>
+	</div>
+	<div class="buttons-set clearfix">
+		<input type="text" name="hideit" id="hideit" value="" style="display:none !important;" />
+		<button type="submit" title="<?php echo Mage::helper('core')->quoteEscape(Mage::helper('contacts')->__('Submit')) ?>" class="btn btn-default pull-right"><span><span><?php echo Mage::helper('contacts')->__('Submit') ?></span></span></button>
+	</div>
+</form>
+<script type="text/javascript">
+//<![CDATA[
+    var contactForm = new VarienForm('contactForm', true);
+//]]>
+</script>

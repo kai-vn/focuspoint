@@ -1,0 +1,75 @@
+<?php
+/**
+ * @package     compo
+ * @copyright   Copyright (c) 2010-2015 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+/* @var $this Mage_Wishlist_Block_Share_Wishlist */
+$catalogModeWrapper = $this->getLayout()->getMConfigResultByAlias('catalog_mode');
+$catalogMode = $catalogModeWrapper['value']['sv2']['value'];
+?>
+<div class="my-wishlist">
+    <div class="page-title">
+        <h2><?php echo $this->escapeHtml($this->getHeader()) ?></h2>
+    </div>
+    <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+    <?php if ($this->hasWishlistItems()): ?>
+    <form action="<?php echo $this->getUrl('*/*/update') ?>" method="post">
+        <fieldset>
+            <table class="table table-bordered table-responsive" id="wishlist-table">
+            <col width="1" />
+            <col />
+            <col width="1" />
+            <thead>
+                <tr>
+                    <th><?php echo $this->__('Product') ?></th>
+                    <th><?php echo $this->__('Comment') ?></th>
+                    <th>&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
+            <?php foreach($this->getWishlistItems() as $item): ?>
+                <?php
+                    $product = $item->getProduct();
+                    $isVisibleProduct = $product->isVisibleInSiteVisibility();
+                ?>
+                <tr>
+                    <td>
+                        <a class="product-image" href="<?php echo $this->getProductUrl($item) ?>" title="<?php echo $this->escapeHtml($product->getName()) ?>">
+							<?php
+								$escaped_label = $this->escapeHtml($product->getName());
+								echo '<img '. $product->getProductMediaResized(113, 'thumbnail')
+									->addImageHtmlAttributte('alt', $escaped_label)
+									->addImageHtmlAttributte('title', $escaped_label)
+									->getImageHtmlAttributte().' />';
+							?>
+						</a>
+                        <h2 class="product-name"><a href="<?php echo $this->getProductUrl($item) ?>"><?php echo $this->escapeHtml($product->getName()) ?></a></h2>
+                        <?php echo $this->getPriceHtml($product) ?>
+                        <?php echo $this->getDetailsHtml($item) ?>
+                    </td>
+                    <td><?php echo $this->getEscapedDescription($item) ?></td>
+                    <td class="a-center">
+                    <?php if ($product->isSaleable()): ?>
+                         <?php if ($isVisibleProduct && $catalogMode == 0): ?>
+                            <button type="button" title="<?php echo $this->__('Add to Cart') ?>" onclick="setLocation('<?php echo $this->getSharedItemAddToCartUrl($item) ?>')" class="btn btn-default"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+                        <?php endif ?>
+                    <?php endif; ?>
+                        <p><a href="<?php echo $this->getAddToWishlistUrl($item) ?>" onclick="setLocation(this.href); return false;" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a></p>
+                    </td>
+                </tr>
+            <?php endforeach ?>
+            </tbody>
+            </table>
+            <script type="text/javascript">decorateTable('wishlist-table');</script>
+        </fieldset>
+        <div class="buttons-set">
+            <p class="back-link"><a href="<?php echo $this->escapeUrl($this->getBackUrl()) ?>"><small>&laquo; </small><?php echo $this->__('Back') ?></a></p>
+            <?php if($this->isSaleable() && $catalogMode == 0):?>
+                <button type="button" title="<?php echo $this->__('Add All to Cart') ?>" onclick="setLocation('<?php echo $this->getUrl('*/*/allcart', array('_current'=>true)) ?>')" class="btn btn-default"><span><span><?php echo $this->__('Add All to Cart') ?></span></span></button>
+            <?php endif;?>
+        </div>
+    </form>
+    <?php else: ?>
+        <p><?php echo $this->__('Wishlist is empty now.') ?></p>
+    <?php endif ?>
+</div>

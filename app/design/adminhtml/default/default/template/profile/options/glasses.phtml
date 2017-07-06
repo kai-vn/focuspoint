@@ -1,0 +1,103 @@
+<style>
+
+</style>
+<?php $helper = Mage::helper('profile'); ?>
+<script type="text/javascript">
+    var column = '<div class="option-column">'
+            + '<h4 class="column-fieldset">New Column</h4>'
+            + '<p class="a-right"><?php echo $this->getDeleteButtonHtml() ?></p>'
+            + '<table cellspacing="0" class="form-list" id="<?php echo $this->getFieldId() ?>_{{id}}"><tbody>'
+            + '<tr><td class="label"><label for="title">Title <span class="required">*</span></label></td>'
+            + '<td class="value"><input id="<?php echo $this->getFieldId() ?>_{{id}}_title" name="<?php echo $this->getFieldName() ?>[{{id}}][title]" value="{{title}}" type="text" class=" input-text required-entry"></td>'
+            + '<tr><td class="label"><label for="subtitle">Sub Title<span class="required">*</span></label></td>'
+            + '<td class="value"><input id="<?php echo $this->getFieldId() ?>_{{id}}_subtitle" name="<?php echo $this->getFieldName() ?>[{{id}}][subtitle]" value="{{subtitle}}" type="text" class=" input-text required-entry"></td>'
+            + '<tr><td class="label"><label for="description">Description<span class="required">*</span></label></td>'
+            + '<td class="value"><textarea id="<?php echo $this->getFieldId() ?>_{{id}}_description" name="<?php echo $this->getFieldName() ?>[{{id}}][description]" required-entry">{{description}}</textarea></td>'
+            + '<tr><td class="label"><label for="tooltip">Tooltip<span class="required">*</span></label></td>'
+            + '<td class="value"><textarea rows="4" cols=""50 id="<?php echo $this->getFieldId() ?>_{{id}}_tooltip" name="<?php echo $this->getFieldName() ?>[{{id}}][tooltip]" class=" input-text'
+            + 'required-entry">{{tooltip}}</textarea></td>'
+            + '<tr><td class="label"><label for="price">Price<span class="required">*</span></label></td>'
+            + '<td class="value"><input id="<?php echo $this->getFieldId() ?>_{{id}}_price" name="<?php echo $this->getFieldName() ?>[{{id}}][price]" value="{{price}}" type="text" class=" input-text required-entry"></td>'
+            + '<tr><td class="label"><label for="status">Status<span class="required">*</span></label></td>'
+            + '<td class="value"><select id="<?php echo $this->getFieldId() ?>_{{id}}_status" name="<?php echo $this->getFieldName() ?>[{{id}}][status]" value="{{status}}" class=" input-text required-entry">'
+            + '<option value="1">Enabled</option>'
+            + '<option value="2">Disabled</option>'
+            + '</td>'
+            + '</tbody></table></div>'
+    glassOption = {
+        templateSyntax: /(^|.|\r|\n)({{(\w+)}})/,
+        templateText: column,
+        maxId: <?php if ($this->getRequest()->getControllerName() == 'brand') echo $helper->getMaxGlassId();
+else echo '0'; ?>,
+        add: function (data) {
+
+            this.template = new Template(this.templateText, this.templateSyntax);
+            data.id = data.glasses_id;
+            if (!data.id) {
+                data = {};
+                data.id = this.maxId = this.maxId + 1;
+            } else {
+                if (parseInt(data.id) > this.maxId)
+                    this.maxId = parseInt(data.id);
+            }
+            Element.insert($('glass_option_container'), {'after': this.template.evaluate(data)});
+            this.bindRemoveButtons();
+        },
+        remove: function (event) {
+            var el = Event.element(event).up('div');
+            if (confirm('Are you sure ?')) {
+                if (el) {
+                    // $('product_'+el.readAttribute('id')+'_'+'is_delete').value = '1';
+                    // $(el).addClassName('no-display');
+                    // $(el).addClassName('ignore-validate');
+                    el.remove();
+                    // remove from children id                
+                    // productChildrenOptions.removeChildrenElement(el);
+                }
+            }
+        },
+        bindRemoveButtons: function () {
+            var buttons = $$('div.product-custom-options .delete-product-option');
+            for (var i = 0; i < buttons.length; i++) {
+                if (!$(buttons[i]).binded) {
+                    $(buttons[i]).binded = true;
+                    Event.observe(buttons[i], 'click', this.remove.bind(this));
+                }
+            }
+        },
+
+    }
+    glassOption.bindRemoveButtons();
+    if ($('<?php echo $this->getAddButtonId() ?>')) {
+        Event.observe('<?php echo $this->getAddButtonId() ?>', 'click', glassOption.add.bind(glassOption));
+    }
+//adding data to templates
+<?php foreach ($this->getOptionValue() as $_value): ?>
+        data = glassOption.add(<?php echo $_value->toJson() ?>);
+<?php endforeach; ?>
+</script>
+<!--<script type="text/javascript">
+  window.onload=function()
+  {
+    tinyMCE.init({
+    mode : "exact",
+    elements: "glasses_column_11_description",
+    theme : "advanced",
+    plugins : "inlinepopups,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras",
+    theme_advanced_buttons1 : "newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
+    theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview,|,forecolor,backcolor",
+    theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,print,|,ltr,rtl,|,fullscreen",
+    theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,|,cite,abbr,acronym,del,ins,|,visualchars,nonbreaking",
+    theme_advanced_toolbar_location : "top",
+    theme_advanced_toolbar_align : "left",
+    theme_advanced_path_location : "bottom",
+    extended_valid_elements : "a[name|href|target|title|onclick],img[class|src|border=0|alt|title|hspace|vspace|width|height|align|onmouseover|onmouseout|name],hr[class|width|size|noshade],font[face|size|color|style],span[class|align|style]",
+    theme_advanced_resize_horizontal : 'true',
+    theme_advanced_resizing : 'true',
+    apply_source_formatting : 'true',
+    convert_urls : 'false',
+    force_br_newlines : 'true',
+    doctype : '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">'
+   });
+  };
+</script>-->

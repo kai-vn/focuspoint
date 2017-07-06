@@ -1,0 +1,85 @@
+<?php
+/**
+ * @package     compo
+ * @copyright   Copyright (c) 2010-2015 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+?>
+<?php $_items = $this->getReviewsCollection()->getItems();?>
+<div class="box-collateral box-reviews row clearfix" id="customer-reviews">
+    <?php if (count($_items)):?>
+		<div class="col-md-7 pull-right">
+			<div class="block-title">
+				<h2><?php echo $this->__('Customer Reviews') ?></h2>
+			</div>
+			<div class="customer-reviews-wrapper">
+				<?php echo $this->getChildHtml('toolbar') ?>
+				<?php foreach ($_items as $_review):?>
+					<div class="review-box-wrapper clearfix">
+						<div class="customer-rating clearfix">
+							<?php $_votes = $_review->getRatingVotes(); ?>
+							<?php if (count($_votes)): ?>
+								<?php foreach ($_votes as $_vote): ?>
+									<div class="item">
+										<div class="rating-text-wrapper">
+											<div class="rating-title"><?php echo $this->htmlEscape($_vote->getRatingCode()) ?></div>
+											<div class="rating-values"><span><?php echo ($_vote->getPercent())/20 ?></span>/5</div>
+										</div>
+										<div class="stars-wrapper clearfix">
+											<div class="rating-box">
+												<i class="star">&#9733;</i><i class="star">&#9733;</i><i class="star">&#9733;</i><i class="star">&#9733;</i><i class="star">&#9733;</i>
+												<div class="rating" style="width:<?php echo $_vote->getPercent() ?>%"><i class="star">&#9733;</i><i class="star">&#9733;</i><i class="star">&#9733;</i><i class="star">&#9733;</i><i class="star">&#9733;</i></div>
+											</div>
+										</div>
+									</div>
+								<?php endforeach; ?>
+							<?php endif; ?>
+						</div>
+						<div class="review-box clearfix">
+							<div class="review">
+								<h3><?php echo $this->htmlEscape($_review->getTitle()) ?></h3>
+								<p><?php echo nl2br($this->htmlEscape($_review->getDetail())) ?></p>
+								<div class="customer">
+									<?php echo $this->htmlEscape($_review->getNickname()). ', '; ?><small class="date"><?php echo $this->__($this->formatDate($_review->getCreatedAt()), 'long', 'ss::mm::HH') ?></small>
+								</div>
+							</div>
+						</div>
+					</div>
+				<?php endforeach; ?>
+				<?php echo $this->getChildHtml('toolbar') ?>
+			</div>
+			<div class="actions">
+				<button class="btn btn-default"><span><span><?php echo $this->__('View All'); ?></span></span></button>
+			</div>
+		</div>
+		<script type="text/javascript">
+			function reviewsBox(){
+				reviewBoxQuantity = jQuery('.review-box-wrapper').size();
+				var fullHeight = 0;
+				jQuery('.review-box-wrapper').each(function(){
+					reviewBoxHeight = jQuery(this).outerHeight(true);
+					fullHeight += reviewBoxHeight;
+				});
+				reviewButton = jQuery('.box-reviews .actions .btn');
+				truncatedHeight = jQuery('.review-box-wrapper:eq(0)').outerHeight(true) + jQuery('.review-box-wrapper:eq(1)').outerHeight(true) ;
+				jQuery('.customer-reviews-wrapper').css('height', truncatedHeight-2);
+				if(reviewBoxQuantity < 3){
+					jQuery('.box-reviews .actions').remove();
+				}
+				reviewButton.off().on('click', function(){
+					if(jQuery('.customer-reviews-wrapper').hasClass('open')){
+						jQuery('.customer-reviews-wrapper').removeClass('open').animate({'height': truncatedHeight-2}, 500);
+					} else {
+						jQuery('.customer-reviews-wrapper').addClass('open').animate({'height': fullHeight}, 500);
+					}
+				});
+			}
+			reviewsBox();
+			jQuery(window).resize(function(){
+				reviewsBox();
+			});
+		</script>
+    <?php endif;?>
+	<div class="col-md-5 pull-left">
+		<?php echo $this->getChildHtml('review_form') ?>
+	</div>
+</div>

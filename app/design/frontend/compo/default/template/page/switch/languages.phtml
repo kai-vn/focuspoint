@@ -1,0 +1,28 @@
+<?php
+/**
+ * @package     compo
+ * @copyright   Copyright (c) 2010-2015 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+?>
+<?php
+/**
+ * Language switcher template
+ *
+ * @see Mage_Page_Block_Switch
+ */
+ $meigeeOptions = $this->getLayout();
+ $label = $meigeeOptions->getMConfigResultByAlias('language_label');
+?>
+<?php if(count($this->getStores())>1): ?>
+<div class="form-language">
+	<?php if($label): ?>
+		<div class="label"><?php echo $this->__('Your Language:') ?></div>
+	<?php endif; ?>
+    <select class="selectpicker" title="<?php echo $this->__('Your Language') ?>" onchange="window.location.href=this.value">
+    <?php foreach ($this->getStores() as $_lang): ?>
+        <?php $_selected = ($_lang->getId() == $this->getCurrentStoreId()) ? ' selected="selected"' : '' ?>
+        <option value="<?php echo $_lang->getCurrentUrl() ?>"<?php echo $_selected ?>><?php echo (Mage::app()->getLayout()->checkVersion('1.7.x.x') ? $this->htmlEscape : $this->escapeHtml).($_lang->getName()) ?></option>
+    <?php endforeach; ?>
+    </select>
+</div>
+<?php endif; ?>

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+    </default>
+    <profile_index_index>
+        <reference name="content">
+            <block type="profile/profile" name="profile_options" template="profile/option.phtml"/>
+        </reference>
+    </profile_index_index>
+    <catalog_product_view>
+        <reference name="head">
+            <action method="addCss">
+                <stylesheet>profile/profile.css</stylesheet>
+            </action>
+            <action method="addJs">
+                <script>bigone/profile.js</script>
+            </action>
+        </reference>
+        <reference name="product.info.extrahint">
+            <block type="profile/profile" name="profile_prescription" template="profile/prescription.phtml"/>
+        </reference>
+    </catalog_product_view>
+</layout>

@@ -1,0 +1,8 @@
+<config>
+    <modules>
+        <Fp_Prescription>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Fp_Prescription>
+    </modules>
+</config>

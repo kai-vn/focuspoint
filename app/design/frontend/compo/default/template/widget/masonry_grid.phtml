@@ -1,0 +1,92 @@
+<?php
+/**
+ * @package     compo
+ * @copyright   Copyright (c) 2010-2015 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+
+$isotope_js = $this->includeIsotopeJs();
+if ($isotope_js)
+{
+?>
+	<script type="text/javascript">
+		function grid3Isotope() {
+			$container = jQuery('.masonry-grid .products-grid');
+			$container.isotope({
+				itemSelector: '.item',
+				resizable: true,
+				layoutMode : 'masonry'
+			});
+		}
+		jQuery(window).ready(function(){
+			var js=document.createElement("script");
+			js.setAttribute("type","text/javascript");
+			js.setAttribute("src",'<?php echo $isotope_js; ?>');
+			js.onload = grid3Isotope;
+			document.getElementsByTagName("head")[0].appendChild(js);
+		});
+	</script>
+<?php
+}
+$meigeeOptions = $this->getLayout();
+$lightBox = $meigeeOptions->getMConfigResultByAlias('lightbox_listing');
+$grid2description = $this->getGrid2Description();
+$widgetId = $this->getWidgetId();
+$imgSize = $this->getImgWidth();
+if(!$imgSize){
+	$imgSize = 600;
+}
+?>
+<div class="widget-products masonry-grid clearfix">
+	<?php
+		echo $this->getPager();
+		$collection = $this->getCollection();
+	?>
+	<ul class="products-grid row clearfix widget-grid">
+		<?php foreach ($collection as $product): ?>
+            <li class="col-sm-3 item">
+                <div class="product-container">
+					<div class="product-info-top">
+						<h5 class="product-name">
+							<a href="<?php echo $product->getProductUrl() ?>" title="<?php echo $this->stripTags($product->getName(), null, true) ?>">
+								<?php echo $product->getName(); ?>
+							</a>
+						</h5>
+						<?php if ($grid2description != 0) : ?>
+							<?php
+								$short_description = $product->getShortDescription();
+								$description = '<div class="desc std">'. Mage::helper('core/string')->truncate($short_description, '113') .'</div>';
+								if ($grid2description == 1) :
+									echo $description;
+								elseif ($grid2description == 2 && (($i+1) % 2 == 0 )) :
+									echo $description;
+								elseif ($grid2description == 3 && (($i+1) % 2 != 0 )) :
+									echo $description;
+								endif;
+							?>
+						<?php endif; ?>
+						<a href="<?php echo $product->getProductUrl() ?>" title="<?php echo $this->stripTags($product->getName(), null, true) ?>" class="link-shop"><?php echo $this->__('Shop Now') ?><i class="meigee-arrow-right"></i></a>
+					</div>
+					<div class="image-box">
+						<?php if($lightBox){ ?>
+							<a href="<?php echo $product->getProductMediaResized(930, 'small_image')->getImageSrc(); ?>" class="lightbox-button" data-toggle="lightbox" data-footer="<?php echo $this->stripTags($this->getImageLabel($product, 'small_image'), null, true) ?>">
+								<i class="meigee-magnifier"></i>
+							</a>
+						<?php } ?>
+						<?php echo $this->getLayout()->createBlock('page/html')->setProductInfo($product)->setTemplate('catalog/product/product_labels.phtml')->toHtml(); ?>
+						<a href="<?php echo $product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($product, 'small_image'), null, true) ?>" class="product-image">
+							<?php
+								$media_resized = $product->getProductMediaResized($imgSize, 'small_image', 'with-mobile', 385);
+								$escaped_label = $this->stripTags($this->getImageLabel($product, 'small_image'), null, true);
+								$media_resized->addImageHtmlAttributte('width', $imgSize);
+								$media_resized->addImageHtmlAttributte('alt', $escaped_label);
+								$media_resized->addImageHtmlAttributte('title', $escaped_label);
+								$media_resized->addImageHtmlAttributte($product, 'id', 'product-collection-image-'. $product->getId().$widgetId);
+								echo '<img '.$media_resized->getImageHtmlAttributte().' />';
+							?>
+						</a>
+					</div>
+				</div>
+            </li>
+        <?php if ($i+1 == $_collectionSize ) break; $i++; endforeach ?>
+	</ul>
+</div>

@@ -1,0 +1,14 @@
+<?php
+/**
+ * @package     compo
+ * @copyright   Copyright (c) 2010-2015 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+?>
+<footer id="footer">
+     <div class="footer-newsletter-block">
+      <div class="container">
+     <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('fp_footer_newsletter_block')->toHtml(); ?>
+      </div>
+      </div>
+	<?php echo $this->getLayout()->getMConfigResultByAlias('custom_footer_block'); ?>
+</footer>

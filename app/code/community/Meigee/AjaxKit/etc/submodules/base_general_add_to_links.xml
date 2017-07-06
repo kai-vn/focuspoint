@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<config>
+    <global namespace="general_add_to_links" version_type="base"></global>
+    <adminhtml>
+        <group_title>Module Components</group_title>
+        <group_name><![CDATA[<i class="fa fa-university"></i>]]>Module Components</group_name>
+        <submodule_name><![CDATA[<i class="fa fa-university"></i>]]>Add to wishlist/Ajax Add compare</submodule_name>
+        <submodule_title>Add to wishlist/Ajax Add compare</submodule_title>
+    </adminhtml>
+    <groups>
+        <add_to_compare>
+            <title>Add to compare</title>
+        </add_to_compare>
+        <add_to_wishlist>
+            <title>Add to wishlist</title>
+        </add_to_wishlist>
+    </groups>
+    <addJs>
+        <js>general_add_to_links.js</js>
+    </addJs>
+    <addCss>
+        <css>general_add_to_links.css</css>
+    </addCss>
+    <blocks>
+        <block>addToLinks_base</block>
+    </blocks>
+    <options>
+        <enabled_add_to_compare tab="add_to_compare">
+            <label>Enabled</label>
+            <type>Input_OnOff</type>
+            <note>Enable ajax add to compare for your store</note>
+            <default>1</default>
+            <label_on>Yes</label_on>
+            <label_off>No</label_off>
+        </enabled_add_to_compare>
+        <enabled_add_to_wishlist tab="add_to_wishlist">
+            <label>Enabled</label>
+            <type>Input_OnOff</type>
+            <note>Enable ajax add to wishlist for your store</note>
+            <default>1</default>
+            <label_on>Yes</label_on>
+            <label_off>No</label_off>
+        </enabled_add_to_wishlist>
+        <add_to_compare_success_message_static_block tab="add_to_compare">
+            <default></default>
+        </add_to_compare_success_message_static_block>
+        <add_to_wishlist_success_message_static_block tab="add_to_wishlist">
+            <default></default>
+        </add_to_wishlist_success_message_static_block>
+        <header_selector tab="add_to_wishlist">
+            <default>.header</default>
+        </header_selector>
+    </options>
+</config>
+
+

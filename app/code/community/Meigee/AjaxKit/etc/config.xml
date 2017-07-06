@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Meigee_AjaxKit>
+            <version>0.0.1</version>
+        </Meigee_AjaxKit>
+    </modules>
+     <global>
+        <blocks>
+            <ajaxKit>
+                <class>Meigee_AjaxKit_Block</class>
+            </ajaxKit>
+        </blocks>
+        <helpers>
+            <ajaxKit>
+                <class>Meigee_AjaxKit_Helper</class>
+            </ajaxKit>
+        </helpers>
+         <models>
+             <ajaxKit>
+                 <class>Meigee_AjaxKit_Model</class>
+             </ajaxKit>
+         </models>
+
+         <resources>
+             <ajaxKit_setup>
+                 <setup>
+                     <module>Meigee_AjaxKit</module>
+                 </setup>
+             </ajaxKit_setup>
+         </resources>
+
+     </global>
+
+    <frontend>
+        <layout>
+            <updates>
+                <ajaxKit>
+                    <file>ajaxkit/ajaxkit.xml</file>
+                </ajaxKit>
+                <ajaxKit_quick_view>
+                    <file>ajaxkit/ajaxkit_quick_view.xml</file>
+                </ajaxKit_quick_view>
+            </updates>
+        </layout>
+
+        <routers>
+            <ajaxkit>
+                <use>standard</use>
+                <args>
+                    <module>Meigee_AjaxKit</module>
+                    <frontName>ajaxKit</frontName>
+                </args>
+            </ajaxkit>
+        </routers>
+
+        <events>
+            <controller_action_postdispatch>
+                <observers>
+                    <controller_action_postdispatch_observer>
+                        <type>singleton</type>
+                        <class>Meigee_AjaxKit_Model_Observer</class>
+                        <method>ControllerActionPostdispatch</method>
+                    </controller_action_postdispatch_observer>
+                </observers>
+            </controller_action_postdispatch>
+
+            <catalog_product_collection_load_before>
+                <observers>
+                    <controller_action_postdispatch_observer>
+                        <type>singleton</type>
+                        <class>Meigee_AjaxKit_Model_Observer</class>
+                        <method>ControllerActionPostdispatchObserver</method>
+                    </controller_action_postdispatch_observer>
+                </observers>
+            </catalog_product_collection_load_before>
+        </events>
+    </frontend>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <ajaxKit after="Mage_Adminhtml">Meigee_AjaxKit_Adminhtml</ajaxKit>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+
+    <adminhtml>
+        <menu>
+            <meigee translate="title">
+                <title>Meigee</title>
+                <sort_order>100</sort_order>
+                <children>
+                    <ajaxKit translate="title">
+                        <title>Ajax Kit</title>
+                        <sort_order>11</sort_order>
+                        <action>adminhtml/ajaxKit</action>
+                    </ajaxKit>
+                </children>
+            </meigee>
+        </menu>
+
+
+
+    </adminhtml>
+</config>

@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Meigee_Compo>
+            <version>0.0.1</version>
+        </Meigee_Compo>
+    </modules>
+
+    <global>
+        <!-- resources>
+            <compo_setup>
+                <setup>
+                    <module>Meigee_Compo</module>
+                </setup>
+            </compo_setup>
+        </resources -->
+
+		<resources>
+		    <compo_setup>
+		      <setup>
+		        <module>Meigee_Compo</module>
+		        <class>Meigee_Thememanager_Model_Resource_Eav_Mysql4_Setup</class>
+		      </setup>
+		      <connection>
+		        <use>core_setup</use>
+		      </connection>
+		    </compo_setup>
+		    <!-- themeoptionsblacknwhite_write>
+		      <connection>
+		        <use>core_write</use>
+		      </connection>
+		    </themeoptionsblacknwhite_write>
+		    <themeoptionsblacknwhite_read>
+		      <connection>
+		        <use>core_read</use>
+		      </connection>
+		    </themeoptionsblacknwhite_read -->
+		</resources>
+		<models>
+            <compo>
+                <class>Meigee_Compo_Model</class>
+            </compo>
+        </models>
+        <blocks>
+            <compo>
+                <class>Meigee_Compo_Block</class>
+            </compo>
+        </blocks>
+
+    </global>
+	<default>
+		<catalog>
+			<product_image>
+				<base_width>1800</base_width>
+				<small_width>900</small_width>
+			</product_image>
+		</catalog>
+		<configswatches>
+			<layered_nav_dimensions>
+				<width>30</width>
+				<height>30</height>
+			</layered_nav_dimensions>
+		</configswatches>
+	</default>
+</config>

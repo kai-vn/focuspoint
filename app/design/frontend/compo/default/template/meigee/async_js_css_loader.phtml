@@ -1,0 +1,191 @@
+<?php
+/**
+ * @package     compo
+ * @copyright   Copyright (c) 2010-2015 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+
+$jsonDataCss = Mage::helper('core')->jsonEncode($this->getCss());
+$jsonDataJS  = Mage::helper('core')->jsonEncode($this->getJs());
+$jsonDataImportantJs  = Mage::helper('core')->jsonEncode($this->getImportantJs());
+?>
+<script type="text/javascript">
+    //<![CDATA[
+    var JsCssLoader =
+    {
+        js_collection:'',
+        important_js_collection:'',
+        important_js_collection_data:[],
+        js_func_collection:[],
+        css_collection:'',
+        collectionsCount:1,
+
+        onStart:function(){},
+        onSuccess:function(){},
+        init:function()
+        {
+            this.showLoder();
+            var important_js_collection = this.jsonParse(this.important_js_collection);
+            this.processingImportantJSCollection(important_js_collection)
+        },
+        initAsync:function()
+        {
+            this.collectionsCount--;
+            var js_collection = this.jsonParse(this.js_collection);
+            this.processingCollection(js_collection, 'js')
+            //this.processingCollection(js_collection, 'javascript', 'script')
+            var css_collection = this.jsonParse(this.css_collection);
+            this.processingCollection(css_collection, 'css', 'stylesheet')
+        },
+
+        processingImportantJSCollection:function(collection)
+        {
+            var j = 0;
+            for(i in collection)
+            {
+                this.important_js_collection_data[j] =collection[i];
+                j++;
+            }
+            if (this.important_js_collection_data.length > 0)
+            {
+                this.processingImportantJS(0);
+            }
+        },
+
+        processingImportantJS:function(j)
+        {
+            element_data = this.important_js_collection_data[j];
+            var el=document.createElement('script');
+            el.setAttribute('type','text/javascript');
+            el.setAttribute('src',element_data.data_name);
+            if(this.important_js_collection_data.length != j+1)
+            {
+                el.onload = function() { JsCssLoader.processingImportantJS(j+1); }
+            }
+            else
+            {
+                el.onload = function() { JsCssLoader.initAsync(); }
+            }
+            document.getElementsByTagName("head")[0].appendChild(el);
+        },
+
+        processingCollection:function(collection, type)
+        {
+            for (i in collection)
+            {
+                if (collection[i].data_name)
+                {
+                    var element ={};
+                    element.attributes ={};
+                    switch (type)
+                    {
+                        case 'js':
+                            element.block = 'script';
+                            element.attributes.type = 'text/javascript';
+                            //element.attributes.async = true;
+                            element.attributes.defer = true;
+                            element.attributes.src = collection[i].data_name;
+                            break;
+                        case 'css':
+                            element.block = 'link';
+                            element.attributes.type = 'text/css';
+                            element.attributes.rel = 'stylesheet';
+                            element.attributes.href = collection[i].data_name;
+                            break;
+                    }
+
+                    if(collection[i].params_data)
+                    {
+                        collection[i].params_data.each(function(el)
+                        {
+                            element.attributes[el[0]] =el[1];
+                        });
+                    }
+                    this.loadFile(element);
+                }
+            }
+        },
+
+        loadFile:function(file_info)
+        {
+            var self = this;
+            setTimeout(function(file_info)
+            {
+                var el=document.createElement(file_info.block);
+                for(i in file_info.attributes)
+                {
+                    el.setAttribute(i,file_info.attributes[i]);
+                }
+                el.onload = function ()
+                {
+                    self.jsLoaded(true);
+                }
+                document.getElementsByTagName("head")[0].appendChild(el);
+            }, 1, file_info);
+        },
+
+        jsonParse:function(json_string)
+        {
+            return JSON.parse(json_string);
+        },
+
+        setJs:function(js)
+        {
+            var key = this.js_func_collection.length;
+            this.js_func_collection[key] = js;
+            this.jsLoaded(false);
+        },
+
+        jsLoaded:function(dec)//        JsCssLoader.setJs(function(){  });
+        {
+            if (dec)
+            {
+                this.collectionsCount--;
+            }
+
+            if (this.collectionsCount <= 0)
+            {
+                //for (i in this.js_func_collection)
+                this.js_func_collection.each(function(el)
+                {
+                    var func = el;
+                    setTimeout(func, 0);
+                });
+                this.hideLoder();
+            }
+        },
+
+        showLoder:function()
+        {
+            if ( document.getElementById("JsCssLoader")  != null)
+            {
+                document.getElementById("JsCssLoader").style.display = "block";
+            }
+        },
+
+        hideLoder:function()
+        {
+            if ( document.getElementById("JsCssLoader")  != null)
+            {
+                document.getElementById("JsCssLoader").style.display = "none";
+            }
+        }
+    }
+
+    JsCssLoader.css_collection = '<?php echo $jsonDataCss; ?>';
+    JsCssLoader.js_collection = '<?php echo $jsonDataJS; ?>';
+    JsCssLoader.important_js_collection = '<?php echo $jsonDataImportantJs; ?>';
+    JsCssLoader.collectionsCount = <?php echo count($this->getCss()) + count($this->getJs()); ?>;
+//    JsCssLoader.init();
+
+    JsCssLoader.init();
+//
+//    var el=document.createElement('script');
+//    el.setAttribute('type','text/javascript');
+//  //  el.setAttribute('defer','defer');
+//    el.setAttribute('src','http://mhost.loc/skin/frontend/compo/default/js/jquery-1.11.2.min.js');
+//    el.onload = function() { JsCssLoader.init(); }
+//    document.getElementsByTagName("head")[0].appendChild(el);
+//
+
+    //]]>
+</script>

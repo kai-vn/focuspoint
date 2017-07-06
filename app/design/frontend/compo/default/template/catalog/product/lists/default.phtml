@@ -1,0 +1,132 @@
+<?php
+	$_product = $this->getProductInfo();
+	$product_list = $this->getProductList();
+	$_helper = $this->helper('catalog/output');
+	$meigeeOptions = $this->getLayout();
+	$quickview_wrapper = Mage::app()->getLayout()->getBlock('ajaxkit')->issetSubmodulesConfig('general_add_to_cart');
+	$imgSize = $meigeeOptions->getMConfigResultByAlias('custom_list_img_width')
+?>
+<li class="item">
+	<div class="row">
+		<div class="col-sm-4">
+			<div class="image-box">
+				<?php echo $this->getLayout()->createBlock('page/html')->setProductInfo($_product)->setTemplate('catalog/product/product_labels.phtml')->toHtml(); ?>
+				<a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">
+					<?php
+						echo $_product->productHoverImage($this, $imgSize, 'with-mobile', 385);
+						$escaped_label = $this->escapeHtml($_product->getImageLabel());
+						echo '<img '. $_product->getProductMediaResized($imgSize, 'small_image', 'with-mobile', 385)
+							->addImageHtmlAttributte('alt', $escaped_label)
+							->addImageHtmlAttributte('width', $imgSize)
+							->addImageHtmlAttributte('title', $escaped_label)
+							->addImageHtmlAttributte('id', 'product-collection-image-'. $_product->getId())
+							->getImageHtmlAttributte().' />';
+					?>
+				</a>
+				<?php if(($this->helper('wishlist')->isAllow()) && $meigeeOptions->getMConfigResultByAlias('listing_wishlist_btn') || $meigeeOptions->getMConfigResultByAlias('listing_compare_btn') || ($meigeeOptions->getMConfigResultByAlias('lightbox_listing') && $meigeeOptions->getMConfigResultByAlias('lightbox_status')) || ($meigeeOptions->getMConfigResultByAlias('listing_quickview') && ($quickview_wrapper && isset($quickview_wrapper['enable_quick_view'])))){ ?>
+
+					<div class="hover-buttons clearfix">
+						<div class="toggle-options">
+							<i class="meigee-options-vertical"></i>
+						</div>
+						<div class="options-block">
+							<div class="add-to-links">
+								<?php if (($this->helper('wishlist')->isAllow()) && $meigeeOptions->getMConfigResultByAlias('listing_wishlist_btn')) : ?>
+									<span class="link-wishlist-wrapper">
+										<a href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>" class="link-wishlist" title="<?php echo $this->__('To Wishlist'); ?>"><i class="meigee-fa-heart"></i></a>
+									</span>
+								<?php endif; ?>
+								<?php if(($_compareUrl=$product_list->getAddToCompareUrl($_product)) && $meigeeOptions->getMConfigResultByAlias('listing_compare_btn')): ?>
+									<span class="link-compare-wrapper">
+										<a href="<?php echo $_compareUrl ?>" class="link-compare" title="<?php echo $this->__('To Compare'); ?>"><i class="meigee-fa-exchange"></i></a>
+									</span>
+								<?php endif; ?>
+
+							</div>
+							<?php if($meigeeOptions->getMConfigResultByAlias('listing_quickview') && ($quickview_wrapper && isset($quickview_wrapper['enable_quick_view']))) { ?>
+								<?php echo Mage::app()->getLayout()->getBlock('ajaxkit_quick_view_btn')->setProduct($_product)->toHtml(); ?>
+							<?php } ?>
+							<?php if($meigeeOptions->getMConfigResultByAlias('lightbox_listing') && $meigeeOptions->getMConfigResultByAlias('lightbox_status')){ ?>
+								<a href="<?php echo $_product->getProductMediaResized(500, 'small_image')->getImageSrc();  ?>" class="lightbox-button" data-toggle="lightbox" data-footer="<?php echo $this->stripTags($_product->getName(), null, true) ?>" title="<?php echo $this->__('Lightbox'); ?>">
+									<i class="meigee-fa-search-plus" title="<?php echo $this->__('Enlarge'); ?>"></i>
+								</a>
+							<?php } ?>
+						</div>
+					</div>
+				<?php } ?>
+				<?php // Provides extra blocks on which to hang some features for products in the list
+					// Features providing UI elements targeting this block will display directly below the product name
+					$isSwatch = false;
+					if($product_list->getChild('name.after')){
+						$swatchOutput = array();
+						$_nameAfterChildren = $product_list->getChild('name.after')->getSortedChildren();
+						foreach ($_nameAfterChildren as $_nameAfterChildName){
+							$_nameAfterChild = $product_list->getChild('name.after')->getChild($_nameAfterChildName);
+							$_nameAfterChild->setProduct($_product);
+							$swatchOutput[] = $_nameAfterChild->toHtml();
+							if($_nameAfterChild->toHtml()){
+								$isSwatch = true;
+							}
+						}
+					}
+				?>
+				<?php if($isSwatch): ?>
+				<div class="ajax-media-overlay"><div class="loader"></div></div>
+				<?php endif; ?>
+			</div>
+		</div>
+		<div class="col-sm-8">
+			<?php // Product description ?>
+			<div class="product-shop">
+				<div class="f-fix">
+					<?php $_productNameStripped = $this->stripTags($_product->getName(), null, true); ?>
+					<?php if($meigeeOptions->getMConfigResultByAlias('listing_name')): ?>
+						<h3 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_productNameStripped; ?>"><?php echo $_helper->productAttribute($_product, $_product->getName() , 'name'); ?></a></h3>
+					<?php endif; ?>
+					<div class="ratings-labels-wrapper">
+						<?php if($_product->getRatingSummary()): ?>
+							<?php echo $product_list->getReviewsSummaryHtml($_product) ?>
+						<?php endif; ?>
+
+					</div>
+					<?php if($meigeeOptions->getMConfigResultByAlias('listing_stock')) {
+						if($_product->isSaleable()): ?>
+							<p class="availability in-stock"><span><?php echo $this->__('In stock') ?></span></p>
+						<?php else: ?>
+							<p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+						<?php endif;
+					} ?>
+					<?php if($meigeeOptions->getMConfigResultByAlias('timer_status') && $meigeeOptions->getMConfigResultByAlias('timer_listing_status')) {
+						echo $this->getLayout()->createBlock('page/html')->setProduct($_product)->setTemplate('catalog/product/listing_timer.phtml')->toHtml();
+					} ?>
+					<?php if($meigeeOptions->getMConfigResultByAlias('listing_price')):
+						echo $product_list->getPriceHtml($_product, true, false);
+					endif; ?>
+					<?php
+						/* Swatches */
+						if($isSwatch){
+							foreach($swatchOutput as $item){
+								echo $item;
+							}
+						}
+					?>
+					<?php if($meigeeOptions->getMConfigResultByAlias('listing_desc') == 2 || $meigeeOptions->getMConfigResultByAlias('listing_desc') == 3){ ?>
+						<div class="desc std">
+							<?php echo $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description') ?>
+							<a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_productNameStripped ?>" class="link-learn"><?php echo $this->__('Learn More') ?></a>
+						</div>
+					<?php } ?>
+					<?php if($meigeeOptions->getMConfigResultByAlias('listing_cart_btn')){ ?>
+						<div class="product-buttons-wrapper">
+							<?php if($_product->isSaleable()): ?>
+								<button type="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Add to Cart')); ?>" class="btn btn-default btn-cart" onclick="setLocation('<?php echo $product_list->getAddToCartUrl($_product) ?>')"><span><i class="meigee-fa-shopping-cart"></i><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+							<?php else: ?>
+								<a class="btn btn-default" href="<?php echo $_product->getProductUrl() ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Read More')); ?>"><span><i class="meigee-eye"></i><span><?php echo $this->__('Read More'); ?></span></span></a>
+							<?php endif; ?>
+						</div>
+					<?php } ?>
+				</div>
+			</div>
+		</div>
+	</div>
+</li>

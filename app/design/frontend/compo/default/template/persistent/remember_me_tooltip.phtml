@@ -1,0 +1,33 @@
+<?php
+/**
+ * @package     compo
+ * @copyright   Copyright (c) 2010-2015 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+?>
+<?php
+/**
+ * "Remember Me" popup template (when click on "What's this?")
+ *
+ */
+/** @var $this Mage_Core_Block_Template */
+?>
+<div id="remember-me-popup" class="remember-me-popup modal fade" tabindex="-1" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="remember-me-popup-head modal-header">
+				<button class="remember-me-popup-close close" data-dismiss="modal" aria-hidden="true" title="<?php echo  Mage::helper('core')->quoteEscape($this->__('Close')); ?>"><?php echo $this->__('<i class="meigee-close"></i>') ?></button>
+				<h3 class="modal-title">What's this?</h3>
+			</div>
+			<div class="remember-me-popup-body modal-body">
+				<p>Checking &quot;Remember Me&quot; will let you access your shopping cart on this computer when you are logged out</p>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+//<![CDATA[
+    document.observe("dom:loaded", function() {
+        new Insertion.Bottom($$('body')[0], $('remember-me-popup'));
+    });
+//]]>
+</script>

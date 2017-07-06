@@ -1,0 +1,14 @@
+<?php
+/**
+ * @package     compo
+ * @copyright   Copyright (c) 2010-2015 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+?>
+<div class="product-options" id="product-options-wrapper">
+	<h2><?php echo $this->__('Options'); ?></h2>
+	<?php echo $this->getChildHtml('', true, true);?>
+	<?php if ($this->hasRequiredOptions()):?>
+		<p class="required"><?php echo $this->__('* Required Fields') ?></p>
+	<?php endif;?>
+</div>
+<script type="text/javascript">decorateGeneric($$('#product-options-wrapper dl'), ['last']);</script>

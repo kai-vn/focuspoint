@@ -1,0 +1,128 @@
+<?php
+	if ($posts = $this->getRecent()):
+	$rand = rand(5, 1500);
+ ?>
+<div class="row">
+    <div class="widget-latest clearfix slider-container">
+		<div class="home-slider-container">
+			<div class="col-xs-12">
+				<div id="blog-slider-<?php echo $rand; ?>" class="row">
+					<div class="widget-slider">
+						<ul class="<?php echo count($posts) > 4 ? 'carousel-ul' : 'no-slider' ?> clearfix">
+							<?php foreach ($posts as $post): ?>
+								<li class="item">
+									<div class="inner clearfix">
+										<h5><a href="<?php echo $post->getAddress(); ?>" ><?php echo $post->getTitle(); ?></a></h5>
+										<div class="post-info">
+											<p class="post-category">
+													<?php
+													$postCats = Mage::getModel('blog/post')->getCategoriesForPosts($post->getId());
+													$cat_arr = array();
+													foreach ($postCats as $cat) {
+														$cat_arr[] = $cat['title'];
+													}
+													$postCat = implode(', ', $cat_arr); ?>
+												<?php echo $postCat; ?>
+											</p>
+											<p class="post-author">
+												<?php echo $this->__("By"); ?> <?php echo $post->getUser(); ?>
+											</p>
+										</div>
+										<div class="postContent"><?php echo $this->helper('cms')->getBlockTemplateProcessor()->filter($post->getShortContent()); ?></div>
+										<div class="actions">
+											<a title="<?php echo $this->__('Read more') ?>" class="btn btn-default" href="<?php echo $post->getAddress(); ?>"><span><?php echo $this->__('Read') ?></span></a>
+										</div>
+									</div>
+								</li>
+							<?php endforeach; ?>
+						</ul>
+					</div>
+					<?php if (count($posts) > 4): ?>
+						<div class="owl-buttons">
+							<div class="prev"><i class="meigee-arrow-left"></i></div>
+							<div class="next"><i class="meigee-arrow-right"></i></div>
+						</div>
+					<?php endif; ?>
+				</div>
+			</div>
+		</div>
+    </div>
+	<script type="text/javascript">
+		<?php if (count($posts) > 4):
+			$qtyRow = $this->getData('compo_per_row');
+			$rewindSpeed = $this->getData('compo_rewind_speed');
+			$autoPlay = $this->getData('compo_auto_play');
+			$slideSpeed = $this->getData('compo_slide_speed');
+			$lazyLoad = Mage::helper('thememanager/themeConfig')->getThemeConfigResultByAliase('ajax_product_images');
+		?>
+		 jQuery(document).ready(function(){
+				homeSlider<?php echo $rand; ?> = jQuery('#blog-slider-<?php echo $rand; ?> .carousel-ul');
+				homeSlider<?php echo $rand; ?>.owlCarousel({
+					items: <?php echo $qtyRow; ?>,
+					itemsDesktopSmall: [1331, <?php echo $qtyRow; ?>],
+					itemsTablet: [1007, <?php echo ($qtyRow == 1 ? 1 : 3); ?>],
+					itemsTabletSmall: [767, <?php echo ($qtyRow == 1 ? 1 : 2); ?>],
+					itemsMobile: [479, <?php echo ($qtyRow == 1 ? 1 : 1); ?>],
+					slideSpeed: <?php echo $slideSpeed; ?>,
+					pagination: false,
+					rewindSpeed: <?php echo $rewindSpeed; ?>,
+					autoPlay: <?php echo(empty($autoPlay) ? 'false' : $autoPlay); ?>,
+					lazyLoad: <?php echo ($lazyLoad == 'lazy_image_loader' ? 'true' : 'false'); ?>,
+					lazyEffect: 'fade'
+				});
+
+				// Custom Navigation Events
+			   jQuery("#blog-slider-<?php echo $rand; ?> .next").click(function(){
+				 homeSlider<?php echo $rand; ?>.trigger('owl.next');
+			   });
+			   jQuery("#blog-slider-<?php echo $rand; ?> .prev").click(function(){
+				 homeSlider<?php echo $rand; ?>.trigger('owl.prev');
+			   });
+
+		});
+		<?php endif; ?>
+
+
+		/* Products grid titles */
+		function productTitlesHeight(){
+			function titleSet(group){
+				maxTitleHeight = 0;
+				group.each(function(){
+					if(jQuery(this).find('h3').length){
+						title = jQuery(this).find('h3').height();
+						if(title > maxTitleHeight){
+							maxTitleHeight = title;
+						}
+					}
+				});
+				group.find('h3').css('min-height', maxTitleHeight);
+			}
+			jQuery('.widget-latest .widget-slider .carousel-ul').each(function(){
+				gridWidth = jQuery(this).width();
+				if(gridWidth > 0){
+					itemWidth = jQuery(this).find('li.item:first').width();
+					columnsCount = Math.round(gridWidth/itemWidth);
+					items = jQuery(this).find('li.item');
+					if(items.find('h3').length){
+						items.find('h3').css('min-height', 0); //clear title height
+						groupsCount = items.size()/columnsCount;
+						ratio = 1;
+						for(i=0; i<groupsCount; i++){
+							currentGroupe = items.slice((i*columnsCount), (columnsCount*ratio));
+							/* set title height */
+							titleSet(currentGroupe);
+							/* ==== */
+							ratio++;
+						}
+					}
+				}
+				titleSet(jQuery(this).find('li.item'));
+			});
+		}
+		productTitlesHeight();
+		jQuery(window).resize(function(){
+			productTitlesHeight();
+		});
+	</script>
+</div>
+<?php endif; ?>

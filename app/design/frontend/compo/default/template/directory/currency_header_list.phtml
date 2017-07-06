@@ -1,0 +1,25 @@
+<?php
+/**
+ * @package     compo
+ * @copyright   Copyright (c) 2010-2015 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+?>
+<?php
+/**
+ * Currency switcher
+ *
+ * @see Mage_Directory_Block_Currency
+ */
+ $meigeeOptions = $this->getLayout();
+ $label = $meigeeOptions->getMConfigResultByAlias('currency_label');
+?>
+<?php if($this->getCurrencyCount()>1): ?>
+	<div class="form-currency list">
+		<?php if($label): ?>
+			<div class="label"><?php echo $this->__('Select Your Currency') ?></div>
+		<?php endif; ?>
+		 <?php foreach ($this->getCurrencies() as $_code => $_name): ?>
+			<a href="<?php echo $this->getSwitchCurrencyUrl($_code) ?>"><?php echo Mage::app()->getLocale()->currency($_code)->getSymbol(); ?> <span class="name"><?php echo $_name ?></span> </a>
+		<?php endforeach; ?>
+	</div>
+<?php endif; ?>

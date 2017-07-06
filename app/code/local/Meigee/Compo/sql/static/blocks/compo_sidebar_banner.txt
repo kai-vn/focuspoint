@@ -1,0 +1,3 @@
+<div class="banner">
+	<a href="#" title=""><img {{retinaurl data-img-src="wysiwyg/compo_sidebar_banner.jpg" data-img-srcX2="wysiwyg/compo_sidebar_banner@x2.jpg" alt=""}}></a>
+</div>

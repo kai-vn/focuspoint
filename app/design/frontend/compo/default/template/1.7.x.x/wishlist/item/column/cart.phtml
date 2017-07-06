@@ -1,0 +1,71 @@
+<?php
+/**
+ * @package     compo
+ * @copyright   Copyright (c) 2010-2015 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+
+/* @var $this Mage_Wishlist_Block_Customer_Wishlist_Item_Column_Cart */
+/* @var Mage_Wishlist_Model_Item $item */
+$catalogModeWrapper = $this->getLayout()->getMConfigResultByAlias('catalog_mode');
+$catalogMode = $catalogModeWrapper['value']['sv2']['value'];
+$item = $this->getItem();
+$product = $item->getProduct();
+$options = $this->getChild('customer.wishlist.item.options')
+    ->setItem($item)
+    ->getConfiguredOptions();
+?>
+<div class="cart-cell">
+<?php echo $this->getPriceHtml($product));?>
+<div class="add-to-cart-alt">
+<?php if ($item->canHaveQty() && $item->getProduct()->isVisibleInSiteVisibility()): ?>
+	<div class="quantity-wrapper clearfix">
+		<label for="qty"><?php echo $this->__('Qty:') ?></label>
+		<?php
+			$increments = 1;
+			$productData = Mage::getModel('cataloginventory/stock_item')->loadByProduct($product);
+			$qtyIncrements = $productData->getQtyIncrements();
+			if($qtyIncrements > 0){
+				$increments = $qtyIncrements;
+			}
+			$curr_id = rand();
+		?>
+		<div class="quantity-decrease btn-qty" onclick="qtyDown<?php echo $curr_id; ?>()"><i class="meigee-arrow-left"></i></div>
+		<input type="text" id="qty-<?php echo $curr_id; ?>" class="form-control qty validate-not-negative-nplusangle-right"></i></div>
+		<div class="quantity-increase btn-qty" onclick="qtyUp<?php echo $curr_id; ?>()"><i class="meigee-arrow-right"></i></div>
+		<script type="text/javascript">
+				function qtyDown<?php echo $curr_id; ?>(){
+					qty_el = document.getElementById('<?php echo 'qty-'.$curr_id; ?>');
+					qty = qty_el.value;
+					if( !isNaN( qty ) && qty > <?php echo $increments; ?> ){
+						qty_el.value = parseInt(qty_el.value)-<?php echo $increments; ?>
+					}
+					return false;
+				}
+				function qtyUp<?php echo $curr_id; ?>(){
+					qty_el = document.getElementById('<?php echo 'qty-'.$curr_id; ?>');
+					qty = qty_el.value;
+					if( !isNaN( qty )) {
+						qty_el.value = parseInt(qty_el.value)+<?php echo $increments; ?>
+					}
+					return false;
+				}
+			</script>
+	</div>
+<?php endif; ?>
+<?php if ($product->isSaleable()): ?>
+	<?php if($catalogMode == 0){ ?>
+		<button type="button" title="<?php echo $this->__('Add to Cart') ?>" onclick="addWItemToCart(<?php echo $item->getId()?>);" class="btn btn-primary"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+	<?php } ?>
+<?php else: ?>
+    <?php if ($product->getIsSalable()): ?>
+        <p class="availability in-stock"><span><?php echo $this->__('In stock') ?></span></p>
+    <?php else: ?>
+        <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+    <?php endif; ?>
+<?php endif; ?>
+</div>
+<br />
+<?php foreach($this->getSortedChildren() as $childName):?>
+    <?php echo $this->getChildHtml($childName, false);?>
+<?php endforeach;?>
+</div>

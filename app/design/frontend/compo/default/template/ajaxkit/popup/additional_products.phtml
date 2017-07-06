@@ -1,0 +1,70 @@
+<?php
+$products = $this->getProductCollection();
+
+if(!$products || !$products->count())
+{
+    return;
+}
+
+$type_name = '';
+
+switch ($this->getType())
+{
+    case 'related_products':
+        $type_name = 'Related Products';
+        break;
+    case 'upsell_products':
+        $type_name = 'Upsell Products';
+        break;
+    case 'cross_sell_products':
+        $type_name = 'Cross Sell Products';
+        break;
+}
+$type_name= $this->helper('checkout')->__($type_name);
+
+?>
+<div>
+    <h1>
+        <?php echo  $type_name; ?>
+    </h1>
+    <table>
+        <?php
+        foreach ($products AS $product)
+        {
+            $html = "<tr>";
+           // if($this->getShowImage())
+            if($this->isShow('image'))
+            {
+                $html .= '
+                <td>
+                    <a title="'.$product->getName().'" href="'.$product->getProductUrl(true).'">
+                        <img src="'. $this->helper('catalog/image')->init($product, 'small_image')->resize(135) .'" alt="'.$product->getImageLabel().'" >
+                    </a>
+                </td>';
+            }
+
+//            if($this->getShowName())
+            if($this->isShow('name'))
+            {
+                $html .= '<td>'.$product->getName().'</td>';
+            }
+
+//            if($this->getShowAddToCartBtn())
+            if($this->isShow('add_to_cart_btn'))
+            {
+                $html .= '<td>
+                    <button onclick="setLocation(\''.$product->getProductUrl(true) .'\')" class="button btn-cart btn btn-primary" title="'.$this->helper('checkout')->__('Add to Cart').'" type="button"">
+                        <span><span>
+                            '.$this->helper('checkout')->__('Add to Cart').'
+                        </span></span>
+                    </button>
+                </td>';
+            }
+            $html .= "</tr>";
+            echo $html;
+        }
+
+        ?>
+    </table>
+</div>
+

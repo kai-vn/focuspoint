@@ -1,0 +1,20 @@
+<div id="home-image-slider" class="owl-carousel owl-theme" data-navigation="1" data-speed="300">
+	<a href="#">
+		<img {{retinaurl data-img-src="wysiwyg/compo_electronics_slide_1.jpg" data-img-srcX2="wysiwyg/compo_electronics_slide_1@x2.jpg" alt=""}}>
+		<span class="slide-container slide-skin">
+			<span class="subtitle">Only in our store</span>
+			<span class="title">Pure Wireless</span>
+			<span class="text hidden-sm hidden-xs">They can sense when they’re in your<br> ears and pause when you take them out</span>
+			<span class="btn btn-primary hidden-sm hidden-xs"><span>Read more</span></span>
+		</span>
+	</a>
+	<a href="#">
+		<img {{retinaurl data-img-src="wysiwyg/compo_electronics_slide_2.jpg" data-img-srcX2="wysiwyg/compo_electronics_slide_2@x2.jpg" alt=""}}>
+		<span class="slide-container slide-skin-2">
+			<span class="subtitle">Special offer</span>
+			<span class="title">Special Gifts</span>
+			<span class="text hidden-sm hidden-xs">For everyone who buy 2 items and<br> more only this week!</span>
+			<span class="btn btn-primary hidden-sm hidden-xs"><span>Read more</span></span>
+		</span>
+	</a>
+</div>

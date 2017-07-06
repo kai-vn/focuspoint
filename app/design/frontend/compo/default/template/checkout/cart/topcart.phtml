@@ -1,0 +1,100 @@
+<?php
+/**
+ * @package     compo
+ * @copyright   Copyright (c) 2010-2015 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+/**
+ * Shoping cart header
+ *
+ * @see Mage_Checkout_Block_Cart_Sidebar
+ */
+ $meigeeOptions = $this->getLayout();
+ // $cartType = $meigeeOptions->getMConfigResultByAlias('topcart_kind');
+ $cartIco = $meigeeOptions->getMConfigResultByAlias('topcart_icon');
+ $cartLabel = $meigeeOptions->getMConfigResultByAlias('topcart_text');
+ $cartCounter = $meigeeOptions->getMConfigResultByAlias('topcart_counter');
+ $cartPrice = $meigeeOptions->getMConfigResultByAlias('topcart_price');
+ $cartHover = $meigeeOptions->getMConfigResultByAlias('topcart_hover');
+ $catalogModeWrapper = $meigeeOptions->getMConfigResultByAlias('catalog_mode');
+ $catalogMode = $catalogModeWrapper['value']['sv2']['value'];
+ $_items = $this->getRecentItems();
+ if($cartIco || $cartLabel || $cartCounter || $cartPrice){
+?>
+<div class="top-cart top-link-cart dropdown <?php if ( $cartCounter || $cartLabel) echo 'long-cart'; ?>">
+	<?php $_cartQty = $this->getSummaryCount()? $this->getSummaryCount() : 0 ?>
+	<div class="block-title<?php if(!$_cartQty) { echo (' no-items'); } ?>  cart-button">
+		<a class="cartHeader" href="javascript:void(0);">
+			<span class="title-cart clearfix">
+					<span class="top-cart-icon">
+					<?php
+						echo ($cartIco ? '<span class="cart-full-indicator"></span><span class="cart-indicator"></span><i class="meigee-bag" title="'. $this->__('Shopping Cart') .'"></i>' : '');
+					?>
+					</span>
+					<?php
+					echo (($cartLabel || $cartCounter || $cartPrice) ? '<span class="cart-right-items">' : '');
+					// echo ($cartType ? '</span><span class="right pull-right"><span class="top">' : '');
+					echo ($cartLabel ? '<span class="top-cart-label">' . $this->__('Shopping Cart') . '</span>' : '');
+					echo ($cartCounter ? '<span class="cart-qty">'. $_cartQty .' / </span>' : '');
+					echo ($cartPrice ? '<span class="subtotal">'. Mage::helper('checkout')->formatPrice($this->getSubtotal()) .'</span>' : '');
+					// echo ($cartType ? '</span><span class="bottom">' : '');
+					// echo ( '</span>' : '');
+					// echo ($cartType ? '</span></span>' : '');
+					echo (($cartLabel || $cartCounter || $cartPrice) ? '<i class="caret"></i>' : '');
+					echo (($cartLabel || $cartCounter || $cartPrice) ? '</span>' : '');
+					echo ''; ?>
+			</span>
+		</a>
+	</div>
+	<div class="block block-content topCartContent" style="display:none;">
+		<div class="inner-wrapper"><?php // extra div to smooth slideUp and slideDown ?>
+		<?php echo ($cartMobileType == 'slide' ? '<span class="close-btn"><i class="meigee-close"></i></span>' : ''); ?>
+		<?php if(count($_items)): ?>
+			<h4><?php echo $this->__('Recently added products:') ?></h4>
+			<ol class="mini-cart mini-products-list">
+			<?php foreach($_items as $_item): ?>
+				<?php echo $this->getItemHtml($_item) ?>
+			<?php endforeach; ?>
+			</ol>
+		<?php else: ?>
+			<p class="cart-empty">
+				<i class="meigee-fa-shopping-cart"></i>
+				<span><?php echo $this->__('You have no items in your shopping cart.') ?></span>
+				<span class="small-label"><?php echo $this->__('Add some to cart or') ?> <a href="<?php echo Mage::helper('customer')->getLoginUrl(); ?>" class="link-login"><?php echo $this->__('login') ?></a></span>
+			</p>
+		<?php endif; ?>
+		<?php if($_cartQty && $this->isPossibleOnepageCheckout()): ?>
+			<p class="subtotal">
+				<span class="label"><?php echo $this->__('Total:') ?></span> <?php echo Mage::helper('checkout')->formatPrice($this->getSubtotal()) ?><?php if ($_subtotalInclTax = $this->getSubtotalInclTax()): ?> / <?php echo Mage::helper('checkout')->formatPrice($_subtotalInclTax) ?> <?php echo Mage::helper('tax')->getIncExcText(true) ?><?php endif; ?>
+			</p>
+			<div class="actions clearfix">
+				<?php if($catalogMode == 0) { ?>
+					<button class="btn btn-primary type-2" type="button" onclick="setLocation('<?php echo $this->getCheckoutUrl() ?>')"><span><span><?php echo $this->__('Checkout') ?></span></span></button>
+					<a class="btn btn-default" href="<?php echo $this->getUrl('checkout/cart'); ?>"><span><i class="meigee-bag"></i><span><?php echo $this->__('View cart') ?></span></span></a>
+				<?php } ?>
+				<?php echo $this->getChildHtml('extra_actions') ?>
+			</div>
+		<?php endif ?>
+
+
+	<script type="text/javascript">
+		/* Top Cart */
+
+            	<?php echo ($cartHover ? 'topCart("hover");' : 'topCart();'); ?>
+		jQuery('.mini-cart li:nth-child(2)').addClass('second');
+		jQuery('.mini-cart li:nth-child(3)').addClass('last');
+
+            if(typeof GeneralAddToCart != "undefined")
+            {
+		var sFunc = function(json)
+		{
+		    GeneralAddToCart.updateCartHtml();
+		    AjaxKitMain.addHtmlPopup(json.popup_html);
+		}
+		AjaxKitMain.resetSidebarBlocks('block-content', false, sFunc, GeneralAddToCart);
+            }
+	</script>
+	</div>
+
+	</div>
+</div>
+ <?php } ?>

@@ -1,0 +1,6 @@
+<?php
+if ($this->getPopupText()) { ?>
+    <div class="popup-text <?php echo ($this->getPopupTextType() ? $this->getPopupTextType() : 'none'); ?>-msg">
+        <?php echo $this->getPopupText(); ?>
+    </div>
+<?php } ?>

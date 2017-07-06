@@ -1,0 +1,66 @@
+<div class="footer-top">
+	<div class="container">
+		<div class="footer-text-block-wrapper">
+			<div class="text-block">
+				<div class="media-left"><span class="compo-icon rectangle"></span></div>
+				<div class="media-body">
+					<p>We accept all major<br>CREDIT &amp; DEBIT CARDS</p>
+				</div>
+			</div>
+			<hr class="indent-18 white-space visible-xs" />
+			<div class="text-block">
+				<div class="media-left"><span class="compo-icon open"></span></div>
+				<div class="media-body">
+					<p>Mon - Sat 8.00 - 18.00<br><span class="closed">Sunday CLOSED</span></p>
+				</div>
+			</div>
+			<hr class="indent-18 white-space visible-xs" />
+			<div class="text-block">
+				<div class="media-left"><span class="compo-icon ellipse"></span></div>
+				<div class="media-body">
+					<p>Have a Questions?<br>Call: <a href="skype:18004961779?chat" class="skincolor">1-800-496-1779</a></p>
+				</div>
+			</div>
+			<hr class="indent-18 white-space visible-xs" />
+			<div class="text-block">
+				<div class="media-left"><span class="compo-icon change"></span></div>
+				<div class="media-body">
+					<p>Save your money with<br>Our Weekly Sales</p>
+				</div>
+			</div>
+			<hr class="indent-18 white-space visible-xs" />
+			<div class="text-block">
+				<div class="media-left"><span class="compo-icon bag"></span></div>
+				<div class="media-body">
+					<p>Shop without limits<br>1000+ fresh items</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="footer-bottom">
+	<div class="container">
+		<div class="footer-links-wrapper">
+			<ul class="horizontal-links clearfix">
+				<li><a href="{{store url='about-us'}}">About us</a></li>
+				<li><a href="{{store url='customer-service'}}">Customer Service</a></li>
+				<li><a href="{{store url='privacy-policy-cookie-restriction-mode'}}">Privacy Policy</a></li>
+				<li><a href="{{store url='catalog/seo_sitemap/category'}}">Site Map </a></li>
+				<li><a href="{{store url='catalogsearch/term/popular/'}}">Search Terms</a></li>
+				<li><a href="{{store url='catalogsearch/advanced/'}}">Advanced Search</a></li>
+				<li><a href="{{store url='sales/guest/form/'}}">Orders and Returns</a></li>
+				<li><a href="{{store url='contacts'}}">Contact Us</a></li>
+			</ul>
+		</div>
+		<hr class="indent-9 white-space" />
+		<div class="copyrights-block clearfix">
+			<div class="copyright">
+				<address>{{config path="design/footer/copyright"}}</address>
+			</div>
+			<hr class="indent-18 white-space visible-xs" />
+			<div class="store-switcher-wrapper text-right">
+				{{block type="page/switch" block_id="store_switcher" template="page/switch/stores.phtml"}}
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,169 @@
+<?php
+/**
+ * @package     compo
+ * @copyright   Copyright (c) 2010-2015 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+
+$meigeeOptions = $this->getLayout();
+$slider_data_arr = array();
+if ($this->getTemplate() == 'widget/slider.phtml')
+{
+	$slider_data_arr = array('add_to_cart'=>'add_to_cart_slider', 'product_name'=>'product_name_slider', 'price'=>'price_slider', 'compare'=>'compare_slider', 'wishlist'=>'wishlist_slider', 'rating_cust_link'=>'rating_cust_link_slider', 'rating_add_review_link'=>'rating_add_review_link_slider', 'rating_stars'=>'rating_stars_slider', 'stock_status'=>'stock_status_slider', 'desc'=>'desc_slider', 'timer'=>'timer_slider');
+}
+$visibleProducts = $this->getVisibleProducts();
+$visibleProducts = ($visibleProducts > 8 ? 8 : $visibleProducts);
+$widgetId = $this->getWidgetId();
+$gridType = $this->getCompoGridTemplate();
+switch ($gridType) {
+	case 1:
+		$template = 'widget/grids/default_slider.phtml';
+	break;
+	case 2:
+		$template = 'widget/grids/type_2_slider.phtml';
+	break;
+	case 3:
+		$template = 'widget/grids/type_3_slider.phtml';
+	break;
+	default:
+		$template = 'widget/grids/default_slider.phtml';
+	break;
+}
+?>
+<div class="slider-container widget-products">
+	<?php
+		$collection = $this->getCollection();
+		$productCount = count($collection);
+		if($productCount > $visibleProducts) {
+		echo $this->getPager();
+	?>
+	<div class="home-container">
+		<div class="quick-view-container">
+			<div class="quick-view-data-container"></div>
+			<div class="home-slider es-carousel-wrapper" id="home-slider-<?php echo $widgetId; ?>">
+				<div class="widget-slider products-grid <?php echo 'type-' . $gridType; ?> clearfix owl-carousel owl-theme">
+					<?php foreach ($collection as $product): ?>
+						<?php
+						$widget_tmpl = $this->getLayout()->createBlock('page/html')->setProductInfo($product)->setProductList($this)->setTemplate($template);
+						if(!empty($slider_data_arr))
+						{
+							foreach ($slider_data_arr AS $name=>$data)
+							{
+								$widget_tmpl->setData($name, $this->getData($data));
+							}
+						}
+
+						echo $widget_tmpl->toHtml(); ?>
+					<?php endforeach ?>
+				</div>
+				<?php if ($productCount > $visibleProducts): ?>
+				<div class="owl-buttons"></div>
+				<?php endif; ?>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		<?php if ($productCount >= $visibleProducts):
+			$itemsHorizontal = $this->getItemsHorizontal();
+			$itemsVertical = $this->getItemsVertical();
+			// $itemsScaleUp = $this->getItemsScaleup();
+			$paginationSpeed = $this->getPaginationSpeed();
+			// $rewindSpeed = $this->getRewindSpeed();
+			$pagination = $this->getPagination();
+			$lazyLoad = $this->getLazyLoad();
+			$autoPlay = $this->getAutoPlay();
+			$slideSpeed = $this->getSlideSpeed();
+			$stopOnHover = (null != $this->getStopOnHover() ? $this->getStopOnHover() : 'false');
+			$centerLoop = (null != $this->getCompoCenterLoop() ? $this->getCompoCenterLoop() : 'false');
+			$rtl = (null != $this->getCompoRtl() ? $this->getCompoRtl() : 'false');
+		?>
+
+
+
+		/*function sliderArrows(){
+			navContainer = jQuery('#home-slider-<?php echo $widgetId; ?>').parents('.slider-container').prev('.widget-title').find('.owl-buttons');
+			return navContainer;
+		}
+*/
+
+		var isInTabs<?php echo $widgetId; ?> = false;
+		var homeSlider<?php echo $widgetId; ?> = jQuery('#home-slider-<?php echo $widgetId; ?> .products-grid');
+		function sliderInit<?php echo $widgetId; ?>(){
+			homeSlider<?php echo $widgetId; ?>.owlCarousel({
+				margin: 0,
+				nav:true,
+				responsive:{
+					0:{
+						items:1
+					},
+					767:{
+						items:<?php echo $itemsVertical; ?>
+					},
+					1007:{
+						items:<?php echo $itemsHorizontal; ?>
+					},
+					1331:{
+						items:<?php echo $visibleProducts; ?>
+					}
+				},
+				smartSpeed: <?php echo $slideSpeed; ?>,
+				dotsSpeed: <?php echo $paginationSpeed; ?>,
+				<?php if(empty($autoPlay)){ ?>
+					autoplay: false,
+				<?php } else { ?>
+					autoplay: true,
+					autoplayTimeout: <?php echo $autoPlay; ?>,
+					autoplayHoverPause: <?php echo $stopOnHover; ?>,
+				<?php } ?>
+				dots: <?php echo $pagination; ?>,
+				lazyLoad: <?php echo $lazyLoad; ?>,
+				center: <?php echo $centerLoop; ?>,
+				loop: <?php echo $centerLoop; ?>,
+				rtl: <?php echo $rtl; ?>,
+				navContainer: jQuery('#home-slider-<?php echo $widgetId; ?>').parents('.slider-container').prev('.widget-title').find('.owl-buttons'),
+/*				navContainer: '#home-slider-<?php echo $widgetId; ?> .owl-buttons',
+*/				navText: ['<i class="meigee-arrow-left"></i>','<i class="meigee-arrow-right"></i>']
+			});
+		}
+		jQuery(document).ready(function(){
+
+
+			if(!jQuery('#home-slider-<?php echo $widgetId; ?>').parents('.slider-container').prev('.widget-title').find('.owl-buttons').length) {
+				navContainer = jQuery('<div class="owl-buttons clearfix" />');
+				navContainer.appendTo(jQuery('#home-slider-<?php echo $widgetId; ?>').parents('.slider-container').prev('.widget-title'));
+			}
+
+
+			if(homeSlider<?php echo $widgetId; ?>.parents('.product-tabs-widget').length){isInTabs<?php echo $widgetId; ?> = true;}
+
+			if(isInTabs<?php echo $widgetId; ?> == false){
+				sliderInit<?php echo $widgetId; ?>();
+			}
+		});
+
+		jQuery(window).load(function(){
+			if(isInTabs<?php echo $widgetId; ?> == true){
+				jQuery('ul.product-tabs').on('click.prslid', 'li:not(.current)', function(){
+					setTimeout(function(){
+						if(homeSlider<?php echo $widgetId; ?>.parents('.product-tabs-box.visible').length && !homeSlider<?php echo $widgetId; ?>.attr('data-owl-started')){
+							sliderInit<?php echo $widgetId; ?>();
+							homeSlider<?php echo $widgetId; ?>.attr('data-owl-started', 'true');
+						}
+					}, 200);
+				});
+				setTimeout(function(){
+					if(homeSlider<?php echo $widgetId; ?>.parents('.product-tabs-box.visible').length){
+						sliderInit<?php echo $widgetId; ?>();
+						homeSlider<?php echo $widgetId; ?>.attr('data-owl-started', 'true');
+					}
+				}, 200);
+			}
+		});
+		<?php endif; ?>
+	</script>
+	<?php
+		echo $this->getPager();
+		} else {
+			echo $this->__("Warning: Please make sure you have %s+ products to display in the slider, otherwise widget won't be displayed", $visibleProducts+1);
+		}
+	?>
+</div>

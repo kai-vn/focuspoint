@@ -1,0 +1,17 @@
+<?php
+/**
+ * @package     compo
+ * @copyright   Copyright (c) 2010-2015 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+?>
+<div class="product-buttons default clearfix">
+	<?php
+		$pagination = $this->getProduct()->getProductPagination();
+		if(isset($pagination['prev'])){
+			echo '<div class="prev-button"><a href="'. $pagination['prev']->getProductUrl() .'" title="'. $pagination['prev']->getName() .'"><i class="meigee-arrow-left"></i></a></div>';
+		}
+		if(isset($pagination['next'])){
+			echo '<div class="next-button"><a href="'. $pagination['next']->getProductUrl() .'" title="'. $pagination['next']->getName() .'"><i class="meigee-arrow-right"></i></a></div>';
+		}
+	?>
+</div>

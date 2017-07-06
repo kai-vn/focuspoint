@@ -1,0 +1,153 @@
+<?php
+/**
+ * @package     compo
+ * @copyright   Copyright (c) 2010-2015 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+?>
+<?php
+/**
+ * Shopping cart template
+ *
+ * @see Mage_Checkout_Block_Cart
+ */
+$catalogModeWrapper = $this->getLayout()->getMConfigResultByAlias('catalog_mode');
+$catalogMode = $catalogModeWrapper['value']['sv2']['value'];
+if($catalogMode == 1) {
+	$redirect = Mage::getUrl('no-route');
+	echo Mage::app()->getFrontController()->getResponse()->setRedirect($redirect);
+}
+?>
+<div class="cart">
+    <div class="page-title title-buttons clearfix">
+        <h2><?php echo $this->__('Shopping Cart') ?></h2>
+        <?php if(!$this->hasError() && count($this->getItems()) != 0): ?>
+        <ul class="checkout-types">
+        <?php foreach ($this->getMethods('top_methods') as $method): ?>
+            <?php if ($methodHtml = $this->getMethodHtml($method)): ?>
+            <li><?php echo $methodHtml; ?></li>
+            <?php endif; ?>
+        <?php endforeach; ?>
+        </ul>
+        <?php endif; ?>
+    </div>
+	<?php echo (Mage::app()->getLayout()->checkVersion(array('1.9.1.x', '1.9.2.x', '1.9.3.x')) ? $this->getMessagesBlock()->toHtml() : $this->getMessagesBlock()->getGroupedHtml()); ?>
+	<?php if(count($this->getItems()) != 0){ ?>
+		<?php echo $this->getChildHtml('form_before') ?>
+		<div class="row clearfix">
+			<div class="col-md-9">
+				<form action="<?php echo (Mage::app()->getLayout()->checkVersion(array('1.9.2.x', '1.9.3.x')) ? $this->getFormActionUrl() : $this->getUrl('checkout/cart/updatePost')); ?>" method="post">
+					<?php echo (Mage::app()->getLayout()->checkVersion('1.7.x.x') ? '' : $this->getBlockHtml('formkey')) ?>
+					<fieldset>
+						<table id="shopping-cart-table" class="table table-responsive table-bordered">
+							<col />
+							<?php $colgroup_count = 0;
+							if ($this->helper('tax')->displayCartPriceExclTax() || $this->helper('tax')->displayCartBothPrices()) {
+								$colgroup_count++;
+							}
+							if ($this->helper('tax')->displayCartPriceInclTax() || $this->helper('tax')->displayCartBothPrices()){
+								$colgroup_count++;
+							}
+							$colgroup_count++;
+							if ($this->helper('tax')->displayCartPriceExclTax() || $this->helper('tax')->displayCartBothPrices()) {
+								$colgroup_count++;
+							}
+							if ($this->helper('tax')->displayCartPriceInclTax() || $this->helper('tax')->displayCartBothPrices()) {
+								$colgroup_count++;
+							}
+							echo str_repeat("<col class='col-one' />", $colgroup_count);
+							$mergedCells = ($this->helper('tax')->displayCartBothPrices() ? 2 : 1); ?>
+							<thead>
+								<tr>
+									<th rowspan="<?php echo $mergedCells; ?>"><span class="nobr"><?php echo $this->__('Product Name') ?></span></th>
+									<th class="a-center" colspan="<?php echo $mergedCells; ?>"><span class="nobr"><?php echo $this->__('Unit Price') ?></span></th>
+									<th rowspan="<?php echo $mergedCells; ?>" class="a-center"><?php echo $this->__('Qty') ?></th>
+									<th class="a-center" colspan="<?php echo $mergedCells; ?>"><?php echo $this->__('Subtotal') ?></th>
+								</tr>
+								<?php if ($this->helper('tax')->displayCartBothPrices()): ?>
+								<tr>
+									<th class="a-right"><?php echo $this->helper('tax')->getIncExcTaxLabel(false) ?></th>
+									<th><?php echo $this->helper('tax')->getIncExcTaxLabel(true) ?></th>
+									<th class="a-right"><?php echo $this->helper('tax')->getIncExcTaxLabel(false) ?></th>
+									<th><?php echo $this->helper('tax')->getIncExcTaxLabel(true) ?></th>
+								</tr>
+								<?php endif; ?>
+							</thead>
+							<tfoot>
+								<tr>
+									<td colspan="<?php echo $colgroup_count + 1; ?>" class="a-right">
+										<?php if($this->getContinueShoppingUrl()): ?>
+											<button type="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Continue Shopping')); ?>" class="btn btn-default btn-continue" onclick="setLocation('<?php echo $this->getContinueShoppingUrl() ?>')"><span><span><?php echo $this->__('Continue Shopping') ?></span></span></button>
+										<?php endif; ?>
+										<button type="submit" name="update_cart_action" value="update_qty" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Update Shopping Cart')); ?>" class="btn btn-default btn-update"><span><span><?php echo $this->__('Update Shopping Cart'); ?></span></span></button>
+										<button type="submit" name="update_cart_action" value="empty_cart" onclick="setLocation('<?php echo Mage::getBaseUrl() ?>')" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Clear Shopping Cart')); ?>" class="btn btn-default btn-empty" id="empty_cart_button"><span><span><?php echo $this->__('Clear Shopping Cart'); ?></span></span></button>
+										<!--[if lt IE 8]>
+										<input type="hidden" id="update_cart_action_container" />
+										<script type="text/javascript">
+										//<![CDATA[
+											Event.observe(window, 'load', function()
+											{
+												// Internet Explorer (lt 8) does not support value attribute in button elements
+												$emptyCartButton = $('empty_cart_button');
+												$cartActionContainer = $('update_cart_action_container');
+												if ($emptyCartButton && $cartActionContainer) {
+													Event.observe($emptyCartButton, 'click', function()
+													{
+														$emptyCartButton.setAttribute('name', 'update_cart_action_temp');
+														$cartActionContainer.setAttribute('name', 'update_cart_action');
+														$cartActionContainer.setValue('empty_cart');
+													});
+												}
+
+											});
+										//]]>
+										</script>
+										<![endif]-->
+									</td>
+								</tr>
+							</tfoot>
+							<tbody>
+							<?php foreach($this->getItems() as $_item): ?>
+								<?php echo $this->getItemHtml($_item) ?>
+							<?php endforeach ?>
+							</tbody>
+						</table>
+						<script type="text/javascript">
+							decorateTable('shopping-cart-table');
+							jQuery('#empty_cart_button').on('click', function(){
+								setTimeout(function(){
+									window.location.href='<?php echo Mage::getBaseUrl() ?>';
+									return false;
+								}, 500);
+							});
+						</script>
+					</fieldset>
+				</form>
+				<?php echo $this->getChildHtml('crosssell_big') ?>
+			</div>
+			<div class="cart-collaterals sidebar col-md-3">
+				<?php /* Extensions placeholder */ ?>
+
+				<?php echo $this->getChildHtml('checkout.cart.extra') ?>
+				<div class="cart-block-wrapper"><?php echo $this->getChildHtml('coupon') ?></div>
+				<?php if (!$this->getIsVirtual()): echo $this->getChildHtml('shipping'); endif; ?>
+				<div class="totals-block-wrapper">
+					<div class="block totals">
+							<?php echo $this->getChildHtml('totals'); ?>
+							<?php if(!$this->hasError()): ?>
+							<ul class="checkout-types">
+							<?php foreach ($this->getMethods('methods') as $method): ?>
+								<?php if ($methodHtml = $this->getMethodHtml($method)): ?>
+								<li><?php echo $methodHtml; ?></li>
+								<?php endif; ?>
+							<?php endforeach; ?>
+							</ul>
+							<?php endif; ?>
+					</div>
+				</div>
+			</div>
+		</div>
+	<?php } else { ?>
+		<p><?php echo $this->__('Your cart is currently empty'); ?></p>
+		<p><?php echo $this->__('Click <a href="%s">here</a> to continue shopping.', $this->getContinueShoppingUrl()) ?></p>
+	<?php } ?>
+</div>

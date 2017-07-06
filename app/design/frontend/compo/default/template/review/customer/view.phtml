@@ -1,0 +1,72 @@
+<?php
+/**
+ * @package     compo
+ * @copyright   Copyright (c) 2010-2015 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+?>
+<?php if($this->getProductData()->getId()): ?>
+<div class="product-review">
+	<div class="page-title">
+		<h2><?php echo $this->__('Review Details') ?></h2>
+	</div>
+	<div class="row">
+		<div class="col-sm-9 col-md-10 col-lg-10">
+			<div class="media">
+				<div class="product-img-box">
+					<a href="<?php echo $this->getProductData()->getProductUrl() ?>" title="<?php echo (Mage::app()->getLayout()->checkVersion('1.7.x.x') ? $this->htmlEscape : $this->escapeHtml).($this->getProductData()->getName()) ?>" class="product-image">
+						<?php
+							$escaped_label = (Mage::app()->getLayout()->checkVersion('1.7.x.x') ? $this->htmlEscape : $this->escapeHtml).($this->getProductData()->getName());
+							echo '<img '. $this->getProductData()->getProductMediaResized(125, 'small_image')
+								->addImageHtmlAttributte('alt', $escaped_label)
+								->addImageHtmlAttributte('title', $escaped_label)
+								->addImageHtmlAttributte('class', 'media-object')
+								->getImageHtmlAttributte().' />';
+						?>
+					</a>
+				</div>
+				<div class="media-body">
+					<div class="product-details">
+						<div class="clearfix">
+							<h2 class="product-name pull-left"><?php echo (Mage::app()->getLayout()->checkVersion('1.7.x.x') ? $this->htmlEscape : $this->escapeHtml).($this->getProductData()->getName()) ?></h2>
+							<?php if ($this->isReviewOwner()): ?>
+								<small class="date"><?php echo $this->__('Posted on %s', $this->formatDate($this->getReviewData()->getCreatedAt()), 'long') ?></small>
+							<?php else :?>
+								<small class="date"><?php echo $this->__('Review (submitted on %s):', $this->dateFormat($this->getReviewData()->getCreatedAt()), 'long') ?></small>
+							<?php endif;?>
+						</div>
+						<?php if( $this->getRating() && $this->getRating()->getSize()): ?>
+							<?php echo $this->getReviewsSummaryHtml($this->getProductData()) ?>
+						<?php endif; ?>
+						<p>
+							<?php echo nl2br((Mage::app()->getLayout()->checkVersion('1.7.x.x') ? $this->htmlEscape : $this->escapeHtml).($this->getReviewData()->getDetail())) ?>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-3 col-md-2 col-lg-2">
+			<?php if( $this->getRating() && $this->getRating()->getSize()): ?>
+			<div class="customer-rating clearfix">
+			<?php foreach ($this->getRating() as $_rating): ?>
+				<?php if($_rating->getPercent()): ?>
+						<div class="item">
+							<div class="rating-title"><?php echo (Mage::app()->getLayout()->checkVersion('1.7.x.x') ? $this->htmlEscape : $this->escapeHtml).($_rating->getRatingCode()) ?></div>
+							<div class="rating-values"><span><?php echo (ceil($_rating->getPercent()))/20 ?></span>/5</div>
+							<div class="stars-wrapper clearfix">
+								<div class="rating-box">
+									<i class="star">&#9733;</i><i class="star">&#9733;</i><i class="star">&#9733;</i><i class="star">&#9733;</i><i class="star">&#9733;</i>
+									<div class="rating" style="width:<?php echo ceil($_rating->getPercent()) ?>%"><i class="star">&#9733;</i><i class="star">&#9733;</i><i class="star">&#9733;</i><i class="star">&#9733;</i><i class="star">&#9733;</i></div>
+								</div>
+							</div>
+						</div>
+					<?php endif; ?>
+				<?php endforeach; ?>
+			</div>
+			<?php endif; ?>
+		</div>
+	</div>
+	<div class="buttons-set">
+		<p class="back-link"><a href="<?php echo $this->getBackUrl() ?>"><small>&laquo; </small><?php echo $this->__('Back to My Reviews') ?></a></p>
+	</div>
+</div>
+<?php endif; ?>

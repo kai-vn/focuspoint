@@ -1,0 +1,59 @@
+<?php if ($posts = $this->getRecent()): ?>
+<?php 
+$isotope_js = Mage::app()->getLayout()->createBlock('thememanager/widget_products')->includeIsotopeJs();
+if ($isotope_js) {
+?>
+	<script type="text/javascript">
+		function grid3Isotope() {
+			$container = jQuery('.masonry-grid .products-grid');
+			$container.isotope({
+					itemSelector: '.item',
+					resizable: true,
+					layoutMode : 'masonry'
+				});
+			}
+		jQuery(window).ready(function(){
+			var js=document.createElement("script");
+			js.setAttribute("type","text/javascript");
+			js.setAttribute("src",'<?php echo $isotope_js; ?>');
+			js.onload = grid3Isotope;
+			document.getElementsByTagName("head")[0].appendChild(js);
+		});
+	</script>
+<?php } ?>
+<div class="row">
+	<div class="widget-latest masonry-grid clearfix">
+		<div class="col-xs-12">
+			<div class=" row">
+				<ul class="clearfix products-grid">
+				<?php foreach ($posts as $post): ?>
+					<li class="col-sm-4 col-md-4 item">
+						<div class="post-info">
+							<p class="post-category">
+								<?php
+									$postCats = Mage::getModel('blog/post')->getCategoriesForPosts($post->getId());
+									$cat_arr = array();
+									foreach ($postCats as $cat) {
+										$cat_arr[] = $cat['title'];
+									}
+									$postCat = implode(', ', $cat_arr); ?>
+								<?php echo $this->__('Posted in').' '.$postCat; ?>
+							</p>
+							<p class="post-author">
+								<?php echo $this->__("By"); ?> <?php echo $post->getUser(); ?>
+							</p>
+						</div>
+						<h3><a href="<?php echo $post->getAddress(); ?>" ><?php echo $post->getTitle(); ?></a></h3>
+						<div class="post-date"><?php echo $post->getCreatedTime(); ?></div>
+						<div class="postContent"><?php echo $this->helper('cms')->getBlockTemplateProcessor()->filter($post->getShortContent()); ?></div>
+						<div class="actions">
+							<a title="<?php echo $this->__('read more') ?>" class="read-more" href="<?php echo $post->getAddress(); ?>"><i class="meigee-notebook"></i><span><?php echo $this->__('read more') ?></span></a>
+						</div>
+					</li>
+				<?php endforeach; ?>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<?php endif; ?>

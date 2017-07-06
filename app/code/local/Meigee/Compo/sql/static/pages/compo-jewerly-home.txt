@@ -1,0 +1,60 @@
+<div class="banners-wrapper clearfix">
+	<div class="banner">
+		<a href="javascript: void(0);" title="Banner 1"><img src="{{media url='wysiwyg/compo_jewerly_banner_1.jpg'}}" alt="Banner 1"></a>
+	</div>
+	<div class="banner">
+		<a href="javascript: void(0);" title="Banner 2"><img src="{{media url='wysiwyg/compo_jewerly_banner_2.jpg'}}" alt="Banner 2"></a>
+	</div>
+	<div class="banner">
+		<a href="javascript: void(0);" title="Banner 3"><img src="{{media url='wysiwyg/compo_jewerly_banner_3.jpg'}}" alt="Banner 3"></a>
+	</div>
+</div>
+<hr class="indent-24 white-space">
+<header class="widget-title">
+	<h2>Handpicked products</h2>
+</header>
+{{widget type="thememanager/widget_products" meigee_theme="compo" select_type="saleproducts" template="slider" compo_grid_template="1" compo_quickview="1" img_width="320" products_amount="10" product_name_slider="1" label_new="1" label_sale="1" price_slider="1" add_to_cart_slider="1" wishlist_slider="1" compare_slider="1" rating_stars_slider="1" rating_cust_link_slider="1" visible_products="5" items_horizontal="4" items_vertical="3" items_scaleup="false" pagination_speed="800" rewind_speed="1000" pagination="true" lazy_load="true" auto_play="5000" stop_on_hover="true" slide_speed="400" compo_center_loop="false" compo_rtl="false" widget_id="6671"}}
+<hr class="indent-28 white-space">
+<div class="row">
+	<div class="col-md-4 col-md-push-4 col-sm-12">
+		<div class="subscribe-block">
+			<h3>Newsletter</h3>
+			{{block type="newsletter/subscribe" name="footer.newsletter" template="newsletter/subscribe.phtml"}}
+		</div>
+	</div>
+	<hr class="indent-18 white-space visible-xs visible-sm">
+	<div class="col-md-4 col-md-pull-4 col-sm-6">
+		<a href="javascript: void(0);" title=""><img {{retinaurl data-img-src="wysiwyg/compo_jewerly_banner_4.jpg" data-img-srcX2="wysiwyg/compo_jewerly_banner_4@x2.jpg" alt=""}}></a>
+	</div>
+	<hr class="indent-18 white-space visible-xs">
+	<div class="col-md-4 col-sm-6">
+		<a href="javascript: void(0);" title=""><img {{retinaurl data-img-src="wysiwyg/compo_jewerly_banner_5.jpg" data-img-srcX2="wysiwyg/compo_jewerly_banner_5@x2.jpg" alt=""}}></a>
+	</div>
+</div>
+<hr class="indent-28 white-space">
+<div class="brands row">
+	<div class="col-sm-2">
+		<a href="javascript: void(0);" title=""><img {{retinaurl data-img-src="wysiwyg/compo_lingerie_brand_1.png" data-img-srcX2="wysiwyg/compo_lingerie_brand_1@x2.png" alt=""}}></a>
+	</div>
+	<hr class="indent-18 white-space visible-xs">
+	<div class="col-sm-2">
+		<a href="javascript: void(0);" title=""><img {{retinaurl data-img-src="wysiwyg/compo_lingerie_brand_2.png" data-img-srcX2="wysiwyg/compo_lingerie_brand_2@x2.png" alt=""}}></a>
+	</div>
+	<hr class="indent-18 white-space visible-xs">
+	<div class="col-sm-2">
+		<a href="javascript: void(0);" title=""><img {{retinaurl data-img-src="wysiwyg/compo_lingerie_brand_3.png" data-img-srcX2="wysiwyg/compo_lingerie_brand_3@x2.png" alt=""}}></a>
+	</div>
+	<hr class="indent-18 white-space visible-xs">
+	<div class="col-sm-2">
+		<a href="javascript: void(0);" title=""><img {{retinaurl data-img-src="wysiwyg/compo_lingerie_brand_4.png" data-img-srcX2="wysiwyg/compo_lingerie_brand_4@x2.png" alt=""}}></a>
+	</div>
+	<hr class="indent-18 white-space visible-xs">
+	<div class="col-sm-2">
+		<a href="javascript: void(0);" title=""><img {{retinaurl data-img-src="wysiwyg/compo_lingerie_brand_5.png" data-img-srcX2="wysiwyg/compo_lingerie_brand_5@x2.png" alt=""}}></a>
+	</div>
+	<hr class="indent-18 white-space visible-xs">
+	<div class="col-sm-2">
+		<a href="javascript: void(0);" title=""><img {{retinaurl data-img-src="wysiwyg/compo_lingerie_brand_6.png" data-img-srcX2="wysiwyg/compo_lingerie_brand_6@x2.png" alt=""}}></a>
+	</div>
+</div>
+<hr class="indent-28 white-space">

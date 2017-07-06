@@ -1,0 +1,3 @@
+<div class="header-social-link">
+	<a href="#" title="Instagram"><i class="meigee-fa-instagram"></i>@composhop</a>
+</div>

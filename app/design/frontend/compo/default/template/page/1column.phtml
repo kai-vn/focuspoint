@@ -1,0 +1,49 @@
+<?php
+/**
+ * @package     compo
+ * @copyright   Copyright (c) 2010-2015 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+
+ $header_wrapper_type = $this->getLayout()->getMConfigResultByAlias('header_wrapper_type');
+ $header_wrapper_type_value = $header_wrapper_type['value']['sv1']['value'];
+ $header_bg_img = $this->getLayout()->getMConfigResultByAlias('header_wrapper_bgimage');
+ if(!empty($header_bg_img) && $header_wrapper_type_value == 1) {
+	$header_bg = 'style="background-image: url('.Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB).$header_bg_img.')"';
+ } else {
+	$header_bg = '';
+ }
+?>
+<!DOCTYPE html>
+<html lang="<?php echo $this->getLang() ?>">
+	<head>
+		<?php echo $this->getChildHtml('head') ?>
+	</head>
+	<body<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?>>
+		<?php echo $this->getChildHtml('after_body_start') ?>
+		<?php
+			echo $this->getChildHtml('global_notices');
+			$breadcrumbs = $this->getChildHtml('breadcrumbs');
+		?>
+		<div class="header-breadcrumbs-wrapper<?php echo ($breadcrumbs ? ' with-breadcrumbs' : ''); ?>" <?php echo $header_bg; ?>>
+			<?php echo $this->getChildHtml('header') ?>
+			<?php if($breadcrumbs): ?>
+				<?php echo $breadcrumbs; ?>
+			<?php endif; ?>
+		</div>
+		<div class="content-wrapper">
+			<div class="container">
+				<div class="main-container col1-layout">
+					<div class="row">
+						<div class="col-main col-xs-12">
+							<?php echo $this->getChildHtml('global_messages') ?>
+							<?php echo $this->getChildHtml('content') ?>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<?php echo $this->getChildHtml('footer') ?>
+		<?php echo $this->getChildHtml('before_body_end') ?>
+		<?php echo $this->getAbsoluteFooter() ?>
+	</body>
+</html>

@@ -1,0 +1,86 @@
+<?php
+/**
+ * @package     compo
+ * @copyright   Copyright (c) 2010-2015 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+
+$meigeeOptions = $this->getLayout();
+$lightBox = $meigeeOptions->getMConfigResultByAlias('lightbox_listing');
+$addToCart = $this->getAddToCartFooterList();
+$productName = $this->getProductNameFooterList();
+$productPrice = $this->getPriceFooterList();
+$compare = $this->getCompareFooterList();
+$wishlist = $this->getWishlistFooterList();
+$widgetId = $this->getWidgetId();
+$imgSize = $this->getImgWidth();
+if(!$imgSize){
+	$imgSize = 320;
+}
+?>
+<div class="widget-products">
+	<?php
+		echo $this->getPager();
+		$collection = $this->getCollection();
+	?>
+	<ul class="footer-products-list">
+		<?php foreach ($collection as $product): ?>
+			<li class="item clearfix">
+				<div class="product-inner">
+					<div class="image-box media-left">
+						<?php if($lightBox){ ?>
+							<a href="<?php echo $product->getProductMediaResized(930, 'small_image')->getImageSrc(); ?>" class="lightbox-button" data-toggle="lightbox" data-footer="<?php echo $this->stripTags($this->getImageLabel($product, 'small_image'), null, true) ?>">
+								<i class="meigee-magnifier"></i>
+							</a>
+						<?php } ?>
+						<a href="<?php echo $product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($product, 'small_image'), null, true) ?>" class="product-image">
+							<?php
+								echo $product->productHoverImage($this, $imgSize, 'with-mobile', 385);
+								$escaped_label = $this->stripTags($product->getName(), null, true);
+								echo '<img '. $product->getProductMediaResized($imgSize, 'small_image', 'with-mobile', 385)
+									->addImageHtmlAttributte('width', $imgSize)
+									->addImageHtmlAttributte('alt', $escaped_label)
+									->addImageHtmlAttributte('title', $escaped_label)
+									->getImageHtmlAttributte().' />';
+							?>
+						</a>
+					</div>
+					<?php // Product description ?>
+					<div class="product-shop clearfix media-body">
+						<div class="f-fix">
+							<?php $_productNameStripped = $this->stripTags($product->getName(), null, true); ?>
+							<?php if($productName): ?>
+								<h5 class="product-name"><a href="<?php echo $product->getProductUrl() ?>" title="<?php echo $_productNameStripped; ?>"><?php echo $product->getName(); ?></a></h5>
+							<?php endif; ?>
+							<?php if($productPrice):
+								echo $this->getPriceHtml($product, true, '-widget-'.$widgetId);
+							endif; ?>
+							<?php if($addToCart || $compare || $wishlist): ?>
+								<div class="product-buttons">
+									<?php if($addToCart){ ?>
+										<?php if($product->isSaleable()): ?>
+											<button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="btn btn-default" onclick="setLocation('<?php echo $this->getAddToCartUrl($product) ?>')"><span><i class="meigee-fa-shopping-cart"></i><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+										<?php else: ?>
+											<a class="btn btn-default" href="<?php echo $product->getProductUrl() ?>" title="<?php echo $this->__('Read More'); ?>"><?php echo $this->__('Read More'); ?></a>
+										<?php endif; ?>
+									<?php } ?>
+									<?php if($compare || $wishlist) : ?>
+										<ul class="add-to-links">
+											<?php if (($this->helper('wishlist')->isAllow()) && $wishlist) : ?>
+												<li><a href="<?php echo $this->helper('wishlist')->getAddUrl($product) ?>" class="link-wishlist"><i class="meigee-fa-heart"></i></a></li>
+											<?php endif; ?>
+											<?php if(($_compareUrl=$this->getAddToCompareUrl($product)) && $compare): ?>
+												<li><a href="<?php echo $_compareUrl ?>" class="link-compare"><i class="meigee-fa-exchange"></i></a></li>
+											<?php endif; ?>
+										</ul>
+									<?php endif; ?>
+								</div>
+							<?php endif; ?>
+						</div>
+					</div>
+				</div>
+			</li>
+		<?php endforeach; ?>
+	</ul>
+	<script type="text/javascript">decorateList('products-list', 'none-recursive')</script>
+	<?php echo $this->getPager(); ?>
+</div>

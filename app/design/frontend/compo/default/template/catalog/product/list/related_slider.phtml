@@ -1,0 +1,132 @@
+<?php
+/**
+ * @package     compo
+ * @copyright   Copyright (c) 2010-2015 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+ $relatedTabs = $this->getProduct()->getRelatedTabs();
+ $lazyLoad = Mage::helper('thememanager/themeConfig')->getThemeConfigResultByAliase('ajax_product_images');
+?>
+<?php if($this->getItems()->getSize() && !$relatedTabs): ?>
+<div class="block block-related">
+    <div class="block-title">
+        <strong><span><?php echo $this->__('Related Products') ?></span></strong>
+		<?php if($this->getItems()->getSize() > 1){ ?>
+			<div class="slider-buttons owl-buttons clearfix" id="related-sidebar-buttons"></div>
+		<?php } ?>
+    </div>
+    <div class="block-content">
+		<div id="related-slider">
+			<div class="carousel-ul clearfix products-grid owl-carousel owl-theme">
+				<?php foreach($this->getItems() as $_item): ?>
+					<div class="product clearfix">
+                        <div class="indent type-1">
+    						<div class="media-left">
+    							<a href="<?php echo $_item->getProductUrl() ?>" title="<?php echo (Mage::app()->getLayout()->checkVersion('1.7.x.x') ? $this->htmlEscape : $this->escapeHtml).($_item->getName()) ?>" class="product-image">
+    								<?php
+    									$escaped_label = (Mage::app()->getLayout()->checkVersion('1.7.x.x') ? $this->htmlEscape : $this->escapeHtml).($_item->getName());
+    									echo '<img '. $_item->getProductMediaResized(78, 'thumbnail', 'with-mobile', 385)
+    										->addImageHtmlAttributte('alt', $escaped_label)
+    										->addImageHtmlAttributte('width', 78)
+    										->addImageHtmlAttributte('title', $escaped_label)
+    										->addImageHtmlAttributte('class', 'lazyOwl')
+    										// ->addImageHtmlAttributte('class', 'no_ajax_image_loader')
+    										->addImageHtmlAttributte('data-src', $_item->getProductMediaResized(400, 'small_image')->getImageSrc())
+    										->getImageHtmlAttributte().' />';
+    								?>
+    							</a>
+    						</div>
+    						<div class="media-body">
+    							<h5 class="product-name clearfix">
+    								<a href="<?php echo $_item->getProductUrl() ?>"><?php echo (Mage::app()->getLayout()->checkVersion('1.7.x.x') ? $this->htmlEscape : $this->escapeHtml).($_item->getName()) ?></a>
+    							</h5>
+    							<?php $storeId = Mage::app()->getStore()->getId();
+    							$summaryData = Mage::getModel('review/review_summary')->setStoreId($storeId)->load($_item->getId());
+    							if ($summaryData['rating_summary']){ ?>
+    								<div class="rating-box">
+    									<i class="star">&#9733;</i><i class="star">&#9733;</i><i class="star">&#9733;</i><i class="star">&#9733;</i><i class="star">&#9733;</i>
+    									<div class="rating" style="width:<?php echo $summaryData['rating_summary'] ?>%"><i class="star">&#9733;</i><i class="star">&#9733;</i><i class="star">&#9733;</i><i class="star">&#9733;</i><i class="star">&#9733;</i></div>
+    								</div>
+    							<?php } ?>
+    							<?php echo $this->getPriceHtml($_item, true, '-related') ?>
+    							<?php if(!$_item->isComposite() && $_item->isSaleable()): ?>
+    								<?php if (!$_item->getRequiredOptions()): ?>
+    									<input type="checkbox" class="checkbox related-checkbox" id="related-checkbox<?php echo $_item->getId() ?>" name="related_products[]" value="<?php echo $_item->getId() ?>" />
+    								<?php endif; ?>
+    							<?php endif; ?>
+                            </div>
+    					</div>
+					</div>
+				<?php endforeach ?>
+			</div>
+		</div>
+		<div class="related-button">
+			<a class="btn btn-default" href="#" onclick="selectAllRelated(this); return false;"><?php echo $this->__('Select All') ?></a>
+		</div>
+        <script type="text/javascript">decorateList('block-related', 'none-recursive')</script>
+    </div>
+    <script type="text/javascript">
+    //<![CDATA[
+    $$('.related-checkbox').each(function(elem){
+        Event.observe(elem, 'click', addRelatedToProduct)
+    });
+    var relatedProductsCheckFlag = false;
+     function selectAllRelated(txt){
+        if (relatedProductsCheckFlag == false) {
+            $$('.related-checkbox').each(function(elem){
+                elem.checked = true;
+            });
+            relatedProductsCheckFlag = true;
+            txt.innerHTML="<?php echo Mage::helper('core')->jsQuoteEscape($this->__('unselect all')); ?>";
+        } else {
+            $$('.related-checkbox').each(function(elem){
+                elem.checked = false;
+            });
+            relatedProductsCheckFlag = false;
+            txt.innerHTML="<?php echo Mage::helper('core')->jsQuoteEscape($this->__('select all')); ?>";
+        }
+        addRelatedToProduct();
+    }
+    function addRelatedToProduct(){
+        var checkboxes = $$('.related-checkbox');
+        var values = [];
+        for(var i=0;i<checkboxes.length;i++){
+            if(checkboxes[i].checked) values.push(checkboxes[i].value);
+        }
+        if($('related-products-field')){
+            $('related-products-field').value = values.join(',');
+        }
+    }
+    //]]>
+	jQuery(document).ready(function(){
+		relatedSlider = jQuery('#related-slider .carousel-ul');
+		relatedSlider.owlCarousel({
+			margin: 0,
+			nav:true,
+			responsive:{
+				0:{
+					items:1
+				},
+				767:{
+					items:<?php echo (Mage::app()->getRequest()->getParam('isAjax') ? '2' : '1'); ?>
+				},
+				1007:{
+					items:<?php echo (Mage::app()->getRequest()->getParam('isAjax') ? '4' : '1'); ?>
+				},
+				1331:{
+					items:<?php echo (Mage::app()->getRequest()->getParam('isAjax') ? '4' : '1'); ?>
+				}
+			},
+			dots: false,
+			lazyLoad: <?php echo ($lazyLoad == 'lazy_image_loader' ? 'true' : 'false'); ?>,
+			navContainer: '#related-sidebar-buttons',
+			navText: ['<i class="meigee-arrow-left"></i>','<i class="meigee-arrow-right"></i>']
+		});
+	});
+    </script>
+</div>
+<?php elseif($relatedTabs):
+	foreach ($relatedTabs AS $tab) {
+		echo $tab->getTitle();
+		echo $tab->getContent();
+	}
+endif ?>

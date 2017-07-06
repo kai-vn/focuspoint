@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<config>
+    <global namespace="general_add_to_cart" version_type="base"></global>
+    <adminhtml>
+        <group_title>Module Components</group_title>
+        <group_name><![CDATA[<i class="fa fa-university"></i>]]>Module Components</group_name>
+        <submodule_name><![CDATA[<i class="fa fa-university"></i>]]>Add to Cart</submodule_name>
+        <submodule_title>Add to Cart</submodule_title>
+    </adminhtml>
+    <groups>
+        <general><title>General</title></general>
+        <quick_view>
+            <title>Quick View</title>
+        </quick_view>
+        <confirmation_window><title>Confirmation window</title></confirmation_window>
+    </groups>
+    <addJs>
+        <js>general_add_to_cart.js</js>
+    </addJs>
+    <addCss>
+        <css>general_add_to_cart.css</css>
+    </addCss>
+    <blocks>
+        <block>addToCart_base</block>
+    </blocks>
+    <options>
+        <enable_ajax_for_add_to_cart tab="general">
+            <label>Enable Ajax add to cart for pages:</label>
+            <type multiple="3">Select</type>
+            <note>You can enable/disable ajax for add to cart on the pages above. On all other pages Ajax will work till you disable whole module</note>
+            <values>
+                <value data="cms">CMS Pages</value>
+                <value data="category">Listing</value>
+                <value data="product">Product page</value>
+            </values>
+            <default>cms</default>
+            <default>product</default>
+            <default>category</default>
+        </enable_ajax_for_add_to_cart>
+        <add_to_cart_btn_selector tab="general">
+            <default>.btn-cart, #wishlist-sidebar .link-cart, #product-addtocart-button</default>
+        </add_to_cart_btn_selector>
+        <header_selector tab="general">
+            <default>.header</default>
+        </header_selector>
+        <product_image_animation tab="general">
+            <default>0</default>
+        </product_image_animation>
+        <enable_quick_view tab="quick_view">
+            <label>Enable quick view</label>
+            <type>Input_OnOff</type>
+            <default>1</default>
+            <label_on>Enable</label_on>
+            <label_off>Disable</label_off>
+        </enable_quick_view>
+        <add_to_cart_static_block tab="confirmation_window">
+            <default></default>
+        </add_to_cart_static_block>
+        <remove_from_cart_static_block tab="confirmation_window">
+            <default></default>
+        </remove_from_cart_static_block>
+
+    </options>
+</config>
+
+

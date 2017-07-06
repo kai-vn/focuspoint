@@ -1,0 +1,141 @@
+<?php
+$helper = Mage::helper('thememanager');
+?>
+<div class="magento_message" id="modal_dialog_message">
+    <div class="content-header">
+        <h3 class="icon-head head-adminhtml"><?php echo $this->__('Import Data'); ?></h3>
+        <p class="form-buttons">
+            <button style="display: none;" onclick="importConfigs()" class="scalable save back import-btn" type="button" title="<?php echo $this->__('Import'); ?>" id="insert_button">
+                <span>
+                    <span>
+                        <span><?php echo $this->__('Import'); ?></span>
+                    </span>
+                </span>
+            </button>
+        </p>
+    </div>
+    <div class="entry-edit" id="uploadImportFilesForm">
+        <input type="hidden" id="UploadImportFilesAjaxUrl" value="<?php echo $this->getUrl('*/*/uploadImportFiles', array('theme'=>$helper->getThemeNamespace())); ?>" />
+        <input type="hidden" id="ImportDataAjaxUrl" value="<?php echo $this->getUrl('*/*/importData', array('theme'=>$helper->getThemeNamespace())); ?>" />
+        <form method="post" id="UploadImportFilesForm">
+            <div class="entry-edit-head">
+                <h4 class="icon-head head-edit-form fieldset-legend">Select your files</h4>
+                <div class="form-buttons"></div>
+            </div>
+
+            <div class="fieldset ">
+                <div class="hor-scroll">
+                    <input type='file' multiple id="UploadImportFilesContainer" name="ImportFiles[]" class="required-entry" >
+                    <input type='button' onclick='uploadImportFiles(); return false;' value='Upload Import Files' />
+                    <input name="form_key" type="hidden" value="<?php echo Mage::getSingleton('core/session')->getFormKey() ?>" />
+                </div>
+            </div>
+         </form>
+    </div>
+
+    <div id="messages"><ul class="messages"></ul></div>
+    <div id="entry-edit-files" class="entry-edit"></div>
+
+
+    <div id="entry-edit-example" class="entry-edit import-entry-edit-file" style="display:none;">
+<!--    <div id="entry-edit-example" class="entry-edit">-->
+<!--        <form method="post">-->
+            <div class="entry-edit-head">
+                <h4 class="icon-head head-edit-form fieldset-legend import-file-H4">file-H4</h4>
+                <div class="form-buttons"></div>
+            </div>
+            <div class="fieldset ">
+                <div class="hor-scroll">
+
+<!-- !!! -->
+                    <div class="import_form">
+                        <div class="form_data">
+                            <div class="form_label"><?php echo $this->__('Action'); ?>:</div>
+                            <div class="form_element">
+                                <div class="import-action"></div>
+                            </div>
+                            <div class="validation-advice duplicate-entry"><?php echo $this->__('Duplicate Entry'); ?>.</div>
+                            <div class="validation-advice already-created-theme-entry"><?php echo $this->__('Theme scheme can not be applied  for selected type since there is another theme scheme already created for that type %s', '({theme_name})'); ?>.</div>
+                        </div>
+
+                        <div class="import_values" style="width: 500px; float:left;">
+                            <div class="form_data">
+                                <div class="form_label"><?php echo $this->__('Name'); ?>:</div>
+                                <div class="form_element">
+                                    <input name="name" type="text" value="Name-value" class="import-name-value import-value" />
+                                    <p class="note">
+                                        <span><?php echo $this->__('Previous value'); ?>: "<span class="import-name-previous">name-previous</span>"</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="form_data">
+                                <div class="form_label"><?php echo $this->__('Select Store'); ?>:</div>
+                                <div class="form_element">
+                                    <div class="import-store-value"></div>
+                                    <p class="note">
+                                        <span><?php echo $this->__('Previous value'); ?>: "<span class="import-store-previous">store-previous</span>"</span>
+                                    </p>
+                                </div>
+                                <div class="validation-advice already-selected-entry"><?php echo $this->__('Theme scheme can be applied only once for this type, leave only one for selected type'); ?>.</div>
+                            </div>
+                            <div class="form_data">
+                                <div class="form_label"><?php echo $this->__('Type'); ?>:</div>
+                                <div class="form_element">
+                                    <div class="import-type-value"></div>
+                                    <p class="note">
+                                        <span><?php echo $this->__('Previous value'); ?>: "<span class="import-type-previous">type-previous</span>"</span>
+                                    </p>
+                                </div>
+                                <div class="validation-advice already-selected-entry"><?php echo $this->__('Theme scheme can be applied only once for this type, leave only one for selected type.'); ?>.</div>
+                                <div class="validation-advice duplicated-theme-default-entry"><?php echo $this->__('Default theme scheme can not be duplicated'); ?>.</div>
+                            </div>
+                        </div>
+
+                        <div class="import_items" style="width: 100px; float:left;">
+                            <input class="import-selector-product" style="display:none;" type="button" onclick="window.parent.showProductSelector(this, '<?php echo $this->getUrl('*/*/importProductSelector', array()); ?>'); return false;" value="<?php echo $this->__('Select Products'); ?>" />
+                            <input class="import-selector-category" style="display:none;" type="button" onclick="window.parent.showCategorySelector(this, '<?php echo $this->getUrl('*/*/importCategorySelector', array()); ?>'); return false;" value="<?php echo $this->__('Select Categories'); ?>" />
+                            <input class="import-selector-cms_page" style="display:none;" type="button" onclick="window.parent.showCmsPageSelector(this, '<?php echo $this->getUrl('*/*/importCmsPageSelector', array()); ?>'); return false;" value="<?php echo $this->__('Select Cms Pages'); ?>" />
+                            <input name="file-path" class="import-file-path" type="hidden" />
+                        </div>
+                    </div>
+<!-- !!! -->
+                </div>
+            </div>
+<!--        </form>-->
+    </div>
+
+    <div id="ActionExample" style="display:none;">
+        <select name="action" class="action-value" data-replace-txt="<?php echo $this->__('Replace'); ?>">
+            <option value="do_nothing"><?php echo $this->__('Do nothing'); ?></option>
+            <option value="new"><?php echo $this->__('New'); ?></option>
+        </select>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,38 @@
+<?php if ($posts = $this->getRecent()): ?>
+<div class="row">
+	<div class="widget-latest clearfix">
+		<div class="col-xs-12">
+			<div class=" row">
+				<ul class="clearfix">
+				<?php foreach ($posts as $post): ?>
+					<li class="item col-sm-3">
+						<div class="inner clearfix">
+							<h5><a href="<?php echo $post->getAddress(); ?>" ><?php echo $post->getTitle(); ?></a></h5>
+							<div class="post-info">
+								<p class="post-category">
+										<?php
+										$postCats = Mage::getModel('blog/post')->getCategoriesForPosts($post->getId());
+										$cat_arr = array();
+										foreach ($postCats as $cat) {
+											$cat_arr[] = $cat['title'];
+										}
+										$postCat = implode(', ', $cat_arr); ?>
+									<?php echo $postCat; ?>
+								</p>
+								<p class="post-author">
+									<?php echo $this->__("By"); ?> <?php echo $post->getUser(); ?>
+								</p>
+							</div>
+							<div class="postContent"><?php echo $this->helper('cms')->getBlockTemplateProcessor()->filter($post->getShortContent()); ?></div>
+							<div class="actions">
+								<a title="<?php echo $this->__('Read more') ?>" class="btn btn-default" href="<?php echo $post->getAddress(); ?>"><span><?php echo $this->__('Read') ?></span></a>
+							</div>
+						</div>
+					</li>
+				<?php endforeach; ?>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<?php endif; ?>

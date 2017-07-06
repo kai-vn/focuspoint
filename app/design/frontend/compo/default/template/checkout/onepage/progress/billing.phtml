@@ -1,0 +1,21 @@
+<?php
+/**
+ * @package     compo
+ * @copyright   Copyright (c) 2010-2015 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+?>
+<?php if ($this->getCheckout()->getStepData('billing', 'complete')): ?>
+<dt class="complete clearfix">
+    <?php echo $this->__('Billing Address') ?>
+    <span class="changelink pull-right">
+    	<a href="#billing" onclick="checkout.changeSection('opc-billing'); return false;"><i class="meigee-pencil"></i></a>
+    </span>
+</dt>
+<dd class="complete">
+    <address><?php echo $this->getBilling()->format('html') ?></address>
+</dd>
+<?php else: ?>
+<dt>
+    <?php echo $this->__('Billing Address') ?>
+</dt>
+<?php endif; ?>

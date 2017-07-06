@@ -1,0 +1,40 @@
+<?php
+/**
+ * @package     compo
+ * @copyright   Copyright (c) 2010-2015 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+ $_product = $this->getProduct();
+ $meigeeOptions = $this->getLayout();
+ $timerStatus = $meigeeOptions->getMConfigResultByAlias('timer_status');
+ $timerProductStatus = $meigeeOptions->getMConfigResultByAlias('timer_product_status');
+ $timerFormat = $meigeeOptions->getMConfigResultByAlias('timer_product_format');
+ $specialprice = $_product->getSpecialPrice();
+ $specialPriceFromDate = $_product->getSpecialFromDate();
+ $specialPriceToDate = $_product->getSpecialToDate();
+ $today =  time();
+?>
+<div class="product-options-bottom">
+	<?php if($timerStatus && $timerProductStatus) {
+		if ($specialprice && isset($specialPriceFromDate) && isset($specialPriceToDate)):
+			if($today >= strtotime($specialPriceFromDate) && $today <= strtotime($specialPriceToDate) || $today >= strtotime( $specialPriceFromDate) && is_null($specialPriceToDate)): ?>
+				<div class="timer-wrapper clearfix<?php if($timerFormat == 2):?> full<?php endif; ?>">
+					<?php echo $this->getChildHtml('', true, true); ?>
+				</div>
+			<?php else:
+				echo $this->getChildHtml('', true, true);
+			endif;
+		else:
+			echo $this->getChildHtml('', true, true);
+		endif;
+	} else {
+		echo $this->getChildHtml('', true, true);
+	} ?>
+	<script type="text/javascript">
+		if(jQuery('.price-as-configured').length){
+			jQuery('.price-as-configured').parent().addClass('f-none');
+		}
+		if(jQuery('.add-to-cart').length == 0){
+			jQuery('.price-box').addClass('f-none');
+		}
+	</script>
+</div>

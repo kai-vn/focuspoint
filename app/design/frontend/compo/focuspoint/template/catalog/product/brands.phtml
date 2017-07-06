@@ -1,0 +1,89 @@
+<?php
+/**
+ * Seller Listing
+ *
+ *
+ */
+?>
+<div>
+
+ 
+<div style="padding-left:8px;">
+<?php
+$product = Mage::getModel('catalog/product');
+$attributes = Mage::getResourceModel('eav/entity_attribute_collection')
+->setEntityTypeFilter($product->getResource()->getTypeId())
+->addFieldToFilter('attribute_code', 'brand');
+$attribute = $attributes->getFirstItem()->setEntity($product->getResource());
+$brand = $attribute->getSource()->getAllOptions(false);
+?>
+
+<?php if ($block_brand_top = $this->getLayout()->createBlock('cms/block')->setBlockId('brand_top_block')->toHtml()): ?>
+					<div class="footer-banner">
+					    <?php echo $block_brand_top; ?>
+					</div>
+					<?php endif;?>	
+<div class="brand-heading">
+
+<a href="##"> 0 - 9 </a>  <a href="#A">A</a>  <a href="#B">B</a>  <a href="#C">C</a>  <a href="#D">D</a>  <a href="#E">E</a>  <a href="#F"> F</a>  <a href="#G"> G</a>  <a href="#H"> H</a>  <a href="#I"> I</a>  <a href="#J"> J</a>  <a href="#K"> K</a>  <a href="#L"> L</a>  <a href="#M"> M</a>  <a href="#N"> N</a>  <a href="#O"> O</a>  <a href="#P"> P</a>  <a href="#Q"> Q</a>  <a href="#R"> R</a>  <a href="#S"> S</a>  <a href="#T"> T</a>  <a href="#U"> U</a>  <a href="#V"> V</a>  <a href="#W"> W</a>  <a href="#X"> X</a>  <a href="#Y"> Y</a>  <a href="#Z"> Z</a>
+</div>
+
+
+
+<div class="category-products">
+   
+    <div class="brand-list-order">
+	<table>
+	
+
+    <?php foreach ($brand as $brands): ?>
+       <?php $_brandNameStripped = $brands['label'] ?>
+	   
+<?php
+	  $brandletter=substr($_brandNameStripped, 0,1);
+	  
+	  if(is_numeric($brandletter)) { $brandletter="0-9"; }
+	  
+	  
+	  
+	  
+	  
+	  if($brandletter!=$oldbrandletter)
+	  {
+	  
+	//  if(($brandletter==M) || ($brandletter=="S") || ($brandletter=="G"))  {echo '</ul></li>';  }
+	  
+	    // if(($brandletter=="A") || ($brandletter=="G") || ($brandletter=="M") || ($brandletter=="S"))
+	 //{ echo '<tr><td></td><td><td>'; }
+	    
+	     echo '<tr><td class="alphabet-col"><h3><a name="'.$brandletter.'" id="'.$brandletter.'"></a>'. $brandletter.' </h3></td><td><ul class="details">';
+		
+		
+	  }
+	  ?>
+  
+  <?php 
+		$custombrurl=strtolower($_brandNameStripped);
+		$custombrurl=str_replace(" ","-",$custombrurl);
+		$custombrurl=str_replace("'","",$custombrurl);
+		
+		//if($custombrurl=="The Batik Boutique’s") {$custombrurl="the-batik-boutique-s"; }
+		
+   ?>
+  <li><a href="<?php echo Mage::getUrl("")  ?>brand/<?php echo $custombrurl; ?>.html" ><?php echo $_brandNameStripped; ?></a></li>
+  
+ <?php 
+	  $oldbrandletter=$brandletter;
+	  
+	  ?>
+    <?php endforeach; ?>
+	</td></tr>
+   
+   
+    
+	</table>
+</div>
+    
+
+
+</div>

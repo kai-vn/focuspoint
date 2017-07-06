@@ -1,0 +1,4 @@
+<div class="popup-content-wrapper clearfix" data-bgcolor="background-color: #fff;">
+    <img src="{{media url='wysiwyg/compo_popup_img.png'}}" alt="">
+	{{block type="newsletter/subscribe" block_id="popup.newsletter" template="newsletter/popup_subscribe.phtml"}}
+</div>

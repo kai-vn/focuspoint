@@ -1,0 +1,179 @@
+<?xml version="1.0" ?>
+<layout>
+    <default>
+        <reference name="head">
+            <block type="ajaxKit/frontend_ajaxJs" name="ajaxkit" output="toHtml" />
+            <block type="ajaxKit/frontend_ajaxJs" name="ajaxkit" output="toHtml" />
+        </reference>
+		<reference name="before_body_end">
+			<block type="page/html" name="ajaxkit_loader" as="ajaxkit_loader">
+				<action method="setTemplate"><template>ajaxkit/loader.phtml</template></action>
+			</block>
+		</reference>
+    </default>
+<!-- main.css -->
+
+    <ajaxkit_popup_AddToCart>
+        <reference name="ajaxkit_popup_content">
+            <block type="ajaxKit/frontend_popup_default" name="ajaxkit_popup_content_default"  template="ajaxkit/addtocart/default_popup.phtml">
+                <block type="ajaxKit/frontend_popup_productList" name="added_products"  template="ajaxkit/addtocart/popup/product_list.phtml" />
+                <block type="ajaxKit/frontend_popup_infoText" name="info_text" />
+                <block type="ajaxKit/frontend_popup_button" name="button" />
+            </block>
+        </reference>
+		<reference name="ajaxkit_cart_top_link">
+    		<block type="checkout/cart_sidebar" name="top_cart" template="checkout/cart/topcart.phtml">
+			<action method="addItemRender"><type>simple</type><block>checkout/cart_item_renderer</block><template>checkout/cart/sidebar/default.phtml</template></action>
+			<action method="addItemRender"><type>grouped</type><block>checkout/cart_item_renderer_grouped</block><template>checkout/cart/sidebar/default.phtml</template></action>
+			<action method="addItemRender"><type>configurable</type><block>checkout/cart_item_renderer_configurable</block><template>checkout/cart/sidebar/default.phtml</template></action>
+			<block type="core/text_list" name="cart_sidebar.extra_actions" as="extra_actions" translate="label" module="checkout">
+				<label>Shopping Cart Sidebar Extra Actions</label>
+			</block>
+		</block>
+        </reference>
+    </ajaxkit_popup_AddToCart>
+
+
+
+
+    <ajaxkit_popup_AddToLinks>
+        <reference name="ajaxkit_popup_content">
+            <block type="ajaxKit/frontend_popup_default" name="ajaxkit_popup_content_default"  template="ajaxkit/addtolinks/default_popup.phtml">
+                <block type="ajaxKit/frontend_popup_productList" name="added_products" template="ajaxkit/addtolinks/popup/product_list.phtml"  />
+                <block type="ajaxKit/frontend_popup_infoText" name="info_text" />
+                <block type="ajaxKit/frontend_popup_button" name="button" />
+            </block>
+        </reference>
+    </ajaxkit_popup_AddToLinks>
+
+
+
+
+
+    <ajaxkit_login_popup translate="label">
+        <!--login form-->
+        <block type="customer/form_login" name="customer_form_login" template="ajaxkit/login/login.phtml">
+            <block type="core/text_list" name="form.additional.info_login">
+                <block type="captcha/captcha" name="captcha_login">
+                    <reference name="head">
+                        <action method="addJs"><file>mage/captcha.js</file></action>
+                    </reference>
+                    <action method="setFormId"><formId>user_login</formId></action>
+                    <action method="setImgWidth"><width>230</width></action>
+                    <action method="setImgHeight"><width>50</width></action>
+                    <action method="setIsAjax"><width>0</width></action>
+                </block>
+            </block>
+            <block type="persistent/form_remember" name="persistent.remember.me_login" template="ajaxkit/login/remember_me.phtml" >
+                <action method="setPersistentType"><type>login</type></action>
+            </block>
+
+            <block type="core/template" name="persistent.remember.me.tooltip_login" template="ajaxkit/login/remember_me_tooltip.phtml" >
+                <action method="setPersistentType"><type>login</type></action>
+            </block>
+        </block>
+
+        <!--users register form-->
+        <block type="customer/form_register" name="customer_form_register" template="ajaxkit/login/register.phtml">
+            <block type="page/html_wrapper" name="customer.form.register.fields.before" as="form_fields_before" translate="label">
+                <label>Form Fields Before</label>
+            </block>
+            <block type="core/text_list" name="form.additional.info_register">
+                <block type="captcha/captcha" name="captcha_register">
+                    <reference name="head">
+                        <action method="addJs"><file>mage/captcha.js</file></action>
+                    </reference>
+                    <action method="setFormId"><formId>user_create</formId></action>
+                    <action method="setImgWidth"><width>230</width></action>
+                    <action method="setImgHeight"><width>50</width></action>
+                    <action method="setIsAjax"><width>0</width></action>
+                </block>
+            </block>
+            <block type="persistent/form_remember" name="persistent.remember.me_register" template="ajaxkit/login/remember_me.phtml">
+                <action method="setPersistentType"><type>register</type></action>
+            </block>
+            <block type="core/template" name="persistent.remember.me.tooltip_register" template="ajaxkit/login/remember_me_tooltip.phtml" >
+                <action method="setPersistentType"><type>register</type></action>
+            </block>
+        </block>
+
+        <!--forgot password form-->
+        <block type="customer/account_forgotpassword" name="forgotPassword" template="ajaxkit/login/forgotpassword.phtml">
+
+            <block type="core/text_list" name="form.additional.info_forgotpassword">
+                <block type="captcha/captcha" name="captcha_forgotpassword">
+                    <reference name="head">
+                        <action method="addJs"><file>mage/captcha.js</file></action>
+                    </reference>
+                    <action method="setFormId"><formId>user_forgotpassword</formId></action>
+                    <action method="setImgWidth"><width>230</width></action>
+                    <action method="setImgHeight"><width>50</width></action>
+                    <action method="setIsAjax"><width>0</width></action>
+                </block>
+            </block>
+        </block>
+
+        <!--buttons-->
+        <block type="core/template" name="login_buttons" template="ajaxkit/login/buttons.phtml"/>
+
+        <block type="ajaxKit/frontend_popup_default" name="ajaxkit_login_popup_success_bottom"  template="ajaxkit/login/success_bottom.phtml">
+            <block type="ajaxKit/frontend_popup_button" name="button" />
+        </block>
+    </ajaxkit_login_popup>
+</layout>
+
+
+
+
+
+
+
+        <!--
+
+         <customer_account_login>
+        <reference name="customer_form_login">
+            <block type="core/text_list" name="form.additional.info">
+                <block type="captcha/captcha" name="captcha">
+                    <reference name="head">
+                        <action method="addJs"><file>mage/captcha.js</file></action>
+                    </reference>
+                    <action method="setFormId"><formId>user_login</formId></action>
+                    <action method="setImgWidth"><width>230</width></action>
+                    <action method="setImgHeight"><width>50</width></action>
+                </block>
+            </block>
+        </reference>
+    </customer_account_login>
+    <customer_account_forgotpassword>
+        <reference name="forgotPassword">
+            <block type="core/text_list" name="form.additional.info">
+                <block type="captcha/captcha" name="captcha">
+                    <reference name="head">
+                        <action method="addJs"><file>mage/captcha.js</file></action>
+                    </reference>
+                    <action method="setFormId"><formId>user_forgotpassword</formId></action>
+                    <action method="setImgWidth"><width>230</width></action>
+                    <action method="setImgHeight"><width>50</width></action>
+                </block>
+            </block>
+        </reference>
+    </customer_account_forgotpassword>
+    <customer_account_create>
+        <reference name="customer_form_register">
+            <block type="core/text_list" name="form.additional.info">
+                <block type="captcha/captcha" name="captcha">
+                    <reference name="head">
+                        <action method="addJs"><file>mage/captcha.js</file></action>
+                    </reference>
+                    <action method="setFormId"><formId>user_create</formId></action>
+                    <action method="setImgWidth"><width>230</width></action>
+                    <action method="setImgHeight"><width>50</width></action>
+                </block>
+            </block>
+        </reference>
+    </customer_account_create>
+
+
+        -->
+
+

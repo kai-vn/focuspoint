@@ -1,0 +1,30 @@
+<?php
+/**
+ * @package     compo
+ * @copyright   Copyright (c) 2010-2015 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+/**
+ * Template for Mage_Page_Block_Html
+ */
+?>
+<!DOCTYPE html>
+<html lang="<?php echo $this->getLang() ?>">
+	<head>
+		<?php echo $this->getChildHtml('head') ?>
+	</head>
+	<body class="page-print<?php echo $this->getBodyClass()?$this->getBodyClass():'' ?>">
+		<div class="container">
+			<div class="print-head">
+				<img src="<?php echo $this->getPrintLogoUrl() ? $this->getPrintLogoUrl() : $this->getSkinUrl('images/logo_print.gif') ?>" class="logo" alt="" />
+				<?php if ($this->getPrintLogoText()):?>
+					<address><?php echo nl2br((Mage::app()->getLayout()->checkVersion('1.7.x.x') ? $this->htmlEscape : $this->escapeHtml).($this->getPrintLogoText())) ?></address>
+				<?php endif;?>
+			</div>
+			<?php echo $this->getChildHtml('content') ?>
+			<div class="buttons-set">
+				<button type="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Close Window')) ?>" class="btn btn-default" onclick="window.close();"><span><span><?php echo $this->__('Close Window') ?></span></span></button>
+			</div>
+			<?php echo $this->getAbsoluteFooter() ?>
+		</div>
+	</body>
+</html>

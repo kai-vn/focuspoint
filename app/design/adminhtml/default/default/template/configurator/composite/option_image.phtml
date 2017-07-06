@@ -1,0 +1,9 @@
+<?php
+
+
+$item   = $this->getItem();
+if ($item) { ?>
+<a href="<?php echo $item->getBigImgUrl() ?>" rel="tigrenLightbox[]" title="">
+    <img src="<?php echo $item->getUrl() ?>" title="" class="small-image-preview v-middle<?php if ($item->getClass()) echo ' '.$item->getClass(); ?>" />
+</a>
+<?php } ?>

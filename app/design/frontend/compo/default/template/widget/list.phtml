@@ -1,0 +1,197 @@
+<?php
+/**
+ * @package     compo
+ * @copyright   Copyright (c) 2010-2015 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+
+$meigeeOptions = $this->getLayout();
+$lightBox = $meigeeOptions->getMConfigResultByAlias('lightbox_listing');
+$addToCart = $this->getAddToCartList();
+$productName = $this->getProductNameList();
+$productPrice = $this->getPriceList();
+$compare = $this->getCompareList();
+$wishlist = $this->getWishlistList();
+$shortDescription = $this->getDescList();
+$ratingCustomerLink = $this->getRatingCustLinkList();
+$ratingReviewLink = $this->getRatingAddReviewLinkList();
+$ratingStars = $this->getRatingStarsList();
+$columnsRatio = $this->getColumnsRatio();
+$stockStatus = $this->getStockStatusList();
+$widgetId = $this->getWidgetId();
+$quick_view = $this->getCompoQuickview();
+$timerStatus = $meigeeOptions->getMConfigResultByAlias('timer_status');
+$widgetTimer = $this->getTimerList();
+switch ($columnsRatio) {
+	case 1:
+		$imgColumn = 'twenty';
+		$descriptionColumn = 'eighty';
+	break;
+	case 2:
+		$imgColumn = 'twenty-five';
+		$descriptionColumn = 'seventy-five';
+	break;
+	case 3:
+		$imgColumn = 'thirty';
+		$descriptionColumn = 'seventy';
+	break;
+	case 4:
+		$imgColumn = 'thirty-five';
+		$descriptionColumn = 'sixty-five';
+	break;
+	case 5:
+		$imgColumn = 'forty';
+		$descriptionColumn = 'sixty';
+	break;
+	case 6:
+		$imgColumn = 'forty-five';
+		$descriptionColumn = 'fifty-five';
+	break;
+	case 7:
+		$imgColumn = 'fifty';
+		$descriptionColumn = 'fifty';
+	break;
+}
+$imgSize = $this->getImgWidth();
+if(!$imgSize){
+	$imgSize = 400;
+}
+?>
+<div class="widget-products">
+	<?php
+		echo $this->getPager();
+		$collection = $this->getCollection();
+	?>
+	<ul class="products-list">
+		<?php foreach ($collection as $product): ?>
+			<li class="item quick-view-container">
+				<div class="quick-view-data-container"></div>
+				<div class="item-list-inner row clearfix">
+					<div class="image-box <?php echo $imgColumn; ?>">
+						<?php echo $this->getLayout()->createBlock('page/html')->setProduct($product)->setLabelNew($this->getLabelNew())->setLabelSale($this->getLabelSale())->setTemplate('widget/widget_labels.phtml')->toHtml(); ?>
+						<a href="<?php echo $product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($product, 'small_image'), null, true) ?>" class="product-image">
+							<?php
+								echo $product->productHoverImage($this, $imgSize, 'with-mobile', 385);
+								$escaped_label = $this->stripTags($this->getImageLabel($product, 'small_image'), null, true);
+								echo '<img '. $product->getProductMediaResized($imgSize, 'small_image', 'with-mobile', 385)
+									->addImageHtmlAttributte('alt', $escaped_label)
+									->addImageHtmlAttributte('width', $imgSize)
+									->addImageHtmlAttributte('title', $escaped_label)
+									->addImageHtmlAttributte($product, 'id', 'product-collection-image-'. $product->getId().$widgetId)
+									->getImageHtmlAttributte().' />';
+							?>
+						</a>
+						<?php if($lightBox || ($quick_view && Mage::app()->getLayout()->getBlock('ajaxkit_quick_view_btn'))){ ?>
+							<div class="hover-buttons clearfix">
+								<div class="toggle-options">
+									<i class="meigee-options-vertical"></i>
+								</div>
+								<div class="options-block">
+									<?php if($quick_view && Mage::app()->getLayout()->getBlock('ajaxkit_quick_view_btn')) { ?>
+										<?php echo Mage::app()->getLayout()->getBlock('ajaxkit_quick_view_btn')->setProduct($product)->toHtml(); ?>
+									<?php } ?>
+									<?php if($lightBox){ ?>
+										<a href="<?php echo $product->getProductMediaResized(930, 'small_image')->getImageSrc(); ?>" class="lightbox-button" data-toggle="lightbox" data-footer="<?php echo $this->stripTags($this->getImageLabel($product, 'small_image'), null, true) ?>">
+											<i class="meigee-magnifier"></i>
+										</a>
+									<?php } ?>
+								</div>
+							</div>
+						<?php } ?>
+					</div>
+					<?php // Product description ?>
+					<div class="product-shop <?php echo $descriptionColumn; ?> clearfix">
+						<div class="f-fix">
+							<?php if($this->getProductCategory()){ ?>
+								<h3 class="category-name">
+									<?php $categoryIds = $product->getCategoryIds();
+									if(count($categoryIds) ){
+										$cat_arr = array();
+										foreach($categoryIds as $category){
+											$rootId = Mage::app()->getStore()->getRootCategoryId();
+											$_category = Mage::getModel('catalog/category')->load($category);
+											if ($category != $rootId) {
+												$cat_arr[] = $_category->getName();
+											}
+										}
+										echo implode(', ', $cat_arr);
+									} ?>
+								</h3>
+							<?php } ?>
+							<?php $_productNameStripped = $this->stripTags($product->getName(), null, true); ?>
+							<?php if($productName): ?>
+								<h5 class="product-name"><a href="<?php echo $product->getProductUrl() ?>" title="<?php echo $_productNameStripped; ?>"><?php echo $product->getName(); ?></a></h5>
+							<?php endif; ?>
+							<?php if($stockStatus) {
+								if($product->isSaleable()): ?>
+									<p class="availability in-stock"><span><?php echo $this->__('In stock') ?></span></p>
+								<?php else: ?>
+									<p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+								<?php endif;
+							} ?>
+							<?php if($timerStatus && $widgetTimer) {
+								echo $this->getLayout()->createBlock('page/html')->setProduct($product)->setTemplate('catalog/product/listing_timer.phtml')->toHtml();
+							} ?>
+							<?php $storeId = Mage::app()->getStore()->getId();
+								$summaryData = Mage::getModel('review/review_summary')->setStoreId($storeId)->load($product->getId());
+								if ($summaryData['rating_summary']): ?>
+								<?php if ($ratingCustomerLink || $ratingReviewLink || $ratingStars) : ?>
+									<div class="ratings">
+										<?php if ($ratingStars) : ?>
+											<div class="rating-box">
+												<i class="star">&#9733;</i><i class="star">&#9733;</i><i class="star">&#9733;</i><i class="star">&#9733;</i><i class="star">&#9733;</i>
+												<div class="rating" style="width:<?php echo $summaryData['rating_summary'] ?>%"><i class="star">&#9733;</i><i class="star">&#9733;</i><i class="star">&#9733;</i><i class="star">&#9733;</i><i class="star">&#9733;</i></div>
+											</div>
+										<?php endif; ?>
+										<p class="rating-links">
+											<?php if ($ratingCustomerLink) : ?>
+												<a href="<?php echo $product->getProductUrl() ?>#reviews-link"><?php echo $this->__('%d Review(s)', $summaryData['reviews_count']) ?></a>
+											<?php endif; ?>
+											<?php if ($ratingCustomerLink && $ratingReviewLink) : ?>
+												<span class="separator">|</span>
+											<?php endif; ?>
+											<?php if ($ratingReviewLink) : ?>
+												<a href="<?php echo $product->getProductUrl() ?>#reviews-link"><?php echo $this->__('Add Your Review') ?></a>
+											<?php endif; ?>
+										</p>
+									</div>
+								<?php endif; ?>
+							<?php endif; ?>
+							<?php if($productPrice):
+								echo $this->getPriceHtml($product, true, '-widget-'.$widgetId);
+							endif; ?>
+							<?php if ($shortDescription){ ?>
+								<div class="desc std">
+								<?php echo $product->getShortDescription() ?>
+								<a href="<?php echo $product->getProductUrl() ?>" title="<?php echo $this->stripTags($product->getName(), null, true) ?>" class="link-learn"><?php echo $this->__('Learn More') ?></a>
+								</div>
+							<?php } ?>
+							<?php if($addToCart || $compare || $wishlist): ?>
+								<div class="product-buttons">
+									<?php if($addToCart){ ?>
+										<?php if($product->isSaleable()): ?>
+											<button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="btn btn-default btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+										<?php else: ?>
+											<a class="btn btn-default" href="<?php echo $product->getProductUrl() ?>" title="<?php echo $this->__('Read More'); ?>"><?php echo $this->__('Read More'); ?></a>
+										<?php endif; ?>
+									<?php } ?>
+									<?php if($compare || $wishlist) : ?>
+										<ul class="add-to-links">
+											<?php if (($this->helper('wishlist')->isAllow()) && $wishlist) : ?>
+												<li><a href="<?php echo $this->helper('wishlist')->getAddUrl($product) ?>" class="link-wishlist"><i class="meigee-fa-heart"></i></a></li>
+											<?php endif; ?>
+											<?php if(($_compareUrl=$this->getAddToCompareUrl($product)) && $compare): ?>
+												<li><a href="<?php echo $_compareUrl ?>" class="link-compare"><i class="meigee-fa-exchange"></i></a></li>
+											<?php endif; ?>
+										</ul>
+									<?php endif; ?>
+								</div>
+							<?php endif; ?>
+						</div>
+					</div>
+				</div>
+			</li>
+		<?php endforeach; ?>
+	</ul>
+	<script type="text/javascript">decorateList('products-list', 'none-recursive')</script>
+	<?php echo $this->getPager(); ?>
+</div>

@@ -1,0 +1,33 @@
+<?php
+/**
+ * @package     compo
+ * @copyright   Copyright (c) 2010-2015 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+
+$html = $this->getSocialLinks();
+if(isset($html['targetblank'])){
+	if($html['targetblank'] == 1){
+		$isBlank = ' target="_blank"';
+	}else{
+		$isBlank = '';
+	}
+}else{
+	$isBlank = '';
+}
+echo '<ul class="social-links clearfix">';
+	if (!empty($html['facebook'])) echo '<li><a class="facebook" '.$isBlank.' href="'.$html['facebook'].'"><i class="meigee-fa-facebook"></i></a></li>';
+	if (!empty($html['twitter'])) echo '<li><a class="twitter" '.$isBlank.' href="'.$html['twitter'].'"><i class="meigee-fa-twitter"></i></a></li>';
+	if (!empty($html['instagram'])) echo '<li><a class="instagram" '.$isBlank.' href="'.$html['instagram'].'"><i class="meigee-fa-instagram"></i></a></li>';
+	if (!empty($html['compo_tumblr'])) echo '<li><a class="tumblr" '.$isBlank.' href="'.$html['compo_tumblr'].'"><i class="meigee-fa-tumblr"></i></a></li>';
+	if (!empty($html['vimeo'])) echo '<li><a class="vimeo" '.$isBlank.' href="'.$html['vimeo'].'"><i class="meigee-fa-vimeo"></i></a></li>';
+	if (!empty($html['youtube'])) echo '<li><a class="youtube" '.$isBlank.' href="'.$html['youtube'].'"><i class="meigee-fa-youtube-play"></i></a></li>';
+	if (!empty($html['compo_vine'])) echo '<li><a class="vine" '.$isBlank.' href="'.$html['compo_vine'].'"><i class="meigee-fa-vine"></i></a></li>';
+	if (!empty($html['pinterest'])) echo '<li><a class="pinterest" '.$isBlank.' href="'.$html['pinterest'].'"><i class="meigee-fa-pinterest-p"></i></a></li>';
+	if (!empty($html['linkedin'])) echo '<li><a class="linkedin" '.$isBlank.' href="'.$html['linkedin'].'"><i class="meigee-fa-linkedin"></i></a></li>';
+	if (!empty($html['googleplus'])) echo '<li><a class="googleplus" '.$isBlank.' href="'.$html['googleplus'].'"><i class="meigee-fa-google-plus"></i></a></li>';
+	if (!empty($html['envelope'])) echo '<li><a class="envelope" '.$isBlank.' href="'.$html['envelope'].'"><i class="meigee-fa-envelope-o"></i></a></li>';
+	if (!empty($html['rss'])) echo '<li><a class="rss" '.$isBlank.' href="'.$html['rss'].'"><i class="meigee-fa-rss"></i></a></li>';
+	if (!empty($html['flickr'])) echo '<li><a class="flickr" '.$isBlank.' href="'.$html['flickr'].'"><i class="meigee-fa-flickr"></i></a></li>';
+	if (!empty($html['compo_behance'])) echo '<li><a class="behance" '.$isBlank.' href="'.$html['compo_behance'].'"><i class="meigee-fa-behance"></i></a></li>';
+echo '</ul>';
+?>

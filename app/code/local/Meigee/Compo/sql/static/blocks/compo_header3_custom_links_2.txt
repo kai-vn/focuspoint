@@ -1,0 +1,13 @@
+<div class="header-custom-links">
+	<div class="navbar-header">
+		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".header-links">
+			<i class="meigee-options-vertical"></i>
+		</button>
+	</div>
+	<ul class="header-links collapse navbar-collapse">
+		<li><a href="{{store url='about-us'}}">About us</a></li>
+		<li><a href="{{store url='our-stores'}}"><i class="meigee-fa-map-marker"></i>Our Stores</a></li>
+		<li><a href="{{store url='faq'}}">FAQ</a></li>
+		<li><a href="{{store url='newsletter'}}"><i class="meigee-fa-envelope-o"></i>Newsletter</a></li>
+	</ul>
+</div>

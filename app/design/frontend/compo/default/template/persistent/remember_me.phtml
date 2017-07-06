@@ -1,0 +1,23 @@
+<?php
+/**
+ * @package     compo
+ * @copyright   Copyright (c) 2010-2015 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+?>
+<?php
+/**
+ * Customer "Remember Me" template
+ *
+ * @var $this Mage_Persistent_Block_Form_Remember
+ */
+?>
+<li id="remember-me-box" class="col-xs-8">
+    <?php $rememberMeId = 'remember_me' . Mage::helper('core')->getRandomString(10); ?>
+    <div class="checkbox">
+			<label for="<?php echo $rememberMeId; ?>">
+				<input type="checkbox" name="persistent_remember_me" class="checkbox" id="<?php echo $rememberMeId; ?>"<?php if ($this->isRememberMeChecked()): ?> checked="checked"<?php endif; ?> title="<?php echo  Mage::helper('core')->quoteEscape($this->__('Remember Me')); ?>" />
+				<?php echo $this->__('Remember Me') ?>
+			</label>
+			<a class="link-tip" href="#" data-toggle="modal" data-target="#remember-me-popup"><?php echo $this->__('What\'s this?') ?></a>
+    </div>
+</li>

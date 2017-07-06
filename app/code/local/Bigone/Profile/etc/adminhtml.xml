@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+
+<config>
+    <menu>
+        <profile translate="title" module="profile">
+            <title>Profile</title>
+            <sort_order>100</sort_order>
+            <children>
+                <brand translate="title" module="profile">
+                    <title>Manage Brand</title>
+                    <sort_order>1</sort_order>
+                    <action>adminhtml/brand/</action>
+                </brand>
+            </children>
+        </profile>
+    </menu>
+    <acl>
+        <resources>
+            <all>
+                <title>Allow Everything</title>
+            </all>
+            <admin>
+                <children>
+                    <profile>
+                        <children>
+                            <brand translate="title" module="configurator">
+                                <title>Manage Brand</title>
+                            </brand>
+                        </children>
+                    </profile>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <profile translate="title" module="configurator">
+                                        <title>Profile</title>
+                                    </profile>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

@@ -1,0 +1,58 @@
+<?php
+/**
+ * @package     compo
+ * @copyright   Copyright (c) 2010-2015 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+
+$_product = $this->getProduct();
+$meigeeOptions = $this->getLayout();
+$timerTitle = $meigeeOptions->getMConfigResultByAlias('timer_listing_title');
+$timerFormat = $meigeeOptions->getMConfigResultByAlias('timer_listing_format');
+$timerDisplay = $meigeeOptions->getMConfigResultByAlias('timer_listing_display');
+$specialprice = $_product->getSpecialPrice();
+	$specialPriceFromDate = $_product->getSpecialFromDate();
+	$specialPriceToDate = $_product->getSpecialToDate();
+	$today =  time();
+	if ($specialprice && isset($specialPriceFromDate) && isset($specialPriceToDate)):
+		if($today >= strtotime($specialPriceFromDate) && $today <= strtotime($specialPriceToDate) || $today >= strtotime( $specialPriceFromDate) && is_null($specialPriceToDate)):
+?>
+			<div class="timer-<?php echo $_product->getId(); ?> timer-box type-2 clearfix<?php if($timerDisplay == 0): ?> no-days<?php endif; ?>">
+				<?php if($timerTitle): ?>
+					<span class="title"><?php echo $this->__('Offer ends in:') ?></span>
+				<?php endif; ?>
+				<?php if ($timerFormat == 0) { ?>
+					<div class="timer-inner">
+						<div class="timer-ico"><i class="meigee-clock"></i></div>
+						<div class="days"><span>00</span></div>
+						<div class="hours"><span>00</span></div>
+						<div class="minutes"><span>00</span></div>
+						<div class="seconds"><span>00</span></div>
+					</div>
+				<?php  } elseif ($timerFormat == 1) { ?>
+					<div class="timer-big">
+						<div class="timer-inner">
+							<div class="timer-ico"><i class="meigee-clock"></i></div>
+							<div class="seconds"><span>00</span><br /><?php echo $this->__('sec'); ?></div>
+							<div class="minutes"><span>00</span><br /><?php echo $this->__('min'); ?></div>
+							<div class="hours"><span>00</span><br /><?php echo $this->__('hours'); ?></div>
+							<div class="days"><span>00</span><br /><?php echo $this->__('days'); ?></div>
+						</div>
+					</div>
+				<?php } ?>
+			</div>
+			<script type="text/javascript">
+				endDate = new Date("<?php echo Date("m/d/y", strtotime($specialPriceToDate)).' 11:59:00 PM'; ?>");
+				startDate = new Date(Date.parse("<?php echo Date("m/d/y h:i:s A", strtotime(Mage::app()->getLocale()->date(null, null, "en_US", true))); ?>"));
+				dateDiff = new Date((endDate)-(startDate));
+				secondsDiff = Math.floor(dateDiff.valueOf()/1000);
+				new productTimer.init(secondsDiff, <?php echo $_product->getId(); ?>);
+				jQuery(document).ready(function(){
+					timer = jQuery('.timer-<?php echo $_product->getId(); ?>');
+					timer.parents('li.item').on('mouseenter mouseleave', function(){
+						jQuery(this).find('.timer-<?php echo $_product->getId(); ?>').toggleClass('hover');
+					});
+				});
+			</script>
+<?php
+		endif;
+	endif; ?>

@@ -1,0 +1,201 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Meigee_Thememanager>
+            <version>0.1.0</version>
+        </Meigee_Thememanager>
+    </modules>
+     <global>
+        <blocks>
+            <thememanager>
+                <class>Meigee_Thememanager_Block</class>
+            </thememanager>
+            <catalog>
+                <rewrite>
+                    <product_view>Meigee_Thememanager_Rewrite_Product_View</product_view>
+                </rewrite>
+            </catalog>
+            <adminhtml>
+                <rewrite>
+                    <newsletter_subscriber_grid>Meigee_Thememanager_Rewrite_Adminhtml_Block_NewsletterSubscriberGrid</newsletter_subscriber_grid>
+                </rewrite>
+            </adminhtml>
+
+            <newsletter>
+                <rewrite>
+                    <subscribe>Meigee_Thememanager_Rewrite_NewsletterSubscriber</subscribe>
+                </rewrite>
+            </newsletter>
+            <configurableswatches>
+                <rewrite>
+                    <catalog_layer_state_swatch>Meigee_Thememanager_Rewrite_ConfigurableSwatchesLayerStateSwatchBlock</catalog_layer_state_swatch>
+                    <!--Mage_ConfigurableSwatches_Block_Catalog_Layer_State_Swatch-->
+                </rewrite>
+            </configurableswatches>
+            <blog>
+                <rewrite>
+                    <last>Meigee_Thememanager_Rewrite_Widget_BlogLast</last>
+                </rewrite>
+            </blog>
+        </blocks>
+        <models>
+            <thememanager>
+                <class>Meigee_Thememanager_Model</class>
+                <resourceModel>thememanager_resource</resourceModel>
+            </thememanager>
+
+            <thememanager_resource>
+                <class>Meigee_Thememanager_Model_Resource</class>
+                <entities>
+                    <table_themes>
+                        <table>meigee_themes</table>
+                    </table_themes>
+
+                    <table_theme_config_data>
+                        <table>meigee_theme_config_data</table>
+                    </table_theme_config_data>
+                </entities>
+            </thememanager_resource>
+            <core>
+                <rewrite>
+                    <layout>Meigee_Thememanager_Rewrite_Core_Layout</layout>  <!-- Mage_Core_Model_Layout -->
+                </rewrite>
+            </core>
+            <catalog>
+                <rewrite>
+                    <product>Meigee_Thememanager_Rewrite_Catalog_Product</product>    <!-- Mage_Catalog_Model_Product -->
+                </rewrite>
+            </catalog>
+
+            <catalog>
+                <rewrite>
+                    <template_filter>Meigee_Thememanager_Rewrite_Catalog_Template_CatalogFilter</template_filter>    <!-- Mage_Catalog_Model_Template_Filter -->
+                </rewrite>
+            </catalog>
+
+            <catalog_resource>
+                <rewrite>
+                    <layer_filter_attribute>Meigee_Thememanager_Rewrite_Catalog_Resource_LayerFilterAttribute</layer_filter_attribute>    <!-- Mage_Catalog_Model_Resource_Layer_Filter_Attribute -->
+                </rewrite>
+            </catalog_resource>
+
+            <widget>
+                <rewrite>
+                    <template_filter>Meigee_Thememanager_Rewrite_Catalog_Template_WidgetFilter</template_filter>    <!-- Mage_Widget_Model_Template_Filter -->
+                </rewrite>
+            </widget>
+        </models>
+        <helpers>
+            <thememanager>
+                <class>Meigee_Thememanager_Helper</class>
+            </thememanager>
+
+            <configurableswatches>
+                <rewrite>
+                    <mediafallback>Meigee_Thememanager_Rewrite_MediafallbackHelper</mediafallback>
+                </rewrite>
+            </configurableswatches>
+        </helpers>
+        <resources>
+            <thememanager_setup>
+                <setup>
+                    <module>Meigee_Thememanager</module>
+                    <class>Meigee_Thememanager_Model_Resource_Setup</class>
+                </setup>
+            </thememanager_setup>
+        </resources>
+    </global>
+        <admin>
+            <routers>
+                <adminhtml>
+                    <args>
+                        <modules>
+                            <thememanager after="Mage_Adminhtml">Meigee_Thememanager_Adminhtml</thememanager>
+                        </modules>
+                    </args>
+                </adminhtml>
+            </routers>
+        </admin>
+    <frontend>
+        <layout>
+            <updates>
+                <thememanager>
+                    <file>thememanager.xml</file>
+                </thememanager>
+            </updates>
+        </layout>
+        <events>
+            <newsletter_subscriber_save_before>
+                <observers>
+                    <newsletterSubscriberFrontendSave>
+                        <class>Meigee_Thememanager_Model_Observer_Newsletter</class>
+                        <method>saveBefore</method>
+                    </newsletterSubscriberFrontendSave>
+                </observers>
+            </newsletter_subscriber_save_before>
+        </events>
+        <routers>
+            <thememanager>
+                <use>standard</use>
+                <args>
+                    <module>Meigee_Thememanager</module>
+                    <frontName>thememanager</frontName>
+                </args>
+            </thememanager>
+        </routers>
+    </frontend>
+
+    <adminhtml>
+        <menu>
+            <meigee translate="title">
+                <title>Meigee</title>
+                <sort_order>100</sort_order>
+
+                <children>
+                    <thememanager translate="title">
+                        <title>Theme Manager</title>
+                        <sort_order>10</sort_order>
+                        <!--- action>adminhtml/thememanager/adminhtml_thememanager</action -->
+			            <action>adminhtml/thememanager</action>
+                    </thememanager>
+                </children>
+            </meigee>
+        </menu>
+
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <meigee>
+                            <title>Meigee Extension</title>
+                            <children>
+                                <thememanager translate="title" module="thememanager">
+                                    <title>Add / Clone</title>
+                                    <sort_order>10</sort_order>
+                                </thememanager>
+
+                                <edit translate="title" module="thememanager">
+                                    <title>Save</title>
+                                    <sort_order>15</sort_order>
+                                </edit>
+
+                                <remove translate="title" module="thememanager">
+                                    <title>Remove Config</title>
+                                    <sort_order>25</sort_order>
+                                </remove>
+
+                            </children>
+                        </meigee>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
+    <default>
+        <design>
+            <package>
+                <meigee_package_name></meigee_package_name>
+            </package>
+        </design>
+    </default>
+</config>

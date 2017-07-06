@@ -1,0 +1,18 @@
+<?php if ($this->getShowPrice()) { ?>
+<div>
+    <?php echo $this->__('Total Price'); ?>:
+    <?php echo $this->getGrandTotalPrice(); ?>
+</div>
+<?php } ?>
+
+
+
+<?php if ($this->getShowItems()) { ?>
+<div>
+    <?php echo $this->__('Total Items'); ?>:
+    <?php
+        $items = $this->getTotalItems();
+        echo $items .' '. $this->__($items>1?'Items':'Item');
+    ?>
+</div>
+<?php } ?>

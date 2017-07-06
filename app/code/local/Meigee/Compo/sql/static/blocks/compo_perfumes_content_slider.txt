@@ -1,0 +1,39 @@
+<div id="home-image-slider" class="owl-carousel owl-theme" data-navigation="1" data-speed="300">
+	<a href="#">
+		<img {{retinaurl data-img-src="wysiwyg/compo_perfumes_slide_1.jpg" data-img-srcX2="wysiwyg/compo_perfumes_slide_1@x2.jpg" alt=""}}>
+		<span class="slide-container slide-skin">
+			<span class="text-block hidden-xs hidden-sm">
+				<span class="title-large">Joy</span>
+				<span class="subtitle-rotate">Pure edition</span>
+			</span>
+			<span class="title-image"><img {{retinaurl data-img-src="wysiwyg/compo_perfumes_slide_1_img_1.png" data-img-srcX2="wysiwyg/compo_perfumes_slide_1_img_1@x2.png" alt=""}}></span>
+			<span class="text-block">
+				<span class="text-item">
+					<span class="title">Love</span>
+					<span class="subtitle">Contours all</span>
+				</span>
+				<span class="text-item hidden-xs">
+					<span class="text">Sculpt your brows, eyes and face<br> to perfection with our new<br> all-in-one palette.</span>
+					<span class="btn btn-primary type-2 hidden-sm hidden-xs"><span>Read more</span></span>
+				</span>
+			</span>
+		</span>
+	</a>
+	<a href="#">
+		<img {{retinaurl data-img-src="wysiwyg/compo_perfumes_slide_2.jpg" data-img-srcX2="wysiwyg/compo_perfumes_slide_2@x2.jpg" alt=""}}>
+		<span class="slide-container slide-skin-2">
+			<span class="title-large hidden-xs hidden-sm">Nofilter</span>
+			<span class="title-image"><img {{retinaurl data-img-src="wysiwyg/compo_perfumes_slide_2_img_1.png" data-img-srcX2="wysiwyg/compo_perfumes_slide_2_img_1@x2.png" alt=""}}></span>
+			<span class="text-block">
+				<span class="text-item">
+					<span class="title">Sans</span>
+					<span class="subtitle">Ultimate Filter</span>
+				</span>
+				<span class="text-item hidden-xs">
+					<span class="text">Lorem ipsum dolor sit<br> amet, consectetur<br> adipiscing elit.</span>
+					<span class="btn btn-primary type-2 hidden-sm hidden-xs"><span>Read more</span></span>
+				</span>
+			</span>
+		</span>
+	</a>
+</div>

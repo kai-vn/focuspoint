@@ -1,0 +1,137 @@
+<?php
+$collection = $this->getReviewsCollection();
+$per_row = $this->getReviewPerRow();
+// $itemsCount = $this->getReviewVisible();
+$items_count = count($collection);
+$widgetId = $this->getWidgetId();
+$image_layout = $this->getImageLayout();
+switch($per_row){
+	case 1:
+		$per_row_text = 'one-item';
+	break;
+	case 2:
+		$per_row_text = 'two-items';
+	break;
+	case 3:
+		$per_row_text = 'three-items';
+	break;
+	case 4:
+		$per_row_text = 'four-items';
+	break;
+	default:
+		$per_row_text = 'four-items';
+	break;
+}
+?>
+<div class="slider-container" id="reviews-slider-<?php echo $widgetId; ?>">
+	<ul class="customer-reviews-widget <?php echo $per_row_text .' '. ($image_layout == 1 ? ' square-image' : ''); ?> clearfix">
+		<?php
+		$curr_id = '';
+		foreach($collection as $product) {
+			if($curr_id != $product->getId()){
+			$product_name = $product->getName();
+			$author = $product->getNickname();
+			$review_title  = $product->getTitle();
+			$review_text  = $product->getDetail();
+			$rating_summary = $product->getRatingSummary();
+			$stars_width = $rating_summary['rating_summary'];
+			$image = $product->getImage();
+			$date = new DateTime($product->getReviewCreatedAt());
+			$review_date = $date->format('d.m.Y');
+			$price = $this->getPriceHtml($product, true, '-widget');
+		?>
+			<li class="item clearfix">
+				<div class="top-block clearfix">
+					<div class="product-block clearfix">
+						<?php if ($this->getReviewProductImage()){ ?>
+							<div class="image">
+								<?php $escaped_label = $this->stripTags($product->getName(), null, true);
+									echo '<img '. $product->getProductMediaResized(320, 'small_image')
+										->addImageHtmlAttributte('alt', $escaped_label)
+										->addImageHtmlAttributte('title', $escaped_label)
+										->getImageHtmlAttributte().' />';
+								?>
+							</div>
+						<?php } ?>
+						<div class="right-wrapper">
+							<?php if ($this->getReviewProductName()){ ?>
+								<div class="product-name"><h5><?php echo $product_name; ?></h5></div>
+							<?php } ?>
+							<?php if ($this->getReviewProductPrice()){ ?>
+								<div class="price-wrapper"><?php echo $price; ?></div>
+							<?php } ?>
+							<?php if ($this->getReviewProductStars()){ ?>
+								<div class="ratings">
+									<div class="rating-box">
+										<i class="star">&#9733;</i><i class="star">&#9733;</i><i class="star">&#9733;</i><i class="star">&#9733;</i><i class="star">&#9733;</i>
+										<div class="rating" style="width:<?php echo $stars_width; ?>%"><i class="star">&#9733;</i><i class="star">&#9733;</i><i class="star">&#9733;</i><i class="star">&#9733;</i><i class="star">&#9733;</i></div>
+									</div>
+								</div>
+							<?php } ?>
+						</div>
+					</div>
+					<div class="author-block">
+						<?php if ($this->getReviewTitle()){ ?>
+							<div class="review-title"><h6><?php echo $review_title; ?></h6></div>
+						<?php } ?>
+						<?php if ($this->getReviewAuthor()){ ?>
+							<div class="author"><?php echo $this->__('By') . ' ' . $author; ?></div>
+							<div class="date"><i class="meigee-calendar"></i><?php echo $review_date; ?></div>
+						<?php } ?>
+					</div>
+				</div>
+				<?php if ($this->getReviewText()){ ?>
+					<div class="review-text"><div class="text"><?php echo $review_text; ?></div><a href="<?php echo Mage::getBaseUrl().$product->getUrlPath() ."#reviews-link"; ?>" class="more"><?php echo $this->__('Read More'); ?></a></div>
+				<?php } ?>
+				<div class="button-wrapper">
+					<button class="btn btn-default" onclick="setLocation('<?php echo Mage::getBaseUrl().$product->getUrlPath() ."#reviews-link"; ?>');"><span><span><?php echo $this->__('Read all'); ?></span></span></button>
+				</div>
+			</li>
+		<?php
+			}
+			$curr_id = $product->getId();
+		} ?>
+	</ul>
+	<?php if ($items_count >= $per_row): ?>
+		<div class="owl-buttons">
+			<div class = 'prev owl-prev'><i class="meigee-arrow-left"></i></div>
+			<div class = 'next owl-next'><i class="meigee-arrow-right"></i></div>
+		</div>
+	<?php endif; ?>
+</div>
+<script type="text/javascript">
+	<?php
+		$itemsScaleUp = $this->getItemsScaleup();
+		$paginationSpeed = $this->getPaginationSpeed();
+		$rewindSpeed = $this->getRewindSpeed();
+		$pagination = $this->getPagination();
+		$autoPlay = $this->getAutoPlay();
+		$slideSpeed = $this->getSlideSpeed();
+		$stopOnHover = $this->getStopOnHover();
+	?>
+	jQuery(document).ready(function(){
+		homeSlider = jQuery('#reviews-slider-<?php echo $widgetId; ?> .customer-reviews-widget');
+		homeSlider.owlCarousel({
+			items: <?php echo $per_row; ?>,
+			itemsDesktopSmall: [1331, <?php echo $per_row == 1 ? 1 : 2; ?>],
+			itemsTablet: [1007, <?php echo $per_row == 1 ? 1 : 2; ?>],
+			itemsTabletSmall: [767, <?php echo $per_row == 1 ? 1 : 2; ?>],
+			itemsMobile: [479,1],
+			slideSpeed: <?php echo $slideSpeed; ?>,
+			itemsScaleUp: <?php echo $itemsScaleUp; ?>,
+			paginationSpeed: <?php echo $paginationSpeed; ?>,
+			rewindSpeed: <?php echo $rewindSpeed; ?>,
+			autoPlay: <?php echo(empty($autoPlay) ? 'false' : $autoPlay); ?>,
+			stopOnHover: <?php echo $stopOnHover; ?>,
+			pagination: <?php echo $pagination; ?>,
+			lazyEffect: 'fade'
+		});
+		// Custom Navigation Events
+		   jQuery("#reviews-slider-<?php echo $widgetId; ?> .next").click(function(){
+			 homeSlider.trigger('owl.next');
+		   });
+		   jQuery("#reviews-slider-<?php echo $widgetId; ?> .prev").click(function(){
+			 homeSlider.trigger('owl.prev');
+		   });
+	});
+</script>

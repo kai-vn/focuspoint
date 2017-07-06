@@ -1,0 +1,72 @@
+{{widget type="cms/widget_block" template="cms/widget/static_block/default.phtml" block_id="compo_perfumes_content_slider"}}
+<div class="brands row">
+	<hr class="indent-40 white-space clearfix">
+	<div class="col-sm-2">
+		<a href="#" title=""><img {{retinaurl data-img-src="wysiwyg/compo_perfumes_brand_1.png" data-img-srcX2="wysiwyg/compo_perfumes_brand_1@x2.png" alt=""}}></a>
+	</div>
+	<hr class="indent-18 white-space visible-xs">
+	<div class="col-sm-2">
+		<a href="#" title=""><img {{retinaurl data-img-src="wysiwyg/compo_perfumes_brand_2.png" data-img-srcX2="wysiwyg/compo_perfumes_brand_2@x2.png" alt=""}}></a>
+	</div>
+	<hr class="indent-18 white-space visible-xs">
+	<div class="col-sm-2">
+		<a href="#" title=""><img {{retinaurl data-img-src="wysiwyg/compo_perfumes_brand_3.png" data-img-srcX2="wysiwyg/compo_perfumes_brand_3@x2.png" alt=""}}></a>
+	</div>
+	<hr class="indent-18 white-space visible-xs">
+	<div class="col-sm-2">
+		<a href="#" title=""><img {{retinaurl data-img-src="wysiwyg/compo_perfumes_brand_4.png" data-img-srcX2="wysiwyg/compo_perfumes_brand_4@x2.png" alt=""}}></a>
+	</div>
+	<hr class="indent-18 white-space visible-xs">
+	<div class="col-sm-2">
+		<a href="#" title=""><img {{retinaurl data-img-src="wysiwyg/compo_perfumes_brand_5.png" data-img-srcX2="wysiwyg/compo_perfumes_brand_5@x2.png" alt=""}}></a>
+	</div>
+	<hr class="indent-18 white-space visible-xs">
+	<div class="col-sm-2">
+		<a href="#" title=""><img {{retinaurl data-img-src="wysiwyg/compo_perfumes_brand_6.png" data-img-srcX2="wysiwyg/compo_perfumes_brand_6@x2.png" alt=""}}></a>
+	</div>
+	<hr class="indent-40 white-space clearfix">
+</div>
+<div class="row">
+	<div class="col-md-4 col-sm-12 newsletter-wrapper">
+		<div class="subscribe-block">
+			<h3>Newsletter</h3>
+			{{block type="newsletter/subscribe" name="footer.newsletter" template="newsletter/subscribe.phtml"}}
+		</div>
+	</div>
+	<hr class="indent-18 white-space visible-xs visible-sm" />
+	<div class="col-md-4 col-sm-6">
+		<a href="#" title=""><img {{retinaurl data-img-src="wysiwyg/compo_perfumes_banner_1.jpg" data-img-srcX2="wysiwyg/compo_perfumes_banner_1@x2.jpg" alt=""}}></a>
+	</div>
+	<hr class="indent-18 white-space visible-xs" />
+	<div class="col-md-4 col-sm-6 right-banner">
+		<a href="#" title=""><img {{retinaurl data-img-src="wysiwyg/compo_perfumes_banner_2.jpg" data-img-srcX2="wysiwyg/compo_perfumes_banner_2@x2.jpg" alt=""}}></a>
+	</div>
+</div>
+<hr class="indent-40 white-space">
+<header class="widget-title">
+	<h2>Electronics</h2>
+</header>
+{{widget type="thememanager/widget_products" meigee_theme="compo" select_type="saleproducts" template="slider" compo_grid_template="1" compo_quickview="1" img_width="268" products_amount="6" product_name_slider="1" label_new="1" label_sale="1" price_slider="1" add_to_cart_slider="1" wishlist_slider="1" compare_slider="1" rating_stars_slider="1" rating_cust_link_slider="1" visible_products="5" items_horizontal="4" items_vertical="3" items_scaleup="false" pagination_speed="800" rewind_speed="1000" pagination="true" lazy_load="true" auto_play="5000" stop_on_hover="true" slide_speed="400" compo_center_loop="false" compo_rtl="false" widget_id="6679"}}
+<hr class="indent-32 white-space">
+<div class="row">
+	<div class="col-sm-6">
+		<div class="banner">
+			<a href="#" title=""><img {{retinaurl data-img-src="wysiwyg/compo_perfumes_banner_3.jpg" data-img-srcX2="wysiwyg/compo_perfumes_banner_3@x2.jpg" alt=""}}></a>
+		</div>
+		<hr class="indent-18 white-space">
+		<div class="banner">
+			<a href="#" title=""><img {{retinaurl data-img-src="wysiwyg/compo_perfumes_banner_4.jpg" data-img-srcX2="wysiwyg/compo_perfumes_banner_4@x2.jpg" alt=""}}></a>
+		</div>
+	</div>
+	<hr class="indent-18 white-space visible-xs">
+	<div class="col-sm-6">
+		<div class="banner">
+			<a href="#" title=""><img {{retinaurl data-img-src="wysiwyg/compo_perfumes_banner_5.jpg" data-img-srcX2="wysiwyg/compo_perfumes_banner_5@x2.jpg" alt=""}}></a>
+		</div>
+		<hr class="indent-18 white-space">
+		<div class="banner">
+			<a href="#" title=""><img {{retinaurl data-img-src="wysiwyg/compo_perfumes_banner_6.jpg" data-img-srcX2="wysiwyg/compo_perfumes_banner_6@x2.jpg" alt=""}}></a>
+		</div>
+	</div>
+</div>
+<hr class="indent-40 white-space">

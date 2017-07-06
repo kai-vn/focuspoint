@@ -1,0 +1,2878 @@
+<?xml version="1.0"?>
+<guide>
+
+    <advanced_styling_predefined_css>
+		<file>
+            <value>transparent_header_with_slider.css</value>
+            <label>Compo</label>
+        </file>
+		<file>
+            <value>header_with_image.css</value>
+            <label>Header with image</label>
+        </file>
+    </advanced_styling_predefined_css>
+
+
+    <advanced_styling>
+        <style>
+            <name>Body</name>
+            <elements>body</elements>
+            <props>
+                <prop>color</prop>
+                <prop>font-size</prop>
+				<prop>font-family</prop>
+                <prop>line-height</prop>
+                <prop>background-image</prop>
+                <prop>background-position</prop>
+                <prop>background-repeat</prop>
+                <prop>background-color</prop>
+            </props>
+			<style_child>
+				<name>Links</name>
+				<elements>a</elements>
+				<props>
+					<prop>color</prop>
+					<prop hover="1">color</prop>
+				</props>
+			</style_child>
+        </style>
+
+        <style>
+            <name>Sticky Header</name>
+            <elements>#sticky-header, #sticky-header .container</elements>
+            <show_elements>#sticky-header</show_elements>
+            <props>
+                <prop>color</prop>
+                <prop>background-color</prop>
+            </props>
+			<style_child>
+                <name>Menu Top Level Links</name>
+                <elements>ul.topmenu li.level0 a.level-top</elements>
+                <props>
+                    <prop>color</prop>
+                    <prop hover="1">color</prop>
+                    <prop>font-size</prop>
+					<prop>font-family</prop>
+					<prop>line-height</prop>
+                    <prop>background-color</prop>
+                    <prop hover="1">background-color</prop>
+                    <prop>padding-top</prop>
+                    <prop>padding-right</prop>
+                    <prop>padding-bottom</prop>
+                    <prop>padding-left</prop>
+                </props>
+            </style_child>
+            <style_child>
+                <name>Menu Top Level Links Active</name>
+                <elements>ul.topmenu.navbar-nav li.level0.active > a.level-top</elements>
+                <props>
+                    <prop>color</prop>
+                    <prop hover="1">color</prop>
+                    <prop>background-color</prop>
+                    <prop hover="1">background-color</prop>
+                </props>
+            </style_child>
+			<style_child>
+				<name>Menu Label 1</name>
+				<elements>.category-label.label_one</elements>
+				<props>
+					<prop>color</prop>
+					<prop>background-color</prop>
+				</props>
+			</style_child>
+			<style_child>
+				 <name>Menu Label 1 Hover</name>
+                <elements>ul.topmenu a.over > .category-label.label_one, ul.topmenu li.active a > .category-label.label_one</elements>
+				<props>
+					<prop>color</prop>
+					<prop>background-color</prop>
+				</props>
+			</style_child>
+			<style_child>
+				 <name>Menu Label 2</name>
+                <elements>.category-label.label_two</elements>
+				<props>
+					<prop>color</prop>
+					<prop>background-color</prop>
+				</props>
+			</style_child>
+			<style_child>
+				 <name>Menu Label 2 Hover</name>
+                <elements>ul.topmenu a.over > .category-label.label_two, ul.topmenu li.active a > .category-label.label_two</elements>
+				<props>
+					<prop>color</prop>
+					<prop>background-color</prop>
+				</props>
+			</style_child>
+			<style_child>
+				 <name>Menu Label 3</name>
+                <elements>.category-label.label_three</elements>
+				<props>
+					<prop>color</prop>
+					<prop>background-color</prop>
+				</props>
+			</style_child>
+			<style_child>
+				 <name>Menu Label 3 Hover</name>
+                <elements>ul.topmenu a.over > .category-label.label_three, ul.topmenu li.active a > .category-label.label_three</elements>
+				<props>
+					<prop>color</prop>
+					<prop>background-color</prop>
+				</props>
+			</style_child>
+			<style_child>
+                <name>Dropdown Menu</name>
+                <elements>ul.topmenu ul, ul.topmenu div</elements>
+                <props>
+                    <prop>background-color</prop>
+                </props>
+            </style_child>
+			<style_child>
+                <name>Dropdown Menu Links</name>
+                <elements>ul.topmenu ul li a, ul.topmenu div li a</elements>
+                <props>
+                    <prop>color</prop>
+					<prop hover="1">color</prop>
+                </props>
+            </style_child>
+			<style_child>
+                <name>Search Button</name>
+                <elements>.search-button</elements>
+                <props>
+                    <prop>background-color</prop>
+					<prop>color</prop>
+					<prop hover="1">background-color</prop>
+					<prop hover="1">color</prop>
+                </props>
+            </style_child>
+        </style>
+
+        <style>
+            <name>Header Top</name>
+            <elements>body.boxed-layout #header .top-block .container, body.wide-layout #header .top-block</elements>
+            <props>
+                <prop>background-color</prop>
+                <prop>color</prop>
+				<prop>padding-top</prop>
+				<prop>padding-bottom</prop>
+            </props>
+            <style_child>
+                <name>Header Top Links</name>
+                <elements>a</elements>
+                <props>
+                    <prop>color</prop>
+                    <prop>font-size</prop>
+                    <prop>font-family</prop>
+					<prop>line-height</prop>
+                </props>
+            </style_child>
+        </style>
+
+        <style>
+            <name>Header Switchers</name>
+            <elements>#header</elements>
+			<style_child>
+				<name>Switchers</name>
+				<elements>.bootstrap-select > .selectpicker</elements>
+				<props>
+					<prop>color</prop>
+					<prop hover="1">color</prop>
+				</props>
+			</style_child>
+        </style>
+		<style>
+            <name>Header Menu Button</name>
+            <elements>#header .custom-menu-button .lines, #header .custom-menu-button .lines .lines-top, #header .custom-menu-button .lines .lines-bottom</elements>
+            <props>
+                <prop>background-color</prop>
+            </props>
+        </style>
+
+        <style>
+            <name>Header Search</name>
+            <elements>#header .form-search</elements>
+            <props>
+                <prop>color</prop>
+            </props>
+			<style_child>
+				<name>Search Button</name>
+                <elements>.search-button</elements>
+                <props>
+                    <prop>color</prop>
+					<prop hover="1">color</prop>
+                    <prop>background-color</prop>
+                    <prop hover="1">background-color</prop>
+                </props>
+			</style_child>
+            <style_child>
+                <name>Input</name>
+                <elements>input</elements>
+                <props>
+                    <prop>color</prop>
+                    <prop>font-size</prop>
+					<prop>font-family</prop>
+					<prop>line-height</prop>
+                    <prop>background-color</prop>
+                </props>
+            </style_child>
+            <style_child>
+                <name>Button</name>
+                <elements>.btn</elements>
+                <props>
+                    <prop>background-color</prop>
+					<prop hover="1">background-color</prop>
+                    <prop>color</prop>
+                    <prop hover="1">color</prop>
+                </props>
+            </style_child>
+        </style>
+
+		 <style>
+            <name>Header Search Type 3</name>
+            <elements>#header .form-search.type-3</elements>
+            <props>
+                <prop>color</prop>
+            </props>
+			<style_child>
+				<name>Overlay</name>
+                <elements>.indent</elements>
+                <props>
+                    <prop>background-color</prop>
+                </props>
+			</style_child>
+			<style_child>
+				<name>Input Wrapper</name>
+                <elements>.input-wrapper</elements>
+                <props>
+                    <prop>border-color</prop>
+                </props>
+			</style_child>
+
+			<style_child>
+				<name>Search Button</name>
+                <elements>.search-button</elements>
+                <props>
+                    <prop>color</prop>
+					<prop hover="1">color</prop>
+                    <prop>background-color</prop>
+                    <prop hover="1">background-color</prop>
+                </props>
+			</style_child>
+            <style_child>
+                <name>Input</name>
+                <elements>input</elements>
+                <props>
+                    <prop>color</prop>
+                    <prop>font-size</prop>
+					<prop>font-family</prop>
+					<prop>line-height</prop>
+                </props>
+            </style_child>
+            <style_child>
+                <name>Button</name>
+                <elements>.btn</elements>
+                <props>
+                    <prop>color</prop>
+                    <prop hover="1">color</prop>
+                </props>
+            </style_child>
+        </style>
+
+        <style>
+            <name>Header Cart</name>
+            <elements>#header .top-cart</elements>
+            <props>
+                <prop>color</prop>
+            </props>
+            <style_child>
+                <name>Wrapper</name>
+                <elements>.block-title.active .title-cart, .block-title.hover .title-cart, .block-title .title-cart</elements>
+                <props>
+                    <prop>background-color</prop>
+                    <prop>border-color</prop>
+					<prop hover="1">background-color</prop>
+                    <prop hover="1">border-color</prop>
+                </props>
+            </style_child>
+            <style_child>
+                <name>Title</name>
+                <elements>.block-title.active .title-cart, .block-title.hover .title-cart, .block-title .title-cart</elements>
+                <props>
+                    <prop>color</prop>
+                    <prop hover="1">color</prop>
+					<prop>font-family</prop>
+                </props>
+            </style_child>
+            <style_child>
+                <name>Price</name>
+                <elements>.block-title.active .price, .block-title.hover .price, .block-title .price</elements>
+                <props>
+                    <prop>color</prop>
+                    <prop hover="1">color</prop>
+                </props>
+            </style_child>
+            <style_child>
+                <name>Icon</name>
+                <elements>.block-title.active .title-cart .top-cart-icon i, .block-title.hover .title-cart .top-cart-icon i, .block-title .title-cart .top-cart-icon i</elements>
+                <props>
+                    <prop>color</prop>
+                    <prop hover="1">color</prop>
+                </props>
+            </style_child>
+			<style_child>
+                <name>Counter</name>
+                <elements>.block-title.active .cart-qty, .block-title.hover .cart-qty, .block-title  .cart-qty</elements>
+                <props>
+                    <prop>background-color</prop>
+                    <prop>color</prop>
+					<prop hover="1">background-color</prop>
+                    <prop hover="1">color</prop>
+                </props>
+            </style_child>
+            <style_child>
+                <name>Dropdown Wrapper</name>
+                <elements>.block-content</elements>
+                <props>
+                    <prop>background-color</prop>
+					<prop>border-color</prop>
+                    <prop>color</prop>
+                </props>
+            </style_child>
+            <style_child>
+                <name>Dropdown Product Name</name>
+                <elements>.block-content .product-name a</elements>
+                <props>
+                    <prop>color</prop>
+                    <prop hover="1">color</prop>
+					<prop>font-size</prop>
+					<prop>line-height</prop>
+					<prop>font-family</prop>
+                </props>
+            </style_child>
+            <style_child>
+                <name>Dropdown Icon</name>
+                <elements>.cart-empty i, .btn-edit i, .btn-remove i</elements>
+                <props>
+                    <prop>color</prop>
+					<prop hover="1">color</prop>
+                </props>
+            </style_child>
+			<style_child>
+                <name>Dropdown Product Quantity</name>
+                <elements>.cart-price-qt strong</elements>
+                <props>
+					<prop>background-color</prop>
+                    <prop>color</prop>
+                </props>
+            </style_child>
+			<style_child>
+                <name>Dropdown Total Label</name>
+                <elements>.block-content .subtotal .label</elements>
+                <props>
+                    <prop>color</prop>
+				</props>
+            </style_child>
+			<style_child>
+                <name>Dropdown View Cart Link</name>
+                <elements>.block-content .actions a</elements>
+                <props>
+                    <prop>color</prop>
+					<prop hover="1">color</prop>
+					<prop>font-size</prop>
+					<prop>font-family</prop>
+					<prop>line-height</prop>
+				</props>
+            </style_child>
+        </style>
+        <style>
+            <name>Header Navigation</name>
+            <elements>#header .navbar-collapse</elements>
+            <props>
+                <prop>color</prop>
+            </props>
+            <style_child>
+                <name>Top Level Links</name>
+                <elements>ul.topmenu li.level0 a.level-top</elements>
+                <props>
+                    <prop>color</prop>
+                    <prop hover="1">color</prop>
+                    <prop>font-size</prop>
+                    <prop>background-color</prop>
+                    <prop hover="1">background-color</prop>
+                    <prop>padding-top</prop>
+                    <prop>padding-right</prop>
+                    <prop>padding-bottom</prop>
+                    <prop>padding-left</prop>
+					<prop>font-family</prop>
+                </props>
+            </style_child>
+            <style_child>
+                <name>Top Level Links Active</name>
+                <elements>ul.topmenu.navbar-nav li.level0.active > a.level-top</elements>
+                <props>
+                    <prop>color</prop>
+                    <prop hover="1">color</prop>
+                    <prop>background-color</prop>
+                    <prop hover="1">background-color</prop>
+                </props>
+            </style_child>
+			<style_child>
+				<name>Menu Label 1</name>
+				<elements>.category-label.label_one</elements>
+				<props>
+					<prop>color</prop>
+				</props>
+			</style_child>
+			<style_child>
+				 <name>Menu Label 1 Hover</name>
+                <elements>ul.topmenu a.over > .category-label.label_one, ul.topmenu li.active a > .category-label.label_one</elements>
+				<props>
+					<prop>color</prop>
+				</props>
+			</style_child>
+			<style_child>
+				 <name>Menu Label 2</name>
+                <elements>.category-label.label_two</elements>
+				<props>
+					<prop>color</prop>
+				</props>
+			</style_child>
+			<style_child>
+				 <name>Menu Label 2 Hover</name>
+                <elements>ul.topmenu a.over > .category-label.label_two, ul.topmenu li.active a > .category-label.label_two</elements>
+				<props>
+					<prop>color</prop>
+				</props>
+			</style_child>
+			<style_child>
+				 <name>Menu Label 3</name>
+                <elements>.category-label.label_three</elements>
+				<props>
+					<prop>color</prop>
+				</props>
+			</style_child>
+			<style_child>
+				 <name>Menu Label 3 Hover</name>
+                <elements>ul.topmenu a.over > .category-label.label_three, ul.topmenu li.active a > .category-label.label_three</elements>
+				<props>
+					<prop>color</prop>
+				</props>
+			</style_child>
+			<style_child>
+                <name>Dropdown Menu</name>
+                <elements>ul.topmenu ul, ul.topmenu div</elements>
+                <props>
+                    <prop>background-color</prop>
+                </props>
+            </style_child>
+			<style_child>
+                <name>Dropdown Menu Links</name>
+                <elements>ul.topmenu ul li a, ul.topmenu div li a</elements>
+                <props>
+                    <prop>color</prop>
+					<prop hover="1">color</prop>
+                </props>
+            </style_child>
+        </style>
+		<style>
+            <name>Header Wide Menu</name>
+            <elements>.nav-wide .menu-wrapper</elements>
+            <props>
+                <prop>background-color</prop>
+                <prop>color</prop>
+            </props>
+			<style_child>
+                <name>Subtitle</name>
+                <elements>ul.level0 li.level1 span.subtitle</elements>
+                <props>
+                    <prop>color</prop>
+					<prop hover="1">color</prop>
+					<prop>border-color</prop>
+					<prop>font-family</prop>
+					<prop>font-size</prop>
+					<prop>line-height</prop>
+                </props>
+            </style_child>
+			<style_child>
+                <name>Dropdown Menu Links</name>
+                <elements>ul.level0 li.level1 a</elements>
+                <props>
+                    <prop>color</prop>
+					<prop hover="1">color</prop>
+					<prop>border-color</prop>
+                </props>
+            </style_child>
+        </style>
+
+        <style>
+            <name>Dropdown User Menu</name>
+            <elements>#header .links:not(.default-links), #header .customer-name-wrapper</elements>
+            <props>
+                <prop>color</prop>
+            </props>
+            <style_child>
+                <name>Link</name>
+                <elements>li a.top-link-login, .customer-name</elements>
+                <props>
+                    <prop>color</prop>
+                    <prop hover="1">color</prop>
+                </props>
+            </style_child>
+			<style_child>
+                <name>Dropdown</name>
+                <elements>+ .links</elements>
+                <props>
+                    <prop>background-color</prop>
+                </props>
+            </style_child>
+			<style_child>
+                <name>Dropdown Links</name>
+                <elements>+ .links li a</elements>
+                <props>
+                    <prop>color</prop>
+					<prop hover="1">color</prop>
+                </props>
+            </style_child>
+        </style>
+        <style>
+            <name>Header Static Block Under Menu</name>
+            <elements>body.boxed-layout .widget-static-block .container</elements>
+            <props>
+                <prop>background-color</prop>
+                <prop>color</prop>
+            </props>
+        </style>
+
+        <style>
+            <name>Content Container</name>
+            <elements>body.boxed-layout .content-wrapper > .container</elements>
+            <props>
+                <prop>background-color</prop>
+            </props>
+        </style>
+
+		<style>
+            <name>Widget Tabs</name>
+            <elements>.product-tabs</elements>
+			<style_child>
+				<name>Items</name>
+				<elements>li</elements>
+				<props>
+					<prop>background-color</prop>
+					<prop>color</prop>
+					<prop>font-family</prop>
+					<prop>font-size</prop>
+					<prop>line-height</prop>
+				</props>
+			</style_child>
+			<style_child>
+				<name>Active Item</name>
+				<elements>li.current</elements>
+				<props>
+					<prop>background-color</prop>
+					<prop>color</prop>
+				</props>
+			</style_child>
+		</style>
+
+		<style>
+            <name>Widget Random Reviews</name>
+            <elements>.customer-reviews-widget</elements>
+			<props>
+				<prop>color</prop>
+				<prop>font-family</prop>
+				<prop>font-size</prop>
+				<prop>line-height</prop>
+			</props>
+			<style_child>
+				<name>Product Name</name>
+				<elements>.product-name h3</elements>
+				<props>
+					<prop>color</prop>
+					<prop>font-family</prop>
+					<prop>font-size</prop>
+					<prop>line-height</prop>
+					<prop>font-family</prop>
+				</props>
+			</style_child>
+			<style_child>
+				<name>Review Title</name>
+				<elements>.review-title</elements>
+				<props>
+					<prop>color</prop>
+					<prop>font-family</prop>
+					<prop>font-size</prop>
+					<prop>line-height</prop>
+				</props>
+			</style_child>
+			<style_child>
+				<name>Review Text</name>
+				<elements>.review-text</elements>
+				<props>
+					<prop>color</prop>
+					<prop>font-family</prop>
+					<prop>font-size</prop>
+					<prop>line-height</prop>
+				</props>
+			</style_child>
+			<style_child>
+				<name>Author</name>
+				<elements>.author</elements>
+				<props>
+					<prop>color</prop>
+					<prop>font-size</prop>
+					<prop>font-family</prop>
+					<prop>line-height</prop>
+				</props>
+			</style_child>
+		</style>
+
+		<style>
+            <name>Footer</name>
+            <elements>body.boxed-layout #footer .container, body.wide-layout #footer</elements>
+            <!-- <props>
+                <prop>background-color</prop>
+                <prop>color</prop>
+            </props> -->
+			<style_child>
+				<name>Top Block</name>
+				<elements>.footer-top</elements>
+				<props>
+					<prop>background-color</prop>
+					<prop>color</prop>
+				</props>
+			</style_child>
+			<style_child>
+				<name>Left Block Backgrorund</name>
+				<elements>.left-background</elements>
+				<props>
+					<prop>background-color</prop>
+				</props>
+			</style_child>
+			<style_child>
+				<name>Left Block Color</name>
+				<elements>.left-inner</elements>
+				<props>
+					<prop>color</prop>
+				</props>
+			</style_child>
+			<style_child>
+				<name>Left Block Title</name>
+				<elements>h2.footer-block-title</elements>
+				<props>
+					<prop>color</prop>
+					<prop>border-color</prop>
+				</props>
+			</style_child>
+
+			<style_child>
+				<name>Bottom Block</name>
+				<elements>.footer-bottom</elements>
+				<props>
+					<prop>background-color</prop>
+					<prop>color</prop>
+				</props>
+			</style_child>
+            <style_child>
+                <name>Titles</name>
+                <elements>h2.footer-block-title</elements>
+                <props>
+                    <prop>color</prop>
+                    <prop hover="1">color</prop>
+                    <prop>font-size</prop>
+                    <prop>font-family</prop>
+					<prop>line-height</prop>
+                    <prop>border-color</prop>
+                    <prop>padding-bottom</prop>
+                    <prop>margin-bottom</prop>
+                </props>
+            </style_child>
+			<style_child>
+				<name>Button</name>
+				<elements>.btn</elements>
+				<props>
+					<prop>color</prop>
+					<prop>background-color</prop>
+					<prop>border-color</prop>
+					<prop hover="1">color</prop>
+					<prop hover="1">background-color</prop>
+					<prop hover="1">border-color</prop>
+				</props>
+			</style_child>
+			<style_child>
+				<name>H2-H6</name>
+				<elements>h2, h3, h4, h5, h6</elements>
+				<props>
+					<prop>color</prop>
+					<prop>font-size</prop>
+					<prop>font-family</prop>
+					<prop>line-height</prop>
+					<prop>font-weight</prop>
+				</props>
+			</style_child>
+			 <style_child>
+				<name>List</name>
+				<elements>ul.block-list</elements>
+				<props>
+					<prop>color</prop>
+				</props>
+			</style_child>
+            <style_child>
+                <name>List Links</name>
+                <elements>li a</elements>
+                <props>
+                    <prop>color</prop>
+                    <prop hover="1">color</prop>
+                </props>
+            </style_child>
+			<style_child>
+                <name>List Links Dots</name>
+                <elements>li a i.fa</elements>
+                <props>
+                    <prop>color</prop>
+                </props>
+            </style_child>
+			<style_child>
+                <name>List Links Hover Divider</name>
+                <elements>li a .hover-divider</elements>
+                <props>
+                    <prop>background-color</prop>
+                </props>
+            </style_child>
+			<style_child>
+				<name>Switcher Label Color</name>
+				<elements>.store-switcher label, .form-language label, .form-currency label</elements>
+				<props>
+					<prop>color</prop>
+				</props>
+			</style_child>
+			<style_child>
+				<name>Switcher Dropdown</name>
+				<elements>.selectpicker</elements>
+				<props>
+					<prop>color</prop>
+					<prop>background-color</prop>
+				</props>
+			</style_child>
+			<style_child>
+				<name>Switcher Dropdown Link</name>
+				<elements>.selectpicker li a</elements>
+				<props>
+					<prop>color</prop>
+					<prop>background-color</prop>
+					<prop hover="1">color</prop>
+					<prop hover="1">background-color</prop>
+				</props>
+			</style_child>
+			<style_child>
+				<name>Copyright</name>
+				<elements>address</elements>
+				<props>
+					<prop>color</prop>
+				</props>
+			</style_child>
+		</style>
+
+        <style>
+            <name>Widget Title</name>
+            <elements>.widget-title</elements>
+            <props>
+                <prop>border-color</prop>
+                <prop>color</prop>
+                <prop hover="1">color</prop>
+                <prop>padding-top</prop>
+                <prop>padding-right</prop>
+                <prop>padding-bottom</prop>
+                <prop>padding-left</prop>
+                <prop>margin-top</prop>
+                <prop>margin-right</prop>
+                <prop>margin-bottom</prop>
+                <prop>margin-left</prop>
+            </props>
+            <style_child>
+                <name>H2</name>
+                <elements>h2</elements>
+                <props>
+                    <prop>color</prop>
+                    <prop hover="1">color</prop>
+                    <prop>font-size</prop>
+                    <prop>font-family</prop>
+					<prop>line-height</prop>
+                </props>
+            </style_child>
+        </style>
+
+        <style>
+            <name>Products Listing</name>
+            <elements>.widget-grid, .products-grid, .widget-list, .products-list</elements>
+            <props>
+                <prop>color</prop>
+            </props>
+            <style_child>
+                <name>Product Description Links</name>
+                <elements>.desc a</elements>
+                <props>
+                    <prop>color</prop>
+                    <prop hover="1">color</prop>
+                </props>
+            </style_child>
+            <style_child>
+                <name>Product Title</name>
+                <elements>.product-name a</elements>
+                <props>
+                    <prop>color</prop>
+                    <prop hover="1">color</prop>
+                    <prop>font-size</prop>
+                    <prop>line-height</prop>
+					<prop>font-family</prop>
+                </props>
+            </style_child>
+            <style_child>
+                <name>Product Rating Links</name>
+                <elements>.ratings .rating-links a</elements>
+                <props>
+                    <prop>color</prop>
+                    <prop hover="1">color</prop>
+                </props>
+            </style_child>
+            <style_child>
+                <name>Product Rating Stars</name>
+                <elements>.rating-box</elements>
+                <props>
+                    <prop>color</prop>
+                </props>
+            </style_child>
+            <style_child>
+                <name>Product Rating Stars Active</name>
+                <elements>.rating-box .rating</elements>
+                <props>
+                    <prop>color</prop>
+                </props>
+            </style_child>
+        </style>
+        <style>
+            <name>Product Timer</name>
+            <elements>.timer-box, .timer-box strong</elements>
+            <props>
+                <prop>color</prop>
+                <prop>font-size</prop>
+                <prop>font-family</prop>
+				<prop>line-height</prop>
+            </props>
+            <style_child>
+                <name>Timer</name>
+                <elements>div</elements>
+                <props>
+                    <prop>color</prop>
+                    <prop>font-size</prop>
+                    <prop>font-family</prop>
+					<prop>line-height</prop>
+                </props>
+            </style_child>
+        </style>
+        <style>
+            <name>Buttons Default</name>
+            <elements>body .btn.btn-default</elements>
+            <props>
+                <prop>color</prop>
+                <prop>background-color</prop>
+                <prop>border-width</prop>
+                <prop>border-color</prop>
+				<prop>font-family</prop>
+				<prop>font-size</prop>
+				<prop>font-weight</prop>
+                <prop hover="1">color</prop>
+                <prop hover="1">background-color</prop>
+                <prop hover="1">border-color</prop>
+            </props>
+            <style_child>
+                <name>Icon</name>
+                <elements>i.fa</elements>
+                <props>
+                    <prop>display</prop>
+                    <prop>color</prop>
+                    <prop>border-color</prop>
+                    <prop hover="1">color</prop>
+                    <prop hover="1">border-color</prop>
+                </props>
+            </style_child>
+        </style>
+        <style>
+            <name>Buttons Primary</name>
+            <elements>body .btn.btn-primary</elements>
+            <props>
+                <prop>color</prop>
+                <prop>background-color</prop>
+                <prop>border-width</prop>
+                <prop>border-color</prop>
+				<prop>font-family</prop>
+				<prop>font-size</prop>
+				<prop>font-weight</prop>
+                <prop hover="1">color</prop>
+                <prop hover="1">background-color</prop>
+                <prop hover="1">border-color</prop>
+            </props>
+            <style_child>
+                <name>Icon</name>
+                <elements>i.fa</elements>
+                <props>
+                    <prop>display</prop>
+                    <prop>color</prop>
+                    <prop>border-color</prop>
+                    <prop hover="1">color</prop>
+                    <prop hover="1">border-color</prop>
+                </props>
+            </style_child>
+        </style>
+        <style>
+            <name>Buttons Add to Cart</name>
+            <elements>.add-to-cart .btn</elements>
+            <props>
+                <prop>color</prop>
+                <prop>background-color</prop>
+                <prop>border-width</prop>
+                <prop>border-color</prop>
+				<prop>font-family</prop>
+				<prop>font-size</prop>
+				<prop>font-weight</prop>
+                <prop hover="1">color</prop>
+                <prop hover="1">background-color</prop>
+                <prop hover="1">border-color</prop>
+            </props>
+            <style_child>
+                <name>Icon</name>
+                <elements>i.fa</elements>
+                <props>
+                    <prop>display</prop>
+                    <prop>color</prop>
+                    <prop>border-color</prop>
+                    <prop hover="1">color</prop>
+                    <prop hover="1">border-color</prop>
+                </props>
+            </style_child>
+        </style>
+        <style>
+            <name>Add To Links</name>
+            <elements>.link-compare i.fa, .link-wishlist i.fa</elements>
+            <show_elements>.link-compare, .link-wishlist</show_elements>
+            <props>
+                <prop>color</prop>
+				<prop>border-color</prop>
+				<prop>background-color</prop>
+                <prop hover="1">color</prop>
+                <prop hover="1">border-color</prop>
+				<prop hover="1">background-color</prop>
+            </props>
+        </style>
+        <style>
+            <name>Prices</name>
+            <elements>.price-box, .cart-price</elements>
+            <props>
+                <prop>color</prop>
+            </props>
+			<style_child>
+                <name>Label</name>
+                <elements>.price-label</elements>
+                <props>
+                    <prop>color</prop>
+                    <prop>font-size</prop>
+                    <prop>line-height</prop>
+					<prop>font-family</prop>
+					<prop>font-weight</prop>
+                </props>
+            </style_child>
+            <style_child>
+                <name>Price</name>
+                <elements>.price</elements>
+                <props>
+                    <prop>color</prop>
+                    <prop>font-size</prop>
+                    <prop>line-height</prop>
+					<prop>font-family</prop>
+					<prop>font-weight</prop>
+                </props>
+            </style_child>
+            <style_child>
+                <name>Old Price</name>
+                <elements>.old-price .price</elements>
+                <props>
+                    <prop>color</prop>
+                    <prop>font-family</prop>
+					<prop>font-size</prop>
+					<prop>font-weight</prop>
+                    <prop>line-height</prop>
+                </props>
+            </style_child>
+        </style>
+        <style>
+            <name>Product Out Of Stock</name>
+            <elements>.availability</elements>
+            <props>
+                <prop>color</prop>
+            </props>
+            <style_child>
+                <name>Status</name>
+                <elements>span</elements>
+                <props>
+                    <prop>color</prop>
+                </props>
+            </style_child>
+            <style_child>
+                <name>Icon</name>
+                <elements>i.fa</elements>
+                <props>
+                    <prop>color</prop>
+                    <prop>font-size</prop>
+                    <prop>font-family</prop>
+					<prop>line-height</prop>
+                </props>
+            </style_child>
+        </style>
+        <style>
+            <name>Product In Stock</name>
+            <elements>.availability.in-stock</elements>
+            <props>
+                <prop>color</prop>
+            </props>
+            <style_child>
+                <name>Status</name>
+                <elements>span</elements>
+                <props>
+                    <prop>color</prop>
+                </props>
+            </style_child>
+            <style_child>
+                <name>Icon</name>
+                <elements>i.fa</elements>
+                <props>
+                    <prop>color</prop>
+                    <prop>font-size</prop>
+                    <prop>font-family</prop>
+					<prop>line-height</prop>
+                </props>
+            </style_child>
+        </style>
+
+        <style>
+            <name>Page Title</name>
+            <elements>.page-title</elements>
+            <props>
+                <prop>border-color</prop>
+                <prop>margin-bottom</prop>
+                <prop>padding-bottom</prop>
+            </props>
+            <style_child>
+                <name>H2-H6</name>
+                <elements>h2, h3, h4, h5, h6</elements>
+                <props>
+                    <prop>color</prop>
+                    <prop>font-size</prop>
+                    <prop>line-height</prop>
+					<prop>font-family</prop>
+					<prop>font-weight</prop>
+                </props>
+            </style_child>
+        </style>
+
+        <style>
+            <name>Sidebar Blocks</name>
+            <elements>.sidebar .block</elements>
+            <props>
+                <prop>color</prop>
+                <prop>border-color</prop>
+                <prop>background-color</prop>
+            </props>
+            <style_child>
+                <name>Title</name>
+                <elements>.block-title</elements>
+                <props>
+                    <prop>color</prop>
+                    <prop>font-size</prop>
+					<prop>font-family</prop>
+					<prop>font-weight</prop>
+                    <prop>line-height</prop>
+                    <prop>border-color</prop>
+                    <prop>margin-bottom</prop>
+                    <prop>padding-bottom</prop>
+                </props>
+            </style_child>
+            <style_child>
+                <name>Subtitles</name>
+                <elements>dt, .block-subtitle, .subtotal .label</elements>
+                <props>
+                    <prop>color</prop>
+                </props>
+            </style_child>
+			<style_child>
+                <name>Links</name>
+                <elements>.block-content a</elements>
+                <props>
+                    <prop>color</prop>
+					<prop hover="1">color</prop>
+                </props>
+            </style_child>
+			<style_child>
+                <name>Product Name</name>
+                <elements>li.item .product-details .product-name a</elements>
+                <props>
+                    <prop>color</prop>
+					<prop hover="1">color</prop>
+					<prop>font-size</prop>
+					<prop>line-height</prop>
+					<prop>font-family</prop>
+                </props>
+            </style_child>
+			<style_child>
+                <name>Dividers</name>
+                <elements>.actions, .block-layered-nav dd</elements>
+                <props>
+                    <prop>border-color</prop>
+                </props>
+            </style_child>
+        </style>
+
+		<!-- !!!!!! -->
+
+
+        <style>
+            <name>Toolbar</name>
+            <elements>.toolbar</elements>
+            <props>
+                <prop>color</prop>
+                <prop>background-color</prop>
+            </props>
+
+			<style_child>
+				<name>Amount</name>
+				<elements>.sorter .amount</elements>
+				<props>
+					<prop>color</prop>
+					<prop>background-color</prop>
+				</props>
+			</style_child>
+            <style_child>
+                <name>Labels</name>
+                <elements>label</elements>
+                <props>
+                    <prop>color</prop>
+                </props>
+            </style_child>
+			<style_child>
+                <name>Asc/Desc Icon</name>
+                <elements>.sorter .asc, .sorter .desc</elements>
+                <props>
+                    <prop>color</prop>
+                    <prop hover="1">color</prop>
+					<prop>border-color</prop>
+					<prop hover="1">border-color</prop>
+					<prop>background-color</prop>
+					<prop hover="1">background-color</prop>
+                </props>
+            </style_child>
+			<style_child>
+                <name>Switchers</name>
+                <elements>.sorter .bootstrap-select > .selectpicker</elements>
+                <props>
+                    <prop>color</prop>
+                    <prop hover="1">color</prop>
+					<prop>border-color</prop>
+					<prop hover="1">border-color</prop>
+					<prop>background-color</prop>
+					<prop hover="1">background-color</prop>
+                </props>
+            </style_child>
+			<style_child>
+                <name>Right Toolbar</name>
+                <elements>.right-toolbar</elements>
+                <props>
+					<prop>background-color</prop>
+                </props>
+            </style_child>
+			<style_child>
+                <name>View Mode</name>
+                <elements>.right-toolbar .view-mode > *</elements>
+                <props>
+					<prop>border-color</prop>
+                </props>
+            </style_child>
+			 <style_child>
+                <name>View Mode Icon</name>
+                <elements>.right-toolbar .view-mode a</elements>
+                <props>
+                    <prop>color</prop>
+                    <prop hover="1">color</prop>
+					<prop>background-color</prop>
+					<prop hover="1">background-color</prop>
+                </props>
+            </style_child>
+            <style_child>
+                <name>Active Icon</name>
+                <elements>.right-toolbar .view-mode > strong</elements>
+                <props>
+                    <prop>color</prop>
+					<prop>background-color</prop>
+                </props>
+            </style_child>
+			<style_child>
+				<name>Pagination</name>
+				<elements>.right-toolbar .pages li a</elements>
+				<props>
+					<prop>background-color</prop>
+					<prop>color</prop>
+					<prop hover="1">background-color</prop>
+					<prop hover="1">color</prop>
+				</props>
+			</style_child>
+			<style_child>
+				<name>Pagination Active</name>
+				<elements>.right-toolbar .pages li.current</elements>
+				<props>
+					<prop>background-color</prop>
+					<prop>color</prop>
+				</props>
+			</style_child>
+			<style_child>
+				<name>Top Button</name>
+				<elements>.right-toolbar .toolbar-top</elements>
+				<props>
+					<prop>background-color</prop>
+					<prop>color</prop>
+					<prop hover="1">background-color</prop>
+					<prop hover="1">color</prop>
+				</props>
+			</style_child>
+        </style>
+
+        <style>
+            <name>Lightbox Button</name>
+            <elements>.lightbox-button i</elements>
+            <props>
+                <prop>color</prop>
+                <prop hover="1">color</prop>
+                <prop>background-color</prop>
+                <prop hover="1">background-color</prop>
+                <prop title="Radius">width, height</prop>
+            </props>
+        </style>
+
+		<!-- new -->
+
+        <style>
+            <name>Product View</name>
+            <elements>.product-view</elements>
+            <props>
+                <prop>color</prop>
+            </props>
+            <style_child>
+                <name>Content Wrapper</name>
+                <elements>.top-wrapper .product-shop-inner</elements>
+                <props>
+                    <prop>border-color</prop>
+                    <prop>margin</prop>
+                    <prop>padding</prop>
+                </props>
+            </style_child>
+			<style_child>
+                <name>Title</name>
+                <elements>.product-shop .product-name h1, .product-shop .product-name h2, .product-shop .product-name h3, .product-shop .product-name h4, .product-shop .product-name h5, .product-shop .product-name h6</elements>
+                <props>
+                    <prop>color</prop>
+                    <prop>font-size</prop>
+                    <prop>line-height</prop>
+					<prop>font-family</prop>
+                </props>
+            </style_child>
+			<style_child>
+                <name>Price Label</name>
+                <elements>.top-wrapper .price-box .price-label</elements>
+                <props>
+                    <prop>color</prop>
+                    <prop>font-size</prop>
+                    <prop>font-weight</prop>
+                    <prop>line-height</prop>
+					<prop>font-family</prop>
+                </props>
+            </style_child>
+			<style_child>
+                <name>Price</name>
+                <elements>.top-wrapper .price-box .price</elements>
+                <props>
+                    <prop>color</prop>
+                    <prop>font-size</prop>
+                    <prop>font-weight</prop>
+                    <prop>line-height</prop>
+					<prop>font-family</prop>
+                </props>
+            </style_child>
+			<style_child>
+                <name>SKU</name>
+                <elements>.sku-email-block .sku</elements>
+                <props>
+                    <prop>color</prop>
+                    <prop>font-size</prop>
+                    <prop>font-family</prop>
+					<prop>line-height</prop>
+                </props>
+			</style_child>
+			<style_child>
+                <name>Product Options</name>
+                <elements>.product-shop .product-options</elements>
+                <props>
+                    <prop>background-color</prop>
+                </props>
+			</style_child>
+        </style>
+		<style>
+            <name>Product Quantity</name>
+			<elements>.quantity-wrapper</elements>
+			 <style_child>
+                <name>Label</name>
+                <elements>label</elements>
+                <props>
+                    <prop>color</prop>
+                    <prop>font-size</prop>
+                    <prop>font-weight</prop>
+                    <prop>font-family</prop>
+					<prop>line-height</prop>
+                </props>
+			</style_child>
+            <style_child>
+                <name>Buttons</name>
+                <elements>i.fa</elements>
+                <props>
+                    <prop>color</prop>
+                    <prop>background-color</prop>
+					<prop hover="1">color</prop>
+                    <prop hover="1">background-color</prop>
+                </props>
+            </style_child>
+			<style_child>
+                <name>Input</name>
+                <elements>input.qty</elements>
+                <props>
+                    <prop>color</prop>
+                    <prop>background-color</prop>
+                    <prop>border-color</prop>
+                </props>
+            </style_child>
+		</style>
+		<style>
+            <name>Product Add To Links</name>
+			<elements>.product-essential .product-shop .add-to-links</elements>
+            <style_child>
+                <name>Icons</name>
+                <elements>i</elements>
+                <props>
+                    <prop>color</prop>
+                    <prop>background-color</prop>
+					<prop>border-color</prop>
+					<prop hover="1">color</prop>
+                    <prop hover="1">background-color</prop>
+					<prop hover="1">border-color</prop>
+                </props>
+            </style_child>
+			<style_child>
+                <name>Text</name>
+                <elements>a</elements>
+                <props>
+                    <prop>color</prop>
+					<prop hover="1">color</prop>
+                </props>
+            </style_child>
+		</style>
+		<style>
+            <name>Product Prev/Next Buttons</name>
+			<elements>.catalog-product-view .breadcrumbs-wrapper .product-buttons div</elements>
+			<props>
+                <prop>color</prop>
+				<prop>background-color</prop>
+				<prop hover="1">color</prop>
+				<prop hover="1">background-color</prop>
+            </props>
+		</style>
+		<style>
+            <name>Product Timer Wrapper</name>
+			<elements>.timer-wrapper</elements>
+			<props>
+				<prop>border-color</prop>
+				<prop>border-width</prop>
+			</props>
+		</style>
+		<style>
+            <name>Product Slider</name>
+			<elements>.slider-buttons</elements>
+            <style_child>
+                <name>Icons</name>
+                <elements>i.fa</elements>
+                <props>
+                    <prop>color</prop>
+                    <prop>background-color</prop>
+					<prop hover="1">color</prop>
+                    <prop hover="1">background-color</prop>
+                </props>
+            </style_child>
+		</style>
+		<style>
+			<name>Related Products</name>
+			<elements>.block-related, .related-bottom</elements>
+			<style_child>
+				<name>Sidebar Button</name>
+				<elements>.related-button</elements>
+				<props>
+					<prop>border-color</prop>
+					<prop>margin-top</prop>
+					<prop>padding-top</prop>
+				</props>
+			</style_child>
+			<style_child>
+				<name>Bottom Title</name>
+				<elements>.block-title</elements>
+				<props>
+					<prop>border-color</prop>
+					<prop>color</prop>
+					<prop>font-size</prop>
+					<prop>font-family</prop>
+					<prop>line-height</prop>
+				</props>
+			</style_child>
+			<style_child>
+				<name>Bottom Title Link</name>
+				<elements>.block-title a</elements>
+				<props>
+					<prop>color</prop>
+					<prop hover="1">color</prop>
+					<prop>font-size</prop>
+					<prop>font-family</prop>
+					<prop>line-height</prop>
+				</props>
+			</style_child>
+			<style_child>
+				<name>Bottom Buttons</name>
+				<elements>.prev i.fa, .next i.fa</elements>
+				<props>
+					<prop>color</prop>
+					<prop>background-color</prop>
+					<prop hover="1">color</prop>
+					<prop hover="1">background-color</prop>
+				</props>
+			</style_child>
+		</style>
+
+		<style>
+            <name>Product Tabs</name>
+			<elements>.product-view #tabs</elements>
+			<props>
+				<prop>background-color</prop>
+				<prop>color</prop>
+			</props>
+            <style_child>
+                <name>Title Block</name>
+                <elements>.nav-tabs li a</elements>
+                <props>
+                    <prop>color</prop>
+                    <prop>background-color</prop>
+					<prop>border-color</prop>
+					<prop hover="1">color</prop>
+                    <prop hover="1">background-color</prop>
+					<prop hover="1">border-color</prop>
+                </props>
+            </style_child>
+			<style_child>
+                <name>Active Title Block</name>
+                <elements>.nav-tabs li.active a</elements>
+                <props>
+                    <prop>color</prop>
+                    <prop>background-color</prop>
+					<prop>border-color</prop>
+					<prop hover="1">color</prop>
+                    <prop hover="1">background-color</prop>
+					<prop hover="1">border-color</prop>
+                </props>
+            </style_child>
+			<style_child>
+                <name>Container</name>
+                <elements>.tab-content</elements>
+                <props>
+                    <prop>background-color</prop>
+					<prop>border-color</prop>
+                </props>
+            </style_child>
+		</style>
+		<style>
+            <name>More views</name>
+			<elements>.product-view .product-img-box .more-views</elements>
+            <style_child>
+                <name>Title</name>
+                <elements>h2</elements>
+                <props>
+                    <prop>color</prop>
+                    <prop>border-color</prop>
+					<prop>margin-bottom</prop>
+                    <prop>padding-bottom</prop>
+					<prop>line-height</prop>
+                </props>
+            </style_child>
+		</style>
+		<style>
+            <name>Product Reviews</name>
+			<elements>.box-reviews</elements>
+            <style_child>
+                <name>Title</name>
+                <elements>.block-title</elements>
+                <props>
+                    <prop>color</prop>
+                    <prop>border-color</prop>
+					<prop>margin-bottom</prop>
+                    <prop>padding-bottom</prop>
+					<prop>font-family</prop>
+					<prop>line-height</prop>
+					<prop>font-size</prop>
+                </props>
+            </style_child>
+			<style_child>
+				<name>Subscription Form Title</name>
+                <elements>.rating-block h2</elements>
+                <props>
+                    <prop>color</prop>
+					<prop>margin-bottom</prop>
+					<prop>font-family</prop>
+					<prop>line-height</prop>
+					<prop>font-size</prop>
+                </props>
+            </style_child>
+			<style_child>
+                <name>Subscription Form Subtitle</name>
+                <elements>.rating-block h3</elements>
+                <props>
+                    <prop>color</prop>
+					<prop>margin-bottom</prop>
+					<prop>font-family</prop>
+					<prop>line-height</prop>
+					<prop>font-size</prop>
+                </props>
+            </style_child>
+			<style_child>
+                <name>Product Name in Subscription Form</name>
+                <elements>.rating-block h3 span</elements>
+                <props>
+                    <prop>color</prop>
+                </props>
+            </style_child>
+			<style_child>
+                <name>Subscription Form Text</name>
+                <elements>.rating-block h4</elements>
+                <props>
+                    <prop>color</prop>
+					<prop>margin-bottom</prop>
+					<prop>font-family</prop>
+					<prop>line-height</prop>
+					<prop>font-size</prop>
+                </props>
+            </style_child>
+
+			<style_child>
+                <name>Ratings Table</name>
+                <elements>.rating-block #product-review-table, .customer-rating</elements>
+                <props>
+                    <prop>background-color</prop>
+                </props>
+            </style_child>
+
+			<style_child>
+                <name>Ratings Text</name>
+                <elements>.rating-block .rating-title, .customer-rating .rating-title</elements>
+                <props>
+                    <prop>color</prop>
+					<prop>font-family</prop>
+					<prop>line-height</prop>
+					<prop>font-size</prop>
+                </props>
+            </style_child>
+			<style_child>
+                <name>Ratings Text Counter</name>
+                <elements>.rating-block .rating-values, .customer-rating .rating-values</elements>
+                <props>
+                    <prop>color</prop>
+					<prop>font-family</prop>
+					<prop>line-height</prop>
+					<prop>font-size</prop>
+                </props>
+            </style_child>
+			<style_child>
+                <name>Ratings Stars</name>
+                <elements>.rating-block .stars-wrapper .value, .rating-block .stars-wrapper .value i.active, .customer-rating .item .rating-box</elements>
+                <props>
+                    <prop>color</prop>
+                </props>
+            </style_child>
+			<style_child>
+                <name>Active Ratings Stars</name>
+                <elements>.rating-block .stars-wrapper .value i.active, .customer-rating .item .rating-box .rating</elements>
+                <props>
+                    <prop>color</prop>
+                </props>
+            </style_child>
+			<style_child>
+                <name>Review Form Title</name>
+                <elements>.rating-inputs label</elements>
+                <props>
+					<prop>color</prop>
+					<prop>font-family</prop>
+					<prop>line-height</prop>
+					<prop>font-size</prop>
+                </props>
+            </style_child>
+			<style_child>
+                <name>Review Form Input</name>
+                <elements>.rating-inputs .fields .field input, .rating-inputs .input-box textarea</elements>
+                <props>
+					<prop>color</prop>
+					<prop>background-color</prop>
+					<prop>border-color</prop>
+					<prop>font-size</prop>
+					<prop>font-family</prop>
+					<prop>line-height</prop>
+                </props>
+            </style_child>
+			<style_child>
+                <name>Customer Review Title</name>
+                <elements>.review-box .review h3</elements>
+                <props>
+					<prop>color</prop>
+					<prop>margin-bottom</prop>
+					<prop>font-family</prop>
+					<prop>line-height</prop>
+					<prop>font-size</prop>
+                </props>
+            </style_child>
+			<style_child>
+                <name>Customer Review Date</name>
+                <elements>.review-box .review small</elements>
+                <props>
+					<prop>color</prop>
+					<prop>margin-bottom</prop>
+					<prop>font-family</prop>
+					<prop>line-height</prop>
+					<prop>font-size</prop>
+                </props>
+            </style_child>
+			<style_child>
+                <name>Customer Review Text</name>
+                <elements>.review-box .review</elements>
+                <props>
+					<prop>color</prop>
+					<prop>margin-bottom</prop>
+					<prop>font-family</prop>
+					<prop>line-height</prop>
+					<prop>font-size</prop>
+                </props>
+            </style_child>
+			<style_child>
+                <name>Customer Review User Icon</name>
+                <elements>.review-box .customer i</elements>
+                <props>
+					<prop>color</prop>
+					<prop>background-color</prop>
+					<prop>margin-bottom</prop>
+                </props>
+            </style_child>
+			<style_child>
+                <name>Customer Review User Name</name>
+                <elements>.review-box .customer</elements>
+                <props>
+					<prop>color</prop>
+					<prop>font-size</prop>
+					<prop>font-family</prop>
+					<prop>line-height</prop>
+                </props>
+            </style_child>
+		</style>
+		<style>
+			<name>Product Ratings</name>
+			<elements>.ratings</elements>
+			<style_child>
+				<name>Rating Stars</name>
+				<elements>.rating-box</elements>
+				<props>
+					<prop>color</prop>
+				</props>
+			</style_child>
+			<style_child>
+				<name>Active Rating Stars</name>
+				<elements>.rating-box .rating</elements>
+				<props>
+					<prop>color</prop>
+				</props>
+			</style_child>
+			<style_child>
+				<name>Rating Links</name>
+				<elements>.rating-links a, .amount a, .rating-links span</elements>
+				<props>
+					<prop>color</prop>
+					<prop hover="1">color</prop>
+				</props>
+			</style_child>
+		</style>
+
+		<style>
+			<name>Product Slider Arrows</name>
+			<elements>.slider-container .next i, .slider-container .prev i</elements>
+			<props>
+				<prop>color</prop>
+				<prop>background-color</prop>
+				<prop hover="1">color</prop>
+				<prop hover="1">background-color</prop>
+			</props>
+		</style>
+
+		<style>
+			<name>Sidebar Newsletter block</name>
+			<elements>aside.sidebar .block-subscribe</elements>
+			<props>
+				<prop>border-color</prop>
+				<prop>background-color</prop>
+				<prop>color</prop>
+			</props>
+			<style_child>
+				<name>Input</name>
+				<elements>input</elements>
+				<props>
+					<prop>color</prop>
+					<prop>background-color</prop>
+				</props>
+			</style_child>
+			<style_child>
+				<name>Button</name>
+				<elements>.btn</elements>
+				<props>
+					<prop>color</prop>
+					<prop>background-color</prop>
+					<prop>border-color</prop>
+					<prop hover="1">color</prop>
+					<prop hover="1">background-color</prop>
+					<prop hover="1">border-color</prop>
+				</props>
+			</style_child>
+		</style>
+		<style>
+            <name>Form Elements</name>
+			<elements>form, .form, .content-wrapper</elements>
+            <style_child>
+                <name>Label</name>
+                <elements>label, .label, .radio label, .checkbox label, .form-list label, .cart-block label</elements>
+                <props>
+                    <prop>color</prop>
+                    <prop>font-size</prop>
+					<prop>font-family</prop>
+					<prop>line-height</prop>
+                </props>
+            </style_child>
+			<style_child>
+				<name>Subtitle Wrapper</name>
+				<elements>.page-subtitle, .cart-block-title, .postTitle</elements>
+				<props>
+					<prop>border-color</prop>
+					<prop>margin-bottom</prop>
+					<prop>padding-bottom</prop>
+					<prop>color</prop>
+					<prop hover="1">color</prop>
+				</props>
+			</style_child>
+			<style_child>
+                <name>H2-H6</name>
+                <elements>h2, h3, h4, h5, h6, .content h2, .content h3, .content h4, .content h5, .content h6, .page-subtitle h2, .page-subtitle h3, .page-subtitle h4, .page-subtitle h5, .page-subtitle h6, .cart-block-title h2, .cart-block-title h3, .cart-block-title h4, .cart-block-title h5, .cart-block-title h6</elements>
+                <props>
+                    <prop>color</prop>
+                    <prop>font-size</prop>
+					<prop>font-family</prop>
+					<prop>line-height</prop>
+                </props>
+            </style_child>
+			<style_child>
+				<name>P</name>
+				<elements>p</elements>
+				<props>
+					<prop>color</prop>
+                    <prop>font-size</prop>
+					<prop>font-family</prop>
+					<prop>line-height</prop>
+				</props>
+			</style_child>
+			<style_child>
+				<name>A</name>
+				<elements>a</elements>
+				<props>
+					<prop>color</prop>
+					<prop hover="1">color</prop>
+					<prop>font-size</prop>
+					<prop>font-family</prop>
+					<prop>line-height</prop>
+				</props>
+			</style_child>
+			<style_child>
+				<name>Border</name>
+				<elements>.buttons-set</elements>
+				<props>
+					<prop>border-color</prop>
+					<prop>margin-top</prop>
+					<prop>padding-top</prop>
+				</props>
+			</style_child>
+			<style_child>
+                <name>Select, Input, Textarea</name>
+                <elements>.form-control</elements>
+                <props>
+                    <prop>color</prop>
+                    <prop>background-color</prop>
+					<prop>border-color</prop>
+                </props>
+            </style_child>
+			<style_child>
+				<name>Table</name>
+				<elements>table, .table, .table-bordered, table.table-bordered tr th, table.table-bordered tr td</elements>
+				<props>
+					<prop>border-color</prop>
+					<prop>color</prop>
+				</props>
+			</style_child>
+			<style_child>
+				<name>Table Row</name>
+				<elements>table tbody tr, .table tbody tr, .table-bordered tbody tr</elements>
+				<props>
+					<prop>background-color</prop>
+					<prop>color</prop>
+					<prop hover="1">background-color</prop>
+					<prop hover="1">color</prop>
+				</props>
+			</style_child>
+			<style_child>
+				<name>Table Product Name</name>
+				<elements>table .product-name a, .table .product-name a, .table-bordered .product-name a, table h3.product-name, .table h3.product-name, .table-bordered h3.product-name</elements>
+				<props>
+					<prop>color</prop>
+					<prop hover="1">color</prop>
+					<prop>font-size</prop>
+					<prop>line-height</prop>
+					<prop>font-family</prop>
+				</props>
+			</style_child>
+			<style_child>
+				<name>Table Product Icons</name>
+				<elements>table .cart-actions i, table .table-button i, .table .table-button i, .table-bordered .table-button i, .table .cart-actions i, .table-bordered .cart-actions i</elements>
+				<props>
+					<prop>color</prop>
+					<prop hover="1">color</prop>
+					<prop>font-size</prop>
+					<prop>font-family</prop>
+					<prop>line-height</prop>
+				</props>
+			</style_child>
+			<!-- <style_child>
+                <name>"Required" label</name>
+                <elements>p.required</elements>
+                <props>
+                    <prop>color</prop>
+                    <prop>font-size</prop>
+					<prop>line-height</prop>
+                </props>
+            </style_child> -->
+		</style>
+		<style>
+			<name>Bootstrap Panel</name>
+			<elements>.panel.panel-default</elements>
+			<props>
+				<prop>background-color</prop>
+				<prop>border-color</prop>
+				<prop>color</prop>
+				<prop>font-size</prop>
+				<prop>font-family</prop>
+					<prop>line-height</prop>
+			</props>
+			<style_child>
+				<name>Panel Heading</name>
+				<elements>.panel-heading</elements>
+				<props>
+					<prop>border-color</prop>
+					<prop>margin-bottom</prop>
+					<prop>padding-bottom</prop>
+					<prop>color</prop>
+					<prop>background-color</prop>
+				</props>
+			</style_child>
+			<style_child>
+				<name>Panel Heading H2-H6</name>
+				<elements>.panel-heading h2, .panel-heading h3, .panel-heading h4, .panel-heading h5, .panel-heading h6</elements>
+				<props>
+					<prop>font-size</prop>
+					<prop>color</prop>
+					<prop>font-family</prop>
+					<prop>line-height</prop>
+				</props>
+			</style_child>
+			<style_child>
+				<name>Panel Body</name>
+				<elements>.panel-body, .step.panel-body</elements>
+				<props>
+					<prop>color</prop>
+					<prop>background-color</prop>
+					<prop>border-color</prop>
+				</props>
+			</style_child>
+		</style>
+
+		<style>
+			<name>Product Labels</name>
+			<elements>.product-labels-wrapper</elements>
+			<style_child>
+				<name>Label New</name>
+				<elements>.label-new</elements>
+				<props>
+					<prop>background-color</prop>
+					<prop>border-color</prop>
+					<prop>color</prop>
+				</props>
+			</style_child>
+			<style_child>
+				<name>Label Sale</name>
+				<elements>div:not(.label-new)</elements>
+				<props>
+					<prop>background-color</prop>
+					<prop>border-color</prop>
+					<prop>color</prop>
+				</props>
+			</style_child>
+		</style>
+
+		<style>
+			<name>Breadcrumbs</name>
+			<elements>.breadcrumbs-wrapper .breadcrumb</elements>
+			<props>
+				<prop>color</prop>
+				<prop>font-size</prop>
+				<prop>font-family</prop>
+					<prop>line-height</prop>
+			</props>
+			<style_child>
+				<name>Link</name>
+				<elements>li a</elements>
+				<props>
+					<prop>color</prop>
+					<prop hover="1">color</prop>
+				</props>
+			</style_child>
+		</style>
+
+		<style>
+			<name>Breadcrumbs Type 2</name>
+			<elements>body.wide-layout .breadcrumbs-wrapper.type-2, body.boxed-layout .breadcrumbs-wrapper.type-2 .container</elements>
+			<props>
+				<prop>background-image</prop>
+                <prop>background-position</prop>
+                <prop>background-repeat</prop>
+                <prop>background-color</prop>
+				<prop>padding-top</prop>
+				<prop>padding-bottom</prop>
+				<prop>color</prop>
+			</props>
+		</style>
+		<style>
+			<name>Header With Image</name>
+			<elements>.header-with-image .header-breadcrumbs-wrapper</elements>
+			<props>
+				<prop>background-image</prop>
+                <prop>background-position</prop>
+                <prop>background-repeat</prop>
+                <prop>background-color</prop>
+				<prop>padding-top</prop>
+				<prop>padding-bottom</prop>
+				<prop>color</prop>
+			</props>
+			<style_child>
+				<name>Page Title</name>
+				<elements>.page-title h2</elements>
+				<props>
+					<prop>color</prop>
+					<prop>font-size</prop>
+					<prop>font-family</prop>
+					<prop>line-height</prop>
+					<prop>font-weight</prop>
+				</props>
+			</style_child>
+		</style>
+
+		<style>
+			<name>Checkout</name>
+			<elements>.checkout-onepage-index</elements>
+			<style_child>
+				<name>Checkout Step Number</name>
+				<elements>.opc.panel-group .panel-heading .number</elements>
+				<props>
+					<prop>background-color</prop>
+					<prop>color</prop>
+				</props>
+			</style_child>
+			<style_child>
+				<name>Checkout Sidebar Progress</name>
+				<elements>.block-progress dt.complete, .block-progress dd.complete</elements>
+				<props>
+					<prop>color</prop>
+					<prop>background-color</prop>
+				</props>
+			</style_child>
+		</style>
+
+		<style>
+			<name>Parallax Type 1</name>
+			<elements>.parallax-banners-wrapper .banner-content.colors-1</elements>
+			<style_child>
+				<name>Title</name>
+				<elements>.title</elements>
+				<props>
+					<prop>color</prop>
+					<prop>font-size</prop>
+					<prop>font-family</prop>
+					<prop>line-height</prop>
+					<prop>font-weight</prop>
+				</props>
+			</style_child>
+			<style_child>
+				<name>Subtitle</name>
+				<elements>.subtitle</elements>
+				<props>
+					<prop>color</prop>
+					<prop>font-size</prop>
+					<prop>font-family</prop>
+					<prop>line-height</prop>
+					<prop>font-weight</prop>
+				</props>
+			</style_child>
+			<style_child>
+				<name>Text</name>
+				<elements>.text</elements>
+				<props>
+					<prop>color</prop>
+					<prop>font-size</prop>
+					<prop>font-family</prop>
+					<prop>line-height</prop>
+					<prop>font-weight</prop>
+				</props>
+			</style_child>
+			<style_child>
+				<name>Button</name>
+				<elements>.btn</elements>
+				<props>
+					<prop>color</prop>
+					<prop>background-color</prop>
+					<prop>border-color</prop>
+					<prop hover="1">color</prop>
+					<prop hover="1">background-color</prop>
+					<prop hover="1">border-color</prop>
+					<prop>font-size</prop>
+					<prop>font-family</prop>
+					<prop>line-height</prop>
+				</props>
+			</style_child>
+		</style>
+		<style>
+			<name>Parallax Type 2</name>
+			<elements>.parallax-banners-wrapper .banner-content.colors-2</elements>
+			<style_child>
+				<name>Title</name>
+				<elements>.title</elements>
+				<props>
+					<prop>color</prop>
+					<prop>font-size</prop>
+					<prop>font-family</prop>
+					<prop>line-height</prop>
+					<prop>font-weight</prop>
+				</props>
+			</style_child>
+			<style_child>
+				<name>Subtitle</name>
+				<elements>.subtitle</elements>
+				<props>
+					<prop>color</prop>
+					<prop>font-size</prop>
+					<prop>font-family</prop>
+					<prop>line-height</prop>
+					<prop>font-weight</prop>
+				</props>
+			</style_child>
+			<style_child>
+				<name>Text</name>
+				<elements>.text</elements>
+				<props>
+					<prop>color</prop>
+					<prop>font-size</prop>
+					<prop>font-family</prop>
+					<prop>line-height</prop>
+					<prop>font-weight</prop>
+				</props>
+			</style_child>
+			<style_child>
+				<name>Button</name>
+				<elements>.btn</elements>
+				<props>
+					<prop>color</prop>
+					<prop>background-color</prop>
+					<prop>border-color</prop>
+					<prop hover="1">color</prop>
+					<prop hover="1">background-color</prop>
+					<prop hover="1">border-color</prop>
+					<prop>font-size</prop>
+					<prop>font-family</prop>
+					<prop>line-height</prop>
+				</props>
+			</style_child>
+		</style>
+		<style>
+			<name>Parallax Type 3</name>
+			<elements>.parallax-banners-wrapper .banner-content.colors-3</elements>
+			<style_child>
+				<name>Title</name>
+				<elements>.title</elements>
+				<props>
+					<prop>color</prop>
+					<prop>font-size</prop>
+					<prop>font-family</prop>
+					<prop>line-height</prop>
+					<prop>font-weight</prop>
+				</props>
+			</style_child>
+			<style_child>
+				<name>Subtitle</name>
+				<elements>.subtitle</elements>
+				<props>
+					<prop>color</prop>
+					<prop>font-size</prop>
+					<prop>font-family</prop>
+					<prop>line-height</prop>
+					<prop>font-weight</prop>
+				</props>
+			</style_child>
+			<style_child>
+				<name>Text</name>
+				<elements>.text</elements>
+				<props>
+					<prop>color</prop>
+					<prop>font-size</prop>
+					<prop>font-family</prop>
+					<prop>line-height</prop>
+					<prop>font-weight</prop>
+				</props>
+			</style_child>
+			<style_child>
+				<name>Button</name>
+				<elements>.btn</elements>
+				<props>
+					<prop>color</prop>
+					<prop>background-color</prop>
+					<prop>border-color</prop>
+					<prop hover="1">color</prop>
+					<prop hover="1">background-color</prop>
+					<prop hover="1">border-color</prop>
+					<prop>font-size</prop>
+					<prop>font-family</prop>
+					<prop>line-height</prop>
+				</props>
+			</style_child>
+		</style>
+		<style>
+			<name>Parallax Type 4</name>
+			<elements>.parallax-banners-wrapper .banner-content.colors-4</elements>
+			<style_child>
+				<name>Title</name>
+				<elements>.title</elements>
+				<props>
+					<prop>color</prop>
+					<prop>font-size</prop>
+					<prop>font-family</prop>
+					<prop>line-height</prop>
+					<prop>font-weight</prop>
+				</props>
+			</style_child>
+			<style_child>
+				<name>Subtitle</name>
+				<elements>.subtitle</elements>
+				<props>
+					<prop>color</prop>
+					<prop>font-size</prop>
+					<prop>font-family</prop>
+					<prop>line-height</prop>
+					<prop>font-weight</prop>
+				</props>
+			</style_child>
+			<style_child>
+				<name>Text</name>
+				<elements>.text</elements>
+				<props>
+					<prop>color</prop>
+					<prop>font-size</prop>
+					<prop>font-family</prop>
+					<prop>line-height</prop>
+					<prop>font-weight</prop>
+				</props>
+			</style_child>
+			<style_child>
+				<name>Button</name>
+				<elements>.btn</elements>
+				<props>
+					<prop>color</prop>
+					<prop>background-color</prop>
+					<prop>border-color</prop>
+					<prop hover="1">color</prop>
+					<prop hover="1">background-color</prop>
+					<prop hover="1">border-color</prop>
+					<prop>font-size</prop>
+					<prop>font-family</prop>
+					<prop>line-height</prop>
+				</props>
+			</style_child>
+		</style>
+		<style>
+			<name>Parallax Type 5</name>
+			<elements>.parallax-banners-wrapper .banner-content.colors-5</elements>
+			<style_child>
+				<name>Title</name>
+				<elements>.title</elements>
+				<props>
+					<prop>color</prop>
+					<prop>font-size</prop>
+					<prop>font-family</prop>
+					<prop>line-height</prop>
+					<prop>font-weight</prop>
+				</props>
+			</style_child>
+			<style_child>
+				<name>Subtitle</name>
+				<elements>.subtitle</elements>
+				<props>
+					<prop>color</prop>
+					<prop>font-size</prop>
+					<prop>font-family</prop>
+					<prop>line-height</prop>
+					<prop>font-weight</prop>
+				</props>
+			</style_child>
+			<style_child>
+				<name>Text</name>
+				<elements>.text</elements>
+				<props>
+					<prop>color</prop>
+					<prop>font-size</prop>
+					<prop>font-family</prop>
+					<prop>line-height</prop>
+					<prop>font-weight</prop>
+				</props>
+			</style_child>
+			<style_child>
+				<name>Button</name>
+				<elements>.btn</elements>
+				<props>
+					<prop>color</prop>
+					<prop>background-color</prop>
+					<prop>border-color</prop>
+					<prop hover="1">color</prop>
+					<prop hover="1">background-color</prop>
+					<prop hover="1">border-color</prop>
+					<prop>font-size</prop>
+					<prop>font-family</prop>
+					<prop>line-height</prop>
+				</props>
+			</style_child>
+		</style>
+		<style>
+			<name>Parallax Type 6</name>
+			<elements>.parallax-banners-wrapper .banner-content.colors-6</elements>
+			<style_child>
+				<name>Title</name>
+				<elements>.title</elements>
+				<props>
+					<prop>color</prop>
+					<prop>font-size</prop>
+					<prop>font-family</prop>
+					<prop>line-height</prop>
+					<prop>font-weight</prop>
+				</props>
+			</style_child>
+			<style_child>
+				<name>Subtitle</name>
+				<elements>.subtitle</elements>
+				<props>
+					<prop>color</prop>
+					<prop>font-size</prop>
+					<prop>font-family</prop>
+					<prop>line-height</prop>
+					<prop>font-weight</prop>
+				</props>
+			</style_child>
+			<style_child>
+				<name>Text</name>
+				<elements>.text</elements>
+				<props>
+					<prop>color</prop>
+					<prop>font-size</prop>
+					<prop>font-family</prop>
+					<prop>line-height</prop>
+					<prop>font-weight</prop>
+				</props>
+			</style_child>
+			<style_child>
+				<name>Button</name>
+				<elements>.btn</elements>
+				<props>
+					<prop>color</prop>
+					<prop>background-color</prop>
+					<prop>border-color</prop>
+					<prop hover="1">color</prop>
+					<prop hover="1">background-color</prop>
+					<prop hover="1">border-color</prop>
+					<prop>font-size</prop>
+					<prop>font-family</prop>
+					<prop>line-height</prop>
+				</props>
+			</style_child>
+		</style>
+
+		<style>
+			<name>IWD One Page Checkout</name>
+			<elements>.opc-wrapper-opc</elements>
+			<style_child>
+				<name>Block Title</name>
+				<elements>h3</elements>
+				<props>
+					<prop>border-color</prop>
+					<prop>color</prop>
+					<prop>font-size</prop>
+					<prop>font-family</prop>
+					<prop>line-height</prop>
+					<prop>margin-bottom</prop>
+					<prop>padding-bottom</prop>
+				</props>
+			</style_child>
+			<style_child>
+				<name>Block Subtitle</name>
+				<elements>.shipping-block dl, .shipping-block dt</elements>
+				<props>
+					<prop>color</prop>
+					<prop>font-size</prop>
+					<prop>font-family</prop>
+					<prop>line-height</prop>
+				</props>
+			</style_child>
+			<style_child>
+				<name>Payment Buttons</name>
+				<elements>.payment-block dt</elements>
+				<props>
+					<prop>color</prop>
+					<prop>font-size</prop>
+					<prop>font-family</prop>
+					<prop>line-height</prop>
+					<prop>border-color</prop>
+					<prop>background-color</prop>
+					<prop hover="1">color</prop>
+					<prop hover="1">border-color</prop>
+					<prop hover="1">background-color</prop>
+				</props>
+			</style_child>
+			<style_child>
+				<name>Actions</name>
+				<elements>.opc-review-actions</elements>
+				<props>
+					<prop>border-color</prop>
+					<prop>padding-top</prop>
+				</props>
+			</style_child>
+		</style>
+
+    </advanced_styling>
+
+
+
+
+
+
+    <static_advanced_styling>
+
+        <googlefonts>
+            <value>Abel</value>
+            <value>Abril Fatface</value>
+            <value>Aclonica</value>
+            <value>Acme</value>
+            <value>Actor</value>
+            <value>Adamina</value>
+            <value>Aguafina Script</value>
+            <value>Aladin</value>
+            <value>Aldrich</value>
+            <value>Alegreya</value>
+            <value>Alegreya SC</value>
+            <value>Alex Brush</value>
+            <value>Alfa Slab One</value>
+            <value>Alice</value>
+            <value>Alike</value>
+            <value>Alike Angular</value>
+            <value>Allan</value>
+            <value>Allerta</value>
+            <value>Allerta Stencil</value>
+            <value>Allura</value>
+            <value>Almendra</value>
+            <value>Almendra SC</value>
+            <value>Amaranth</value>
+            <value>Amatic SC</value>
+            <value>Amethysta</value>
+            <value>Andada</value>
+            <value>Andika</value>
+            <value>Annie Use Your Telescope</value>
+            <value>Anonymous Pro</value>
+            <value>Antic</value>
+            <value>Anton</value>
+            <value>Arapey</value>
+            <value>Arbutus</value>
+            <value>Architects Daughter</value>
+            <value>Arimo</value>
+            <value>Arizonia</value>
+            <value>Armata</value>
+            <value>Artifika</value>
+            <value>Arvo</value>
+            <value>Asap</value>
+            <value>Asset</value>
+            <value>Astloch</value>
+            <value>Asul</value>
+            <value>Atomic Age</value>
+            <value>Aubrey</value>
+            <value>Average Sans</value>
+            <value>Bad Script</value>
+            <value>Balthazar</value>
+            <value>Bangers</value>
+            <value>Basic</value>
+            <value>Baumans</value>
+            <value>Belgrano</value>
+            <value>Bentham</value>
+            <value>Bevan</value>
+            <value>Bigshot One</value>
+            <value>Bilbo</value>
+            <value>Bilbo Swash Caps</value>
+            <value>Bitter</value>
+			<value>Biryani</value>
+            <value>Black Ops One</value>
+            <value>Bonbon</value>
+            <value>Boogaloo</value>
+            <value>Bowlby One</value>
+            <value>Bowlby One SC</value>
+            <value>Brawler</value>
+            <value>Bree Serif</value>
+            <value>Bubblegum Sans</value>
+            <value>Buda</value>
+            <value>Buenard</value>
+            <value>Butcherman</value>
+            <value>Butterfly Kids</value>
+            <value>Cabin</value>
+            <value>Cabin Condensed</value>
+            <value>Cabin Sketch</value>
+            <value>Caesar Dressing</value>
+            <value>Cagliostro</value>
+            <value>Calligraffitti</value>
+            <value>Cambo</value>
+            <value>Candal</value>
+            <value>Cantarell</value>
+            <value>Cardo</value>
+            <value>Carme</value>
+            <value>Carter One</value>
+            <value>Caudex</value>
+            <value>Cedarville Cursive</value>
+            <value>Ceviche One</value>
+            <value>Cinzel</value>
+            <value>Changa One</value>
+            <value>Chango</value>
+            <value>Chelsea Market</value>
+            <value>Cherry Cream Soda</value>
+            <value>Chewy</value>
+            <value>Chicle</value>
+            <value>Chivo</value>
+            <value>Coda</value>
+            <value>Coda Caption</value>
+            <value>Comfortaa</value>
+            <value>Coming Soon</value>
+            <value>Concert One</value>
+            <value>Condiment</value>
+            <value>Contrail One</value>
+            <value>Convergence</value>
+            <value>Cookie</value>
+            <value>Copse</value>
+            <value>Corben</value>
+            <value>Cousine</value>
+            <value>Coustard</value>
+            <value>Covered By Your Grace</value>
+            <value>Crafty Girls</value>
+            <value>Creepster</value>
+            <value>Crete Round</value>
+            <value>Crimson Text</value>
+            <value>Crushed</value>
+            <value>Cuprum</value>
+            <value>Damion</value>
+            <value>Dancing Script</value>
+            <value>Dawning of a New Day</value>
+            <value>Days One</value>
+            <value>Delius</value>
+            <value>Delius Swash Caps</value>
+            <value>Delius Unicase</value>
+            <value>Devonshire</value>
+            <value>Didact Gothic</value>
+            <value>Diplomata</value>
+            <value>Diplomata SC</value>
+            <value>Dorsa</value>
+            <value>Dr Sugiyama</value>
+            <value>Droid Sans</value>
+            <value>Droid Sans Mono</value>
+            <value>Droid Serif</value>
+            <value>Duru Sans</value>
+            <value>Dynalight</value>
+            <value>EB Garamond</value>
+            <value>Eater</value>
+            <value>Electrolize</value>
+            <value>Emblema One</value>
+            <value>Engagement</value>
+            <value>Enriqueta</value>
+            <value>Erica One</value>
+            <value>Esteban</value>
+            <value>Euphoria Script</value>
+            <value>Ewert</value>
+            <value>Exo</value>
+            <value>Expletus Sans</value>
+            <value>Fanwood Text</value>
+            <value>Fascinate</value>
+            <value>Fascinate Inline</value>
+            <value>Federant</value>
+            <value>Federo</value>
+            <value>Felipa</value>
+            <value>Fjalla One</value>
+			<value>Fjord One</value>
+            <value>Flamenco</value>
+            <value>Flavors</value>
+            <value>Fondamento</value>
+            <value>Fontdiner Swanky</value>
+            <value>Forum</value>
+            <value>Francois One</value>
+            <value>Fredericka the Great</value>
+            <value>Fresca</value>
+            <value>Frijole</value>
+            <value>Fugaz One</value>
+            <value>Galdeano</value>
+            <value>Gentium Basic</value>
+            <value>Gentium Book Basic</value>
+            <value>Geo</value>
+            <value>Geostar</value>
+            <value>Geostar Fill</value>
+            <value>Germania One</value>
+            <value>Give You Glory</value>
+            <value>Glegoo</value>
+            <value>Gloria Hallelujah</value>
+            <value>Goblin One</value>
+            <value>Gochi Hand</value>
+            <value>Goudy Bookletter 1911</value>
+            <value>Gravitas One</value>
+            <value>Gruppo</value>
+            <value>Gudea</value>
+            <value>Habibi</value>
+            <value>Hammersmith One</value>
+            <value>Handlee</value>
+            <value>Herr Von Muellerhoff</value>
+            <value>Holtwood One SC</value>
+            <value>Homemade Apple</value>
+            <value>Homenaje</value>
+            <value>IM Fell DW Pica</value>
+            <value>IM Fell DW Pica SC</value>
+            <value>IM Fell Double Pica</value>
+            <value>IM Fell Double Pica SC</value>
+            <value>IM Fell English</value>
+            <value>IM Fell English SC</value>
+            <value>IM Fell French Canon</value>
+            <value>IM Fell French Canon SC</value>
+            <value>IM Fell Great Primer</value>
+            <value>IM Fell Great Primer SC</value>
+            <value>Iceberg</value>
+            <value>Iceland</value>
+            <value>Inconsolata</value>
+            <value>Inder</value>
+            <value>Indie Flower</value>
+            <value>Inika</value>
+            <value>Irish Grover</value>
+            <value>Istok Web</value>
+            <value>Italianno</value>
+            <value>Jim Nightshade</value>
+            <value>Jockey One</value>
+            <value>Josefin Sans</value>
+            <value>Josefin Slab</value>
+            <value>Judson</value>
+            <value>Julee</value>
+            <value>Junge</value>
+            <value>Jura</value>
+            <value>Just Another Hand</value>
+            <value>Just Me Again Down Here</value>
+            <value>Kameron</value>
+            <value>Kaushan Script</value>
+            <value>Kelly Slab</value>
+            <value>Kenia</value>
+            <value>Knewave</value>
+            <value>Kotta One</value>
+            <value>Kranky</value>
+            <value>Kreon</value>
+            <value>Kristi</value>
+            <value>La Belle Aurore</value>
+            <value>Lancelot</value>
+            <value>Lato</value>
+            <value>League Script</value>
+            <value>Leckerli One</value>
+            <value>Lekton</value>
+            <value>Lemon</value>
+            <value>Lilita One</value>
+            <value>Limelight</value>
+            <value>Linden Hill</value>
+            <value>Lobster</value>
+            <value>Lobster Two</value>
+            <value>Lora</value>
+            <value>Love Ya Like A Sister</value>
+            <value>Loved by the King</value>
+            <value>Luckiest Guy</value>
+            <value>Lusitana</value>
+            <value>Lustria</value>
+            <value>Macondo</value>
+            <value>Macondo Swash Caps</value>
+            <value>Magra</value>
+            <value>Maiden Orange</value>
+            <value>Mako</value>
+            <value>Marck Script</value>
+            <value>Marko One</value>
+            <value>Marmelad</value>
+            <value>Marvel</value>
+            <value>Mate</value>
+            <value>Mate SC</value>
+            <value>Maven Pro</value>
+            <value>Meddon</value>
+            <value>MedievalSharp</value>
+            <value>Medula One</value>
+            <value>Megrim</value>
+            <value>Merienda One</value>
+            <value>Merriweather</value>
+            <value>Metamorphous</value>
+            <value>Metrophobic</value>
+            <value>Michroma</value>
+            <value>Miltonian</value>
+            <value>Miltonian Tattoo</value>
+            <value>Miniver</value>
+            <value>Miss Fajardose</value>
+            <value>Modern Antiqua</value>
+            <value>Molengo</value>
+            <value>Monofett</value>
+            <value>Monoton</value>
+            <value>Monsieur La Doulaise</value>
+            <value>Montaga</value>
+            <value>Montez</value>
+            <value>Montserrat</value>
+            <value>Mountains of Christmas</value>
+            <value>Mr Bedfort</value>
+            <value>Mr Dafoe</value>
+            <value>Mr De Haviland</value>
+            <value>Mrs Saint Delafield</value>
+            <value>Mrs Sheppards</value>
+            <value>Muli</value>
+            <value>Neucha</value>
+            <value>Neuton</value>
+            <value>News Cycle</value>
+            <value>Niconne</value>
+            <value>Nixie One</value>
+            <value>Nobile</value>
+            <value>Norican</value>
+            <value>Nosifer</value>
+            <value>Nothing You Could Do</value>
+            <value>Noticia Text</value>
+            <value>Nova Cut</value>
+            <value>Nova Flat</value>
+            <value>Nova Mono</value>
+            <value>Nova Oval</value>
+            <value>Nova Round</value>
+            <value>Nova Script</value>
+            <value>Nova Slim</value>
+            <value>Nova Square</value>
+            <value>Numans</value>
+            <value>Nunito</value>
+            <value>Old Standard TT</value>
+            <value>Oldenburg</value>
+            <value>Open Sans</value>
+            <value>Open Sans Condensed</value>
+            <value>Orbitron</value>
+            <value>Original Surfer</value>
+            <value>Oswald</value>
+            <value>Over the Rainbow</value>
+            <value>Overlock</value>
+            <value>Overlock SC</value>
+            <value>Ovo</value>
+            <value>PT Sans</value>
+            <value>PT Sans Caption</value>
+            <value>PT Sans Narrow</value>
+            <value>PT Serif</value>
+            <value>PT Serif Caption</value>
+            <value>Pacifico</value>
+            <value>Parisienne</value>
+            <value>Passero One</value>
+            <value>Passion One</value>
+            <value>Patrick Hand</value>
+            <value>Patua One</value>
+            <value>Paytone One</value>
+            <value>Permanent Marker</value>
+            <value>Petrona</value>
+            <value>Philosopher</value>
+            <value>Piedra</value>
+            <value>Pinyon Script</value>
+            <value>Plaster</value>
+            <value>Play</value>
+            <value>Playball</value>
+            <value>Playfair Display</value>
+            <value>Podkova</value>
+            <value>Poller One</value>
+            <value>Poly</value>
+            <value>Pompiere</value>
+			<value>Poppins</value>
+            <value>Port Lligat Sans</value>
+            <value>Pontano Sans</value>
+            <value>Port Lligat Slab</value>
+            <value>Prata</value>
+            <value>Princess Sofia</value>
+            <value>Prociono</value>
+            <value>PT Sans</value>
+            <value>Puritan</value>
+            <value>Quantico</value>
+            <value>Quattrocento</value>
+            <value>Quattrocento Sans</value>
+            <value>Questrial</value>
+            <value>Quicksand</value>
+            <value>Qwigley</value>
+            <value>Radley</value>
+            <value>Raleway</value>
+            <value>Rammetto One</value>
+            <value>Rancho</value>
+            <value>Rationale</value>
+            <value>Redressed</value>
+            <value>Reenie Beanie</value>
+            <value>Ribeye</value>
+            <value>Ribeye Marrow</value>
+            <value>Righteous</value>
+            <value>Rochester</value>
+            <value>Rock Salt</value>
+            <value>Rokkitt</value>
+            <value>Ropa Sans</value>
+            <value>Rosario</value>
+            <value>Rouge Script</value>
+            <value>Ruda</value>
+            <value>Ruge Boogie</value>
+            <value>Ruluko</value>
+            <value>Ruslan Display</value>
+            <value>Ruthie</value>
+            <value>Sail</value>
+            <value>Salsa</value>
+            <value>Sancreek</value>
+            <value>Sansita One</value>
+            <value>Sarina</value>
+            <value>Satisfy</value>
+            <value>Schoolbell</value>
+            <value>Shadows Into Light</value>
+            <value>Shanti</value>
+            <value>Share</value>
+            <value>Shojumaru</value>
+            <value>Short Stack</value>
+            <value>Sigmar One</value>
+            <value>Signika</value>
+            <value>Signika Negative</value>
+            <value>Sirin Stencil</value>
+            <value>Six Caps</value>
+            <value>Slackey</value>
+            <value>Smokum</value>
+            <value>Smythe</value>
+            <value>Sniglet</value>
+            <value>Snippet</value>
+            <value>Sofia</value>
+            <value>Sonsie One</value>
+            <value>Sorts Mill Goudy</value>
+            <value>Special Elite</value>
+            <value>Spicy Rice</value>
+            <value>Spinnaker</value>
+            <value>Spirax</value>
+            <value>Squada One</value>
+            <value>Stardos Stencil</value>
+            <value>Stint Ultra Condensed</value>
+            <value>Stint Ultra Expanded</value>
+            <value>Stoke</value>
+            <value>Sue Ellen Francisco</value>
+            <value>Sunshiney</value>
+            <value>Supermercado One</value>
+            <value>Swanky and Moo Moo</value>
+            <value>Syncopate</value>
+            <value>Tangerine</value>
+            <value>Telex</value>
+            <value>Tenor Sans</value>
+            <value>Terminal Dosis</value>
+            <value>The Girl Next Door</value>
+            <value>Tienne</value>
+            <value>Tinos</value>
+            <value>Titan One</value>
+            <value>Trade Winds</value>
+            <value>Trochut</value>
+            <value>Trykker</value>
+            <value>Tulpen One</value>
+            <value>Ubuntu</value>
+            <value>Ubuntu Condensed</value>
+            <value>Ubuntu Mono</value>
+            <value>Ultra</value>
+            <value>Uncial Antiqua</value>
+            <value>UnifrakturCook</value>
+            <value>UnifrakturMaguntia</value>
+            <value>Unkempt</value>
+            <value>Unlock</value>
+            <value>Unna</value>
+            <value>VT323</value>
+            <value>Varela</value>
+            <value>Varela Round</value>
+            <value>Vast Shadow</value>
+            <value>Vibur</value>
+            <value>Vidaloka</value>
+            <value>Viga</value>
+            <value>Volkhov</value>
+            <value>Vollkorn</value>
+            <value>Voltaire</value>
+            <value>Waiting for the Sunrise</value>
+            <value>Wallpoet</value>
+            <value>Walter Turncoat</value>
+            <value>Wellfleet</value>
+            <value>Wire One</value>
+            <value>Yanone Kaffeesatz</value>
+            <value>Yellowtail</value>
+            <value>Yeseva One</value>
+            <value>Yesteryear</value>
+            <value>Zeyada</value>
+        </googlefonts>
+
+        <defaultfonts>
+            <value>Arial</value>
+            <value>Calibri</value>
+            <value>Georgia</value>
+            <value>Helvetica</value>
+            <value>Times New Roman</value>
+            <value>Verdana</value>
+        </defaultfonts>
+        <fontweight>
+            <value>100</value>
+            <value>200</value>
+            <value>300</value>
+            <value>400</value>
+            <value>500</value>
+            <value>600</value>
+            <value>700</value>
+            <value>800</value>
+            <value>900</value>
+        </fontweight>
+    </static_advanced_styling>
+
+
+
+
+</guide>

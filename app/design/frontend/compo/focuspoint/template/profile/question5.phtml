@@ -1,0 +1,174 @@
+<?php ?>
+
+<div class="info-container" >
+    <div class="title-question"><?php echo $this->__('Q5: Please Enter Your Prescription') ?></div>
+    <div class="pres-method-fill">
+        <div class="method-fill" data-id="1"><?php echo $this->__('Fill it out online'); ?></div>
+        <div class="method-fill" data-id="2"><?php echo $this->__('Upload or send later'); ?></div>
+        <?php if (Mage::getSingleton('customer/session')->isLoggedIn()): ?>
+            <div class="method-fill" data-id="3"><?php echo $this->__('Use my saved prescription'); ?></div>
+        <?php endif ?>
+    </div>
+    <div  class="form-pres" id="form-pres-fill">
+        <div class="form-field">
+            <th>
+                <label>Prescription Name :</label>
+            </th>
+            <th>
+                <input type="text" name="profile[p_name]" id="pres-name" placeholder="e.g Jason leon April 2017"/>
+            </th>
+        </div>
+        <table class="form-table">
+            <tr class="form-field">
+                <th class="th-title"></th>
+                <th>Sphere (SPH)</th>
+                <th>Cylinder (CYL)</th>
+                <th>Axis (AXI)</th>
+                <th>Add (Near Addition)</th>
+            </tr>
+            <tr class="form-field">
+                <td class="th-title" width="20%">Right(OD)</td>
+                <td width="20%">
+                    <select name="profile[p_right_sph]">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                </td>
+                <td width="20%">
+                    <select name="profile[p_right_cyn]">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                </td>
+                <td width="20%">
+                    <select name="profile[p_right_axi]">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                </td>
+                <td width="20%">
+                    <select name="profile[p_right_near]">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                </td>
+            </tr>
+            <tr class="form-field">
+                <td class="th-title">Left(OS)</td>
+                <td>
+                    <select name="profile[p_left_sph]">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                </td>
+                <td>
+                    <select name="profile[p_left_cyn]">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                </td>
+                <td>
+                    <select name="profile[p_left_axi]">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                </td>
+                <td>
+                    <select name="profile[p_left_near]">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                </td>
+            </tr>
+            <tr class="form-field">
+                <td class="th-title">PD</td>
+                <td>
+                    <select name="profile[p_pd_sph]">
+                        <option value="0">None</option>
+                        <?php foreach ($this->getOptions(25.5, 0.5, 40) as $value): ?>
+                            <option value="<?php echo $value ?>"><?php echo $value ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </td>
+                <td>
+                    <select name="profile[p_pd_cyn]">
+                        <option value="0">None</option>
+                        <?php foreach ($this->getOptions(25.5, 0.5, 40) as $value): ?>
+                            <option value="<?php echo $value ?>"><?php echo $value ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </td>
+            </tr>
+            <tr class="form-field">
+                <td class="th-title">Near PD</td>
+                <td>
+                    <select name="profile[p_near_sph]">
+                        <option value="0">None</option>
+                        <?php foreach ($this->getOptions(40, 0.5, 70) as $value): ?>
+                            <option value="<?php echo $value ?>"><?php echo $value ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </td>
+            </tr>
+        </table>
+        <div class="form-field">
+            <label>Additional Remarks</label>
+            <textarea rows="4" cols="100" name="profile[remark]"></textarea>
+        </div>
+    </div>
+    <div class="form-pres" id="form-pres-upload">
+        <div class="form-content">
+            <div class="form-upload-method">Send Prescription Via Mail</div>
+            <div class="form-upload-method">
+                <input class="input-text required-entry" type="file"  id="profile_upload" name="profile_upload" />
+            </div>
+        </div>
+    </div>
+    <div class="form-pres" id="form-pres-saved">
+        <div class="form-content">
+
+        </div>
+    </div>
+</div>
+
+<script>
+    var $j = jQuery.noConflict();
+    $j(document).ready(function () {
+        $j('.method-fill').click(function () {
+            $j('.method-fill').css('border', 'none');
+            $j(this).css('border', '3px solid #cc1454');
+            $j('.form-pres').hide();
+            var methodId = $j(this).attr('data-id');
+            switch (methodId) {
+                case '1' :
+                    $j('#form-pres-fill').show();
+                    break;
+                case '2' :
+                    $j('#form-pres-upload').show();
+                    break;
+                case '3' :
+                    $j('#form-pres-saved').show();
+                    break;
+                default :
+                    $j('#form-pres-fill').show();
+            }
+        });
+        $j('#profile_upload').change(function () {
+            var file_data = $j('#profile_upload').prop('files')[0];
+            var form_data = new FormData();
+            form_data.append('file', file_data);
+            $j.ajax({
+                url: '<?php echo Mage::getUrl('profile/ajax/upload')?>',
+                dataType: 'text',
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: form_data,
+                type: 'post',
+                success: function () {
+                    console.log('ok');
+                }
+            });
+        });
+    });
+</script>

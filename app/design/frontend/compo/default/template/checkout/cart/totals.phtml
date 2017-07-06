@@ -1,0 +1,32 @@
+<?php
+/**
+ * @package     compo
+ * @copyright   Copyright (c) 2010-2015 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+?>
+<?php
+/**
+ * Shopping cart totals template
+ *
+ * @see Mage_Checkout_Block_Cart_Totals
+ * @var $this Mage_Checkout_Block_Cart_Totals
+ */
+?>
+<div class="block-title">
+	<strong><?php echo $this->__('Totals') ?></strong>
+</div>
+<?php if ($this->canApplyMsrp()): ?>
+	<div class="cart-msrp-totals"><?php echo $this->__('ORDER TOTAL WILL BE DISPLAYED BEFORE YOU SUBMIT THE ORDER'); ?></div>
+<?php else: ?>
+	<table id="shopping-cart-totals-table" class="table table-bordered table-responsive">
+		<col />
+		<col class="col-one" />
+		<tbody>
+			<?php echo $this->renderTotals(); ?>
+		</tbody>
+
+	</table>
+	<div class="totals-wrapper">
+		<table><?php echo $this->renderTotals('footer'); ?>	</table>
+	</div>
+<?php endif; ?>

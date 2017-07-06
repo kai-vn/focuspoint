@@ -1,0 +1,82 @@
+<?php
+/**
+ * @package     universal
+ * @copyright   Copyright (c) 2010-2015 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+?>
+<?php
+	/**
+	* Product list toolbar
+	*
+	* @see Mage_Catalog_Block_Product_List_Toolbar
+	*/
+	function check_grid($grid_mode){
+		switch ($grid_mode) {
+			case 'grid':
+				return '<i class="meigee-meigee-grid"></i>';
+			break;
+			case 'list':
+				return '<i class="meigee-meigee-list"></i>';
+			break;
+		}
+	}
+	$shop_by_layout = $this->getLayout()->getMConfigResultByAlias('block_shopby_layout');
+?>
+<?php if($this->getCollection()->getSize()): ?>
+	<div class="toolbar clearfix<?php echo ($this->getLayout()->getMConfigResultByAlias('listing_toolbar') == 1 ? ' small-toolbar' : ''). '' . ($shop_by_layout == 'vertical' ? ' vertical' : ''); ?>" data-last-page-num="<?php echo $this->getLastPageNum(); ?>">
+		<?php if( $this->isExpanded() ): ?>
+			<div class="sorter">
+				<?php if( $this->isEnabledViewSwitcher() ): ?>
+					<p class="view-mode clearfix">
+						<?php $_modes = $this->getModes(); ?>
+						<?php if($_modes && count($_modes)>1): ?>
+						<label><?php echo $this->__('View as') ?>:</label>
+						<?php foreach ($this->getModes() as $_code=>$_label): ?>
+							<?php if($this->isModeActive($_code)): ?>
+								<strong title="<?php echo $_label ?>" class="<?php echo strtolower($_code); ?> item"><?php echo check_grid(strtolower($_code)); ?></strong>
+							<?php else: ?>
+								<a href="<?php echo $this->getModeUrl($_code) ?>" title="<?php echo $_label ?>" class="<?php echo strtolower($_code); ?> item"><?php echo check_grid(strtolower($_code)); ?></a>
+							<?php endif; ?>
+						<?php endforeach; ?>
+						<?php endif; ?>
+					</p>
+				<?php endif; ?>
+				<p class="amount">
+					<?php if($this->getLastPageNum()>1): ?>
+						<?php echo $this->__('Items %s to %s of %s total', $this->getFirstNum(), $this->getLastNum(), $this->getTotalNum()) ?>
+					<?php else: ?>
+						<strong><?php echo $this->__('%s Item(s)', $this->getTotalNum()) ?></strong>
+					<?php endif; ?>
+				</p>
+				<div class="limiter">
+					<label><?php echo $this->__('Show') ?></label>
+					<select class="form-control selectpicker" onchange="setLocation(this.value)">
+					<?php foreach ($this->getAvailableLimit() as  $_key=>$_limit): ?>
+						<option value="<?php echo $this->getLimitUrl($_key) ?>"<?php if($this->isLimitCurrent($_key)): ?> selected="selected"<?php endif ?>>
+							<?php echo $_limit ?>
+						</option>
+					<?php endforeach; ?>
+					</select>
+				</div>
+				<div class="sort-by">
+					<label><?php echo $this->__('Sort By') ?></label>
+					<select class="form-control selectpicker" onchange="setLocation(this.value)">
+					<?php foreach($this->getAvailableOrders() as $_key=>$_order): ?>
+						<option value="<?php echo $this->getOrderUrl($_key, 'asc') ?>"<?php if($this->isOrderCurrent($_key)): ?> selected="selected"<?php endif; ?>>
+							<?php echo $this->__($_order) ?>
+						</option>
+					<?php endforeach; ?>
+					</select>
+				</div>
+				<?php if($this->getCurrentDirection() == 'desc'): ?>
+					<a href="<?php echo $this->getOrderUrl(null, 'asc') ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Set Ascending Direction')); ?>" class="asc"><i class="meigee-arrow-up-circle"></i></a>
+				<?php else: ?>
+					<a href="<?php echo $this->getOrderUrl(null, 'desc') ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Set Descending Direction')); ?>" class="desc"><i class="meigee-arrow-down-circle"></i></a>
+				<?php endif; ?>
+			</div>
+		<?php endif; ?>
+		<div class="pager">
+			<?php echo $this->getPagerHtml() ?>
+		</div>
+	</div>
+<?php endif ?>

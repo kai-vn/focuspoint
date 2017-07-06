@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    
+
+    <prescription_index_index translate="label">
+       <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+            <action method="setHeaderTitle" translate="title" module="contacts"><title>Prescription</title></action>
+        </reference>
+		
+		<reference name="head">
+			<!-- action method="addCss"><stylesheet>css/career.css</stylesheet></action -->
+			<action method="addItem"><type>skin_js</type><name>custom-page/activelink.js</name></action>
+		</reference>
+       
+        <reference name="content">
+		<remove name="global_messages" />
+            <block type="core/template" name="career" template="fp/prescription.phtml"/>
+        </reference>
+    </prescription_index_index>
+</layout>

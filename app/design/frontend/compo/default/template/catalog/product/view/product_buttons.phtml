@@ -1,0 +1,29 @@
+<?php
+/**
+ * @package     compo
+ * @copyright   Copyright (c) 2010-2015 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+?>
+<div class="product-buttons clearfix">
+	<?php
+		$pagination = $this->getProduct()->getProductPagination();
+		if(isset($pagination['prev'])){
+			echo '<div class="prev-button">
+					<a href="'. $pagination['prev']->getProductUrl() .'" title="'. $pagination['prev']->getName() .'">
+						<i class="meigee-arrow-left"></i>
+						<span>'. $pagination['prev']->getName() . '</span>
+						<span class="subtitle">'. $this->__('Previous product') .'</span>
+					</a>
+				</div>';
+		}
+		if(isset($pagination['next'])){
+			echo '<div class="next-button">
+					<a href="'. $pagination['next']->getProductUrl() .'" title="'. $pagination['next']->getName() .'">
+						<span>'. $pagination['next']->getName() . '</span>
+						<span class="subtitle">'. $this->__('Next product') .'</span>
+						<i class="meigee-arrow-right"></i>
+					</a>
+				</div>';
+		}
+	?>
+</div>

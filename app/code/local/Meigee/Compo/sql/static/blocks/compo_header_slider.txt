@@ -1,0 +1,23 @@
+<div id="home-image-slider" class="owl-carousel owl-theme" data-navigation="1" data-speed="300">
+	<a href="#">
+		<img {{retinaurl data-img-src="wysiwyg/compo_slide_1.jpg" data-img-srcX2="wysiwyg/compo_slide_1@x2.jpg" alt=""}}>
+		<span class="slide-container slide-skin">
+			<span class="subtitle">Flexible magento theme</span>
+			<span class="title"><img {{retinaurl data-img-src="wysiwyg/compo_slide_1_img_1.png" data-img-srcX2="wysiwyg/compo_slide_1_img_1@x2.png" alt=""}}><span class="skincolor">Compose your next shop like</span><br> you want with Compo</span>
+			<span class="text hidden-sm hidden-xs">A high-performance Multi-Purpose Magento theme<br> suitable for any kind of project.</span>
+			<span class="btn btn-primary type-2 hidden-sm hidden-xs"><span>Read more</span></span>
+			<span class="btn btn-default light hidden-sm hidden-xs"><span>shop now</span></span>
+		</span>
+		<span class="slide-container-2 slide-skin text-right hidden-xs">
+			<span class="subtitle">More than 200+ items on <br>sale only this week</span>
+		</span>
+	</a>
+	<a href="#">
+		<img {{retinaurl data-img-src="wysiwyg/compo_slide_2.jpg" data-img-srcX2="wysiwyg/compo_slide_2@x2.jpg" alt=""}}>
+		<span class="slide-container slide-skin-2 text-center">
+			<span class="subtitle">-20% Off for pre-order</span>
+			<span class="title"><strong>Simple &amp; Famous</strong><br>Spring cloth collection 2017</span>
+			<span class="text hidden-sm hidden-xs">The best cloth from our designers<br> special for you.</span>
+		</span>
+	</a>
+</div>

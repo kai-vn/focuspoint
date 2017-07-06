@@ -1,0 +1,44 @@
+<?php
+/**
+ * @package     compo
+ * @copyright   Copyright (c) 2010-2015 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+/**
+ * Product view template
+ *
+ * @see Mage_Catalog_Block_Product_View
+ */
+?>
+<?php
+$this->_product = Mage::registry('product');
+?>
+<div id="tabs" role="tabpanel">
+	<ul class="nav nav-tabs" role="tablist">
+		<?php $i=0;
+		foreach ($this->getTabs() as $_index => $_tab):
+			if($this->getChildHtml($_tab['alias'])):
+				$i++;
+		?>
+				<li role="presentation" class="<?php echo $i == 1?' active first':''?>"><a href="#product_tabs_<?php echo $_tab['alias'] ?>" aria-controls="product_tabs_<?php echo $_tab['alias'] ?>" role="tab" data-toggle="tab"><?php echo $_tab['title']?></a></li>
+			<?php endif; ?>
+		<?php endforeach; ?>
+		<?php $productTabs = $this->_product->getProductTabs();
+		foreach ($productTabs AS $tab) { ?>
+			<li role="presentation"><a href="#product_tabs_<?php echo $tab->getId(); ?>" aria-controls="product_tabs_<?php echo $tab->getId(); ?>" role="tab" data-toggle="tab"><?php echo $tab->getTitle(); ?></a></li>
+		<?php } ?>
+	</ul>
+	<div class="tab-content">
+		<?php $i=0;
+		foreach ($this->getTabs() as $_index => $_tab):
+			if($this->getChildHtml($_tab['alias'])):
+				$i++;
+		?>
+				<div class="tab-pane fade<?php echo $i == 1?' active first in':''?>" id="product_tabs_<?php echo $_tab['alias'] ?>" role="tabpanel"><?php echo $this->getChildHtml($_tab['alias']) ?></div>
+			<?php endif; ?>
+		<?php endforeach; ?>
+		<?php $productTabs = $this->_product->getProductTabs();
+		foreach ($productTabs AS $tab) { ?>
+			<div class="tab-pane fade" id="product_tabs_<?php echo $tab->getId(); ?>" role="tabpanel"><?php echo $tab->getContent(); ?></div>
+		<?php } ?>
+	</div>
+</div>

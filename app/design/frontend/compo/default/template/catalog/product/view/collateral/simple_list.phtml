@@ -1,0 +1,46 @@
+<?php
+/**
+ * @package     compo
+ * @copyright   Copyright (c) 2010-2015 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+/**
+ * Product view template
+ *
+ * @see Mage_Catalog_Block_Product_View
+ */
+?>
+<?php
+$this->_product = Mage::registry('product');
+?>
+<div class="product-simple-list panel-group">
+	<?php $i=0;
+		foreach ($this->getTabs() as $_index => $_tab):
+			if($this->getChildHtml($_tab['alias'])):
+				$i++;
+		?>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h4 class="panel-title">
+					<?php echo $_tab['title']?>
+				</h4>
+			</div>
+			<div class="panel-body">
+				<?php echo $this->getChildHtml($_tab['alias']) ?>
+			</div>
+		</div>
+			<?php endif; ?>
+		<?php endforeach; ?>
+		<?php $productTabs = $this->_product->getProductTabs();
+		foreach ($productTabs AS $tab) { ?>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4 class="panel-title">
+						<?php echo $tab->getTitle(); ?>
+					</h4>
+				</div>
+				<div class="panel-body">
+					<?php echo $tab->getContent(); ?>
+				</div>
+			</div>
+		<?php } ?>
+</div>

@@ -1,0 +1,25 @@
+<?php
+/**
+ * @package     compo
+ * @copyright   Copyright (c) 2010-2015 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+?>
+<?php
+/**
+ * Template for Mage_Page_Block_Html
+ */
+?>
+<!DOCTYPE html>
+<html lang="<?php echo $this->getLang() ?>">
+	<head>
+		<?php echo $this->getChildHtml('head') ?>
+	</head>
+	<body class="page-popup<?php echo $this->getBodyClass()?$this->getBodyClass() : ''?>">
+		<div>
+			<?php echo $this->getChildHtml('after_body_start') ?>
+			<?php echo $this->getChildHtml('content') ?>
+			<?php echo $this->getChildHtml('before_body_end') ?>
+		</div>
+		<?php echo $this->getAbsoluteFooter() ?>
+	</body>
+</html>

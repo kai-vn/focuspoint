@@ -1,0 +1,18 @@
+<?php
+/**
+ * @package     compo
+ * @copyright   Copyright (c) 2010-2015 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+?>
+<?php
+/**
+ * Template for displaying wishlist item price at rss feeds pages
+ *
+ * @var $this Mage_Catalog_Block_Product_Price
+ */
+?>
+<div class="price-box map-info">
+    <?php if ($this->helper('catalog')->canApplyMsrp($this->getProduct())): ?>
+        <a href="<?php echo $this->getProduct()->getProductUrl() ?>"><?php echo $this->__('Click for price'); ?></a>
+    <?php endif; ?>
+</div>

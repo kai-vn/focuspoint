@@ -1,0 +1,82 @@
+<style>
+
+</style>
+<?php $helper = Mage::helper('profile'); ?>
+<script type="text/javascript">
+    console.log('ready');
+    var column = '<div class="option-column" >'
+            + '<div><h4 class="column-fieldset">New Column</h4>'
+            + '<p class="a-right"><?php echo $this->getDeleteButtonHtml() ?></p>'
+            + '<table cellspacing="0" class="form-list" id="<?php echo $this->getFieldId() ?>_{{id}}"><tbody>'
+            + '<tr><td class="label"><label for="title">Title <span class="required">*</span></label></td>'
+            + '<td class="value"><input id="<?php echo $this->getFieldId() ?>_{{id}}_title" name="<?php echo $this->getFieldName() ?>[{{id}}][title]" value="{{title}}" type="text" class=" input-text required-entry"></td>'
+            + '<tr><td class="label"><label for="subtitle">Sub Title<span class="required">*</span></label></td>'
+            + '<td class="value"><input id="<?php echo $this->getFieldId() ?>_{{id}}_subtitle" name="<?php echo $this->getFieldName() ?>[{{id}}][subtitle]" value="{{subtitle}}" type="text" class=" input-text required-entry"></td>'
+            + '<tr><td class="label"><label for="description">Description<span class="required">*</span></label></td>'
+            + '<td class="value"><textarea rows="4" cols=""50 id="<?php echo $this->getFieldId() ?>_{{id}}_description" name="<?php echo $this->getFieldName() ?>[{{id}}][description]" class=" input-text'
+            + 'required-entry">{{description}}</textarea></td>'
+            + '<tr><td class="label"><label for="tooltip">Tooltip<span class="required">*</span></label></td>'
+            + '<td class="value"><textarea rows="4" cols=""50 id="<?php echo $this->getFieldId() ?>_{{id}}_tooltip" name="<?php echo $this->getFieldName() ?>[{{id}}][tooltip]" class=" input-text'
+            + 'required-entry">{{tooltip}}</textarea></td>'
+            + '<tr><td class="label"><label for="price">Price<span class="required">*</span></label></td>'
+            + '<td class="value"><input id="<?php echo $this->getFieldId() ?>_{{id}}_price" name="<?php echo $this->getFieldName() ?>[{{id}}][price]" value="{{price}}" type="text" class=" input-text required-entry"></td>'
+            + '<tr><td class="label"><label for="status">Status<span class="required">*</span></label></td>'
+            + '<td class="value"><select id="<?php echo $this->getFieldId() ?>_{{id}}_status" name="<?php echo $this->getFieldName() ?>[{{id}}][status]" value="{{status}}" class=" input-text required-entry">'
+            + '<option value="1">Enabled</option>'
+            + '<option value="2">Disabled</option>'
+            + '</td>'
+            + '</tbody></table></div>'
+    lensOption = {
+        templateSyntax: /(^|.|\r|\n)({{(\w+)}})/,
+        templateText: column,
+        maxId: <?php if ($this->getRequest()->getControllerName() == 'brand') echo $helper->getMaxLenId();
+else echo '0'; ?>,
+        add: function (data) {
+
+            console.log(data);
+            this.template = new Template(this.templateText, this.templateSyntax);
+            data.id = data.lens_id;
+            if (!data.id) {
+                data = {};
+                data.id = this.maxId = this.maxId + 1;
+            } else {
+                if (parseInt(data.id) > this.maxId)
+                    this.maxId = parseInt(data.id);
+            }
+            Element.insert($('lens_option_container'), {'after': this.template.evaluate(data)});
+            this.bindRemoveButtons();
+        },
+        remove: function (event) {
+            console.log('remove');
+            var el = Event.element(event).up('div');
+            if (confirm('Are you sure ?')) {
+                if (el) {
+                    // $('product_'+el.readAttribute('id')+'_'+'is_delete').value = '1';
+                    // $(el).addClassName('no-display');
+                    // $(el).addClassName('ignore-validate');
+                    el.remove();
+                    // remove from children id                
+                    // productChildrenOptions.removeChildrenElement(el);
+                }
+            }
+        },
+        bindRemoveButtons: function () {
+            var buttons = $$('div.product-custom-options .delete-product-option');
+            for (var i = 0; i < buttons.length; i++) {
+                if (!$(buttons[i]).binded) {
+                    $(buttons[i]).binded = true;
+                    Event.observe(buttons[i], 'click', this.remove.bind(this));
+                }
+            }
+        },
+
+    }
+    lensOption.bindRemoveButtons();
+    if ($('<?php echo $this->getAddButtonId() ?>')) {
+        Event.observe('<?php echo $this->getAddButtonId() ?>', 'click', lensOption.add.bind(lensOption));
+    }
+//adding data to templates
+<?php foreach ($this->getOptionValue() as $_value): ?>
+        data = lensOption.add(<?php echo $_value->toJson() ?>);
+<?php endforeach; ?>
+</script>

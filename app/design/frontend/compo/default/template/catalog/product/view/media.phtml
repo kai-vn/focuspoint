@@ -1,0 +1,129 @@
+<?php
+/**
+ * @package     compo
+ * @copyright   Copyright (c) 2010-2015 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+
+/**
+ * Product media data template
+ *
+ * @see Mage_Catalog_Block_Product_View_Media
+ */
+?>
+<?php
+	$_product = $this->getProduct();
+	$_helper = $this->helper('catalog/output');
+	$meigeeOptions = $this->getLayout();
+	$lightBox = $meigeeOptions->getMConfigResultByAlias('lightbox_product');
+	$lightBoxGlobal = $meigeeOptions->getMConfigResultByAlias('lightbox_status');
+	$lightBoxGlobal = $lightBoxGlobal['value']['sv1']['value'];
+	$img = $meigeeOptions->getMConfigResultByAlias('product_shop_col_xs_size');
+	$layout = $img['value']['size']['value'];
+	$container_width = $meigeeOptions->getMConfigResultByAlias('container_width');
+	$percent = (12-$layout)*100/12;
+	$imgSize = intval($container_width * $percent / 100);
+	$media_resized = $_product->getProductMediaResized($imgSize, 'image');
+    $media_resized->addImageHtmlAttributte('class', 'gallery-image visible');
+	$media_resized->addImageHtmlAttributte('class', 'ajax_image_loader');
+    $escaped_label = (Mage::app()->getLayout()->checkVersion('1.7.x.x') ? $this->htmlEscape : $this->escapeHtml).($_product->getImageLabel());
+    $media_resized->addImageHtmlAttributte('alt', $escaped_label);
+    $media_resized->addImageHtmlAttributte('title', $escaped_label);
+    $media_resized->addImageHtmlAttributte('id', 'image');
+    $media_resized->addImageHtmlAttributte('data-zoom-image', $media_resized->getBaseImageUrl($_product, 'image'));
+    $media_resizedGalleryThumbnail = $_product->getProductMediaGalleryResized(500, $imgType = "thumbnail");
+?>
+<?php if ($_product->getImage() != 'no_selection' && $_product->getImage()): ?>
+	<div class="product-image-gallery clearfix loading hide-overlay">
+		<?php echo $this->getLayout()->createBlock('page/html')->setProductInfo($_product)->setTemplate('catalog/product/product_labels.phtml')->toHtml(); ?>
+		<div class="product-image product-image-zoom inner ">
+			<?php if($this->getChildHtml('after')): ?>
+			<div class="ajax-media-overlay"><div class="loader"></div></div>
+			<?php endif; ?>
+			<?php if($lightBoxGlobal and $lightBox and $layout != 12){ ?>
+				<?php
+					if (count($media_resizedGalleryThumbnail) > 0): ?>
+					<?php foreach ($media_resizedGalleryThumbnail as $_image): ?>
+						<a href="
+							<?php echo $_image->resizeImageFile('image', 800); ?>"
+							data-toggle="lightbox"
+							data-gallery="navigateTo"
+							data-footer="<?php echo (Mage::app()->getLayout()->checkVersion('1.7.x.x') ? $this->htmlEscape : $this->escapeHtml).($this->getImageLabel()) ?>"
+							class="lightbox-button">
+							<i class="meigee-magnifier"></i>
+						</a>
+					<?php endforeach; ?>
+				<?php else: ?>
+					<a href="
+						<?php echo $media_resized->resizeImageFile('image', 800) ?>"
+						data-toggle="lightbox"
+						data-gallery="navigateTo"
+						data-footer="<?php echo (Mage::app()->getLayout()->checkVersion('1.7.x.x') ? $this->htmlEscape : $this->escapeHtml).($this->getImageLabel()) ?>"
+						class="lightbox-button active">
+						<i class="meigee-magnifier"></i>
+					</a>
+				<?php endif; ?>
+			<?php } ?>
+			<?php
+				echo '<img '.$media_resized->getImageHtmlAttributte().' />';
+			?>
+		</div>
+	</div>
+<?php else: ?>
+	<div class="product-image loading hide-overlay">
+		<?php if($this->getChildHtml('after')): ?>
+		<div class="ajax-media-overlay"><div class="loader"></div></div>
+		<?php endif; ?>
+		<?php if($lightBoxGlobal and $lightBox and $layout != 12){ ?>
+			<?php $imgPath = explode('/', (string)$this->helper('catalog/image')->init($_product, 'image'));
+				$currentImg = end($imgPath);
+				if (count($this->getGalleryImages()) > 0): ?>
+				<?php foreach ($this->getGalleryImages() as $_image): ?>
+					<a
+                        href="<?php echo $_product->resizeImage('image') ?>"
+
+                        data-gallery="navigateTo"
+                         data-toggle="lightbox"
+						data-footer="<?php echo (Mage::app()->getLayout()->checkVersion('1.7.x.x') ? $this->htmlEscape : $this->escapeHtml).($this->getImageLabel()) ?>"
+                        class="lightbox-button
+                        <?php echo($_image->getIsLastGalleryImage() ? ' active' : ''); ?>">
+                        <i class="meigee-magnifier"></i>
+					</a>
+				<?php endforeach; ?>
+			<?php endif; ?>
+		<?php } ?>
+		<div class="product-image-gallery">
+			<?php echo $this->getLayout()->createBlock('page/html')->setProduct($_product)->setTemplate('catalog/product/product_labels.phtml')->toHtml(); ?>
+			<?php
+				echo '<img '.$media_resized->getImageHtmlAttributte().' />';
+			?>
+		</div>
+	</div>
+<?php endif; ?>
+<?php echo $this->getChildHtml('more_views') ?>
+<script type="text/javascript">
+	jQuery(window).ready(function() {
+		if(!(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))){
+			imgUrl = jQuery('#image').data('zoomImage');
+			zoomImg = new Image;
+			zoomImg.src = imgUrl;
+			var func = function() {
+				var zoomImgWidth = zoomImg.width;
+				var imgWidth = jQuery('#image').width();
+				if(imgWidth < zoomImgWidth) {
+					jQuery("#image").elevateZoom({ zoomType: "inner", cursor: "crosshair", easing : true });
+					setTimeout(function(){
+						jQuery('.hide-overlay').removeClass('hide-overlay');
+					}, 1000);
+				}
+				productImageSize();
+			}
+			if (zoomImg.complete) {
+				func();
+			} else {
+				zoomImg.onload=func;
+				zoomImg.onerror=func;
+			}
+		}
+	});
+</script>
+<?php echo $this->getChildHtml('after'); ?>

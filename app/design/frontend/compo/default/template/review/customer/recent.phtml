@@ -1,0 +1,35 @@
+<?php
+/**
+ * @package     compo
+ * @copyright   Copyright (c) 2010-2015 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+?>
+<?php if( $this->getCollection() && $this->count()): ?>
+<div class="box-account box-reviews">
+	<div class="page-subtitle clearfix">
+		<h2><?php echo $this->__('My Recent Reviews') ?></h2>
+		<a class="pull-right" href="<?php echo $this->getAllReviewsUrl() ?>"><?php echo $this->__('View All Reviews') ?></a>
+	</div>
+	<ul id="my_recent_reviews">
+	<?php $iterator = 0 ?>
+	<?php foreach ($this->getCollection() as $_review): ?>
+		<li class="item">
+			<span class="number"><?php echo ++$iterator ?></span>
+			<div class="details">
+				<h3 class="product-name"><a href="<?php echo $this->getReviewUrl($_review->getReviewId()) ?>"><?php echo (Mage::app()->getLayout()->checkVersion('1.7.x.x') ? $this->htmlEscape : $this->escapeHtml).($_review->getName()) ?></a></h3>
+				<?php if($_review->getSum()): ?>
+					<div class="ratings clearfix">
+						<strong><?php echo $this->__('Rating:') ?></strong>
+						<div class="rating-box">
+							<i class="star">&#9733;</i><i class="star">&#9733;</i><i class="star">&#9733;</i><i class="star">&#9733;</i><i class="star">&#9733;</i>
+							<div class="rating" style="width:<?php echo ( $_review->getSum() / $_review->getCount() ) ?>%;"><i class="star">&#9733;</i><i class="star">&#9733;</i><i class="star">&#9733;</i><i class="star">&#9733;</i><i class="star">&#9733;</i></div>
+						</div>
+					</div>
+				<?php endif; ?>
+			</div>
+		</li>
+	<?php endforeach; ?>
+	</ul>
+	<script type="text/javascript">decorateList('my_recent_reviews');</script>
+</div>
+<?php endif; ?>

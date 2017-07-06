@@ -1,0 +1,138 @@
+<config>
+	<tabs>
+		<meigee_extensions_tab translate="label" module="Meigee_CategoriesEnhanced">
+			<label>Meigee Extensions</label>
+			<sort_order>1</sort_order>
+		</meigee_extensions_tab>
+	</tabs>
+	<sections>
+		<meigee_categoriesenhanced translate="label" module="Meigee_CategoriesEnhanced">
+			<label>Categories Enhanced</label>
+			<sort_order>3</sort_order>
+			<show_in_default>1</show_in_default>
+			<show_in_website>1</show_in_website>
+			<show_in_store>1</show_in_store>
+			<tab>meigee_extensions_tab</tab>
+			<groups>
+				<options translate="label">
+					<label>Options</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>1</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<status translate="label comment">
+							<label>Mega Menu Status</label>
+							<frontend_type>Select</frontend_type>
+							<source_model>adminhtml/system_config_source_enabledisable</source_model>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</status>
+						<column_count>
+							<label>Max. Quantity of categories in 1 row:</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>2</sort_order>
+							<comment>Set maximum quantity of categories which will be shown in 1 row. If quantity of categories will be less than set, then those categories will be stretched in order to fill all the width of the menu.</comment>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store> 
+							<depends>
+								<status>1</status>
+							</depends>
+						</column_count>
+						
+						
+						<double_line_status translate="label comment">
+							<label>Double-line menu</label>
+							<frontend_type>Select</frontend_type>
+							<comment>After you enabled this option you will need to set max width of 1 row of menu item in field below. That will allow to divide your menu into lines</comment>
+							<source_model>adminhtml/system_config_source_enabledisable</source_model>
+							<sort_order>3</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<depends>
+								<status>1</status>
+							</depends>
+						</double_line_status>
+						<double_line_item_width>
+							<label>Max. Width of menu item</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>4</sort_order>
+							<comment>Enter max width of one row of your menu item in px.</comment>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store> 
+							<depends>
+								<status>1</status>
+								<double_line_status>1</double_line_status>
+							</depends>
+						</double_line_item_width>
+						
+						
+						<vertical_menu_status translate="label comment">
+							<label>Vertical menu</label>
+							<frontend_type>Select</frontend_type>
+							<comment>Enable or disable vertical menu</comment>
+							<source_model>adminhtml/system_config_source_enabledisable</source_model>
+							<sort_order>5</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<depends>
+								<status>1</status>
+							</depends>
+						</vertical_menu_status>
+						<vertical_menu_id>
+							<label>Vertical Parent Id</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>6</sort_order>
+							<comment>Enter vertical menu parent item ID</comment>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store> 
+							<depends>
+								<status>1</status>
+								<vertical_menu_status>1</vertical_menu_status>
+							</depends>
+						</vertical_menu_id>
+						
+						<vertical_menu_type>
+							<label>Vertical Menu type</label>
+							<frontend_type>Select</frontend_type>
+							<source_model>Meigee_CategoriesEnhanced/Menutype</source_model>
+							<sort_order>7</sort_order>
+							<!-- <comment>Enter vertical menu parent item ID</comment> -->
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store> 
+							<depends>
+								<status>1</status>
+								<vertical_menu_status>1</vertical_menu_status>
+							</depends>
+						</vertical_menu_type>
+						<vertical_menu_skin>
+							<label>Vertical Parent Skin</label>
+							<frontend_type>Select</frontend_type>
+							<source_model>Meigee_CategoriesEnhanced/Menuskin</source_model>
+							<sort_order>8</sort_order>
+							<!-- <comment>Enter vertical menu parent item ID</comment> -->
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store> 
+							<depends>
+								<status>1</status>
+								<vertical_menu_status>1</vertical_menu_status>
+							</depends>
+						</vertical_menu_skin>
+						
+						
+					</fields>
+				</options>
+			</groups>
+		</meigee_categoriesenhanced>
+	</sections>
+</config>

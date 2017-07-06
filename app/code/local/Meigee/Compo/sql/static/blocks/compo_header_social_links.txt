@@ -1,0 +1,1 @@
+{{widget type="thememanager/widget_sociallinks" facebook="#" twitter="#" instagram="#" googleplus="#" pinterest="#" envelope="#" template="widget/sociallinks.phtml"}}

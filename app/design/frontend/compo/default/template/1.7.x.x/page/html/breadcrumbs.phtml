@@ -1,0 +1,42 @@
+<?php
+/**
+ * @package     compo
+ * @copyright   Copyright (c) 2010-2015 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+ $meigeeOptions = $this->getLayout();
+ $richSnippetsStatus = $meigeeOptions->getMConfigResultByAlias('snippets_status');
+ $richSnippetsBreadcrumbs = $meigeeOptions->getMConfigResultByAlias('snippets_breadcrumbs');
+?>
+<?php if($crumbs && is_array($crumbs)): ?>
+	<div class="breadcrumbs-wrapper">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="breadcrumbs-inner clearfix">
+						<header class="page-title clearfix">
+							<?php foreach($crumbs as $_crumbName=>$_crumbInfo): ?>
+								<?php if($_crumbInfo['last']){ ?>
+									<h2><?php echo $this->htmlEscape($_crumbInfo['label']) ?></h2>
+								<?php } ?>
+							<?php endforeach; ?>
+							<ul class="breadcrumb">
+								<?php foreach($crumbs as $_crumbName=>$_crumbInfo): ?>
+									<li class="<?php echo $_crumbName ?>"<?php if(($richSnippetsStatus) and ($richSnippetsBreadcrumbs) and ($_crumbInfo['link'])): ?> itemscope itemtype="http://data-vocabulary.org/Breadcrumb"<?php endif; ?>>
+									<?php if($_crumbInfo['link']): ?>
+										<a href="<?php echo $_crumbInfo['link'] ?>" title="<?php echo $this->htmlEscape($_crumbInfo['label']) ?>"
+										<?php echo (($richSnippetsStatus and $richSnippetsBreadcrumbs) ? 'itemprop="url"><span itemprop="title">'. $this->htmlEscape($_crumbInfo['label']).'</span>'  : '>'. $this->htmlEscape($_crumbInfo['label'])); ?></a>
+									<?php elseif($_crumbInfo['last']): ?>
+										<strong><?php echo $this->htmlEscape($_crumbInfo['label']) ?></strong>
+									<?php else: ?>
+										<?php echo $this->htmlEscape($_crumbInfo['label']) ?>
+									<?php endif; ?>
+									</li>
+								<?php endforeach; ?>
+							</ul>
+						</header>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<?php endif; ?>

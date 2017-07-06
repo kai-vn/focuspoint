@@ -1,0 +1,5 @@
+<?php
+class Meigee_Thememanager_Model_Widget_View_ThemeParametres extends Meigee_Thememanager_Model_WidgetConfigReader
+{
+
+}

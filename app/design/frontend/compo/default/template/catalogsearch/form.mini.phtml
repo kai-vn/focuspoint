@@ -1,0 +1,38 @@
+<?php
+/**
+ * @package     compo
+ * @copyright   Copyright (c) 2010-2015 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+/* @var $this Mage_Core_Block_Template */
+/* @var $catalogSearchHelper Mage_Catalogsearch_Helper_Data */
+$catalogSearchHelper =  $this->helper('catalogsearch');
+$random = rand(1, 1000);
+// $search_type = Mage::helper('thememanager/themeConfig')->getThemeConfigResultByAliase('header_search_type');
+
+?>
+<form id="search_mini_form_<?php echo $random; ?>" action="<?php echo $catalogSearchHelper->getResultUrl() ?>" method="get" class="search-mini-form">
+    <div class="form-search <?php // echo $search_type; ?>">
+		<div class="search-button">
+			<i class="meigee-magnifier" title="<?php echo $this->__('Search'); ?>"></i><span><?php echo $this->__('Search'); ?></span>
+		</div>
+        <div class="indent">
+			<div class="input-wrapper">
+				<label for="search_<?php echo $random; ?>"><?php echo $this->__('Search:') ?></label>
+				<div class="input-group">
+					<span class="input-group-btn search-icon"><i class="meigee-magnifier"></i></span>
+					<input id="search_<?php echo $random; ?>" type="text" name="<?php echo $catalogSearchHelper->getQueryParamName() ?>" value="<?php echo $catalogSearchHelper->getEscapedQueryText() ?>" class="form-control" maxlength="<?php echo $catalogSearchHelper->getMaxQueryLength();?>" />
+					<span class="input-group-btn">
+						<button type="submit" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Search')); ?>" class="btn btn-default"><span><span><?php echo $this->__('Search'); ?></span><i class="meigee-arrow-right"></i></span></button>
+					</span>
+				</div>
+				<div id="search_autocomplete_<?php echo $random; ?>" class="search-autocomplete"></div>
+				<script type="text/javascript">
+				//<![CDATA[
+					var searchForm = new Varien.searchForm('search_mini_form_<?php echo $random; ?>', 'search_<?php echo $random; ?>', '<?php echo Mage::helper('core')->jsQuoteEscape($this->__('Search entire store here...')); ?>');
+					searchForm.initAutocomplete('<?php echo $catalogSearchHelper->getSuggestUrl() ?>', 'search_autocomplete_<?php echo $random; ?>');
+				//]]>
+				</script>
+			</div>
+        </div>
+    </div>
+</form>

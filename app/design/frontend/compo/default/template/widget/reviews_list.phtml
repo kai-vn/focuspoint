@@ -1,0 +1,83 @@
+<?php 
+$collection = $this->getReviewsCollection();
+$per_row = $this->getReviewPerRow();
+$image_layout = $this->getImageLayout();
+switch($per_row){
+	case 1:
+		$per_row = 'one-item';
+	break;
+	case 2:
+		$per_row = 'two-items';
+	break;
+	case 3:
+		$per_row = 'three-items';
+	break;
+	case 4:
+		$per_row = 'four-items';
+	break;
+	default:
+		$per_row = 'four-items';
+	break;
+}
+?>
+<ul class="customer-reviews-widget widget-list <?php echo $per_row .' '. ($image_layout == 1 ? ' square-image' : '');; ?> clearfix">
+	<?php
+	$curr_id = '';
+	foreach($collection as $product) {
+		if($curr_id != $product->getId()){
+		$product_name = $product->getName();
+		$author = $product->getNickname();
+		$review_title  = $product->getTitle();
+		$review_text  = $product->getDetail();
+		$rating_summary = $product->getRatingSummary();
+		$stars_width = $rating_summary['rating_summary'];
+		$image = $product->getImage();
+		$date = new DateTime($product->getReviewCreatedAt());
+		$review_date = $date->format('d.m.Y');
+		$price = $this->getPriceHtml($product, true, '-widget');
+	?>
+		<li class="item clearfix">
+			<?php if ($this->getReviewProductImage()){ ?>
+				<div class="image-wrapper">
+					<div class="image">
+						<?php $escaped_label = $this->stripTags($product->getName(), null, true);
+							echo '<img '. $product->getProductMediaResized(320, 'small_image')
+								->addImageHtmlAttributte('alt', $escaped_label)
+								->addImageHtmlAttributte('title', $escaped_label)
+								->getImageHtmlAttributte().' />';
+						?>
+					</div>
+				</div>
+			<?php } ?>
+			<div class="content-wrapper">
+				<?php if ($this->getReviewProductName()){ ?>
+					<div class="product-name"><h5><?php echo $product_name; ?></h5></div>
+				<?php } ?>
+				<?php if ($this->getReviewProductPrice()){ ?>
+					<div class="price-wrapper"><?php echo $price; ?></div>
+				<?php } ?>
+				<?php if ($this->getReviewProductStars()){ ?>
+					<div class="ratings">
+						<div class="rating-box">
+							<i class="star">&#9733;</i><i class="star">&#9733;</i><i class="star">&#9733;</i><i class="star">&#9733;</i><i class="star">&#9733;</i>
+							<div class="rating" style="width:<?php echo $stars_width; ?>%"><i class="star">&#9733;</i><i class="star">&#9733;</i><i class="star">&#9733;</i><i class="star">&#9733;</i><i class="star">&#9733;</i></div>
+						</div>
+					</div>
+				<?php } ?>
+				<?php if ($this->getReviewTitle()){ ?>
+					<div class="review-title">"<?php echo $review_title; ?>"</div>
+				<?php } ?>
+				<?php if ($this->getReviewText()){ ?>
+					<div class="review-text">"<?php echo $review_text; ?>"</div>
+				<?php } ?>
+				<?php if ($this->getReviewAuthor()){ ?>
+					<div class="author"><i class="meigee-pencil"></i> <?php echo $author .', '. $review_date; ?></div>
+				<?php } ?>
+				<button class="btn btn-default" onclick="setLocation('<?php echo Mage::getBaseUrl().$product->getUrlPath() ."#reviews-link"; ?>');"><span><span><?php echo $this->__('Read all'); ?></span></span></button>
+			</div>
+		</li>
+	<?php 
+		}
+		$curr_id = $product->getId();
+	} ?>
+</ul>

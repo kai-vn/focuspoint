@@ -1,0 +1,108 @@
+<script type="text/javascript">countryRegions = <?php echo $this->helper('directory')->getRegionJson() ?></script>
+<?php
+$catalogModeWrapper = $this->getLayout()->getMConfigResultByAlias('catalog_mode');
+$catalogMode = $catalogModeWrapper['value']['sv2']['value'];
+if($catalogMode == 1) {
+	$redirect = Mage::getUrl('no-route');
+	echo Mage::app()->getFrontController()->getResponse()->setRedirect($redirect);
+}
+echo $this->getDesignStyles();
+$package = Mage::getDesign()->getPackageName();
+$theme = Mage::getDesign()->getTheme('frontend');
+$is_persistent = Mage::helper('opc')->isPersistentMember();
+?>
+<div class="opc-wrapper-opc design_package_<?php echo $package;?> design_theme_<?php echo $theme;?>">
+	<div class="page-title">
+		<h2><?php echo $this->__('Checkout')?></h2>
+	</div>
+	<div class="opc-menu">
+		<?php if(!$is_persistent):?>
+			<?php echo $this->getMessagesBlock()->getGroupedHtml(); ?>
+			<?php echo $this->getChildHtml('paypal.button')?>
+		   <div class="clear"></div>
+		<?php else:?>
+			<?php echo $this->getChildHtml('login');?>
+		<?php endif;?>
+	</div>
+	<div class="clear"></div>
+	<div class="row clearfix" <?php if($is_persistent):?>style="display:none !important;"<?php endif;?>>
+
+		<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('compo_checkout_banners')->toHtml(); ?>
+
+		<div class="opc-col-left col-md-4 col-sm-6">
+			<form id="opc-address-form-billing" class="form-horizontal" method="post">
+				<?php echo $this->getChildHtml('billing')?>
+			</form>
+			<form id="opc-address-form-shipping" class="hidden form-horizontal" method="post">
+			<?php echo $this->getChildHtml('shipping')?>
+			</form>
+		</div>
+		<div class="opc-col-center col-md-4 col-sm-6">
+		   <?php if (!$this->getOnepage()->getQuote()->isVirtual()):?>
+			<div class="shipping-block">
+				<h3><?php echo $this->__('Shipping Method')?></h3>
+				<div id="shipping-block-methods">
+					<?php echo $this->getChildHtml('shipping_method');//$this->_getShippingMethodsHtml();?>
+				</div>
+			</div>
+			<?php endif;?>
+			<div class="payment-block <?php if ($this->getOnepage()->getQuote()->isVirtual()):?>clear-margin<?php endif;?>">
+				<h3><?php echo $this->__('Payment Method')?></h3>
+				<?php echo $this->getChildHtml('payment')//$this->_getPaymentMethodsHtml();?>
+			</div>
+			<?php if(Mage::helper('opc')->isShowDiscount()):?>
+			<div class="discount-block">
+				<h3><?php echo $this->__('Discount Codes')?></h3>
+				<?php echo $this->getChildhtml('coupon');?>
+			</div>
+			<?php endif;?>
+			<?php if(Mage::helper('opc')->isShowComment()):?>
+				<?php echo $this->getChildhtml('customer.comment');?>
+			<?php endif;?>
+			<?php if (Mage::getConfig()->getModuleConfig('IWD_OnepageCheckoutSignature')->is('active', 'true')): ?>
+				<div class="signature-block">
+					<h3><?php echo $this->__('Signature')?></h3>
+					<?php echo $this->getChildhtml('opcsignature');?>
+				</div>
+			<?php endif;?>
+		</div>
+		<div class="opc-col-right col-md-4 col-sm-6">
+			<div id="opc-review-block">
+				<?php echo $this->_getReviewHtml()?>
+			</div>
+			<div class="opc-review-actions" id="checkout-review-submit">
+				  <?php echo $this->getChildHtml('agreements')?>
+				  <?php echo $this->getChildHtml('opc.newsletters');?>
+				  <button type="button" title="<?php echo $this->__('Place Order Now') ?>" class="btn btn-primary btn-checkout opc-btn-checkout"><span><span><?php echo $this->__('Place Order Now') ?></span></span></button>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	var vopc = '<?php echo Mage::getConfig()->getModuleConfig("IWD_Opc")->version;?>';
+	IWD.OPC.Checkout.config = '<?php echo $this->getJsonConfig()?>';
+	<?php if ($this->getOnepage()->getQuote()->isVirtual()):?>
+	IWD.OPC.Checkout.isVirtual = true;
+	<?php endif;?>
+</script>
+<div id="agree_error" style="display:none !important;"><?php echo $this->__('Please agree to all the terms and conditions before placing the order.');?></div>
+<div id="pssm_msg" style="display:none !important;"><?php echo $this->__('Please specify shipping method.');?></div>
+<div class="opc-ajax-loader">
+	<div id="floatingCirclesG">
+		<div class="f_circleG" id="frotateG_01"></div>
+		<div class="f_circleG" id="frotateG_02"></div>
+		<div class="f_circleG" id="frotateG_03"></div>
+		<div class="f_circleG" id="frotateG_04"></div>
+		<div class="f_circleG" id="frotateG_05"></div>
+		<div class="f_circleG" id="frotateG_06"></div>
+		<div class="f_circleG" id="frotateG_07"></div>
+		<div class="f_circleG" id="frotateG_08"></div>
+	</div>
+</div>
+<div class="opc-message-wrapper design_package_<?php echo $package;?> design_theme_<?php echo $theme;?>">
+	<div class="opc-messages">
+		<a class="close-message-wrapper"><i class="meigee-close"></i></a>
+		<div class="opc-message-container"></div>
+		<div class="opc-messages-action"><button class="button btn btn-default"><span><span><?php echo $this->__('Close')?></span></span></button></div>
+	</div>
+</div>

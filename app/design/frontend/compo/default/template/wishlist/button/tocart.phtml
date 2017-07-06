@@ -1,0 +1,11 @@
+<?php
+/**
+ * @package     compo
+ * @copyright   Copyright (c) 2010-2015 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+ $catalogModeWrapper = $this->getLayout()->getMConfigResultByAlias('catalog_mode');
+ $catalogMode = $catalogModeWrapper['value']['sv2']['value'];
+?>
+<?php if($this->getWishlist()->getItemsCount() && $this->getWishlist()->isSalable() && $catalogMode == 0): ?>
+	<button type="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Add All to Cart')); ?>" onclick="addAllWItemsToCart()" class="btn btn-default btn-tocart"><span><span><?php echo $this->__('Add All to Cart') ?></span></span></button>
+<?php endif;?>

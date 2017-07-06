@@ -1,0 +1,94 @@
+<?php
+/**
+ * @package     compo
+ * @copyright   Copyright (c) 2010-2015 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+/*
+ @var $this Mage_Wishlist_Block_Customer_Sidebar
+*/
+?>
+<?php if ($this->helper('wishlist')->isAllow()) :
+ $lazyLoad = Mage::helper('thememanager/themeConfig')->getThemeConfigResultByAliase('ajax_product_images');
+ $catalogModeWrapper = $this->getLayout()->getMConfigResultByAlias('catalog_mode');
+ $catalogMode = $catalogModeWrapper['value']['sv2']['value'];
+ ?>
+	<div class="block block-wishlist" id="wishlist-slider">
+		<div class="block-title">
+			<strong><span><?php echo $this->getTitle(); ?></span></strong>
+			<div class="actions">
+				<a class="btn btn-primary type-2" href="<?php echo $this->helper('wishlist')->getListUrl() ?>"><i class="meigee-eye"></i><?php echo $this->__('View all') ?></a>
+			</div>
+		</div>
+		<div class="block-content">
+			<p class="block-subtitle"><?php echo $this->__('Last Added Items') ?></p>
+			<?php if ($this->hasWishlistItems()): ?>
+				<div class="carousel-ul owl-carousel owl-theme">
+					<?php foreach ($this->getWishlistItems() as $_item): ?>
+					<?php $product = $_item->getProduct(); ?>
+						<div class="item">
+							<div class="media-left">
+								<a href="<?php echo $this->getProductUrl($_item) ?>" title="<?php echo $this->escapeHtml($product->getName()) ?>" class="product-image">
+									<?php
+										$escaped_label = $this->escapeHtml($product->getName());
+										echo '<img '. $product->getProductMediaResized(90, 'thumbnail')
+											->addImageHtmlAttributte('alt', $escaped_label)
+											->addImageHtmlAttributte('title', $escaped_label)
+											->addImageHtmlAttributte('class', 'lazyOwl')
+											->addImageHtmlAttributte('class', 'no_ajax_image_loader')
+											->getImageHtmlAttributte().' />';
+									?>
+								</a>
+							</div>
+							<div class="media-body">
+								<a href="<?php echo $this->getItemRemoveUrl($_item) ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Remove This Item')) ?>" onclick="return confirm('<?php echo Mage::helper('core')->quoteEscape($this->__('Are you sure you would like to remove this item from the wishlist?'), true) ?>');" class="btn-remove"><i class="meigee-trash"></i></a>
+								<h5 class="product-name"><a href="<?php echo $this->getProductUrl($_item) ?>"><?php echo $this->escapeHtml($product->getName()) ?></a></h5>
+								<?php echo $this->getReviewsSummaryHtml($product) ?>
+								<?php echo $this->getPriceHtml($product, false, '-wishlist') ?>
+								<?php if ($product->isSaleable() && $product->isVisibleInSiteVisibility() && $catalogMode == 0): ?>
+									<a href="<?php echo $this->getItemAddToCartUrl($_item) ?>" class="link-cart btn btn-default"><?php echo $this->__('Add to Cart') ?></a>
+								<?php endif; ?>
+							</div>
+						</div>
+					<?php endforeach; ?>
+				</div>
+				<?php if(count($this->getWishlistItems()) > 1){ ?>
+					<div class="slider-buttons owl-buttons clearfix"></div>
+				<?php } ?>
+				<script type="text/javascript">decorateList('wishlist-sidebar');</script>
+				<script type="text/javascript">
+					/* Wishlist Block Slider */
+					if(jQuery('#wishlist-slider').length){
+						jQuery(document).ready(function(){
+							wishlistSlider = jQuery('#wishlist-slider .carousel-ul');
+							wishlistSlider.owlCarousel({
+								margin: 0,
+								nav:true,
+								responsive:{
+									0:{
+										items:1
+									},
+									767:{
+										items:1
+									},
+									1007:{
+										items:1
+									},
+									1331:{
+										items:1
+									}
+								},
+								dots: false,
+								lazyLoad: <?php echo ($lazyLoad == 'lazy_image_loader' ? 'true' : 'false'); ?>,
+								navContainer: '#wishlist-slider .owl-buttons',
+								navText: ['<i class="meigee-arrow-left"></i>','<i class="meigee-arrow-right"></i>']
+							});
+						});
+					}
+					/* Wishlist Block Slider */
+				</script>
+			<?php else: ?>
+				<p class="empty"><?php echo $this->__('You have no items in your wishlist.') ?></p>
+			<?php endif ?>
+		</div>
+	</div>
+<?php endif ?>

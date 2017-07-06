@@ -1,0 +1,20 @@
+<div id="home-image-slider" class="owl-carousel owl-theme" data-navigation="1" data-speed="300">
+	<a href="#">
+		<img {{retinaurl data-img-src="wysiwyg/compo_jewerly_slide_1.jpg" data-img-srcX2="wysiwyg/compo_jewerly_slide_1@x2.jpg" alt=""}}>
+		<span class="slide-container slide-skin">
+			<span class="title hidden-xs">LUXXURY</span>
+			<span class="subtitle">Return to Infinity</span>
+			<span class="text hidden-xs">A high-performance Multi-Purpose Magento theme<br> suitable for any kind of project.</span>
+		</span>
+	</a>
+	<a href="#">
+		<img {{retinaurl data-img-src="wysiwyg/compo_jewerly_slide_2.jpg" data-img-srcX2="wysiwyg/compo_jewerly_slide_2@x2.jpg" alt=""}}>
+		<span class="slide-container slide-skin-2">
+			<span class="slide-logo  hidden-xs"><img src="{{media url='wysiwyg/compo_jewerly_slide_logo.png'}}" alt=""></span>
+			<span class="small-title  hidden-xs">Special collection</span>
+			<span class="subtitle">Return to Infinity</span>
+			<span class="text hidden-xs">A high-performance Multi-Purpose Magento theme<br> suitable for any kind of project.</span>
+			<span class="btn btn-default hidden-xs">Read more</span>
+		</span>
+	</a>
+</div>

@@ -1,0 +1,48 @@
+<?php
+/**
+ * @package     compo
+ * @copyright   Copyright (c) 2010-2015 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+
+	$_product = $this->getProduct();
+	$meigeeOptions = $this->getLayout();
+	$labelsOrder = $meigeeOptions->getMConfigResultByAlias('product_label_order');
+	$labelsPos = $meigeeOptions->getMConfigResultByAlias('product_label_pos');
+	// $labelsType = $meigeeOptions->getMConfigResultByAlias('product_label_view');
+?>
+
+
+<?php if($_product->isProductNew((bool)$this->getLabelNew()) || $_product->getProductOnlyXleft() || $_product->isProductSale()) { ?>
+	<div class="product-labels-wrapper clearfix label-type-3 <?php echo $labelsPos; ?><?php echo ( $_product->isProductNew((bool)$this->getLabelNew()) && ($_product->getProductOnlyXleft() || $_product->isProductSale()) ? ' two-items' : ''); ?>">
+		<?php if($labelsOrder == 1) { ?>
+			<?php if($_product->isProductNew((bool)$this->getLabelNew())){ ?>
+				<div class="label-new"><?php echo $this->__('New'); ?></div>
+			<?php }
+			if((bool)$this->getLabelSale()){
+				if ($_product->getProductOnlyXleft()){ ?>
+					<div class="availability-only">&lt; <?php echo $_product->getProductOnlyXleft().'<p>'.$this->__('Left').'</p>'?></div>
+				<?php } elseif($_product->isProductSale()){
+					if($_product->getProductLabelSalePercentage()) { ?>
+						<div class="label-sale percentage"><?php echo $_product ->getProductLabelSalePercentage(). '%<span>'.$this->__('off'). '</span>'; ?></div>
+					<?php } else { ?>
+						<div class="label-sale"><?php echo $this->__('Sale'); ?></div>
+					<?php } ?>
+				<?php }
+			} ?>
+		<?php } else { ?>
+			<?php if((bool)$this->getLabelSale()){
+				if ($_product->getProductOnlyXleft()){ ?>
+					<div class="availability-only">&lt; <?php echo $_product->getProductOnlyXleft().'<p>'.$this->__('Left').'</p>'?></div>
+				<?php } elseif($_product->isProductSale()){
+					if($_product ->getProductLabelSalePercentage()) { ?>
+						<div class="label-sale percentage"><?php echo $_product ->getProductLabelSalePercentage(). '%<span>'.$this->__('off'). '</span>'; ?></div>
+					<?php } else { ?>
+						<div class="label-sale"><?php echo $this->__('Sale'); ?></div>
+					<?php } ?>
+				<?php } ?>
+			<?php } if($_product->isProductNew((bool)$this->getLabelNew())){ ?>
+				<div class="label-new"><?php echo $this->__('New'); ?></div>
+			<?php } ?>
+		<?php } ?>
+	</div>
+<?php } ?>

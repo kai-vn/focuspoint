@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<guide>
+
+
+    <meigee_compo_options>
+        <meigee_compo_general>
+             <some_test_1>
+                <title>title 1 meigee_compo_general</title>
+                <description>Description 1 meigee_compo_general</description>
+                <position_x>7</position_x>
+                <position_y>29</position_y>
+                <bg_size>120</bg_size>
+                <bg_opacity>60</bg_opacity>
+            </some_test_1>
+            <some_test_2>
+                <title>title 2</title>
+                <description>Description 2</description>
+                <position_x>89</position_x>
+                <position_y>17</position_y>
+                <bg_size>73</bg_size>
+                <bg_opacity>60</bg_opacity>
+            </some_test_2>
+        </meigee_compo_general>
+    </meigee_compo_options>
+
+
+
+    <test>
+        <test_block>
+            <some_test_1>
+                <title>title 1 test_block</title>
+                <description>Description 1 test_block</description>
+                <position_x>22</position_x>
+                <position_y>52</position_y>
+                <bg_size>59</bg_size>
+                <bg_opacity>60</bg_opacity>
+            </some_test_1>
+            <some_test_2>
+                <title>title 2 test_block</title>
+                <description>Description 2 test_block</description>
+                <position_x>22</position_x>
+                <position_y>33</position_y>
+                <bg_size>59</bg_size>
+                <bg_opacity>40</bg_opacity>
+            </some_test_2>
+        </test_block>
+    </test>
+
+
+
+
+
+</guide>

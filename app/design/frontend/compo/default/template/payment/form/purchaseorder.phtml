@@ -1,0 +1,12 @@
+<?php
+/**
+ * @package     compo
+ * @copyright   Copyright (c) 2010-2015 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+?>
+<ul class="form-list form-group" id="payment_form_<?php echo $this->getMethodCode() ?>" style="display:none;">
+	<li class="col-md-10">
+		<label for="po_number" class="required"><em>*</em><?php echo $this->__('Purchase Order Number') ?></label>
+		<input type="text" id="po_number" name="payment[po_number]" title="<?php echo  Mage::helper('core')->quoteEscape($this->__('Purchase Order Number')) ?>" class="form-control required-entry" value="<?php echo (Mage::app()->getLayout()->checkVersion('1.7.x.x') ? $this->htmlEscape : $this->escapeHtml).($this->getInfoData('po_number')) ?>" />
+	</li>
+</ul>

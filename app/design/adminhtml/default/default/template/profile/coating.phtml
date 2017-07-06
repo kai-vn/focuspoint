@@ -1,0 +1,28 @@
+<style>
+	.custom-options .option-column {
+	    border: 1px solid #cddddd;
+	    padding: 1em;
+	    background: #e7efef;
+	    margin: 1.5em 0;
+	}
+	.column-fieldset {
+		background: grey;
+		color : #fff;
+	}
+
+</style>
+
+<?php $helper = Mage::helper('profile');?>
+<style type="text/css">
+.form-list td.note { padding-left:18px !important; }
+</style>
+<div class="entry-edit custom-options product-custom-options">
+    <div class="entry-edit-head">
+        <h4><?php echo $this->getTitle(); ?></h4>
+        <div class="right"><?php echo $this->getChildHtml('add_button') ?></div>
+    </div>
+    <div id="coating_option_container">
+        <div ><?php echo $this->getChildHtml('new_column') ?></div>
+    </div>
+</div>
+

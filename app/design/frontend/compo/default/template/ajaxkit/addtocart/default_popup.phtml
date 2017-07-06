@@ -1,0 +1,6 @@
+<?php
+	echo $this->getChildDataHtml('info_text', array('popup_text'=>$this->getText(), 'popup_text_type'=>$this->getTextType()));
+	echo $this->getChildDataHtml('added_products', array('product_ids'=>$this->getProductIdList()));
+	echo $this->getChildDataHtml('button', array('type'=>'to_cart_button', 'timer'=>10));
+	echo $this->getChildDataHtml('button', array('type'=>'continue_shopping_button', 'timer'=>false));
+?>

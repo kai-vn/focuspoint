@@ -1,0 +1,75 @@
+<?php
+/**
+ * @package     compo
+ * @copyright   Copyright (c) 2010-2015 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+ $meigeeOptions = $this->getLayout();
+ $richSnippetsStatus = $meigeeOptions->getMConfigResultByAlias('snippets_status');
+ $richSnippetsBreadcrumbs = $meigeeOptions->getMConfigResultByAlias('snippets_breadcrumbs');
+ $breadcrumbsTypeWrapper = $meigeeOptions->getMConfigResultByAlias('breadcrumbs_type');
+ $breadcrumbsType = $breadcrumbsTypeWrapper['value']['sv1']['value'];
+ $breadcrumbs_bg_img = $meigeeOptions->getMConfigResultByAlias('breadcrumbs_bgimage');
+ if(!empty($breadcrumbs_bg_img)) {
+	$breadcrumbs_bg = 'style="background-image: url('.Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB).$breadcrumbs_bg_img.')"';
+	$breadcrumbs_class = ' with-bg-image';
+ } else {
+	$breadcrumbs_bg = '';
+	$breadcrumbs_class = '';
+ }
+$product = Mage::registry('product');
+if(isset($product)){
+	$category = $product->getCategory();
+	if(isset($category)){
+		$cat_name = $category->getName();
+	}
+}
+$ishome_page = Mage::getBlockSingleton('page/html_header')->getIsHomePage();
+?>
+<?php if($crumbs && is_array($crumbs)){ ?>
+	<div class="breadcrumbs-wrapper <?php echo ($breadcrumbsType == 1 ? 'type-2' : ''); ?> <?php echo ($breadcrumbsType == 2 ? 'type-3' : '') . $breadcrumbs_class; ?>" <?php echo ($breadcrumbsType != 0 ? $breadcrumbs_bg : ''); ?>>
+		<div class="container" <?php echo ($breadcrumbsType != 0 ? $breadcrumbs_bg : ''); ?>>
+			<div class="breadcrumbs-inner clearfix">
+				<?php // if($breadcrumbsType != 0){ ?>
+					<header class="page-title">
+						<?php
+						// if(isset($category)){
+							// echo '<h1>'.$cat_name.'</h1>';
+						// } else {
+							foreach($crumbs as $_crumbName=>$_crumbInfo): ?>
+								<?php if($_crumbInfo['last']){ ?>
+									<h1><?php echo $this->escapeHtml($_crumbInfo['label']) ?></h1>
+								<?php }
+							endforeach;
+						//}
+						?>
+					</header>
+				<?php // } ?>
+				<ul class="breadcrumb">
+					<?php foreach($crumbs as $_crumbName=>$_crumbInfo): ?>
+						<li class="<?php echo $_crumbName ?>"<?php if(($richSnippetsStatus) and ($richSnippetsBreadcrumbs) and ($_crumbInfo['link'])): ?> itemscope itemtype="http://data-vocabulary.org/Breadcrumb"<?php endif; ?>>
+						<?php if($_crumbInfo['link']): ?>
+							<a href="<?php echo $_crumbInfo['link'] ?>" title="<?php echo $this->escapeHtml($_crumbInfo['label']) ?>"
+							<?php echo (($richSnippetsStatus and $richSnippetsBreadcrumbs) ? 'itemprop="url"><span itemprop="title">'. $this->escapeHtml($_crumbInfo['label']).'</span>'  : '>'. $this->escapeHtml($_crumbInfo['label'])); ?></a>
+						<?php elseif($_crumbInfo['last']): ?>
+							<strong><?php echo $this->escapeHtml($_crumbInfo['label']) ?></strong>
+						<?php else: ?>
+							<?php echo $this->escapeHtml($_crumbInfo['label']) ?>
+						<?php endif; ?>
+						</li>
+					<?php endforeach; ?>
+				</ul>
+			</div>
+		</div>
+	</div>
+<?php // } elseif(($breadcrumbsType != 0 && (Mage::getSingleton('cms/page')->getIdentifier() != Mage::getStoreConfig('web/default/cms_home_page'))) || ($breadcrumbsType != 0 && !$ishome_page)){ ?>
+<?php } elseif($breadcrumbsType != 0 && (Mage::getSingleton('cms/page')->getIdentifier() != Mage::getStoreConfig('web/default/cms_home_page'))){ ?>
+	<div class="breadcrumbs-wrapper <?php echo ($breadcrumbsType == 1 ? 'type-2' : ''); ?> <?php echo ($breadcrumbsType == 2 ? 'type-3' : ''); ?>" <?php echo ($breadcrumbsType != 0 ? $breadcrumbs_bg : ''); ?>>
+		<div class="container" <?php echo ($breadcrumbsType != 0 ? $breadcrumbs_bg : ''); ?>>
+			<div class="breadcrumbs-inner clearfix">
+				<header class="page-title">
+					<h1><?php echo $this->getLayout()->getBlock('head')->getTitle(); ?></h1>
+				</header>
+			</div>
+		</div>
+	</div>
+<?php } ?>

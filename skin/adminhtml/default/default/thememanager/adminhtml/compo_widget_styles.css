@@ -1,0 +1,172 @@
+/* Custom Widgets Option */
+#widget_options_thememanager_widget_products {padding-bottom: 20px;}
+.title{
+	float: left;
+}
+.title-2{
+	width: 255px;
+	padding-left: 40px;
+	float: left;
+}
+.title h2,
+.title-2 h2{
+	font-size: 16px;
+}
+.subtitle { padding-bottom: 20px;}
+.widget-content{
+	padding:10px;
+	width: 293px;
+	float: left;
+	background-color:#FFF;
+}
+.widget-content .item{
+	clear: both;
+	display: block;
+	float: left;
+	position: relative;
+	cursor: pointer;
+	-moz-transition:opacity 300ms ease;
+	-webkit-transition:opacity 300ms ease;
+	-o-transition:opacity 300ms ease;
+	transition:opacity 300ms ease;
+}
+.widget-content .item.f-none {float: none;}
+.widget-content .item:hover{
+	opacity: 0.3;
+	filter: alpha(opacity=30);
+	position: relative;
+}
+
+.widget-content .item.inline{
+	float: none;
+	clear: none;
+	display: inline-block;
+	vertical-align: middle;
+}
+.widget-holder{clear: both;}
+
+.widget-holder .img-box{position: relative;}
+.widget-holder .img-box .item{position: absolute; top: 0; z-index: 99;}
+.widget-holder .img-box .quickview {
+	top: 50%;
+	margin-top: -10px;
+	left: 50%;
+	margin-left: -43px;
+}
+.widget-holder .img-box .label_sale_wrapper {right: 20px;}
+.widget-holder .img-box .label_new_wrapper {left: 20px;}
+.widget-holder .img-box.only-one .item{width: 100%;}
+.widget-holder .img-box .item.moreviews-item{right: 0;}
+.widget-holder .item.moreviews-item{background:#e0ae77;}
+.widget-holder h2.product_name{
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 1.583em;
+	color:#222;
+	font-family: Montserrat, sans-serif;
+	position: relative;
+	margin-bottom: 6px;
+}
+.widget-holder .compo_product_category {
+	font-family: Montserrat;
+	font-weight: normal;
+	font-size: 12px;
+	color: #666;
+	margin: 0;
+}
+.widget-holder .close.product_name{right: -9px; top: -7px;}
+.widget-holder .reviews{
+	color: #666;
+	font-size:11px;
+	line-height: 1.2em;
+	text-decoration: none;
+	float: left;
+	margin-top: 3px;
+	margin-bottom: 6px;
+}
+.widget-holder .rating_stars{margin-right: 10px; margin-top: 5px;}
+.widget-holder .close.rating{right: 0;}
+.widget-holder .review-divide{padding:0 2px;}
+.widget-content .left-col{float: none; width: 100%;}
+.widget-content .cart-btn{float: right; margin-right: 10px;}
+.widget-holder .price{
+	clear: both;
+	position: relative;
+	margin-bottom: 4px;
+	line-height: 1;
+}
+.widget-holder .price .regular-price{
+	float: none;
+	font-size: 18px;
+	font-family: Montserrat;
+	line-height: 1.583em;
+	text-decoration: line-through;
+	color: #ea505e;
+	padding:0 5px 0 0;
+}
+.widget-holder .timer  {
+	color: #dd1313;
+    font-style: italic;
+	margin-bottom: 9px;
+}
+.widget-holder .label_new,
+.widget-holder .label_sale  {
+	padding: .6em 13px;
+	z-index: 9;
+	color: #fff;
+	text-align: center;
+	font-size: 12px;
+	font-weight: normal;
+	line-height: 1.2em;
+	text-transform: lowercase;
+	margin: 0;
+	background-color: #f6344b;
+	float: left;
+}
+.widget-holder .label_sale {
+	background-color: #648ec7;
+}
+
+.timer-title {text-transform: uppercase; color: #222;}
+.widget-holder .rating_stars-sub{clear: both;}
+.widget-holder .close.price{right: -3px; top: -4px;}
+.widget-holder .add_to_cart{}
+.widget-holder .close.add_to_cart{right: 2px;}
+.widget-holder .link-wishlist{margin-right: 2px;}
+.widget-holder .close.wishlist{right: -3px;}
+.widget-content .wishlist-sub{display: inline-block;}
+.widget-content .add_to_cart-sub{clear: both;}
+.widget-content .wishlist{margin-right: 15px;}
+
+.widget-holder .stock_status {
+    font-size: 10px;
+    color: #888;
+    text-transform: uppercase;
+    line-height: 1;
+    display: inline-block;
+    padding-left: 12px!important;
+    margin-bottom: 1em;
+    position: relative;
+}
+.widget-holder .stock_status:before {
+    background: #63c55b;
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+}
+.widget-holder .stock_status span {color: #63c55b;}
+.widget-holder .desc {margin-bottom: .5em;}
+.items-container{
+	float: left;
+	padding: 0 0 0 40px;
+	width: 255px;
+}
+.items-container .item{float: left; clear: both; cursor: pointer; margin-bottom: 5px; margin-left: 0; margin-top: 0;}
+.items-container .reviews{clear: both;}
+.items-container .moreviews-item {margin: 0;}
+.items-container .moreviews-item img{
+	padding:8px 30px 7px;
+}

@@ -1,0 +1,35 @@
+<?php
+/**
+ * @package     compo
+ * @copyright   Copyright (c) 2010-2015 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+
+	$blockSwitch = $this->getLayout()->getBlockSingleton('Mage_Page_Block_Switch');
+	$blockCurrency = $this->getLayout()->getBlockSingleton('Mage_Directory_Block_Currency');
+	$langName = Mage::app()->getStore()->getLocaleCode();
+	$currency_code = Mage::app()->getStore()->getCurrentCurrencyCode();
+	$currencyName = Mage::app()->getLocale()->currency($currency_code)->getName();
+	if((count($blockSwitch->getStores())) > 1 || $blockCurrency->getCurrencyCount() > 1) :
+?>
+	<div class="language-currency-wrapper pull-left<?php if((count($blockSwitch->getStores())) > 1 && $blockCurrency->getCurrencyCount() > 1){echo ' with-border';} ?>">
+		<div class="language-currency-block">
+			<?php if((count($blockSwitch->getStores())) > 1) :?>
+				<span class="language">
+					<?php $currentLang = Mage::app()->getStore()->getName(); ?>
+					<img src="<?php echo $this->getSkinUrl('images/lang/'.(Mage::app()->getLayout()->checkVersion('1.7.x.x') ? $this->htmlEscape : $this->escapeHtml).($currentLang).'.jpg') ?>" alt="<?php echo $currentLang; ?>" />
+					<?php echo $currentLang; ?>
+				</span>
+			<?php endif; ?>
+			<?php if($blockCurrency->getCurrencyCount() > 1): ?>
+				<span class="currency">
+					<?php echo '<span class="icon">' . Mage::app()->getLocale()->currency(Mage::app()->getStore()->getCurrentCurrencyCode())->getSymbol() .' '. $currencyName. '</span><i class="caret"></i>'; ?>
+				</span>
+			<?php endif; ?>
+		</div>
+		<div class="language-currency-dropdown">
+			<?php echo Mage::app()->getLayout()->createBlock("directory/currency")->setTemplate("directory/currency_header.phtml")->toHtml(); ?>
+			<?php echo Mage::app()->getLayout()->createBlock("page/switch")->setTemplate("page/switch/languages.phtml")->toHtml(); ?>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+<?php endif; ?>

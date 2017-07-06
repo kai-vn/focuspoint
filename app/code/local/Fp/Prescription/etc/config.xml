@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Fp_Prescription>
+            <version>0.1.0</version>
+        </Fp_Prescription>
+    </modules>
+    <frontend>
+        <routers>
+             <prescription>
+                <use>standard</use>
+                <args>
+                    <module>Fp_Prescription</module>
+                    <frontName>prescription</frontName>
+                </args>
+            </prescription>
+        </routers>
+		<layout> 
+		   <updates> 
+             <prescription> 
+ 				<file>prescription.xml</file> 
+             </prescription> 
+          </updates> 
+      </layout> 
+    </frontend>
+</config>

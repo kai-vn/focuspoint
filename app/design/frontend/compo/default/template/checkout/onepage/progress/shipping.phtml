@@ -1,0 +1,24 @@
+<?php
+/**
+ * @package     compo
+ * @copyright   Copyright (c) 2010-2015 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+?>
+<?php if ($this->getCheckout()->getStepData('shipping', 'complete')): ?>
+<?php $completeClass = $this->getCheckout()->getStepData('shipping', 'complete') ? 'complete' : ''; ?>
+<dt class="<?php echo $completeClass ?> clearfix">
+    <?php echo $this->__('Shipping Address') ?>
+    <span class="changelink pull-right">
+    <a href="#payment" onclick="checkout.changeSection('opc-shipping');return false;"><i class="meigee-pencil"></i></a>
+</span>
+</dt>
+<dd class="<?php echo $completeClass ?>">
+    <?php if ($this->getCheckout()->getStepData('shipping', 'complete')): ?>
+    <address><?php echo $this->getShipping()->format('html') ?></address>
+    <?php endif; ?>
+</dd>
+<?php else: ?>
+<dt>
+    <?php echo $this->__('Shipping Address') ?>
+</dt>
+<?php endif; ?>

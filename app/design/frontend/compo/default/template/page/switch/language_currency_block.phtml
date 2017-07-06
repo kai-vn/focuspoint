@@ -1,0 +1,25 @@
+<?php
+/**
+ * @package     compo
+ * @copyright   Copyright (c) 2010-2015 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+
+	$blockSwitch = $this->getLayout()->getBlockSingleton('Mage_Page_Block_Switch');
+	$blockCurrency = $this->getLayout()->getBlockSingleton('Mage_Directory_Block_Currency');
+	$langName = Mage::app()->getStore()->getLocaleCode();
+	$currency_code = Mage::app()->getStore()->getCurrentCurrencyCode();
+	$currencyName =Mage::app()->getStore()->getCurrentCurrencyCode(); // Mage::app()->getLocale()->currency($currency_code)->getName();
+	if((count($blockSwitch->getStores())) > 1 || $blockCurrency->getCurrencyCount() > 1) :
+?>
+	<div class="language-currency-wrapper<?php if((count($blockSwitch->getStores())) > 1 && $blockCurrency->getCurrencyCount() > 1){echo ' with-border';} ?>">
+		<div class="language-currency-block">
+			<i class="meigee-fa-cog"></i>
+			<i class="caret"></i>
+		</div>
+		<div class="language-currency-dropdown">
+			<?php echo $this->getChildHtml('currency') ?>
+			<?php echo $this->getChildHtml('store_language') ?>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+<?php endif; ?>

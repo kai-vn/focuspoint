@@ -1,0 +1,24 @@
+<?php
+/**
+ * @package     compo
+ * @copyright   Copyright (c) 2010-2015 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+?>
+<footer id="footer" class="default-footer">
+	<div class="footer-bottom">
+		<div class="container">
+			<div class="row">
+				<div class="bottom-block col-xs-12">
+					<div class="bottom-block-inner a-center clearfix">
+						<div class="pull-left copyright">
+							<address><?php echo $this->getCopyright() ?></address>
+						</div>
+						<div class="pull-right store-swicther-wrapper">
+							<?php echo $this->getChildHtml('store_switcher'); ?>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>

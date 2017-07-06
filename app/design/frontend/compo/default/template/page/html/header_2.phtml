@@ -1,0 +1,67 @@
+<?php
+/**
+ * @package     compo
+ * @copyright   Copyright (c) 2010-2015 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+/**
+ * @var Mage_Page_Block_Html_Header $this
+ */
+?>
+<div class="header-wrapper">
+	<div class="checkpoint-wrapper">
+        <div id="checkpoint-1"></div>
+    </div>
+	<header id="header" class="header header-2">
+		<div class="top-block">
+			<div class="container">
+				<p class="welcome-msg"><?php echo $this->getWelcome() ?> <?php echo $this->getAdditionalHtml() ?></p>
+				<div class="right-block clearfix">
+					<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('compo_header_custom_links')->toHtml(); ?>
+					<?php echo $this->getChildHtml('store_language') ?>
+					<?php echo $this->getChildHtml('currency') ?>
+					<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('compo_header_social_links')->toHtml(); ?>
+				</div>
+			</div>
+		</div>
+		<div class="middle-block" id="checkpoint-0">
+			<div class="container">
+                <div class="checkpoint-wrapper">
+                    <div class="checkpoint-button"></div>
+                </div>
+				<div class="row">
+					<div class="col-sm-4 middle-item">
+						<div class="logo-wrapper">
+							<?php $logo = $this->getLayout()->getLogoData(false); ?>
+							<h2 class="logo">
+								<strong><?php echo $this->getLayout()->getLogoData(true) ?></strong>
+								<a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLayout()->getLogoData(true) ?>">
+									<img <?php echo $logo ?> alt="<?php echo $this->getLayout()->getLogoData(true) ?>" />
+								</a>
+							</h2>
+						</div>
+					</div>
+					<div class="col-sm-4 left-item">
+						<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('compo_header_custom_block')->toHtml(); ?>
+					</div>
+					<div class="col-sm-4 right-item">
+						<?php echo $this->getChildHtml('topSearch'); ?>
+						<?php echo $this->getChildHtml('wrapper_links'); ?>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="bottom-block clearfix">
+			<div class="container">
+				<div class="bottom-block-inner clearfix">
+					<?php echo $this->getLayout()->createBlock('core/template')->setTemplate('page/html/mobile_menu.phtml')->toHtml(); ?>
+					<?php echo $this->getChildHtml('topMenu'); ?>
+					<?php echo $this->getChildHtml('cart_sidebar'); ?>
+				</div>
+			</div>
+		</div>
+	</header>
+	<?php echo $this->getChildHtml('sticky_header'); ?>
+	<?php echo $this->getChildHtml('topContainer'); ?>
+	<?php echo $this->getChildHtml('meigee_loader'); ?>
+	<?php echo $this->getChildHtml('before_content'); ?>
+</div>

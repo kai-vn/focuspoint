@@ -1,0 +1,28 @@
+<style>
+	.select-brand {
+		float:left;
+		width: 150px;
+	}
+	.profile-list-brand {
+		font-size: 16px;
+		margin-left: 150px; 
+	}
+	.profile-brand label {
+		text-transform: uppercase;
+	}
+
+</style>
+<div >
+<div class="select-brand"><h4>Selected Brands : <h4></div>
+<?php ?>
+<?php $brands = $this->getBrands();?>
+<?php $productId = Mage::registry('current_product')->getId();?>
+<ol class="profile-list-brand">
+<?php foreach($brands as $brand) : ?>
+	<li class="profile-brand">
+		<input type="checkbox" <?php if ($this->isCheckBrand($brand->getId(),$productId)) echo 'checked' ?> value="<?php echo $brand->getId()?>" name="profile_brand[]" />
+    	<label><?php echo $brand->getTitle() ?></label>
+	</li>
+<?php endforeach;?>
+</ol>
+</div>

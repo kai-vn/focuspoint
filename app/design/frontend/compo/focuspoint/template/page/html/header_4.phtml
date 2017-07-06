@@ -1,0 +1,130 @@
+<?php
+/**
+ * @package     compo
+ * @copyright   Copyright (c) 2010-2015 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+/**
+ * @var Mage_Page_Block_Html_Header $this
+ */
+?>
+<?php $isMobile = Zend_Http_UserAgent_Mobile::match(Mage::helper('core/http')->getHttpUserAgent(),$_SERVER); 
+$isiPad = (bool) strpos($_SERVER['HTTP_USER_AGENT'],'iPad');
+
+?>
+<div class="header-wrapper">
+	<div class="checkpoint-wrapper">
+        <div id="checkpoint-1"></div>
+    </div>
+	<header id="header" class="header header-4">
+    
+    
+		
+		<div class="middle-block" id="checkpoint-0">
+			<div class="container">
+                <div class="checkpoint-wrapper">
+                    <div class="checkpoint-button"></div>
+                </div>
+                
+                
+                <!-- mobile code start -->
+                 <div class="topblock-mob visible-xs">
+                    <div class="container">
+                         <div class="header-account">
+                        <?php if (Mage::helper('customer')->isLoggedIn() ) { ?>
+                        <a href="<?php echo Mage::helper('customer')->getLogoutUrl(); ?>"> <img src="<?php echo $this->getSkinUrl("images/login-icon.png"); ?>"  ></a>
+                        
+                       <!-- a href="<?php echo Mage::helper('customer')->getLogoutUrl(); ?>"><?php echo 'Log Out'; ?></a -->
+                       <?php } else { ?>
+                       
+                        <a href="<?php echo $this->getUrl('customer/account') ?>" >  <img src="<?php echo $this->getSkinUrl("images/login-icon.png"); ?>" ></a>
+                       
+                       <?php } ?>
+                        </div>
+                        
+                        <div class="header-cartmob">
+                      <?php echo $this->getChildHtml('cart_sidebar'); ?>
+                        </div>
+                        
+                        <!-- span class="visible-xs"></span -->
+                 </div>
+                 </div>
+                 
+                 <!-- mobile code end -->
+                
+				<div class="row">
+                
+                
+                  
+					<div class="col-sm-12 col-md-4">
+					<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('fp_header_custom_block')->toHtml(); ?>
+                    <?php echo $this->getLayout()->createBlock('core/template')->setTemplate('page/html/mobile_menu.phtml')->toHtml(); ?>
+					</div>
+					<div class="col-sm-6 col-md-4 logo-wrapper text-center">
+						<?php $logo = $this->getLayout()->getLogoData(false); ?>
+						<h2 class="logo">
+							<strong><?php echo $this->getLayout()->getLogoData(true) ?></strong>
+							<a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLayout()->getLogoData(true) ?>">
+								<img <?php echo $logo ?> alt="<?php echo $this->getLayout()->getLogoData(true) ?>" />
+							</a>
+						</h2>
+					</div>
+					<div class="col-sm-6 col-md-4 right-block">
+						<?php if(!$isMobile) { ?>
+                        <?php echo $this->getChildHtml('topSearch'); ?>
+                        <?php }  if($isiPad) { ?>
+                        <?php echo $this->getChildHtml('topSearch'); ?>
+                        <?php } else { ?>
+                         <?php //echo $this->getChildHtml('topSearch'); ?>
+                        <?php } ?>
+						<?php //echo $this->getChildHtml('wrapper_links'); ?>
+                       <ul class="links hidden-xs">
+                        <li class="first last">
+                        <?php if (Mage::helper('customer')->isLoggedIn() ) { ?>
+                        <a href="<?php echo Mage::helper('customer')->getLogoutUrl(); ?>"> <img src="<?php echo $this->getSkinUrl("images/login-icon.png"); ?>"  ></a>
+                        
+                       <!-- a href="<?php echo Mage::helper('customer')->getLogoutUrl(); ?>"><?php echo 'Log Out'; ?></a -->
+                       <?php } else { ?>
+                       
+                        <a href="<?php echo $this->getUrl('customer/account') ?>" >  <img src="<?php echo $this->getSkinUrl("images/login-icon.png"); ?>" ></a>
+                       
+                       <?php } ?>
+                        
+                        
+                        
+                        </li>
+            </ul>
+                        <span class="hidden-xs"><?php echo $this->getChildHtml('cart_sidebar'); ?></span>
+					</div>
+                    
+                    <?php if(($isMobile) && (!$isiPad)) { ?>
+                        <?php echo $this->getChildHtml('topSearch'); ?>
+                        <?php } ?>
+                    
+                    
+				</div>
+			</div>
+		</div>
+		<div class="bottom-block clearfix">
+			<div class="container">
+				<div class="bottom-block-inner clearfix">
+					
+					<?php echo $this->getChildHtml('topMenu'); ?>
+					
+				</div>
+			</div>
+		</div>
+        
+        <div class="bottom-usp-block clearfix">
+			<div class="container">
+				<div class="bottom-block-inner clearfix">
+					<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('fp_header_usp_block')->toHtml(); ?>
+					
+				</div>
+			</div>
+		</div>
+	</header>
+	<?php echo $this->getChildHtml('sticky_header'); ?>
+	<?php echo $this->getChildHtml('topContainer'); ?>
+	<?php echo $this->getChildHtml('meigee_loader'); ?>
+	<?php echo $this->getChildHtml('before_content'); ?>
+</div>

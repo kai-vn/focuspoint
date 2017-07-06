@@ -1,0 +1,44 @@
+<?php
+/**
+ * @package     compo
+ * @copyright   Copyright (c) 2010-2015 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+
+$_product = $this->getProduct();
+$meigeeOptions = $this->getLayout();
+$timerTitle = $meigeeOptions->getMConfigResultByAlias('timer_listing_title');
+$timerFormat = $meigeeOptions->getMConfigResultByAlias('timer_listing_format');
+$timerDisplay = $meigeeOptions->getMConfigResultByAlias('timer_listing_display');
+$specialprice = $_product->getSpecialPrice();
+	$specialPriceFromDate = $_product->getSpecialFromDate();
+	$specialPriceToDate = $_product->getSpecialToDate();
+	$today =  time();
+	if ($specialprice && isset($specialPriceFromDate) && isset($specialPriceToDate)):
+		if($today >= strtotime($specialPriceFromDate) && $today <= strtotime($specialPriceToDate) || $today >= strtotime( $specialPriceFromDate) && is_null($specialPriceToDate)):
+?>
+			<div class="timer-<?php echo $_product->getId(); ?> timer-box clearfix<?php if($timerDisplay == 0): ?> no-days<?php endif; ?>">
+				<?php if($timerTitle): ?>
+					<span class="title"><?php echo $this->__('Offer ends in:') ?></span>
+				<?php endif; ?>
+				<?php if ($timerFormat == 0) { ?>
+					<div class="days"><span>00</span></div>
+					<div class="hours"><span>00</span></div>
+					<div class="minutes"><span>00</span></div>
+					<div class="seconds"><span>00</span></div>
+				<?php } elseif ($timerFormat == 1) { ?>
+					<div class="days"><span>00</span><?php echo $this->__('d'); ?></div>
+					<div class="hours"><span>00</span><?php echo $this->__('h'); ?></div>
+					<div class="minutes"><span>00</span><?php echo $this->__('m'); ?></div>
+					<div class="seconds"><span>00</span><?php echo $this->__('s'); ?></div>
+				<?php } ?>
+			</div>
+			<script type="text/javascript">
+				endDate = new Date("<?php echo Date("m/d/y", strtotime($specialPriceToDate)).' 11:59:00 PM'; ?>");
+				startDate = new Date(Date.parse("<?php echo Date("m/d/y h:i:s A", strtotime(Mage::app()->getLocale()->date(null, null, "en_US", true))); ?>"));
+				dateDiff = new Date((endDate)-(startDate));
+				secondsDiff = Math.floor(dateDiff.valueOf()/1000);
+				new productTimer.init(secondsDiff, <?php echo $_product->getId(); ?>);
+			</script>
+<?php
+		endif;
+	endif; ?>

@@ -1,0 +1,9 @@
+<?php
+/**
+ * @package     compo
+ * @copyright   Copyright (c) 2010-2015 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+?>
+<?php if($this->getWishlist()->getItemsCount()): ?>
+	<button type="submit" name="save_and_share" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Share Wishlist')); ?>" class="btn btn-default btn-share"><span><span><?php echo $this->__('Share Wishlist') ?></span></span></button>
+<?php endif;?>

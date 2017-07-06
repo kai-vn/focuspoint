@@ -1,0 +1,135 @@
+<?php
+/**
+* aheadWorks Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://ecommerce.aheadworks.com/AW-LICENSE.txt
+ *
+ * =================================================================
+ *                 MAGENTO EDITION USAGE NOTICE
+ * =================================================================
+ * This package designed for Magento COMMUNITY edition
+ * aheadWorks does not guarantee correct work of this extension
+ * on any other Magento edition except Magento COMMUNITY edition.
+ * aheadWorks does not provide extension support in case of
+ * incorrect edition usage.
+ * =================================================================
+ *
+ * @category   AW
+ * @package    AW_Autorelated
+ * @version    2.3.0
+ * @copyright  Copyright (c) 2010-2012 aheadWorks Co. (http://www.aheadworks.com)
+ * @license    http://ecommerce.aheadworks.com/AW-LICENSE.txt
+ */
+?>
+<?php
+?>
+<?php
+$_product = $this->getProductInfo();
+	$product_list = $this->getProductList();
+	$_helper = $this->helper('catalog/output');
+	$meigeeOptions = $this->getLayout();
+	$quickview_wrapper = Mage::app()->getLayout()->getBlock('ajaxkit')->issetSubmodulesConfig('general_add_to_cart');
+	$imgSize = $meigeeOptions->getMConfigResultByAlias('custom_grid_img_width');
+	
+	
+$abstractBlock = $this->helper('awautorelated')->getAbstractProductBlock();
+ 
+$collection = $this->getCollection();
+
+
+
+if ($this->getPosition() == AW_Autorelated_Model_Source_Position::INSTEAD_NATIVE_RELATED_BLOCK) {
+
+    $this->iterateBlock();
+
+    if ($collection && $collection->getSize()) {
+        $this->markAsShowed();
+    } elseif ($this->showNativeBlock()) {
+        echo $this->getParent()->getChildHtml('catalog-product-related');
+    }
+}
+
+$carousel = 1;
+
+
+?>
+<?php if ($collection && $collection->getSize()) : ?>
+    <?php if (Mage::helper('awautorelated')->checkVersion('1.4')): ?>
+        <div class="widget-products-related aw-arp-block-<?php echo $this->getData('id') ?>">
+            <h3 class="title-widget"><span><?php echo $this->htmlEscape($this->getData('name')) ?></span></h3>
+             
+             <div class="widget-slider products-grid type-1 clearfix owl-carousel owl-theme">
+            <?php else: ?>
+                
+                    <?php endif; ?>
+                    
+                        <?php foreach ($collection as $product) : ?>
+                        <div class="indent type-1">
+	<div class="image-box">
+		<?php echo $this->getLayout()->createBlock('page/html')->setProductInfo($product)->setTemplate('catalog/product/product_labels.phtml')->toHtml(); ?>
+		<a href="<?php echo $product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($product, 'small_image'), null, true) ?>" class="product-image">
+			<?php
+				echo $product->productHoverImage($this, $imgSize, 'with-mobile', 385);
+				// echo $product->productHoverImage($this, $imgSize);
+				$escaped_label = $this->stripTags($this->getImageLabel($product, 'small_image'), null, true);
+				echo '<img '. $product->getProductMediaResized($imgSize, 'small_image', 'with-mobile', 385)
+				// echo '<img '. $product->getProductMediaResized($imgSize, 'small_image')
+					->addImageHtmlAttributte('alt', $escaped_label)
+					->addImageHtmlAttributte('width', $imgSize)
+					->addImageHtmlAttributte('title', $escaped_label)
+					->addImageHtmlAttributte('class', 'lazyOwl')
+					// ->addImageHtmlAttributte('class', 'no_ajax_image_loader')
+					->addImageHtmlAttributte('data-src', $product->getProductMediaResized($imgSize, 'small_image')->getImageSrc())
+					->getImageHtmlAttributte().' />';
+			?>
+		</a>
+		
+					
+					
+				</div>
+			
+	
+    <div class="brand-name">
+			<?php echo $product->getAttributeText('brand'); ?>
+			</div>
+    
+    
+	
+		<h5 class="product-name"><a href="<?php echo $product->getProductUrl() ?>" title="<?php echo $this->stripTags($product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($product, $product->getName(), 'name') ?></a></h5>
+	
+	
+	</div>
+
+
+                            
+                        <?php endforeach ?>
+                   
+                    </div>
+            </div>
+            </div>
+                    
+                     <script type="text/javascript">
+        jQuery(document).ready(function(){
+            jQuery('.widget-products-related .owl-carousel').owlCarousel({
+                pagination:false,
+                autoPlay:true,
+                items:3,
+				itemsMobile: [479, 2],
+                singleItem:false,
+                lazyLoad:true,
+                lazyEffect:false,
+                addClassActive:true,
+                navigation:true,
+                navigationText: ['<i class="meigee-arrow-left"></i>','<i class="meigee-arrow-right"></i>']
+            });
+        });
+    </script>
+                    
+                    
+                
+        <?php endif; ?>

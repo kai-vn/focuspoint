@@ -1,0 +1,13 @@
+<div class="meigee-ajaxkit-page-header">
+    <h1>Meigee - Ajax Kit</h1>
+    <div class="page-buttons">
+        <div id="meigee-ajaxkit-reset-defaults">
+            <button name="Reset Defaults" title="Reset Defaults" type="button" class="scalable " onclick="AjaxKit.resetDefaults()" style=""><span><span><span>Reset settings to main default values</span></span></span></button>
+        </div>
+        <button name="Save Tab" title="Save Tab" type="button" class="scalable " onclick="AjaxKit.saveTab()" style=""><span><span><span>Save Tab</span></span></span></button>
+        <button name="Save All Tabs" title="Save All Tabs" type="button" class="scalable " onclick="AjaxKit.saveAllTabs()" style=""><span><span><span>Save All Tabs</span></span></span></button>
+    </div>
+    <input type="hidden" value="<?php echo $this->getUrl('*/*/getAjaxTab'); ?>" id="ajax-url">
+</div>
+
+

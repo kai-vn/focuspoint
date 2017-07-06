@@ -1,0 +1,43 @@
+<?php
+/**
+ * @package     compo
+ * @copyright   Copyright (c) 2010-2015 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+?>
+<div class="cart-block">
+	<form id="discount-coupon-form" action="<?php echo $this->getUrl('checkout/cart/couponPost') ?>" method="post" class="form-horizontal">
+		<div class="discount">
+			<div class="cart-block-title">
+				<h2><?php echo $this->__('Discount Codes') ?></h2>
+			</div>
+			<div class="discount-form">
+					<label for="coupon_code"><?php echo $this->__('Enter your coupon code if you have one.') ?></label>
+					<input type="hidden" name="remove" id="remove-coupone" value="0" />
+					<div class="input-box">
+						<input class="form-control input-text" id="coupon_code" name="coupon_code" value="<?php echo $this->escapeHtml($this->getCouponCode()) ?>" />
+					</div>
+			</div>
+				<div class="buttons-set">
+					<button type="button" title="<?php echo $this->__('Apply Coupon') ?>" class="btn btn-default" onclick="discountForm.submit(false)" value="<?php echo $this->__('Apply Coupon') ?>"><span><span><?php echo $this->__('Apply Coupon') ?></span></span></button>
+					<?php if(strlen($this->getCouponCode())): ?>
+						&nbsp; <button type="button" title="<?php echo $this->__('Cancel Coupon') ?>" class="btn btn-default" onclick="discountForm.submit(true)" value="<?php echo $this->__('Cancel Coupon') ?>"><span><span><?php echo $this->__('Cancel Coupon') ?></span></span></button>
+					<?php endif;?>
+				</div>
+		</div>
+	</form>
+	<script type="text/javascript">
+	//<![CDATA[
+	var discountForm = new VarienForm('discount-coupon-form');
+	discountForm.submit = function (isRemove) {
+		if (isRemove) {
+			$('coupon_code').removeClassName('required-entry');
+			$('remove-coupone').value = "1";
+		} else {
+			$('coupon_code').addClassName('required-entry');
+			$('remove-coupone').value = "0";
+		}
+		return VarienForm.prototype.submit.bind(discountForm)();
+	}
+	//]]>
+	</script>
+</div>

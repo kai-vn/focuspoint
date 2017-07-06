@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<config>
+    <global namespace="general_toolbar" version_type="base"></global>
+    <adminhtml>
+        <group_title>Module Components</group_title>
+        <group_name><![CDATA[<i class="fa fa-university"></i>]]>Module Components</group_name>
+        <submodule_name><![CDATA[<i class="fa fa-university"></i>Layered Navigation & Toolbar]]></submodule_name>
+        <submodule_title><![CDATA[Layered Navigation & Toolbar]]></submodule_title>
+    </adminhtml>
+    <groups>
+        <toolbar>
+            <title>Toolbar</title>
+        </toolbar>
+        <layered_navigation>
+            <title>Layered Navigation</title>
+        </layered_navigation>
+
+        <infinite_scroll>
+            <title>Infinite Scroll</title>
+        </infinite_scroll>
+        <blocks>
+            <block>toolbar_infiniteScroll</block>
+        </blocks>
+    </groups>
+    <addJs>
+        <js>general_toolbar.js</js>
+    </addJs>
+    <options>
+        <enable_ajax_toolbar tab="toolbar">
+            <label>Enable Ajax Toolbar</label>
+            <type>Input_OnOff</type>
+            <default>1</default>
+            <label_on>Yes</label_on>
+            <label_off>No</label_off>
+        </enable_ajax_toolbar>
+        <enable_ajax_layered_navigation tab="layered_navigation">
+            <label>Enable Ajax Layered Navigation</label>
+            <type>Input_OnOff</type>
+            <default>1</default>
+            <label_on>Yes</label_on>
+            <label_off>No</label_off>
+        </enable_ajax_layered_navigation>
+
+        <enable_ajax_infinite_scroll tab="infinite_scroll">
+            <label>Enable Ajax Infinite Scroll</label>
+            <type>Input_OnOff</type>
+            <default>1</default>
+            <label_on>Yes</label_on>
+            <label_off>No</label_off>
+        </enable_ajax_infinite_scroll>
+
+        <infinite_scroll_buffer tab="infinite_scroll">
+            <label>Buffer (px)</label>
+            <type>Input_Number</type>
+            <default>20</default>
+            <min>0</min>
+            <depend>
+                <enable_ajax_infinite_scroll>1</enable_ajax_infinite_scroll>
+            </depend>
+            <note>Set an offset before page end from which the content will start to load. A high number will load the next page a long time before the user reaches the bottom of the screen.</note>
+        </infinite_scroll_buffer>
+
+        <infinite_scroll_threshold tab="infinite_scroll">
+            <label>Load More threshold</label>
+            <type>Input_Number</type>
+            <default>3</default>
+            <min>0</min>
+            <depend>
+                <enable_ajax_infinite_scroll>1</enable_ajax_infinite_scroll>
+            </depend>
+            <note>When this page number is reached, a button to load more products will be shown instead of continue loading products automatically with the scroll (this could be useful to help the user to reach the footer). TIP: use a high number to disable this feature.</note>
+        </infinite_scroll_threshold>
+
+
+
+
+    </options>
+</config>
+

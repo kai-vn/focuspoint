@@ -1,0 +1,6 @@
+<?php if($this->getCurrentCategory()->getName()): ?>
+   <!-- div class="category-name"><?php echo $this->htmlEscape($this->getCurrentCategory()->getName()) ?></div -->
+ <?php endif; ?>
+<?php if($_imageUrl=$this->getCurrentCategory()->getImageUrl()): ?>
+        <p class="category-image"><img src="<?php echo $_imageUrl ?>" alt="<?php echo $this->htmlEscape($this->getCurrentCategory()->getName()) ?>" /></p>
+    <?php endif; ?>

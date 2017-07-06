@@ -1,0 +1,7 @@
+<div class="header-custom-menu-list">
+	<ul class="header-links clearfix">
+		<li><a href="{{store url='/'}}">Home</a></li>
+		<li><a href="{{store url='#'}}">Fresh arrival</a></li>
+		<li><a href="{{store url='#'}}">Discounts</a></li>
+	</ul>
+</div>

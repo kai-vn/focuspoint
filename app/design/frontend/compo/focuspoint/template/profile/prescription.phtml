@@ -1,0 +1,55 @@
+<?php $helper = Mage::helper('profile'); ?>
+<div class="profile-container">
+    <div class="profile-prescription">
+        <div class="question">
+            <p style="font-weight: bold">Select method add to cart:</p>
+            <input type="radio" name="q-0" value="1" <?php if (Mage::getSingleton('customer/session')->getQuestion() == '1') echo 'checked'; ?>> Prescription<br>
+            <input type="radio" name="q-0" value="0" <?php if (Mage::getSingleton('customer/session')->getQuestion() == '0') echo 'checked' ?>> Non-Prescription
+        </div>
+        <div class="profile-login" style="display:none">
+            <?php if (!Mage::getSingleton('customer/session')->isLoggedIn()): ?>
+            <p>Please <span ><a href="<?php echo $helper->getLoginUrl(); ?>" class="various">Login</a></span> to choose your profile !</p>
+            <?php endif; ?>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var $j = jQuery.noConflict();
+    $j(document).ready(function () {
+        var session_q = '<?php echo Mage::getSingleton('customer/session')->getQuestion(); ?>';
+        if (session_q == '1' && $j('#question-container')) {
+            $j('.profile-login').show();
+            $j('#question-container').show();
+        }
+        $radios = $j("input:radio[name=q-0]");
+        if ($radios) {
+            var url = '<?php echo Mage::helper('profile')->getAjaxUrlPres() ?>';
+            $radios.change(function () {
+                var pres = $j(this).val();
+                if (pres == '1') {
+                    $j('.profile-login').show();
+                    if ($j('#question-container'))
+                        $j('#question-container').show();
+                } else {
+                    $j('.profile-login').hide();
+                    if ($j('#question-container'))
+                        $j('#question-container').hide();
+                }
+                new Ajax.Request(
+                        url,
+                        {
+                            parameters: {
+                                pres: pres,
+                            },
+                            method: 'GET',
+                            onSuccess: function (transport) {
+                                var data = transport.responseJSON;
+                                console.log(data.pres);
+                            }
+                        }
+                );
+
+            });
+        }
+    });
+</script>

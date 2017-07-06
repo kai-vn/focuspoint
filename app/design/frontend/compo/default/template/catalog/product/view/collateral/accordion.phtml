@@ -1,0 +1,50 @@
+<?php
+/**
+ * @package     compo
+ * @copyright   Copyright (c) 2010-2015 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+/**
+ * Product view template
+ *
+ * @see Mage_Catalog_Block_Product_View
+ */
+?>
+<?php
+$this->_product = Mage::registry('product');
+?>
+<div class="product-accordion panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+	<?php $i=0;
+		foreach ($this->getTabs() as $_index => $_tab):
+			if($this->getChildHtml($_tab['alias'])):
+				$i++;
+		?>
+		<div class="panel panel-default">
+			<div class="panel-heading" role="tab" id="title-<?php echo $_tab['alias']?>">
+				<h4 class="panel-title">
+					<a data-toggle="collapse" data-parent="#accordion" href="#accordion-<?php echo $_tab['alias'] ?>" aria-expanded="true" aria-controls="accordion-<?php echo $_tab['alias'] ?>"><?php echo $_tab['title']?></a>
+				</h4>
+			</div>
+			<div id="accordion-<?php echo $_tab['alias'] ?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="title-<?php echo $_tab['alias']?>">
+				<div class="panel-body">
+					<?php echo $this->getChildHtml($_tab['alias']) ?>
+				</div>
+			</div>
+		</div>
+			<?php endif; ?>
+		<?php endforeach; ?>
+		<?php $productTabs = $this->_product->getProductTabs();
+		foreach ($productTabs AS $tab) { $tabTitle = $tab->getTitle(); $tabTitle = str_replace(' ', '_', $tabTitle); ?>
+			<div class="panel panel-default">
+				<div class="panel-heading" role="tab" id="title-<?php echo $tabTitle; ?>">
+					<h4 class="panel-title">
+						<a data-toggle="collapse" data-parent="#accordion" href="#accordion-<?php echo $tabTitle; ?>" aria-expanded="true" aria-controls="accordion-<?php echo $tabTitle; ?>"><?php echo $tab->getTitle(); ?></a>
+					</h4>
+				</div>
+				<div id="accordion-<?php echo $tabTitle; ?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="title-<?php echo $tabTitle; ?>">
+					<div class="panel-body">
+						<?php echo $tab->getContent(); ?>
+					</div>
+				</div>
+			</div>
+		<?php } ?>
+</div>

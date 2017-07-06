@@ -1,0 +1,45 @@
+<?php
+/**
+ * @package     compo
+ * @copyright   Copyright (c) 2010-2015 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+
+/**
+ * @deprecated  after 1.4.0.0-alpha3
+ */
+?>
+<div class="page-title">
+	<h2><?php echo $this->__('My Orders') ?></h2>
+</div>
+<?php if($orders->getSize()): ?>
+<div class="table-responsive">
+	<table class="table table-hover table-bordered" id="my-orders-table" >
+		<thead>
+			<tr>
+				<th><?php echo $this->__('Order #') ?></th>
+				<th><?php echo $this->__('Date') ?></th>
+				<th><?php echo $this->__('Total') ?></th>
+				<th><?php echo $this->__('Status') ?></th>
+				<th><?php echo $this->__('Details') ?></th>
+			</tr>
+		</thead>
+		<tbody>
+		<?php foreach ($orders as $order): ?>
+			<tr>
+				<td><?php echo $order->getRealOrderId() ?>&nbsp;</td>
+				<td><?php echo date("D, j M, Y", strtotime($order->getCreatedAt())) ?>&nbsp;</td>
+				<td><?php echo $order->getGrandTotal() ?>&nbsp;</td>
+				<td><?php echo $order->getStatus() ?>&nbsp;</td>
+				<td><a href="<?php echo $this->getUrl('customer/order/view', array('order'=>$order->getOrderId())) ?>"><?php echo $this->__('View Order') ?></a>&nbsp;</td>
+			</tr>
+		<?php endforeach ?>
+		</tbody>
+	</table>
+	<script type="text/javascript">decorateTable('my-orders-table')</script>
+</div>
+<?php else: ?>
+    <p><?php echo $this->__('You have placed no orders yet.') ?></p>
+<?php endif ?>
+<div class="buttons-set">
+    <p class="back-link"><a href="<?php echo $this->getUrl('customer/account') ?>"><small>&laquo; </small><?php echo $this->__('Back') ?></a></p>
+</div>

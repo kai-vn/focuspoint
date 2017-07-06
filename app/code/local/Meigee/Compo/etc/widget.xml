@@ -1,0 +1,288 @@
+<?xml version="1.0"?>
+<widgets>
+    <!--<productwidget111 type="thememanager/widget_products">-->
+    <productwidget type="thememanager/widget_products">
+        <parameters>
+            <meigee_theme>
+                <values>
+                    <compo translate="label">
+                        <value>compo</value>
+                        <label>Compo</label>
+                    </compo>
+                </values>
+            </meigee_theme>
+			 <compo_content translate="label">
+                <label>Content</label>
+                <visible>1</visible>
+                <!-- required>1</required -->
+                <type>compo/widget_widgetcontent</type>
+                <values>
+                    <text translate="label">
+                        <value>widget content</value>
+                        <label>Content</label>
+                    </text>
+                </values>
+				<depends>
+                    <meigee_theme><value>compo</value></meigee_theme>
+                </depends>
+                <sort_order>140</sort_order>
+            </compo_content>
+            <compo_grid_template translate="label">
+                <label>Grid Type</label>
+                <description>If slider is chosen, make sure that you have the same amount of sold products as set in "Amount of Visible Products" field, otherwise slider won't run</description>
+                <visible>1</visible>
+                <type>select</type>
+                <source_model>compo/widget_gridTypes</source_model>
+                <depends>
+                    <template>
+                        <values>
+                            <value1>grid</value1>
+                            <value2>slider</value2>
+                        </values>
+                    </template>
+                    <meigee_theme><value>compo</value></meigee_theme>
+                </depends>
+                <sort_order>131</sort_order>
+            </compo_grid_template>
+			<compo_product_category translate="label">
+                <label>Category</label>
+                <visible>1</visible>
+                <required>0</required>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                <value>1</value>
+                <depends>
+                    <template>
+						<values>
+							<value1>slider</value1>
+							<value2>grid</value2>
+							<value3>list</value3>
+						</values>
+                    </template>
+					<meigee_theme><value>compo</value></meigee_theme>
+                </depends>
+				<sort_order>132</sort_order>
+            </compo_product_category>
+			<compo_quickview translate="label">
+                <label>Button "Quick View"</label>
+                <visible>1</visible>
+                <required>0</required>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                <value>1</value>
+                <depends>
+                    <template>
+						<values>
+							<value1>grid</value1>
+							<value2>slider</value2>
+						</values>
+					</template>
+					<meigee_theme><value>compo</value></meigee_theme>
+                </depends>
+				<sort_order>134</sort_order>
+            </compo_quickview>
+			<compo_center_loop translate="label">
+                <label>Center with loop</label>
+                <visible>1</visible>
+                <required>0</required>
+                <type>select</type>
+                <source_model>thememanager/widget_view_boolean</source_model>
+                <value>false</value>
+                <depends>
+                    <template>
+						<values>
+							<value1>slider</value1>
+						</values>
+					</template>
+					<meigee_theme><value>compo</value></meigee_theme>
+                </depends>
+				<sort_order>701</sort_order>
+            </compo_center_loop>
+			<compo_rtl translate="label">
+                <label>Right To Left</label>
+                <visible>1</visible>
+                <required>0</required>
+                <type>select</type>
+                <source_model>thememanager/widget_view_boolean</source_model>
+                <value>false</value>
+                <depends>
+                    <template>
+						<values>
+							<value1>slider</value1>
+						</values>
+					</template>
+					<meigee_theme><value>compo</value></meigee_theme>
+                </depends>
+				<sort_order>702</sort_order>
+            </compo_rtl>
+        </parameters>
+    </productwidget>
+
+	<compo_tabs type="compo/widget_tabs">
+		<name>Meigee - Custom Tabs</name>
+		<description type="desc"><![CDATA[You can disaply your static blocks as tabs using this widget]]></description>
+		<parameters>
+			<meigee_theme>
+                <visible>1</visible>
+                <label>Select Theme</label>
+                <required>1</required>
+                <type>select</type>
+                <values>
+                    <compo translate="label">
+                        <value>compo</value>
+                        <label>Compo</label>
+                    </compo>
+                </values>
+                <sort_order>1</sort_order>
+            </meigee_theme>
+			<static_blocks translate="label">
+				<label>Choose Static Blocks</label>
+				<visible>1</visible>
+				<required>1</required>
+				<type>multiselect</type>
+				<source_model>compo/widget_staticBlocks</source_model>
+				<value>1</value>
+				<sort_order>132</sort_order>
+			</static_blocks>
+			<template translate="label">
+				<label>Frontend Template</label>
+				<visible>0</visible>
+				<required>1</required>
+				<type>select</type>
+				<value>widget/tabs.phtml</value>
+			</template>
+			<buttons_pos translate="label">
+				<label>Buttons Position</label>
+				<visible>1</visible>
+				<required>1</required>
+				<type>select</type>
+				<source_model>compo/widget_buttonsPos</source_model>
+				<value>1</value>
+			</buttons_pos>
+			<cache_lifetime translate="label description">
+				<label>Cache Lifetime (Seconds)</label>
+				<description>86400 by default, if not set. To refresh instantly, Clear the Blocks HTML Output Cache.</description>
+				<visible>1</visible>
+				<type>text</type>
+			</cache_lifetime>
+		</parameters>
+	</compo_tabs>
+
+	<blog_list type="blog/last">
+        <parameters>
+            <meigee_theme>
+                <values>
+                    <compo translate="label">
+                        <value>compo</value>
+                        <label>compo</label>
+                    </compo>
+                </values>
+            </meigee_theme>
+            <compo_template>
+                <label>Display mode:</label>
+                <type>select</type>
+                <source_model>compo/widget_blogTemplate</source_model>
+                <visible>1</visible>
+                <required>1</required>
+                <sort_order>2</sort_order>
+                <depends>
+                    <meigee_theme><value>compo</value></meigee_theme>
+                </depends>
+            </compo_template>
+			<compo_per_row>
+				<label>Items Per Row</label>
+				<visible>1</visible>
+				<required>1</required>
+				<type>select</type>
+				<source_model>compo/widget_reviewsPerRow</source_model>
+				<value>1</value>
+				<depends>
+                    <compo_template>
+                        <value>widget_post_slider.phtml</value>
+                    </compo_template>
+                </depends>
+				<sort_order>3</sort_order>
+			</compo_per_row>
+            <compo_rewind_speed translate="label">
+                <label>Rewind Speed</label>
+                <description>Set rewind speed in milliseconds</description>
+                <visible>1</visible>
+                <required>1</required>
+                <type>text</type>
+                <value>1000</value>
+                <depends>
+                    <compo_template>
+                        <value>widget_post_slider.phtml</value>
+                    </compo_template>
+                </depends>
+                <sort_order>4</sort_order>
+            </compo_rewind_speed>
+            <compo_auto_play translate="label">
+                <label>Auto Slide</label>
+                <description>Set 5000 to play slider every 5 seconds. Set 0 if autoplay feature should be disabled.</description>
+                <visible>1</visible>
+                <required>1</required>
+                <type>text</type>
+                <source_model>adminhtml/system_config_source_yesno</source_model>
+                <value>5000</value>
+                <depends>
+                    <compo_template>
+                        <value>widget_post_slider.phtml</value>
+                    </compo_template>
+                </depends>
+                <sort_order>5</sort_order>
+            </compo_auto_play>
+            <compo_slide_speed translate="label">
+                <label>Auto Slide Timer</label>
+                <description>The time (in milliseconds) that a slide will wait before automatically navigating to the next slide</description>
+                <visible>1</visible>
+                <required>1</required>
+                <type>text</type>
+                <value>400</value>
+                <depends>
+                    <compo_template>
+                        <value>widget_post_slider.phtml</value>
+                    </compo_template>
+                </depends>
+                <sort_order>6</sort_order>
+            </compo_slide_speed>
+        </parameters>
+    </blog_list>
+
+	<thememanager_social_links type="thememanager/widget_sociallinks">
+        <parameters>
+            <meigee_theme>
+                <values>
+                    <compo translate="label">
+                        <value>compo</value>
+                        <label>Compo</label>
+                    </compo>
+                </values>
+            </meigee_theme>
+			<compo_vine translate="label">
+                <label>Vine</label>
+                <type>text</type>
+                <visible>1</visible>
+                <sort_order>13</sort_order>
+                <description>Example: https://vine.co (Leave empty to hide)</description>
+            </compo_vine>
+			<compo_behance translate="label">
+                <label>Behance</label>
+                <type>text</type>
+                <visible>1</visible>
+                <sort_order>14</sort_order>
+                <description>Example: https://www.behance.net (Leave empty to hide)</description>
+            </compo_behance>
+			<compo_tumblr translate="label">
+                <label>Tumblr</label>
+                <type>text</type>
+                <visible>1</visible>
+                <sort_order>15</sort_order>
+                <description>Example: https://www.tumblr.com (Leave empty to hide)</description>
+            </compo_tumblr>
+		</parameters>
+	</thememanager_social_links>
+
+</widgets>
+
+

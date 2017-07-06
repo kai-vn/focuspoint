@@ -1,0 +1,4 @@
+<div class="block-title"><strong><span>Our address</strong></span></div>
+<p>No. 315, Jersey City, New York, USA<br/>
+Call Us : (555) 723-649-4920<br/>
+Email : <a href="mailto:compo@info.com">compo@info.com</a></p>

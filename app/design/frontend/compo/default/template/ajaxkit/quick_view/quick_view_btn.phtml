@@ -1,0 +1,11 @@
+<?php
+/**
+ * QuickView Button template
+ *
+ * @see Meigee_AjaxKit_Block_Frontend_QuickView_ListButton
+ */
+?>
+
+
+<?php if(!$this->isEnabled()) {   return false; } ?>
+<button class="btn-quickview <?php echo $this->getClass(); ?>" <?php echo $this->getAttributes(); ?> title="<?php echo $this->__('Quick view'); ?>"><i class="meigee-fa-eye"></i></button>

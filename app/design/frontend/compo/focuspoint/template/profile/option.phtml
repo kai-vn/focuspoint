@@ -1,0 +1,67 @@
+<?php
+$productId = $this->getProductId();
+$brands = $this->getBrandData($productId);
+?>
+<?php if (Mage::getSingleton('customer/session')->isLoggedIn()): ?>
+    <div id="question-container" style="display:none">
+        <div class="brand-container">
+            <input type="hidden" name="profile[brand]" id="profile-brand">
+            <div class="title-question"><?php echo $this->__('Q1: Please Choose Brand') ?></div>
+            <div class="item-list">
+                <?php if (count($brands)) : ?>
+                    <?php foreach ($brands as $brand) : ?>
+                        <div class="item-brand" data-id="<?php echo $brand['brand_id'] ?>" id="item-brand-<?php echo $brand['brand_id'] ?>">
+                            <img src="<?php echo $brand['logo'] ?> " alt="<?php echo $brand['title'] ?>" 
+                                 title="<?php echo $brand['title'] ?>" style="width:250px;height:100px; "/>
+                        </div>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </div>
+        </div>
+        <div id="#profile-loading" style="display:none;">
+            <img alt="<?php echo $this->__('Loading...') ?>"
+                 src="<?php echo $this->getSkinUrl('images/AjaxLoader.gif') ?>"/>
+        </div>
+        <div id="profile-container"></div>
+        <div id="pres-container" style="display:none"><?php echo $this->getChildHtml('question5') ?></div>
+    </div>
+<?php endif; ?>
+<script>
+    var $j = jQuery.noConflict();
+    $j(document).ready(function () {
+        $j('.item-brand').click(function () {
+            $j('.item-brand').css('border', 'none');
+            $j(this).css('border', '3px solid #cc1454');
+            var brandId = $j(this).attr('data-id');
+            $j('#profile-brand').val(brandId);
+            var post_url = '<?php echo Mage::helper('profile')->getAjaxUrlBrand() ?>';
+            new Ajax.Request(
+                    post_url,
+                    {
+                        parameters: {
+                            brandId: brandId,
+                        },
+                        method: 'GET',
+                        onLoading: function () {
+                            $j('#profile-loading').show();
+                        },
+                        onSuccess: function (transport) {
+                            $j('#profile-loading').hide();
+                            var data = transport.responseJSON;
+                            $j('#profile-container').html(data.html);
+                            if ($j('#glass-container')) {
+                                $j('#glass-container').show();
+                            }
+                        }
+                    }
+            );
+        });
+//        var btn = $j('#product-addtocart-button');
+//        Event.observe(btn, 'click', function (e)
+//        {
+//            e.preventDefault();
+//            e.stopPropagation();
+//            console.log(btn);
+//        });
+    });
+</script>

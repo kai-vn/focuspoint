@@ -1,0 +1,31 @@
+<div class="meigee-ajaxkit-page-content">
+    <div class="meigee-ajaxkit-left-column" id="left-tabs-container">
+        <div class="store-switcher">
+        <?php
+	    $ss = $this->getStoreSwitcher();
+	    if(trim($ss) != '')
+	    {
+		echo $ss;
+	    }
+	    else
+	    {
+		echo '<select class="display-none" id="store_switcher"><option value="0"><option></select>';
+	    }
+        ?>
+        </div>
+        <?php
+        $is_active = true;
+
+        foreach ($this->getConfigTabs() AS $tabs)
+        {
+            echo '<div class="tabs-title" title="'.$tabs[0]->group_title.'"><h3>'.$tabs[0]->group_name.'</h3></div>';
+            echo '<ul class="vertical-tabs">';
+            foreach ($tabs AS $tab)
+            {
+                echo '<li class="ajaxkit-tab ajax '.($is_active?'active':'').'" data-ajax-namespace="'.$tab->namespace.'"><a href="#"  title="'.$tab->submodule_title.'">'.$tab->submodule_name.'</a></li>';
+                $is_active = false;
+            }
+            echo '</ul>';
+        }
+    ?>
+</div>

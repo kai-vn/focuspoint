@@ -1,0 +1,135 @@
+<div class="text-blocks-wrapper row">
+    <div class="col-md-3 col-sm-6 text-block">
+        <div class="media-left"><span class="compo-icon airplan"></span></div>
+        <div class="media-body">
+            <h4>Free shipping</h4>
+            <p>Free shipping on all US order</p>
+        </div>
+    </div>
+    <hr class="indent-18 white-space visible-xs" />
+    <div class="col-md-3 col-sm-6 text-block">
+        <div class="media-left"><span class="compo-icon customer-service"></span></div>
+        <div class="media-body">
+            <h4>Customer service</h4>
+            <p>Call us for free: 1-800-496-1779</p>
+        </div>
+    </div>
+    <hr class="indent-18 white-space visible-xs" />
+    <hr class="indent-12 white-space visible-sm">
+    <hr class="solid visible-sm">
+    <hr class="indent-12 white-space visible-sm">
+    <div class="col-md-3 col-sm-6 text-block">
+        <div class="media-left"><span class="compo-icon gift"></span></div>
+        <div class="media-body">
+            <h4>Valuable gifts</h4>
+            <p>Awesome gifts after 10 orders</p>
+        </div>
+    </div>
+    <hr class="indent-18 white-space visible-xs" />
+    <div class="col-md-3 col-sm-6 text-block">
+        <div class="media-left"><span class="compo-icon tag"></span></div>
+        <div class="media-body">
+            <h4>Every week sales</h4>
+            <p>Discounts up to 50% off</p>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6">
+        <a href="#" title=""><img {{retinaurl data-img-src="wysiwyg/compo_banner_1.jpg" data-img-srcX2="wysiwyg/compo_banner_1@x2.jpg" alt=""}}></a>
+    </div>
+    <hr class="indent-18 white-space visible-xs">
+    <div class="col-sm-6">
+        <a href="#" title=""><img {{retinaurl data-img-src="wysiwyg/compo_banner_2.jpg" data-img-srcX2="wysiwyg/compo_banner_2@x2.jpg" alt=""}}></a>
+    </div>
+</div>
+<hr class="indent-36 white-space">
+<header class="widget-title">
+    <h2>Jackets</h2>
+</header>
+{{widget type="thememanager/widget_products" meigee_theme="compo" select_type="saleproducts" template="slider" compo_grid_template="1" compo_quickview="1" img_width="390" products_amount="5" product_name_slider="1" label_new="1" label_sale="1" price_slider="1" add_to_cart_slider="1" wishlist_slider="1" compare_slider="1" rating_stars_slider="1" rating_cust_link_slider="1" visible_products="4" items_horizontal="4" items_vertical="3" items_scaleup="false" pagination_speed="800" rewind_speed="1000" pagination="true" lazy_load="true" auto_play="5000" stop_on_hover="true" slide_speed="400" compo_center_loop="false" compo_rtl="false" widget_id="6671"}}
+<hr class="indent-36 white-space">
+<div class="row">
+    <div class="col-sm-4 banner">
+        <a href="#" title=""><img {{retinaurl data-img-src="wysiwyg/compo_banner_3.jpg" data-img-srcX2="wysiwyg/compo_banner_3@x2.jpg" alt=""}}></a>
+    </div>
+    <hr class="indent-18 white-space visible-xs">
+    <div class="col-sm-4 banner">
+        <a href="#" title=""><img {{retinaurl data-img-src="wysiwyg/compo_banner_4.jpg" data-img-srcX2="wysiwyg/compo_banner_4@x2.jpg" alt=""}}></a>
+    </div>
+    <hr class="indent-18 white-space visible-xs">
+    <div class="col-sm-4 banner">
+        <a href="#" title=""><img {{retinaurl data-img-src="wysiwyg/compo_banner_5.jpg" data-img-srcX2="wysiwyg/compo_banner_5@x2.jpg" alt=""}}></a>
+    </div>
+</div>
+<hr class="indent-36 white-space">
+<header class="widget-title">
+    <h2>Electronics</h2>
+</header>
+{{widget type="thememanager/widget_products" meigee_theme="compo" select_type="saleproducts" template="slider" compo_grid_template="1" compo_quickview="1" img_width="390" products_amount="6" product_name_slider="1" label_new="1" label_sale="1" price_slider="1" add_to_cart_slider="1" wishlist_slider="1" compare_slider="1" rating_stars_slider="1" rating_cust_link_slider="1" visible_products="5" items_horizontal="4" items_vertical="3" items_scaleup="false" pagination_speed="800" rewind_speed="1000" pagination="true" lazy_load="true" auto_play="5000" stop_on_hover="true" slide_speed="400" compo_center_loop="false" compo_rtl="false" widget_id="6679"}}
+<hr class="indent-36 white-space">
+<div class="banner-products-block clearfix">
+    <div class="banner-block">
+        <a href="#" title=""><img {{retinaurl data-img-src="wysiwyg/compo_banner_6.jpg" data-img-srcX2="wysiwyg/compo_banner_6@x2.jpg" alt=""}}></a>
+    </div>
+    <hr class="indent-18 white-space visible-xs">
+    <div class="products-block">
+        {{widget type="thememanager/widget_products" meigee_theme="compo" select_type="saleproducts" template="grid" compo_grid_template="2" compo_quickview="1" img_width="390" products_amount="4" products_per_row="4" product_name_grid="1" label_new="1" label_sale="1" price_grid="1" add_to_cart_grid="1" wishlist_grid="1" compare_grid="1" widget_id="5001"}}
+    </div>
+</div>
+<hr class="indent-36 white-space">
+<header class="widget-title">
+    <h2>Handpicked products</h2>
+</header>
+{{widget type="thememanager/widget_products" meigee_theme="compo" select_type="saleproducts" template="slider" compo_grid_template="1" compo_quickview="1" img_width="390" products_amount="5" product_name_slider="1" label_new="1" label_sale="1" price_slider="1" add_to_cart_slider="1" wishlist_slider="1" compare_slider="1" rating_stars_slider="1" rating_cust_link_slider="1" visible_products="4" items_horizontal="4" items_vertical="3" items_scaleup="false" pagination_speed="800" rewind_speed="1000" pagination="true" lazy_load="true" auto_play="5000" stop_on_hover="true" slide_speed="400" compo_center_loop="false" compo_rtl="false" widget_id="6678"}}
+<hr class="indent-36 white-space">
+<div class="row">
+    <div class="col-md-4 col-sm-12">
+        <div class="subscribe-block">
+            <h3>Newsletter</h3>
+            {{block type="newsletter/subscribe" name="footer.newsletter" template="newsletter/subscribe.phtml"}}
+        </div>
+    </div>
+    <hr class="indent-18 white-space visible-xs visible-sm">
+    <div class="col-md-4 col-sm-6">
+        <a href="#" title=""><img {{retinaurl data-img-src="wysiwyg/compo_banner_7.jpg" data-img-srcX2="wysiwyg/compo_banner_7@x2.jpg" alt=""}}></a>
+    </div>
+    <hr class="indent-18 white-space visible-xs">
+    <div class="col-md-4 col-sm-6">
+        <a href="#" title=""><img {{retinaurl data-img-src="wysiwyg/compo_banner_8.jpg" data-img-srcX2="wysiwyg/compo_banner_8@x2.jpg" alt=""}}></a>
+    </div>
+</div>
+<hr class="indent-36 white-space">
+<header class="widget-title">
+    <h2>Staff Pick</h2>
+</header>
+{{widget type="thememanager/widget_products" meigee_theme="compo" select_type="saleproducts" template="slider" compo_grid_template="3" compo_quickview="1" img_width="390" products_amount="5" product_name_slider="1" label_new="1" label_sale="1" price_slider="1" add_to_cart_slider="1" wishlist_slider="1" compare_slider="1" rating_stars_slider="1" rating_cust_link_slider="1" visible_products="4" items_horizontal="4" items_vertical="3" items_scaleup="false" pagination_speed="800" rewind_speed="1000" pagination="false" lazy_load="true" auto_play="5000" stop_on_hover="true" slide_speed="400" compo_center_loop="false" compo_rtl="false" widget_id="6680"}}
+<hr class="indent-36 white-space">
+<div class="brands row">
+    <hr class="indent-40 white-space clearfix">
+    <div class="background-wrapper"></div>
+    <div class="col-sm-2">
+        <a href="#" title=""><img {{retinaurl data-img-src="wysiwyg/compo_brand_1.png" data-img-srcX2="wysiwyg/compo_brand_1@x2.png" alt=""}}></a>
+    </div>
+    <hr class="indent-18 white-space visible-xs">
+    <div class="col-sm-2">
+        <a href="#" title=""><img {{retinaurl data-img-src="wysiwyg/compo_brand_2.png" data-img-srcX2="wysiwyg/compo_brand_2@x2.png" alt=""}}></a>
+    </div>
+    <hr class="indent-18 white-space visible-xs">
+    <div class="col-sm-2">
+        <a href="#" title=""><img {{retinaurl data-img-src="wysiwyg/compo_brand_3.png" data-img-srcX2="wysiwyg/compo_brand_3@x2.png" alt=""}}></a>
+    </div>
+    <hr class="indent-18 white-space visible-xs">
+    <div class="col-sm-2">
+        <a href="#" title=""><img {{retinaurl data-img-src="wysiwyg/compo_brand_4.png" data-img-srcX2="wysiwyg/compo_brand_4@x2.png" alt=""}}></a>
+    </div>
+    <hr class="indent-18 white-space visible-xs">
+    <div class="col-sm-2">
+        <a href="#" title=""><img {{retinaurl data-img-src="wysiwyg/compo_brand_5.png" data-img-srcX2="wysiwyg/compo_brand_5@x2.png" alt=""}}></a>
+    </div>
+    <hr class="indent-18 white-space visible-xs">
+    <div class="col-sm-2">
+        <a href="#" title=""><img {{retinaurl data-img-src="wysiwyg/compo_brand_6.png" data-img-srcX2="wysiwyg/compo_brand_6@x2.png" alt=""}}></a>
+    </div>
+    <hr class="indent-40 white-space clearfix">
+</div>

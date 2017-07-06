@@ -1,0 +1,7 @@
+<?php
+$item   = $this->getItem();
+if ($item) { ?>
+<div class="container-swatch-color small-image-preview v-middle<?php if ($item->getClass()) echo ' '.$item->getClass(); ?>">
+    <div class="swatch-color" style="background:<?php echo $item->getColor() ?>;">&nbsp;</div>
+</div>
+<?php } ?>

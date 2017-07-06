@@ -1,0 +1,45 @@
+<?php
+/**
+ * @package     compo
+ * @copyright   Copyright (c) 2010-2015 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+/**
+ * @var Mage_Page_Block_Html_Header $this
+ */
+ $meigeeOptions = $this->getLayout();
+ $stickyLogo = $meigeeOptions->getMConfigResultByAlias('header_sticky_logo');
+ $smallLogo = $meigeeOptions->getMConfigResultByAlias('small_logo');
+ $smallLogoAlt = $meigeeOptions->getLogoData(true);
+?>
+<header id="sticky-header" class="header">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 clearfix">
+				<div class="pull-left">
+					<?php if($stickyLogo && $smallLogo): ?>
+						<h2 class="small-logo pull-left">
+							<strong><?php echo Mage::getStoreConfig('design/header/logo_alt'); ?></strong>
+							<a href="<?php echo $this->getUrl('') ?>" title="<?php echo $smallLogoAlt; ?>" class="logo">
+								<img
+									<?php echo $smallLogo
+										-> addImageHtmlAttributte('alt', $smallLogoAlt)
+										-> getImageHtmlAttributte(); ?> />
+							</a>
+						</h2>
+					<?php endif; ?>
+					<div class="pull-left">
+						<?php echo $this->getChildHtml('topMenu'); ?>
+					</div>
+				</div>
+				<div class="quick-access pull-right">
+					<div class="pull-right">
+						<?php echo $this->getChildHtml('cart_sidebar'); ?>
+					</div>
+					<div class="pull-right">
+						<?php echo $this->getChildHtml('topSearch'); ?>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>

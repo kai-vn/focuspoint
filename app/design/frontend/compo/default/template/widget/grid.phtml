@@ -1,0 +1,97 @@
+<?php
+/**
+ * @package     compo
+ * @copyright   Copyright (c) 2010-2015 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+$grid_data_arr = array();
+if ($this->getTemplate() == 'widget/grid.phtml')
+{
+	$grid_data_arr = array('add_to_cart'=>'add_to_cart_grid', 'product_name'=>'product_name_grid', 'price'=>'price_grid', 'compare'=>'compare_grid', 'wishlist'=>'wishlist_grid', 'rating_cust_link'=>'rating_cust_link_grid', 'rating_add_review_link'=>'rating_add_review_link_grid', 'rating_stars'=>'rating_stars_grid', 'stock_status'=>'stock_status_grid', 'desc'=>'desc_grid', 'timer'=>'timer_grid');
+}
+$meigeeOptions = $this->getLayout();
+$productsPerRow = $this->getProductsPerRow();
+$widgetId = $this->getWidgetId();
+$gridType = $this->getCompoGridTemplate();
+$grid_indents = $meigeeOptions->getMConfigResultByAlias('listing_indents');
+switch ($productsPerRow) {
+	case 1:
+		$productsPerRow = 'one-column';
+	break;
+	case 2:
+		$productsPerRow = 'two-columns';
+	break;
+	case 3:
+		$productsPerRow = 'three-columns';
+	break;
+	case 4:
+		$productsPerRow = 'four-columns';
+	break;
+	case 5:
+		$productsPerRow = 'five-columns';
+	break;
+	case 6:
+		$productsPerRow = 'six-columns';
+	break;
+	case 7:
+		$productsPerRow = 'seven-columns';
+	break;
+	case 8:
+		$productsPerRow = 'eight-columns';
+	break;
+	default:
+		$productsPerRow = 'eight-columns';
+	break;
+}
+switch ($gridType) {
+	case 1:
+		$template = 'widget/grids/default.phtml';
+	break;
+	case 2:
+		$template = 'widget/grids/type_2.phtml';
+	break;
+	case 3:
+		$template = 'widget/grids/type_3.phtml';
+	break;
+	default:
+		$template = 'widget/grids/default.phtml';
+	break;
+}
+
+?>
+<div class="widget-products">
+	<?php
+		echo $this->getPager();
+		$collection = $this->getCollection();
+	?>
+	<div class="quick-view-container">
+		<div class="quick-view-data-container"></div>
+		<ul class="products-grid row clearfix widget-grid <?php echo 'type-' . $gridType; ?> <?php echo $productsPerRow.''.($grid_indents != 1 ? ' no-indents' : ''); ?> widget-<?php echo $widgetId; ?>">
+			<?php foreach ($collection as $product): ?>
+				<?php
+					$widget_tmpl = $this->getLayout()->createBlock('page/html')->setProductInfo($product)->setProductList($this)->setTemplate($template);
+					if(!empty($grid_data_arr))
+					{
+						foreach ($grid_data_arr AS $name=>$data)
+						{
+							$widget_tmpl->setData($name, $this->getData($data));
+						}
+					}
+					echo $widget_tmpl->toHtml();
+				?>
+			<?php endforeach ?>
+		 </ul>
+	 </div>
+	<script type="text/javascript">
+		decorateGeneric($$('ul.products-grid'), ['odd','even','first','last']);
+		if(jQuery('.widget-products li.item .mobile-btn').length){
+			jQuery('.mobile-btn').off().on('click', function(){
+				if(jQuery(this).parents('.products-grid li.item').hasClass('hover')){
+					jQuery(this).parents('.products-grid li.item').removeClass('hover');
+				} else {
+					jQuery(this).parents('li.item').addClass('hover');
+				}
+			});
+		}
+	</script>
+	<?php echo $this->getPager(); ?>
+</div>

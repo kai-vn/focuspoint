@@ -1,0 +1,1302 @@
+<?xml version="1.0"?>
+<widgets>
+    <productwidget type="thememanager/widget_products">
+        <!--<name>Meigee - Product widget</name>-->
+        <name>Meigee - Product widget</name>
+        <description>Product widget</description>
+
+        <parameters>
+            <meigee_theme>
+                <visible>1</visible>
+                <label>Select Theme</label>
+                <required>1</required>
+                <type>select</type>
+                <values></values>
+                <sort_order>1</sort_order>
+            </meigee_theme>
+
+            <select_type>
+                <visible>1</visible>
+                <label>Select Type of Widget</label>
+                <required>1</required>
+                <type>select</type>
+                <values>
+                    <featuredcategory translate="label">
+                        <value>featuredcategory</value>
+                        <label>Featured Category Extended</label>
+                    </featuredcategory>
+                    <newproducts translate="label">
+                        <value>newproducts</value>
+                        <label>New Products Extended</label>
+                    </newproducts>
+                    <bestsellers translate="label">
+                        <value>bestsellers</value>
+                        <label>Bestsellers Extended</label>
+                    </bestsellers>
+                    <saleproducts translate="label">
+                        <value>saleproducts</value>
+                        <label>On Sale Products Extended</label>
+                    </saleproducts>
+                </values>
+                <sort_order>10</sort_order>
+            </select_type>
+
+            <featuredcategory_description>
+                <type>thememanager/widget_forms_description</type>
+                <depends><select_type><value>featuredcategory</value></select_type></depends>
+                <values>
+                    <text translate="label">
+                        <label>Featured Category Extended</label>
+                        <value>If slider is chosen, make sure that you have the same amount of available products in chosen category as set in "Amount of Visible Products" field, otherwise slider won't run</value>
+                    </text>
+                </values>
+                <visible>1</visible>
+                <sort_order>20</sort_order>
+            </featuredcategory_description>
+
+            <newproducts_description>
+                <type>thememanager/widget_forms_description</type>
+                <visible>1</visible>
+                <depends><select_type><value>newproducts</value></select_type></depends>
+                <values>
+                    <text translate="label">
+                        <label>New Products Extended</label>
+                        <value>If slider is chosen, make sure that you have the same amount of available products in chosen category as set in "Amount of Visible Products" field, otherwise slider won't run</value>
+                    </text>
+                </values>
+                <sort_order>30</sort_order>
+            </newproducts_description>
+
+            <bestsellers_description>
+                <type>thememanager/widget_forms_description</type>
+                <visible>1</visible>
+                <depends><select_type><value>bestsellers</value></select_type></depends>
+                <values>
+                    <text translate="label">
+                        <label>Bestsellers Extended</label>
+                        <value>If slider is chosen, make sure that you have the same amount of sold products as set in "Amount of Visible Products" field, otherwise slider won't run</value>
+                    </text>
+                </values>
+                <sort_order>40</sort_order>
+            </bestsellers_description>
+
+            <saleproducts_description>
+                <type>thememanager/widget_forms_description</type>
+                <visible>1</visible>
+                <depends><select_type><value>saleproducts</value></select_type></depends>
+                <values>
+                    <text translate="label">
+                        <label>On Sale Products Extended</label>
+                        <value>If slider is chosen, make sure that you have the same amount of available products in chosen category as set in "Amount of Visible Products" field, otherwise slider won't run</value>
+                    </text>
+                </values>
+                <sort_order>50</sort_order>
+            </saleproducts_description>
+
+            <featured_category_hidden>
+                <label> </label>
+                <visible>1</visible>
+                <type>text</type>
+                <!--value>1</value -->
+                <depends><select_type><value>featuredcategory</value></select_type></depends>
+                <sort_order>60</sort_order>
+            </featured_category_hidden>
+
+
+
+            <featured_category>
+                <visible>1</visible>
+                <label>Featured Category</label>
+                <required>1</required>
+                <type>thememanager/widget_forms_category</type>
+                <helper_block>
+                    <type>adminhtml/catalog_category_widget_chooser</type>
+                    <data>
+                        <button translate="open">
+                            <open>Select Category...</open>
+                        </button>
+                    </data>
+                </helper_block>
+                <depends><select_type><value>featuredcategory</value></select_type></depends>
+                <sort_order>70</sort_order>
+            </featured_category>
+
+            <use_featured_category_products>
+                <visible>1</visible>
+                <label>Use Featured Category Product Filter</label>
+                <type>select</type>
+                <value>0</value>
+                <source_model>adminhtml/system_config_source_yesno</source_model>
+                <depends><select_type><value>featuredcategory</value></select_type></depends>
+                <sort_order>80</sort_order>
+            </use_featured_category_products>
+
+            <featured_category_products>
+                <visible>1</visible>
+                <label>Select Featured Category Products</label>
+                <type>multiselect</type>
+                <depends>
+                    <use_featured_category_products>
+                        <value>1</value>
+                    </use_featured_category_products>
+                    <select_type><value>featuredcategory</value></select_type>
+                </depends>
+                <sort_order>90</sort_order>
+            </featured_category_products>
+
+            <product_attribute_filter translate="label">
+                <label>Attribute Filter</label>
+                <visible>1</visible>
+                <required>0</required>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                <value>0</value>
+                <sort_order>100</sort_order>
+            </product_attribute_filter>
+            <product_attribute_code translate="label">
+                <label>Product Attribute Code</label>
+                <visible>1</visible>
+                <required>0</required>
+                <type>select</type>
+                <source_model>thememanager/widget_view_productAttributes</source_model>
+                <value>1</value>
+                <depends>
+                    <product_attribute_filter>
+                        <value>1</value>
+                    </product_attribute_filter>
+                </depends>
+                <sort_order>110</sort_order>
+            </product_attribute_code>
+            <product_attribute_value translate="label">
+                <label>Product Attribute Value</label>
+                <visible>1</visible>
+                <required>0</required>
+                <type>text</type>
+                <depends>
+                    <product_attribute_filter>
+                        <value>1</value>
+                    </product_attribute_filter>
+                </depends>
+                <sort_order>120</sort_order>
+            </product_attribute_value>
+
+            <template translate="label">
+                <label>Frontend Template</label>
+                <description>If slider is chosen, make sure that you have the same amount of sold products as set in "Amount of Visible Products" field, otherwise slider won't run</description>
+                <visible>1</visible>
+                <type>select</type>
+                <source_model>thememanager/widget_view_templates</source_model>
+                <sort_order>130</sort_order>
+            </template>
+			<img_width translate="label">
+                <label>Define image size</label>
+                <visible>1</visible>
+                <type>text</type>
+				<value>268</value>
+                <sort_order>149</sort_order>
+            </img_width>
+            <products_amount>
+                <label>Amount of Products to Display on Page</label>
+                <visible>1</visible>
+                <type>text</type>
+                <value>10</value>
+                <required>1</required>
+                <sort_order>150</sort_order>
+            </products_amount>
+
+            <product_pager translate="label">
+                <label>Product Pager</label>
+                <visible>1</visible>
+                <required>0</required>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                <value>0</value>
+                <depends>
+                    <template>
+                        <values>
+                            <value1>grid</value1>
+                            <value2>masonry_grid</value2>
+                            <value3>list</value3>
+                        </values>
+                    </template>
+                </depends>
+                <sort_order>160</sort_order>
+            </product_pager>
+
+
+            <products_per_row>
+                <label>Products per Row</label>
+                <visible>1</visible>
+                <required>0</required>
+                <type>select</type>
+                <value>4</value>
+                <source_model>thememanager/widget_view_productsperrow</source_model>
+                <depends>
+                    <template>
+                        <value>grid</value>
+                    </template>
+                </depends>
+                <sort_order>170</sort_order>
+            </products_per_row>
+            <columns_ratio>
+                <label>Columns Ratio</label>
+                <visible>1</visible>
+                <required>0</required>
+                <type>select</type>
+                <source_model>thememanager/widget_view_columnsratio</source_model>
+                <value>2</value>
+                <description>First value is applied to the image, second - to the description block.</description>
+                <depends>
+                    <template>
+                        <value>list</value>
+                    </template>
+                </depends>
+                <sort_order>180</sort_order>
+            </columns_ratio>
+            <grid2_description translate="label">
+                <label>Product description:</label>
+                <visible>1</visible>
+                <required>0</required>
+                <type>select</type>
+                <source_model>thememanager/widget_view_grid2description</source_model>
+                <value>2</value>
+                <depends>
+                    <template>
+                        <value>masonry_grid</value>
+                    </template>
+                </depends>
+                <sort_order>190</sort_order>
+            </grid2_description>
+
+            <product_name_grid translate="label">
+                <label>Product Name</label>
+                <visible>1</visible>
+                <required>0</required>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                <value>1</value>
+                <depends>
+                    <template>
+                        <value>grid</value>
+                    </template>
+                </depends>
+                <sort_order>200</sort_order>
+            </product_name_grid>
+            <product_name_list translate="label">
+                <label>Product Name</label>
+                <visible>1</visible>
+                <required>0</required>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                <value>1</value>
+                <depends>
+                    <template>
+                        <value>list</value>
+                    </template>
+                </depends>
+                <sort_order>210</sort_order>
+            </product_name_list>
+            <product_name_footer_list translate="label">
+                <label>Product Name</label>
+                <visible>1</visible>
+                <required>0</required>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                <value>1</value>
+                <depends>
+                    <template>
+                        <value>footer_list</value>
+                    </template>
+                </depends>
+                <sort_order>220</sort_order>
+            </product_name_footer_list>
+            <product_name_slider translate="label">
+                <label>Product Name</label>
+                <visible>1</visible>
+                <required>0</required>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                <value>1</value>
+                <depends>
+                    <template>
+                        <value>slider</value>
+                    </template>
+                </depends>
+                <sort_order>230</sort_order>
+            </product_name_slider>
+
+			<label_new translate="label">
+                <label>Label New</label>
+                <visible>1</visible>
+                <required>0</required>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                <value>1</value>
+                <depends>
+                    <template>
+                        <values>
+                            <value1>grid</value1>
+                            <value2>list</value2>
+							<value3>slider</value3> 
+                        </values>
+                    </template>
+                </depends>
+                <sort_order>240</sort_order>
+            </label_new>
+			
+			<label_sale translate="label">
+                <label>Label Sale</label>
+                <visible>1</visible>
+                <required>0</required>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                <value>1</value>
+                <depends>
+                    <template>
+                        <values>
+                            <value1>grid</value1>
+                            <value2>list</value2>
+							<value3>slider</value3> 
+                        </values>
+                    </template>
+                </depends>
+                <sort_order>250</sort_order>
+            </label_sale>
+
+            <!--         ######################################################## -->
+
+            <price_grid translate="label">
+                <label>Product Price</label>
+                <visible>1</visible>
+                <required>0</required>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                <value>1</value>
+                <depends>
+                    <template>
+                        <value>grid</value>
+                    </template>
+                </depends>
+                <sort_order>260</sort_order>
+            </price_grid>
+            <price_list translate="label">
+                <label>Product Price</label>
+                <visible>1</visible>
+                <required>0</required>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                <value>1</value>
+                <depends>
+                    <template>
+                        <value>list</value>
+                    </template>
+                </depends>
+                <sort_order>270</sort_order>
+            </price_list>
+            <price_footer_list translate="label">
+                <label>Product Price</label>
+                <visible>1</visible>
+                <required>0</required>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                <value>1</value>
+                <depends>
+                    <template>
+                        <value>footer_list</value>
+                    </template>
+                </depends>
+                <sort_order>280</sort_order>
+            </price_footer_list>
+            <price_slider translate="label">
+                <label>Product Price</label>
+                <visible>1</visible>
+                <required>0</required>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                <value>1</value>
+                <depends>
+                    <template>
+                        <value>slider</value>
+                    </template>
+                </depends>
+                <sort_order>290</sort_order>
+            </price_slider>
+			
+			<stock_status_grid translate="label">
+                <label>Stock status</label>
+                <visible>1</visible>
+                <required>0</required>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                <value>1</value>
+                <depends>
+                    <template>
+                        <value>grid</value>
+                    </template>
+                </depends>
+                <sort_order>300</sort_order>
+            </stock_status_grid>
+            <stock_status_list translate="label">
+                <label>Stock status</label>
+                <visible>1</visible>
+                <required>0</required>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                <value>1</value>
+                <depends>
+                    <template>
+                        <value>list</value>
+                    </template>
+                </depends>
+                <sort_order>310</sort_order>
+            </stock_status_list>
+            <stock_status_slider translate="label">
+                <label>Stock status</label>
+                <visible>1</visible>
+                <required>0</required>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                <value>1</value>
+                <depends>
+                    <template>
+                        <value>slider</value>
+                    </template>
+                </depends>
+                <sort_order>320</sort_order>
+            </stock_status_slider>
+			
+			<desc_grid translate="label">
+                <label>Short description</label>
+                <visible>1</visible>
+                <required>0</required>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                <value>1</value>
+                <depends>
+                    <template>
+                        <value>grid</value>
+                    </template>
+                </depends>
+                <sort_order>330</sort_order>
+            </desc_grid>
+            <desc_list translate="label">
+                <label>Short description</label>
+                <visible>1</visible>
+                <required>0</required>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                <value>1</value>
+                <depends>
+                    <template>
+                        <value>list</value>
+                    </template>
+                </depends>
+                <sort_order>340</sort_order>
+            </desc_list>
+            <desc_slider translate="label">
+                <label>Short description</label>
+                <visible>1</visible>
+                <required>0</required>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                <value>1</value>
+                <depends>
+                    <template>
+                        <value>slider</value>
+                    </template>
+                </depends>
+                <sort_order>350</sort_order>
+            </desc_slider>
+			
+            <timer_grid translate="label">
+                <label>Price countdown:</label>
+                <visible>1</visible>
+                <required>0</required>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                <value>1</value>
+                <depends>
+                    <template>
+                        <value>grid</value>
+                    </template>
+                </depends>
+                <sort_order>360</sort_order>
+            </timer_grid>
+            <timer_list translate="label">
+                <label>Price countdown:</label>
+                <visible>1</visible>
+                <required>0</required>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                <value>1</value>
+                <depends>
+                    <template>
+                        <value>list</value>
+                    </template>
+                </depends>
+                <sort_order>370</sort_order>
+            </timer_list>
+            <timer_slider translate="label">
+                <label>Price countdown:</label>
+                <visible>1</visible>
+                <required>0</required>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                <value>1</value>
+                <depends>
+                    <template>
+                        <value>slider</value>
+                    </template>
+                </depends>
+                <sort_order>380</sort_order>
+            </timer_slider>
+            <add_to_cart_grid translate="label">
+                <label>Button "Add to cart"</label>
+                <visible>1</visible>
+                <required>0</required>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                <value>1</value>
+                <depends>
+                    <template>
+                        <value>grid</value>
+                    </template>
+                </depends>
+                <sort_order>390</sort_order>
+            </add_to_cart_grid>
+            <add_to_cart_list translate="label">
+                <label>Button "Add to cart"</label>
+                <visible>1</visible>
+                <required>0</required>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                <value>1</value>
+                <depends>
+                    <template>
+                        <value>list</value>
+                    </template>
+                </depends>
+                <sort_order>400</sort_order>
+            </add_to_cart_list>
+            <add_to_cart_footer_list translate="label">
+                <label>Button "Add to cart"</label>
+                <visible>1</visible>
+                <required>0</required>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                <value>1</value>
+                <depends>
+                    <template>
+                        <value>footer_list</value>
+                    </template>
+                </depends>
+                <sort_order>410</sort_order>
+            </add_to_cart_footer_list>
+            <add_to_cart_slider translate="label">
+                <label>Button "Add to cart"</label>
+                <visible>1</visible>
+                <required>0</required>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                <value>1</value>
+                <depends>
+                    <template>
+                        <value>slider</value>
+                    </template>
+                </depends>
+                <sort_order>420</sort_order>
+            </add_to_cart_slider>
+            <wishlist_grid translate="label">
+                <label>Button "Wishlist"</label>
+                <visible>1</visible>
+                <required>0</required>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                <value>1</value>
+                <depends>
+                    <template>
+                        <value>grid</value>
+                    </template>
+                </depends>
+                <sort_order>430</sort_order>
+            </wishlist_grid>
+            <wishlist_list translate="label">
+                <label>Button "Wishlist"</label>
+                <visible>1</visible>
+                <required>0</required>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                <value>1</value>
+                <depends>
+                    <template>
+                        <value>list</value>
+                    </template>
+                </depends>
+                <sort_order>440</sort_order>
+            </wishlist_list>
+            <wishlist_footer_list translate="label">
+                <label>Button "Wishlist"</label>
+                <visible>1</visible>
+                <required>0</required>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                <value>1</value>
+                <depends>
+                    <template>
+                        <value>footer_list</value>
+                    </template>
+                </depends>
+                <sort_order>450</sort_order>
+            </wishlist_footer_list>
+            <wishlist_slider translate="label">
+                <label>Button "Wishlist"</label>
+                <visible>1</visible>
+                <required>0</required>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                <value>1</value>
+                <depends>
+                    <template>
+                        <value>slider</value>
+                    </template>
+                </depends>
+                <sort_order>460</sort_order>
+            </wishlist_slider>
+            <compare_grid translate="label">
+                <label>Button "Compare products"</label>
+                <visible>1</visible>
+                <required>0</required>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                <value>1</value>
+                <depends>
+                    <template>
+                        <value>grid</value>
+                    </template>
+                </depends>
+                <sort_order>470</sort_order>
+            </compare_grid>
+            <compare_list translate="label">
+                <label>Button "Compare products"</label>
+                <visible>1</visible>
+                <required>0</required>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                <value>1</value>
+                <depends>
+                    <template>
+                        <value>list</value>
+                    </template>
+                </depends>
+                <sort_order>480</sort_order>
+            </compare_list>
+            <compare_footer_list translate="label">
+                <label>Button "Compare products"</label>
+                <visible>1</visible>
+                <required>0</required>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                <value>1</value>
+                <depends>
+                    <template>
+                        <value>footer_list</value>
+                    </template>
+                </depends>
+                <sort_order>490</sort_order>
+            </compare_footer_list>
+            <compare_slider translate="label">
+                <label>Button "Compare products"</label>
+                <visible>1</visible>
+                <required>0</required>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                <value>1</value>
+                <depends>
+                    <template>
+                        <value>slider</value>
+                    </template>
+                </depends>
+                <sort_order>500</sort_order>
+            </compare_slider>
+            <rating_stars_grid translate="label">
+                <label>Rating Stars</label>
+                <visible>1</visible>
+                <required>0</required>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                <value>1</value>
+                <depends>
+                    <template>
+                        <value>grid</value>
+                    </template>
+                </depends>
+                <sort_order>510</sort_order>
+            </rating_stars_grid>
+            <rating_stars_list translate="label">
+                <label>Rating Stars</label>
+                <visible>1</visible>
+                <required>0</required>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                <value>1</value>
+                <depends>
+                    <template>
+                        <value>list</value>
+                    </template>
+                </depends>
+                <sort_order>520</sort_order>
+            </rating_stars_list>
+            <rating_stars_slider translate="label">
+                <label>Rating Stars</label>
+                <visible>1</visible>
+                <required>0</required>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                <value>1</value>
+                <depends>
+                    <template>
+                        <value>slider</value>
+                    </template>
+                </depends>
+                <sort_order>530</sort_order>
+            </rating_stars_slider>
+            <rating_cust_link_grid translate="label">
+                <label>Ratings Customer link</label>
+                <visible>1</visible>
+                <required>0</required>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                <value>1</value>
+                <depends>
+                    <template>
+                        <value>grid</value>
+                    </template>
+                </depends>
+                <sort_order>540</sort_order>
+            </rating_cust_link_grid>
+            <rating_cust_link_list translate="label">
+                <label>Ratings Customer link</label>
+                <visible>1</visible>
+                <required>0</required>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                <value>1</value>
+                <depends>
+                    <template>
+                        <value>list</value>
+                    </template>
+                </depends>
+                <sort_order>550</sort_order>
+            </rating_cust_link_list>
+            <rating_cust_link_slider translate="label">
+                <label>Ratings Customer link</label>
+                <visible>1</visible>
+                <required>0</required>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                <value>1</value>
+                <depends>
+                    <template>
+                        <value>slider</value>
+                    </template>
+                </depends>
+                <sort_order>560</sort_order>
+            </rating_cust_link_slider>
+            <rating_add_review_link_grid translate="label">
+                <label>"Add your review" link</label>
+                <visible>1</visible>
+                <required>0</required>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                <value>1</value>
+                <depends>
+                    <template>
+                        <value>grid</value>
+                    </template>
+                </depends>
+                <sort_order>570</sort_order>
+            </rating_add_review_link_grid>
+            <rating_add_review_link_list translate="label">
+                <label>"Add your review" link</label>
+                <visible>1</visible>
+                <required>0</required>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                <value>1</value>
+                <depends>
+                    <template>
+                        <value>list</value>
+                    </template>
+                </depends>
+                <sort_order>580</sort_order>
+            </rating_add_review_link_list>
+            <rating_add_review_link_slider translate="label">
+                <label>"Add your review" link</label>
+                <visible>1</visible>
+                <required>0</required>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                <value>1</value>
+                <depends>
+                    <template>
+                        <value>slider</value>
+                    </template>
+                </depends>
+                <sort_order>590</sort_order>
+            </rating_add_review_link_slider>
+
+
+
+
+			<visible_products>
+                <label>Amount of Visible Products</label>
+                <visible>1</visible>
+                <required>1</required>
+                <type>select</type>
+                <source_model>thememanager/widget_view_visible</source_model>
+                <value>4</value>
+                <depends>
+                    <template>
+                        <value>slider</value>
+                    </template>
+                </depends>
+                <sort_order>600</sort_order>
+            </visible_products>
+
+			<items_horizontal>
+                <label>Products per row (Horizontal orientation tablet)</label>
+				<description>Set quantity of products which will be shown in 1 row on screens of horizontal orientation of tablets</description>
+                <visible>1</visible>
+                <required>1</required>
+                <type>select</type>
+                <source_model>thememanager/widget_view_visibleHorizontal</source_model>
+                <value>4</value>
+                <depends>
+                    <template>
+                        <value>slider</value>
+                    </template>
+                </depends>
+                <sort_order>610</sort_order>
+            </items_horizontal>
+			<items_vertical>
+                <label>Products per row (Vertical orientation tablet)</label>
+				<description>Set quantity of products which will be shown in 1 row on screens of vertical orientation of tablets</description>
+                <visible>1</visible>
+                <required>1</required>
+                <type>select</type>
+                <source_model>thememanager/widget_view_visibleVertical</source_model>
+                <value>3</value>
+                <depends>
+                    <template>
+                        <value>slider</value>
+                    </template>
+                </depends>
+                <sort_order>620</sort_order>
+            </items_vertical>
+			<items_scaleup>
+                <label>Products Scale up</label>
+				<description>Enable to stretch items when quantity of products is less than the set in widget options</description>
+                <visible>1</visible>
+                <required>1</required>
+                <type>select</type>
+                <source_model>thememanager/widget_view_boolean</source_model>
+                <value>false</value>
+                <depends>
+                    <template>
+                        <value>slider</value>
+                    </template>
+                </depends>
+                <sort_order>630</sort_order>
+            </items_scaleup>
+			
+			<pagination_speed translate="label">
+                <label>Pagination speed</label>
+                <description>Set pagination speed in milliseconds</description>
+                <visible>1</visible>
+                <required>1</required>
+                <type>text</type>
+				<value>800</value>
+                <depends>
+                    <template>
+                        <value>slider</value>
+                    </template>
+                </depends>
+                <sort_order>640</sort_order>
+            </pagination_speed>
+			<rewind_speed translate="label">
+                <label>Rewind Speed</label>
+                <description>Set rewind speed in milliseconds</description>
+                <visible>1</visible>
+                <required>1</required>
+                <type>text</type>
+				<value>1000</value>
+                <depends>
+                    <template>
+                        <value>slider</value>
+                    </template>
+                </depends>
+                <sort_order>650</sort_order>
+            </rewind_speed>
+			<pagination>
+                <label>Display pagination icons</label>
+				<description>Enable to display pagination icons underneath the slider</description>
+                <visible>1</visible>
+                <required>1</required>
+                <type>select</type>
+                <source_model>thememanager/widget_view_boolean</source_model>
+                <value>false</value>
+                <depends>
+                    <template>
+                        <value>slider</value>
+                    </template>
+                </depends>
+                <sort_order>660</sort_order>
+            </pagination>
+			<lazy_load>
+                <label>Lazy Load Effect</label>
+				<description>Delays loading of images, images outside of visible part of screen won't be loaded before user scrolls to them</description>
+                <visible>1</visible>
+                <required>1</required>
+                <type>select</type>
+                <source_model>thememanager/widget_view_boolean</source_model>
+                <value>true</value>
+                <depends>
+                    <template>
+                        <value>slider</value>
+                    </template>
+                </depends>
+                <sort_order>670</sort_order>
+            </lazy_load>
+			
+            <auto_play translate="label">
+                <label>Auto Slide</label>
+                <description>Set 5000 to play slider every 5 seconds. Set 0 if autoplay feature should be disabled.</description>
+                <visible>1</visible>
+                <required>1</required>
+                <type>text</type>
+                <source_model>adminhtml/system_config_source_yesno</source_model>
+                <value>5000</value>
+                <depends>
+                    <template>
+                        <value>slider</value>
+                    </template>
+                </depends>
+                <sort_order>680</sort_order>
+            </auto_play>
+			 <stop_on_hover translate="label">
+                <label>Stop on hover</label>
+                <description>The time (in milliseconds) required for all automatic animations to move between slides</description>
+                <visible>1</visible>
+                <required>1</required>
+                <type>select</type>
+				<source_model>thememanager/widget_view_boolean</source_model>
+				<value>true</value>
+                <depends>
+                    <template>
+                        <value>slider</value>
+                    </template>
+                </depends>
+                 <sort_order>690</sort_order>
+            </stop_on_hover>
+            <slide_speed translate="label">
+                <label>Auto Slide Timer</label>
+                <description>The time (in milliseconds) that a slide will wait before automatically navigating to the next slide</description>
+                <visible>1</visible>
+                <required>1</required>
+                <type>text</type>
+				<value>400</value>
+                <depends>
+                    <template>
+                        <value>slider</value>
+                    </template>
+                </depends>
+                <sort_order>700</sort_order>
+            </slide_speed>
+           
+
+            <widget_id translate="label">
+                <label>Widget ID</label>
+                <visible>1</visible>
+                <required>0</required>
+                <type>select</type>
+                <source_model>thememanager/widget_view_number</source_model>
+                <description>Generated automatically</description>
+                <sort_order>710</sort_order>
+            </widget_id>
+            <cache_lifetime translate="label description">
+                <label>Cache Lifetime (Seconds)</label>
+                <description>86400 by default, if not set. To refresh instantly, Clear the Blocks HTML Output Cache.</description>
+                <visible>1</visible>
+                <type>text</type>
+                <sort_order>720</sort_order>
+            </cache_lifetime>
+        </parameters>
+    </productwidget>
+
+    <thememanager_fblikebox type="thememanager/widget_fblikebox">
+        <name>Meigee - FB LikeBox</name>
+        <description type="desc"><![CDATA[The Like Box is a special version of the Like Button designed only for Facebook Pages. It allows admins to promote Pages.]]></description>
+        <parameters>
+            <href translate="label">
+                <label>Facebook Page URL</label>
+                <description>The URL of the Facebook Page to like</description>
+                <visible>1</visible>
+                <required>1</required>
+                <type>text</type>
+                <sort_order>10</sort_order>
+            </href>
+            <height translate="label">
+                <label>Height</label>
+                <description>The pixel height of the plugin</description>
+                <visible>1</visible>
+                <required>1</required>
+                <type>text</type>
+                <sort_order>20</sort_order>
+            </height>
+            <colorscheme translate="label">
+                <label>Color Scheme</label>
+                <visible>1</visible>
+                <required>1</required>
+                <type>select</type>
+                <source_model>thememanager/widget_view_fbschemes</source_model>
+                <sort_order>30</sort_order>
+            </colorscheme>
+            <faces translate="label">
+                <label>Show Friends' Faces</label>
+                <description>Show profile photos when friends like this</description>
+                <visible>1</visible>
+                <required>1</required>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_yesno</source_model>
+                <value>1</value>
+                <sort_order>40</sort_order>
+            </faces>
+            <header translate="label">
+                <label>Show Header</label>
+                <description>Show the "Find Us on Facebook" header on the plugin</description>
+                <visible>1</visible>
+                <required>1</required>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_yesno</source_model>
+                <value>1</value>
+                <sort_order>50</sort_order>
+            </header>
+            <stream translate="label">
+                <label>Show Posts</label>
+                <description>Show posts from the Page's timeline</description>
+                <visible>1</visible>
+                <required>1</required>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_yesno</source_model>
+                <sort_order>60</sort_order>
+            </stream>
+            <border translate="label">
+                <label>Show Border</label>
+                <description>Show a border around the plugin</description>
+                <visible>1</visible>
+                <required>1</required>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_yesno</source_model>
+                <value>1</value>
+                <sort_order>70</sort_order>
+            </border>
+            <template translate="label">
+                <label>Frontend Template</label>
+                <visible>0</visible>
+                <required>1</required>
+                <type>select</type>
+                <value>widget/fblikebox.phtml</value>
+                <sort_order>80</sort_order>
+            </template>
+            <cache_lifetime translate="label description">
+                <label>Cache Lifetime (Seconds)</label>
+                <description>86400 by default, if not set. To refresh instantly, Clear the Blocks HTML Output Cache.</description>
+                <visible>1</visible>
+                <type>text</type>
+                <sort_order>90</sort_order>
+            </cache_lifetime>
+        </parameters>
+    </thememanager_fblikebox>
+
+
+    <thememanager_social_links type="thememanager/widget_sociallinks">
+        <name>Meigee - Social links widget</name>
+        <description type="desc">Adds social links to any pages or static blocks</description>
+        <parameters>
+            <twitter>
+                <label>Twitter</label>
+                <type>text</type>
+                <visible>1</visible>
+                <sort_order>10</sort_order>
+                <description>Example: http://twitter.com (Leave empty to hide)</description>
+            </twitter>
+            <rss translate="label">
+                <label>RSS</label>
+                <type>text</type>
+                <visible>1</visible>
+                <sort_order>20</sort_order>
+                <description>Example: http://rss.com (Leave empty to hide)</description>
+            </rss>
+            <facebook translate="label">
+                <label>Facebook</label>
+                <type>text</type>
+                <visible>1</visible>
+                <sort_order>30</sort_order>
+                <description>Example: http://facebook.com (Leave empty to hide)</description>
+            </facebook>
+            <googleplus translate="label">
+                <label>Google +</label>
+                <type>text</type>
+                <visible>1</visible>
+                <sort_order>40</sort_order>
+                <description>Example: https://plus.google.com/ (Leave empty to hide)</description>
+            </googleplus>
+            <linkedin translate="label">
+                <label>Linkedin</label>
+                <type>text</type>
+                <visible>1</visible>
+                <sort_order>50</sort_order>
+                <description>Example: http://linkedin.com (Leave empty to hide)</description>
+            </linkedin>
+            <pinterest translate="label">
+                <label>Pinterest</label>
+                <type>text</type>
+                <visible>1</visible>
+                <sort_order>60</sort_order>
+                <description>Example: http://pinterest.com/ (Leave empty to hide)</description>
+            </pinterest>
+
+            <vimeo translate="label">
+                <label>Vimeo</label>
+                <type>text</type>
+                <visible>1</visible>
+                <sort_order>70</sort_order>
+                <description>Example: https://vimeo.com/ (Leave empty to hide)</description>
+            </vimeo>
+            <youtube translate="label">
+                <label>Youtube</label>
+                <type>text</type>
+                <visible>1</visible>
+                <sort_order>80</sort_order>
+                <description>Example: http://youtube.com/ (Leave empty to hide)</description>
+            </youtube>
+            <flickr translate="label">
+                <label>Flickr</label>
+                <type>text</type>
+                <visible>1</visible>
+                <sort_order>90</sort_order>
+                <description>Example: http://flickr.com/ (Leave empty to hide)</description>
+            </flickr>
+            <instagram translate="label">
+                <label>Instagram</label>
+                <type>text</type>
+                <visible>1</visible>
+                <sort_order>100</sort_order>
+                <description>Example: http://instagram.com/ (Leave empty to hide)</description>
+            </instagram>
+            <template translate="label">
+                <label>Frontend Template</label>
+                <visible>0</visible>
+                <required>1</required>
+                <type>select</type>
+                <value>widget/sociallinks.phtml</value>
+            </template>
+            <cache_lifetime translate="label description">
+                <label>Cache Lifetime (Seconds)</label>
+                <description>86400 by default, if not set. To refresh instantly, Clear the Blocks HTML Output Cache.</description>
+                <visible>1</visible>
+                <type>text</type>
+                <sort_order>110</sort_order>
+            </cache_lifetime>
+            <targetblank>
+                <label>Link target blank</label>
+                <description>Choose "Yes" if you want open link in a new tab</description>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_yesno</source_model>
+                <value>0</value>
+                <visible>1</visible>
+                <sort_order>120</sort_order>
+            </targetblank>
+        </parameters>
+    </thememanager_social_links>
+
+	<thememanager_latest_tweets type="thememanager/widget_tweets">
+		<name>Meigee - Latest Tweets widget</name>
+		<description type="desc">Adds a list of your latest tweets</description>
+		<parameters>
+			<template translate="label">
+				<label>Frontend Template</label>
+				<visible>0</visible>
+				<required>1</required>
+				<type>select</type>
+				<value>widget/tweets.phtml</value>
+                <sort_order>10</sort_order>
+			</template>
+			<twitter_username>
+				<label>Twitter Username</label>
+				<visible>1</visible>
+				<required>1</required>
+				<type>text</type>
+				<value></value>
+                <sort_order>20</sort_order>
+			</twitter_username>
+			<!-- <twitter_widget_id>
+				<label>Twitter Widget ID</label>
+				<visible>1</visible>
+				<required>1</required>
+				<type>text</type>
+				<description><![CDATA[You can find it on your twitter widget settings page]]></description>
+				<value></value>
+                <sort_order>30</sort_order>
+			</twitter_widget_id> -->
+			<tweet_limit>
+				<label>Tweet limit</label>
+				<visible>1</visible>
+				<required>1</required>
+				<type>text</type>
+				<description>A preset number of Tweets. Value may be set between 1 and 20</description>
+				<value>2</value>
+                <sort_order>40</sort_order>
+			</tweet_limit>
+			<cache_lifetime translate="label description">
+				<label>Cache Lifetime (Seconds)</label>
+				<description>86400 by default, if not set. To refresh instantly, Clear the Blocks HTML Output Cache.</description>
+				<visible>1</visible>
+				<type>text</type>
+                <sort_order>50</sort_order>
+			</cache_lifetime>
+		</parameters>
+	</thememanager_latest_tweets>
+
+    <blog_list type="blog/last">
+        <name>Blog: Latest Posts</name>
+        <description>Adds a list of latest post from Blog</description>
+        <parameters>
+
+            <meigee_theme>
+                <visible>1</visible>
+                <label>Select Theme</label>
+                <required>1</required>
+                <type>select</type>
+                <values></values>
+                <sort_order>10</sort_order>
+                <values>
+                    <none translate="label">
+                        <value>no_meigee_theme</value>
+                        <label>No Meigee Theme Installed</label>
+                    </none>
+                </values>
+            </meigee_theme>
+            <blog_check translate="label">
+                <visible>1</visible>
+                <type>thememanager/widget_blogListChecker</type>
+                <sort_order>0</sort_order>
+                <depends>
+                    <blog_check>
+                        <value>-1</value>
+                    </blog_check>
+                </depends>
+            </blog_check>
+        </parameters>
+    </blog_list>
+</widgets>

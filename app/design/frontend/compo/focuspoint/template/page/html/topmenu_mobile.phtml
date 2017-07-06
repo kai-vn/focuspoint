@@ -1,0 +1,32 @@
+<?php
+/**
+ * @package     compo
+ * @copyright   Copyright (c) 2010-2015 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+?>
+<?php
+/**
+ * Top menu for store
+ *
+ * @see Mage_Page_Block_Html_Topmenu
+ */
+?>
+<?php
+	$_menu = $this->getHtml('level-top');
+	$menuStatus = Mage::getStoreConfig('meigee_categoriesenhanced/options/status');
+	if ($menuStatus == 1) {
+		$navAttr = 'class="nav nav-wide topmenu navbar-nav"';
+	}
+	else {
+		$navAttr = 'class="nav topmenu navbar-nav" id="nav-mobile"';
+	}
+?>
+<?php if($_menu): ?>
+<nav class="navbar navbar-default in-mobile">
+	<div class="topmenu ">
+		<ul <?php echo $navAttr; ?>>
+			<?php echo $_menu ?>
+		</ul>
+	</div>
+</nav>
+<?php endif ?>

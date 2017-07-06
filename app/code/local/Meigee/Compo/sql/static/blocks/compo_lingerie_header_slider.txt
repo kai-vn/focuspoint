@@ -1,0 +1,17 @@
+<hr class="indent-18 white-space">
+<div id="home-image-slider" class="owl-carousel owl-theme" data-navigation="1" data-speed="300">
+	<a href="#">
+		<img {{retinaurl data-img-src="wysiwyg/compo_lingerie_slide_1.jpg" data-img-srcX2="wysiwyg/compo_lingerie_slide_1@x2.jpg" alt=""}}>
+		<span class="slide-container slide-skin">
+			<span class="title">Mia Rodriguez</span>
+			<span class="text hidden-xs">2017 Special Minimal Collection</span>
+		</span>
+	</a>
+	<a href="#">
+		<img {{retinaurl data-img-src="wysiwyg/compo_lingerie_slide_2.jpg" data-img-srcX2="wysiwyg/compo_lingerie_slide_2@x2.jpg" alt=""}}>
+		<span class="slide-container slide-skin-2">
+			<span class="title">Light Cotton</span>
+			<span class="text hidden-xs">Only premium materials and handcrafted dresses</span>
+		</span>
+	</a>
+</div>

@@ -1,0 +1,19 @@
+<?php
+/**
+ * @package     compo
+ * @copyright   Copyright (c) 2010-2015 MeigeeTeam. (http://www.meigeeteam.com)
+ */
+
+/* @var Mage_Wishlist_Model_Item $item */
+$item = $this->getItem();
+$product = $item->getProduct();
+?>
+<a class="product-image img-responsive text-center" href="<?php echo $this->getProductUrl($item) ?>" title="<?php echo $this->escapeHtml($product->getName()) ?>">
+	<?php
+		$escaped_label = $this->escapeHtml($product->getName());
+		echo '<img '. $product->getProductMediaResized(120, 'small_image')
+			->addImageHtmlAttributte('alt', $escaped_label)
+			->addImageHtmlAttributte('title', $escaped_label)
+			->getImageHtmlAttributte().' />';
+	?>
+</a>

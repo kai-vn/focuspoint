@@ -1,0 +1,117 @@
+<div class="footer-top">
+	<div class="container">
+		<div class="footer-text-block-wrapper">
+			<div class="text-block">
+				<div class="media-left"><span class="compo-icon rectangle"></span></div>
+				<div class="media-body">
+					<p>We accept all major<br>CREDIT &amp; DEBIT CARDS</p>
+				</div>
+			</div>
+			<hr class="indent-18 white-space visible-xs" />
+			<div class="text-block">
+				<div class="media-left"><span class="compo-icon open"></span></div>
+				<div class="media-body">
+					<p>Mon - Sat 8.00 - 18.00<br><span class="closed">Sunday CLOSED</span></p>
+				</div>
+			</div>
+			<hr class="indent-18 white-space visible-xs" />
+			<div class="text-block">
+				<div class="media-left"><span class="compo-icon ellipse"></span></div>
+				<div class="media-body">
+					<p>Have a Questions?<br>Call: 1-800-496-1779</p>
+				</div>
+			</div>
+			<hr class="indent-18 white-space visible-xs" />
+			<div class="text-block">
+				<div class="media-left"><span class="compo-icon change"></span></div>
+				<div class="media-body">
+					<p>Save your money with<br>Our Weekly Sales</p>
+				</div>
+			</div>
+			<hr class="indent-18 white-space visible-xs" />
+			<div class="text-block">
+				<div class="media-left"><span class="compo-icon bag"></span></div>
+				<div class="media-body">
+					<p>Shop without limits<br>1000+ fresh items</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="footer-middle">
+	<div class="container">
+		<hr class="indent-40 white-space clearfix">
+		<div class="row">
+			<div class="col-sm-3 store-info">
+				<div class="footer-logo">
+					<a href="{{store url=''}}" title="Compo"><img src="{{skin url='images/compo_jewerly_logo.png'}}" alt=""></a>
+				</div>
+				<hr class="indent-18 white-space">
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae nibh augue. Donec id risus vehicula.</p>
+			</div>
+			<hr class="indent-18 white-space visible-xs" />
+			<div class="col-sm-2">
+				<h5 class="footer-block-title">Categories</h5>
+				<ul class="links">
+					<li><a href="javascript: void(0);" title="Outerwear">Outerwear</a></li>
+					<li><a href="javascript: void(0);" title="Blazers">Blazers</a></li>
+					<li><a href="javascript: void(0);" title="Bombers">Bombers</a></li>
+				</ul>
+			</div>
+			<hr class="indent-18 white-space visible-xs" />
+			<div class="col-sm-2">
+				<h5 class="footer-block-title">Account</h5>
+				<ul class="links">
+					<li><a href="javascript: void(0);" title="Wishlist">Wishlist</a></li>
+					<li><a href="javascript: void(0);" title="Compare">Compare</a></li>
+					<li><a href="javascript: void(0);" title="Subscribe">Subscribe</a></li>
+				</ul>
+			</div>
+			<hr class="indent-18 white-space visible-xs" />
+			<div class="col-sm-2">
+				<h5 class="footer-block-title">Quick links</h5>
+				<ul class="links">
+					<li><a href="javascript: void(0);" title="Shipping &amp; Returns">Shipping &amp; Returns</a></li>
+					<li><a href="javascript: void(0);" title="Privacy Policy">Privacy Policy</a></li>
+					<li><a href="javascript: void(0);" title="Terms &amp; Conditions">Terms &amp; Conditions</a></li>
+				</ul>
+			</div>
+			<hr class="indent-18 white-space visible-xs" />
+			<div class="col-sm-3">
+				<h5 class="footer-block-title">Info</h5>
+				<div class="custom-footer-content text-left">
+					<div class="contacts-block">
+						<p>compo@info.com</p>
+						<p>10 Columbus Circle Time Warner Center,</p>
+						<p>4th Floor New York, NY 10019</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<hr class="indent-32 white-space clearfix">
+		<hr class="solid">
+		<div class="footer-links-wrapper text-center">
+			<ul class="horizontal-links clearfix">
+				<li><a href="{{store url='about-us'}}">About us</a></li>
+				<li><a href="{{store url='customer-service'}}">Customer Service</a></li>
+				<li><a href="{{store url='privacy-policy-cookie-restriction-mode'}}">Privacy Policy</a></li>
+				<li><a href="{{store url='catalog/seo_sitemap/category'}}">Site Map </a></li>
+				<li><a href="{{store url='catalogsearch/term/popular/'}}">Search Terms</a></li>
+				<li><a href="{{store url='catalogsearch/advanced/'}}">Advanced Search</a></li>
+				<li><a href="{{store url='sales/guest/form/'}}">Orders and Returns</a></li>
+				<li><a href="{{store url='contacts'}}">Contact Us</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="footer-bottom">
+	<div class="container">
+		<div class="copyright">
+			<address>{{config path="design/footer/copyright"}}</address>
+		</div>
+		<hr class="indent-18 white-space visible-xs" />
+		<div class="store-switcher-wrapper text-right">
+			{{block type="page/switch" block_id="store_switcher" template="page/switch/stores.phtml"}}
+		</div>
+	</div>
+</div>

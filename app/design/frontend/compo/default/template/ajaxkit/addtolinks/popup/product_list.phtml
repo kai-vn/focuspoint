@@ -1,0 +1,24 @@
+<div>
+    <table>
+    <?php
+    $products = $this->getProductCollection();
+    if ($products)
+    {
+        foreach ($products AS $product)
+        {
+            $html = "<tr>";
+            $html .= '<td><img src="'. $this->helper('catalog/image')->init($product, 'small_image')->resize(64) .'" alt="'.$product->getImageLabel().'" ></td>';
+            $html .= '<td><span class="product-name">'.$product->getName().'</span></td>';
+            $html .= "</tr>";
+            echo $html;
+        }
+    }
+
+    ?>
+    </table>
+</div>
+<script type="text/javascript">
+//<![CDATA[
+$('AddToCart-popup').addClassName('products-wrapper')
+//]]>
+</script>
