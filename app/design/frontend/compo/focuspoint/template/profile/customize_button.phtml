@@ -1,4 +1,4 @@
-<?php if ($this->isCustomerLoggedIn() && Mage::getSingleton('customer/session')->getQuestion()): ?>
+<?php if ($this->isCustomerLoggedIn()): ?>
     <button type="button" title="<?php echo $this->getButtonTitle() ?>" id="bigone-show-prescription-button"
             class="btn btn-primary type-2"
             onclick="showPrescription(this)"><span><span><?php echo $this->getButtonTitle() ?></span></span>
@@ -9,6 +9,10 @@
         function bodyOnload() {
             <?php if (Mage::getSingleton('customer/session')->getQuestion()): ?>
             $('product_addtocart_form').down('#product-addtocart-button').hide();
+            $('product_addtocart_form').down('#bigone-show-prescription-button').show();
+            <?php else: ?>
+            $('product_addtocart_form').down('#product-addtocart-button').show();
+            $('product_addtocart_form').down('#bigone-show-prescription-button').hide();
             <?php endif; ?>
         }
         showPrescription = function (button) {
