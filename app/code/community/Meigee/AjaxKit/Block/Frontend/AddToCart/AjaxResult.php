@@ -153,21 +153,22 @@ class Meigee_AjaxKit_Block_Frontend_AddToCart_AjaxResult extends Meigee_AjaxKit_
                             array('locale' => Mage::app()->getLocale()->getLocaleCode())
                     );
                     $params['qty'] = $filter->filter($params['qty']);
-                    
-                    //add custom option
-                    $additionalOptions = array();
-                    if ($additionalOption = $product->getCustomOption('additional_options')) {
-                        $additionalOptions = (array) unserialize($additionalOption->getValue());
-                    }
-                    foreach ($params['profile'] as $key => $value) {
-                        $additionalOptions[] = array(
-                            'label' => $key,
-                            'value' => $value,
-                        );
-                    }
-                    // add the additional options array with the option code additional_options
-                    $product->addCustomOption('additional_options', serialize($additionalOptions));
-                    
+//                    Zend_debug::dump($params);die('ádsa');
+//                    if (!empty($params['profile'])) {
+//                        //add custom option
+//                        $additionalOptions = array();
+//                        if ($additionalOption = $product->getCustomOption('additional_options')) {
+//                            $additionalOptions = (array) unserialize($additionalOption->getValue());
+//                        }
+//                        foreach ($params['profile'] as $key => $value) {
+//                            $additionalOptions[] = array(
+//                                'label' => $key,
+//                                'value' => $value,
+//                            );
+//                        }
+//                        // add the additional options array with the option code additional_options
+//                        $product->addCustomOption('additional_options', serialize($additionalOptions));
+//                    }
                     $cart = Mage::getSingleton('checkout/cart');
                     $cart->addProduct($product, $params);
 

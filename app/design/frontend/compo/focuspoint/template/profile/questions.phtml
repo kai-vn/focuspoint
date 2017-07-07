@@ -1,13 +1,13 @@
 <?php
 $helper = Mage::helper('profile');
 $productId = $this->getProductId();
-$brandId = $this->getBrand(); 
+$brandId = $this->getBrand();
 $data = $helper->getDataByBrand($brandId);
 ?>
 <?php if (isset($data['glass'])): ?>
     <div class="info-container" id="glass-container" style="display:none">
         <input type="hidden" name="profile[glass]" id="profile-glass">
-        <input type="hidden" name="profile[glass_price]" id="profile-glass-price">
+        <input type="hidden" name="profile[glass_price]" id="glass_price">
         <div class="title-question"><?php echo $this->__('Q2: Please Choose Glasses') ?></div>
         <div class="item-list">
             <?php
@@ -22,7 +22,7 @@ $data = $helper->getDataByBrand($brandId);
                             <div class="item-tooltip" style="display:none"><?php echo $glass['tooltip'] ?></div>
                         </div>
                         <div class="item-description"><?php echo $glass['description'] ?></div>
-                        <div class="item-price"><?php echo '+RM' . $glass['price'] ?></div>
+                        <div class="item-price"><?php echo ((int) $glass['price'] != 0) ? '+RM' . $glass['price'] : 'Free' ?></div>
                     </div>
                 </div>
             <?php endforeach; ?>
@@ -32,7 +32,7 @@ $data = $helper->getDataByBrand($brandId);
 <?php if (isset($data['lens'])): ?>
     <div class="info-container" id="lens-container" style="display:none">
         <input type="hidden" name="profile[lens]" id="profile-lens">
-        <input type="hidden" name="profile[lens_price]" id="profile-lens-price">
+        <input type="hidden" name="profile[lens_price]" id="lens_price">
         <div class="title-question"><?php echo $this->__('Q3: Please Choose Lens') ?></div>
         <div class="item-list">
             <?php
@@ -46,7 +46,7 @@ $data = $helper->getDataByBrand($brandId);
                             <div><?php echo $len['subtitle'] ?></div>
                         </div>
                         <div class="item-description"><?php echo $len['description'] ?></div>
-                        <div class="item-price"><?php echo '+RM' . $len['price'] ?></div>
+                        <div class="item-price"><?php echo ((int) $len['price'] != 0) ? '+RM' . $len['price'] : 'Free' ?></div>
                     </div>
                 </div>
             <?php endforeach; ?>
@@ -56,7 +56,7 @@ $data = $helper->getDataByBrand($brandId);
 <?php if (isset($data['coating'])): ?>
     <div class="info-container" id="coating-container" style="display:none">
         <input type="hidden" name="profile[coating]" id="profile-coating">
-        <input type="hidden" name="profile[coating_price]" id="profile-coating-price">
+        <input type="hidden" name="profile[coating_price]" id="coating_price">
         <div class="title-question"><?php echo $this->__('Q4: Please Choose Coating Add On') ?></div>
         <div class="item-list">
             <?php
@@ -70,20 +70,30 @@ $data = $helper->getDataByBrand($brandId);
                             <div><?php echo $coating['subtitle'] ?></div>
                         </div>
                         <div class="item-description"><?php echo $coating['description'] ?></div>
-                        <div class="item-price"><?php echo ($coating['price'] != '0') ? '+RM' . $coating['price'] : 'Free' ?></div>
+                        <div class="item-price"><?php echo ((int) $coating['price'] != 0) ? '+RM' . $coating['price'] : 'Free' ?></div>
                     </div>
                 </div>
             <?php endforeach; ?>
         </div>
     </div>
 <?php endif; ?>
-<div><input type="hidden" name="profile[profile_cost]" id="profile-cost-total"></div>
+<div><input type="hidden" name="profile[profile_cost]" id="profile_cost"></div>
 <script type="text/javascript">
     // change glasses
     var data = <?php echo json_encode($data) ?>;
+    var glass_price =0;
+    var lens_price = 0;
+    var coating_price = 0;
+    var profile_cost = 0;
+    
     function changeGlass(glassId) {
         $j('#profile-glass').val(glassId);
-        $j('#profile-glass-price').val(data.glass[glassId].price);
+        profile_cost -= glass_price;
+        glass_price = 0;
+        glass_price = data.glass[glassId].price;
+        profile_cost += glass_price;
+        $j('#profile_cost').val(profile_cost);
+        $j('#glass_price').val(glass_price)
         if ($j('#lens-container')) {
             $j('#lens-container').show();
         } else {
@@ -96,7 +106,12 @@ $data = $helper->getDataByBrand($brandId);
     }
     function changeLen(lenId) {
         $j('#profile-lens').val(lenId);
-        $j('#profile-lens-price').val(data.lens[lenId].price);
+        profile_cost -= lens_price;
+        lens_price = 0;
+        lens_price = data.lens[lenId].price;
+        profile_cost += lens_price;
+        $j('#lens_price').val(lens_price);
+        $j('#profile_cost').val(profile_cost);
         if ($j('#coating-container')) {
             $j('#coating-container').show();
         }
@@ -105,7 +120,12 @@ $data = $helper->getDataByBrand($brandId);
     }
     function changeCoating(coatingId) {
         $j('#profile-coating').val(coatingId);
-        $j('#profile-coating-price').val(data.coating[coatingId].price);
+        profile_cost -= coating_price;
+        coating_price = 0;
+        coating_price = data.coating[coatingId].price;
+        profile_cost += coating_price;
+        $j('#coating_price').val(coating_price);
+        $j('#profile_cost').val(profile_cost);
         if ($j('#pres-container')) {
             $j('#pres-container').show();
         }

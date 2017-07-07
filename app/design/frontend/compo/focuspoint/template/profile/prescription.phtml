@@ -13,7 +13,7 @@
         </div>
         <div class="profile-customize" style="display:none">
             <?php if (Mage::getSingleton('customer/session')->isLoggedIn()): ?>
-            <a href="#question-container">Customize Lens</a>
+                <a href="#question-container">Customize Lens</a>
             <?php endif; ?>
         </div>
     </div>
@@ -23,12 +23,14 @@
     $j(document).ready(function () {
         var session_q = (Boolean)(<?php echo Mage::getSingleton('customer/session')->getQuestion() ?>);
         var is_login = (Boolean)(<?php echo Mage::getSingleton('customer/session')->isLoggedIn() ?>);
+        var butotn_pres = $j('#bigone-show-prescription-button');
         if (!is_login && session_q)
             $j('.add-to-cart').hide();
         if (session_q && $j('#question-container')) {
+            if (butotn_pres) butotn_pres.show();
             $j('.profile-login').show();
             $j('.profile-customize').show();
-            $j('#question-container').show();
+//            $j('#question-container').show();
         }
         $radios = $j("input:radio[name=q-0]");
         if ($radios) {
@@ -36,6 +38,8 @@
             $radios.change(function () {
                 var pres = $j(this).val();
                 if (pres == '1') {
+                    if (butotn_pres)
+                        butotn_pres.show();
                     $j('.profile-login').show();
                     $j('.profile-customize').show();
                     if (!is_login)
@@ -43,9 +47,11 @@
                     if ($j('#question-container'))
                         $j('#question-container').show();
                 } else {
+                    if (butotn_pres)
+                        butotn_pres.hide();
                     $j('.add-to-cart').show();
                     $j('.profile-login').hide();
-                    j('.profile-customize').hide();
+                    $j('.profile-customize').hide();
                     if ($j('#question-container'))
                         $j('#question-container').hide();
                 }

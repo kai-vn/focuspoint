@@ -5,7 +5,7 @@ class Bigone_Profile_Model_Observer {
     public function saveProductBrand($observer) {
         $productId = $observer->getEvent()->getProduct()->getId();
         $param_brand = Mage::app()->getRequest()->getPost('profile_brand');
-        $brands = (!empty($param_brand)) ? implode(',',$param_brand) : ''; 
+        $brands = (!empty($param_brand)) ? implode(',', $param_brand) : '';
         $item = Mage::getModel('profile/brandassign')->getCollection()
                         ->addFieldToFilter('product_id', $productId)->getFirstItem();
         if ($item->getId()) {
@@ -28,12 +28,13 @@ class Bigone_Profile_Model_Observer {
         $quote = $obs->getEvent()->getQuote();
         $item = $obs->getQuoteItem();
         $infoBuyRequest = unserialize($item->getOptionByCode('info_buyRequest')->getValue());
-        $profileData = serialize($infoBuyRequest['profile']);
-        $item->setData('bigone_profile_data', $profileData);
-        $productId = $item->getProductId();
-        $product = Mage::getModel('catalog/product')->load($productId);
-        $item->addOption(unserialize($item->getBigoneProfileData()));
-        $item->getProduct()->setIsSuperMode(true);
+        if (!empty($infoBuyRequest['profile'])) {
+            $profileData = serialize($infoBuyRequest['profile']);
+            $item->setData('bigone_profile_data', $profileData);
+            $productId = $item->getProductId();
+            $item->addOption(unserialize($item->getBigoneProfileData()));
+            $item->getProduct()->setIsSuperMode(true);
+        }
     }
 
 }
