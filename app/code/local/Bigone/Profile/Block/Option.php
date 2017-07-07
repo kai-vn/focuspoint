@@ -40,5 +40,9 @@ class Bigone_Profile_Block_Option extends Mage_Core_Block_Template {
         }
         return $data;
     }
+    
+    public function getButtonAddCartTitle() {
+        return 'Add to cart';
+    }
 
 }

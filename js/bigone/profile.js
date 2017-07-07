@@ -60,5 +60,136 @@ GeneralAddToCart.addToCartPopupProcessor = function (el, parent_form) {
         }
         self.addToCartProcessor(el, {attributes: attributes, related_product: related_products_arr, qty: qty});
     }
-    
+
+}
+GeneralAddToCart.initAddToCartButtons = function ()
+{
+    var self = this;
+    $$(this.config.add_to_cart_btn_selector).each(function (el)
+    {
+        var onclickValue = false;
+        if (!el.hasClassName('AjaxKit-addtocart-link'))
+        {
+            el.addClassName('AjaxKit-addtocart-link');
+            if (('product' == self.thisPage || 'wishlist' == self.thisPage) && undefined !== el.up('#product_addtocart_form'))
+            {
+                var form = el.up('#product_addtocart_form');
+                var onclickValue = form.getAttribute('action');
+            } else
+            {
+                switch (el.tagName)
+                {
+                    case 'A':
+                        var onclickValue = el.getAttribute('href');
+                        el.setAttribute('href', '#');
+                        break;
+                    case 'INPUT':
+                    case 'BUTTON':
+                        var onclickValue = el.getAttribute('onclick');
+                        break;
+                }
+            }
+        }
+        if (onclickValue)
+        {
+            var reg = /\(\'(.*)\'\)/gi;
+            var onclickValueUrl = reg.exec(onclickValue)
+            onclickValue = onclickValueUrl ? onclickValueUrl[1] : onclickValue;
+            el.setAttribute('onclick', 'return false;');
+            el.setAttribute('data-onclick-value', onclickValue);
+
+            Event.observe(el, 'click', function (eve)
+            {
+                form = el.up('#product_addtocart_form');
+                if ('product' == self.thisPage || undefined !== form)
+                {
+                    self.addToCartPopupProcessor(this, form);
+                } else
+                {
+                    self.addToCartProcessor(this)
+                }
+            });
+        }
+    });
+    //custom bigone button add to cart
+    var bigone_btn = $('bigone-addtocart-btn');
+    if (bigone_btn) {
+        var onclickValue = false;
+        if (!bigone_btn.hasClassName('AjaxKit-addtocart-link'))
+        {
+            bigone_btn.addClassName('AjaxKit-addtocart-link');
+            if (('product' == self.thisPage || 'wishlist' == self.thisPage))
+            {
+                var form = $('product_addtocart_form');
+                var onclickValue = form.getAttribute('action');
+            } else
+            {
+                switch (bigone_btn.tagName)
+                {
+                    case 'A':
+                        var onclickValue = bigone_btn.getAttribute('href');
+                        bigone_btn.setAttribute('href', '#');
+                        break;
+                    case 'INPUT':
+                    case 'BUTTON':
+                        var onclickValue = bigone_btn.getAttribute('onclick');
+                        break;
+                }
+            }
+        }
+        if (onclickValue)
+        {
+            var reg = /\(\'(.*)\'\)/gi;
+            var onclickValueUrl = reg.exec(onclickValue)
+            onclickValue = onclickValueUrl ? onclickValueUrl[1] : onclickValue;
+            bigone_btn.setAttribute('onclick', 'return false;');
+            bigone_btn.setAttribute('data-onclick-value', onclickValue);
+
+            Event.observe(bigone_btn, 'click', function (eve)
+            {
+                form = $('product_addtocart_form');
+                if ('product' == self.thisPage || undefined !== form)
+                {
+                    self.addToCartPopupProcessor(this, form);
+                } else
+                {
+                    self.addToCartProcessor(this)
+                }
+            });
+        }
+    }
+
+    //end custom
+    switch (self.thisPage)
+    {
+        case 'wishlist':
+            $$('button[onclick^=addAllWItemsToCart], .btn-add')._each(function (el)
+            {
+                if (!el.hasClassName('addAllWItemsToCartBtn'))
+                {
+                    Event.observe(el, 'click', function (eve)
+                    {
+                        AjaxKitMain.addLoader(this);
+                        var success_func = function (cart_data)
+                        {
+                            self.updateWishlist();
+                            self.updateCartHtml();
+                        }
+                        var values = {};
+                        values.qty = {};
+                        $$('textarea, input')._each(function (qty_el)
+                        {
+                            if (qty_el.name)
+                            {
+                                values[qty_el.name] = qty_el.value;
+                            }
+                        });
+                        AjaxKitMain.ajaxProcessor(self, 'add_wishlist_to_сart', values, success_func);
+                    });
+                    el.setAttribute('onclick', 'return false;');
+                    el.addClassName('addAllWItemsToCartBtn');
+                }
+            });
+            break;
+    }
 }

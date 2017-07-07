@@ -23,7 +23,7 @@
         var btn_show_pres = $j('#bigone-show-prescription-button');
         var btn_add_to_cart = $j('#product-addtocart-button');
         if (is_login && session_q) {
-            btn_add_to_cart.hide();
+//            btn_add_to_cart.hide();
             btn_show_pres.show();
         } else {
             btn_add_to_cart.show();
@@ -44,10 +44,10 @@
                     if (is_login)
                         btn_add_to_cart.hide();
                 } else {
-                    if (btn_show_pres)
-                        btn_show_pres.hide();
-                    btn_add_to_cart.show();
+                    if (btn_show_pres) btn_show_pres.hide();
+                    if (btn_add_to_cart) btn_add_to_cart.show();
                     $j('.profile-login').hide();
+                    if ($j('#question-container')) $j('#question-container').hide();
                 }
                 new Ajax.Request(
                         url,
