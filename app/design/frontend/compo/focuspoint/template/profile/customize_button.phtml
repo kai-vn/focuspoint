@@ -17,7 +17,7 @@
                 questionContainer.hide();
             } else if (questionContainer && !questionContainer.visible()) {
                 questionContainer.show();
-                Element.scrollTo(questionContainer);
+                Effect.ScrollTo(questionContainer, 1000);
             } else {
                 console.warn('The add to cart button was not found');
             }
