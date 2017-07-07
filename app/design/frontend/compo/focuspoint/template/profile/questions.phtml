@@ -1,12 +1,13 @@
 <?php
 $helper = Mage::helper('profile');
 $productId = $this->getProductId();
-$brandId = $this->getBrand(); //Zend_debug::dump($brandId);
-$data = $helper->getDataByBrand($brandId); //Zend_debug::dump($data);
+$brandId = $this->getBrand(); 
+$data = $helper->getDataByBrand($brandId);
 ?>
 <?php if (isset($data['glass'])): ?>
     <div class="info-container" id="glass-container" style="display:none">
         <input type="hidden" name="profile[glass]" id="profile-glass">
+        <input type="hidden" name="profile[glass_price]" id="profile-glass-price">
         <div class="title-question"><?php echo $this->__('Q2: Please Choose Glasses') ?></div>
         <div class="item-list">
             <?php
@@ -15,8 +16,12 @@ $data = $helper->getDataByBrand($brandId); //Zend_debug::dump($data);
                 ?>
                 <div class="item-profile item-glass"  id="item-glass-<?php echo $glassId ?>" onclick="changeGlass('<?php echo $glassId ?>')" >
                     <div class="item-info " data-id="<?php echo $glassId ?>">
-                        <div class="item-title"><p><?php echo $glass['title'] ?></p></div>
-                        <div class="item-description"><?php echo $len['description'] ?></div>
+                        <div class="item-title">
+                            <div><?php echo $glass['title'] ?></div>
+                            <div><?php echo $glass['subtitle'] ?></div>
+                            <div class="item-tooltip" style="display:none"><?php echo $glass['tooltip'] ?></div>
+                        </div>
+                        <div class="item-description"><?php echo $glass['description'] ?></div>
                         <div class="item-price"><?php echo '+RM' . $glass['price'] ?></div>
                     </div>
                 </div>
@@ -27,6 +32,7 @@ $data = $helper->getDataByBrand($brandId); //Zend_debug::dump($data);
 <?php if (isset($data['lens'])): ?>
     <div class="info-container" id="lens-container" style="display:none">
         <input type="hidden" name="profile[lens]" id="profile-lens">
+        <input type="hidden" name="profile[lens_price]" id="profile-lens-price">
         <div class="title-question"><?php echo $this->__('Q3: Please Choose Lens') ?></div>
         <div class="item-list">
             <?php
@@ -50,6 +56,7 @@ $data = $helper->getDataByBrand($brandId); //Zend_debug::dump($data);
 <?php if (isset($data['coating'])): ?>
     <div class="info-container" id="coating-container" style="display:none">
         <input type="hidden" name="profile[coating]" id="profile-coating">
+        <input type="hidden" name="profile[coating_price]" id="profile-coating-price">
         <div class="title-question"><?php echo $this->__('Q4: Please Choose Coating Add On') ?></div>
         <div class="item-list">
             <?php
@@ -58,8 +65,11 @@ $data = $helper->getDataByBrand($brandId); //Zend_debug::dump($data);
                 ?>
                 <div class="item-profile item-coating" id="item-coating-<?php echo $coatingId ?>" onclick="changeCoating('<?php echo $coatingId ?>')">
                     <div class="item-info " data-id="<?php echo $coatingId ?>" >
-                        <div class="item-title"><?php echo $coating['title'] ?></div>
-                        <div class="item-description"><?php echo $len['description'] ?></div>
+                        <div class="item-title">
+                            <div><?php echo $coating['title'] ?></div>
+                            <div><?php echo $coating['subtitle'] ?></div>
+                        </div>
+                        <div class="item-description"><?php echo $coating['description'] ?></div>
                         <div class="item-price"><?php echo ($coating['price'] != '0') ? '+RM' . $coating['price'] : 'Free' ?></div>
                     </div>
                 </div>
@@ -67,10 +77,13 @@ $data = $helper->getDataByBrand($brandId); //Zend_debug::dump($data);
         </div>
     </div>
 <?php endif; ?>
+<div><input type="hidden" name="profile[profile_cost]" id="profile-cost-total"></div>
 <script type="text/javascript">
     // change glasses
+    var data = <?php echo json_encode($data) ?>;
     function changeGlass(glassId) {
         $j('#profile-glass').val(glassId);
+        $j('#profile-glass-price').val(data.glass[glassId].price);
         if ($j('#lens-container')) {
             $j('#lens-container').show();
         } else {
@@ -78,22 +91,21 @@ $data = $helper->getDataByBrand($brandId); //Zend_debug::dump($data);
                 $j('#lens-container').show();
             }
         }
-        console.log('glasId=' + glassId);
         $j('.item-glass').css('border', 'none');
         $j('#item-glass-' + glassId).css('border', '3px solid #cc1454');
     }
     function changeLen(lenId) {
         $j('#profile-lens').val(lenId);
+        $j('#profile-lens-price').val(data.lens[lenId].price);
         if ($j('#coating-container')) {
             $j('#coating-container').show();
         }
-
-        console.log('lenId=' + lenId);
         $j('.item-len').css('border', 'none');
         $j('#item-len-' + lenId).css('border', '3px solid #cc1454');
     }
     function changeCoating(coatingId) {
         $j('#profile-coating').val(coatingId);
+        $j('#profile-coating-price').val(data.coating[coatingId].price);
         if ($j('#pres-container')) {
             $j('#pres-container').show();
         }

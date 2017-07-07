@@ -48,21 +48,22 @@ class Bigone_Profile_Helper_Data extends Mage_Core_Helper_Abstract {
     }
     
     public function getDataByBrand($brandId) {
+        
         $data = array();
         $glasses = Mage::getModel('profile/glasses')->getCollection()
                 ->addFieldToFilter('brand', $brandId);
         foreach ($glasses as $item) {
-            $data['glass'][] = $item->getData();
+            $data['glass'][$item->getId()] = $item->getData();
         }
         $lens = Mage::getModel('profile/lens')->getCollection()
                 ->addFieldToFilter('brand', $brandId);
         foreach ($lens as $item) {
-            $data['lens'][] = $item->getData();
+            $data['lens'][$item->getId()] = $item->getData();
         }
         $coatings = Mage::getModel('profile/coating')->getCollection()
                 ->addFieldToFilter('brand', $brandId);
         foreach ($coatings as $item) {
-            $data['coating'][] = $item->getData();
+            $data['coating'][$item->getId()] = $item->getData();
         }
         return $data;
     }

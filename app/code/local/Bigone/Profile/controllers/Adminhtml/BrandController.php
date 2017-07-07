@@ -72,7 +72,7 @@ class Bigone_Profile_Adminhtml_BrandController extends Mage_Adminhtml_Controller
             $this->_title($this->__('Edit Brand'));
             $this->loadLayout()
                     ->_setActiveMenu('profile/brand')
-                    ->_addBreadcrumb($this->__('Edit Brand'))
+                    ->_addBreadcrumb(Mage::helper('adminhtml')->__('Edit Brand'),Mage::helper('adminhtml')->__('Edit Brand'))
                     ->_addContent($this->getLayout()->createBlock('profile/adminhtml_brand_edit'))
 //                    ->_addLeft($this->getLayout()->createBlock('adminhtml/store_switcher'))
                     ->_addLeft($this->getLayout()->createBlock('profile/adminhtml_brand_edit_tabs'));

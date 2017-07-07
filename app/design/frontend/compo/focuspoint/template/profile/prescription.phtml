@@ -8,7 +8,12 @@
         </div>
         <div class="profile-login" style="display:none">
             <?php if (!Mage::getSingleton('customer/session')->isLoggedIn()): ?>
-            <p>Please <span ><a href="<?php echo $helper->getLoginUrl(); ?>" class="various">Login</a></span> to choose your profile !</p>
+                <p>Please <span ><a href="<?php echo Mage::helper('profile')->getLoginUrl(); ?>" class="various">Login</a></span> to choose your profile !</p>
+            <?php endif; ?>
+        </div>
+        <div class="profile-customize" style="display:none">
+            <?php if (Mage::getSingleton('customer/session')->isLoggedIn()): ?>
+            <a href="#question-container">Customize Lens</a>
             <?php endif; ?>
         </div>
     </div>
@@ -16,9 +21,13 @@
 <script type="text/javascript">
     var $j = jQuery.noConflict();
     $j(document).ready(function () {
-        var session_q = '<?php echo Mage::getSingleton('customer/session')->getQuestion(); ?>';
-        if (session_q == '1' && $j('#question-container')) {
+        var session_q = (Boolean)(<?php echo Mage::getSingleton('customer/session')->getQuestion() ?>);
+        var is_login = (Boolean)(<?php echo Mage::getSingleton('customer/session')->isLoggedIn() ?>);
+        if (!is_login && session_q)
+            $j('.add-to-cart').hide();
+        if (session_q && $j('#question-container')) {
             $j('.profile-login').show();
+            $j('.profile-customize').show();
             $j('#question-container').show();
         }
         $radios = $j("input:radio[name=q-0]");
@@ -28,10 +37,15 @@
                 var pres = $j(this).val();
                 if (pres == '1') {
                     $j('.profile-login').show();
+                    $j('.profile-customize').show();
+                    if (!is_login)
+                        $j('.add-to-cart').hide();
                     if ($j('#question-container'))
                         $j('#question-container').show();
                 } else {
+                    $j('.add-to-cart').show();
                     $j('.profile-login').hide();
+                    j('.profile-customize').hide();
                     if ($j('#question-container'))
                         $j('#question-container').hide();
                 }

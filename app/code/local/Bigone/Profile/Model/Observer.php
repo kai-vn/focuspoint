@@ -4,7 +4,8 @@ class Bigone_Profile_Model_Observer {
 
     public function saveProductBrand($observer) {
         $productId = $observer->getEvent()->getProduct()->getId();
-        $brands = implode(',', Mage::app()->getRequest()->getPost('profile_brand'));
+        $param_brand = Mage::app()->getRequest()->getPost('profile_brand');
+        $brands = (!empty($param_brand)) ? implode(',',$param_brand) : ''; 
         $item = Mage::getModel('profile/brandassign')->getCollection()
                         ->addFieldToFilter('product_id', $productId)->getFirstItem();
         if ($item->getId()) {

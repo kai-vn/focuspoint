@@ -23,7 +23,7 @@ class Bigone_Profile_AjaxController extends Mage_Core_Controller_Front_Action {
 
     public function changePresAction() {
         $pres = $this->getRequest()->getParam('pres');
-        Mage::getSingleton('customer/session')->setQuestion($pres);
+        Mage::getSingleton('customer/session')->setQuestion((int)$pres);
         $result['pres'] = Mage::getSingleton('customer/session')->getQuestion();
         $this->_ajaxResponse($result);
     }

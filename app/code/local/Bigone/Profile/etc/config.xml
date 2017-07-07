@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Bigone_Profile>
-            <version>0.1.1</version>
+            <version>0.1.3</version>
         </Bigone_Profile>
     </modules>
     <frontend>
@@ -142,11 +142,130 @@
             <profile>
                 <class>Bigone_Profile_Block</class>
             </profile>
+            <adminhtml>
+                <rewrite>
+                    <sales_order_totals>Bigone_Profile_Block_Adminhtml_Sales_Order_Totals</sales_order_totals>
+                    <sales_order_invoice_totals>Bigone_Profile_Block_Adminhtml_Sales_Order_Invoice_Totals</sales_order_invoice_totals>
+                    <sales_order_creditmemo_totals>Bigone_Profile_Block_Adminhtml_Sales_Order_Creditmemo_Totals</sales_order_creditmemo_totals>
+                </rewrite>
+            </adminhtml>
+            <sales>
+                <rewrite>
+                    <order_totals>Bigone_Profile_Block_Sales_Order_Totals</order_totals>
+                    <order_invoice_totals>Bigone_Profile_Block_Sales_Order_Invoice_Totals</order_invoice_totals>
+                    <order_creditmemo_totals>Bigone_Profile_Block_Sales_Order_Creditmemo_Totals</order_creditmemo_totals>
+                </rewrite>
+            </sales>
+            <ajaxKit>
+                <rewrite>
+                    <frontend_addToCart_ajaxResult>Bigone_Profile_Block_Frontend_AddToCart_AjaxResult</frontend_addToCart_ajaxResult>
+                </rewrite>
+            </ajaxKit>
         </blocks>
         <helpers>
             <profile>
                 <class>Bigone_Profile_Helper</class>
             </profile>
         </helpers>
+        <sales>
+            <quote>
+                <item>
+                    <product_attributes>
+                        <bigone_profile_data />
+                    </product_attributes>
+                </item>
+            </quote>
+            <order>
+                <item>
+                    <product_attributes>
+                        <bigone_profile_data />
+                    </product_attributes>
+                </item>
+            </order>
+        </sales>
+        <fieldsets>
+            <sales_convert_quote_item>
+                <bigone_profile_data>
+                    <to_order_item>*</to_order_item>
+                </bigone_profile_data>
+            </sales_convert_quote_item>
+            <sales_convert_order_item>
+                <bigone_profile_data>
+                    <to_cm_item>*</to_cm_item>
+                    <to_invoice_item>*</to_invoice_item>
+                    <to_shipment_item>*</to_shipment_item>
+                </bigone_profile_data>
+            </sales_convert_order_item>
+            <sales_convert_quote_address>
+                <charges_amount>
+                    <to_order>*</to_order>
+                    <to_invoice>*</to_invoice>
+                    <to_cm>*</to_cm>
+                </charges_amount>
+                <base_charges_amount>
+                    <to_order>*</to_order>
+                    <to_invoice>*</to_invoice>
+                    <to_cm>*</to_cm>
+                </base_charges_amount>
+                <profile_tax_amount>
+                    <to_order>*</to_order>
+                </profile_tax_amount>
+                <base_profile_tax_amount>
+                    <to_order>*</to_order>
+                </base_profile_tax_amount>
+            </sales_convert_quote_address>
+            <sales_convert_order>
+                <charges_amount>
+                    <to_invoice>*</to_invoice>
+                    <to_cm>*</to_cm>
+                </charges_amount>
+                <base_charges_amount>
+                    <to_invoice>*</to_invoice>
+                    <to_cm>*</to_cm>
+                </base_charges_amount>
+                <profile_tax_amount>
+                    <to_invoice>*</to_invoice>
+                    <to_cm>*</to_cm>
+                </profile_tax_amount>
+                <base_profile_tax_amount>
+                    <to_invoice>*</to_invoice>
+                    <to_cm>*</to_cm>
+                </base_profile_tax_amount>
+            </sales_convert_order>
+        </fieldsets>
+        <sales>
+            <quote>
+                <totals>
+                    <charges>
+                        <class>profile/sales_quote_address_total_charges</class>
+                        <after>tax</after>
+                        <sort_order>500</sort_order>
+                    </charges>
+                    <profiletax>
+                        <class>profile/sales_quote_address_total_profiletax</class>
+                        <after>tax</after>
+                        <sort_order>600</sort_order>
+                    </profiletax>
+                </totals>
+            </quote>
+            <order_invoice>
+                <totals>
+                    <charges>
+                        <class>profile/sales_order_invoice_total_charges</class>
+                        <after>tax</after>
+                        <sort_order>500</sort_order>
+                    </charges>
+                </totals>
+            </order_invoice>
+            <order_creditmemo>
+                <totals>
+                    <charges>
+                        <class>profile/sales_order_creditmemo_total_charges</class>
+                        <after>tax</after>
+                        <sort_order>500</sort_order>
+                    </charges>
+                </totals>
+            </order_creditmemo>
+        </sales>
     </global>
 </config>
