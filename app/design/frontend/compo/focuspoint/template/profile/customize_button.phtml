@@ -1,0 +1,21 @@
+<?php if ($this->isCustomerLoggedIn()): ?>
+    <button type="button" title="<?php echo $this->getButtonTitle() ?>" id="bigone-show-prescription-button"
+            class="btn btn-primary type-2"
+            onclick="showPrescription(this)"><span><span><?php echo $this->getButtonTitle() ?></span></span>
+    </button>
+    <script type="text/javascript">
+        //<![CDATA[
+        showPrescription = function (button) {
+            var questionContainer = button.up('.product-view').down('#question-container');
+            if (questionContainer && questionContainer.visible()) {
+                questionContainer.hide();
+            } else if (questionContainer && !questionContainer.visible()) {
+                questionContainer.show();
+                Element.scrollTo(questionContainer);
+            } else {
+                console.warn('The add to cart button was not found');
+            }
+        };
+        //]]>
+    </script>
+<?php endif; ?>
