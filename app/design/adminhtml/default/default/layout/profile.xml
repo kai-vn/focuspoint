@@ -20,4 +20,17 @@
             </action>
         </reference>
     </adminhtml_catalog_product_edit>
+    <adminhtml_sales_order_view>
+        <reference name="head">
+            <action method="addCss">
+                <stylesheet>profile/prescription.css</stylesheet>
+            </action>
+        </reference>
+        <reference name="sales_order_tabs">
+            <action method="addTab">
+                <name>order_view_prescription</name>
+                <block>profile/adminhtml_sales_order_view_tab_prescription</block>
+            </action>
+        </reference>
+    </adminhtml_sales_order_view>
 </layout>

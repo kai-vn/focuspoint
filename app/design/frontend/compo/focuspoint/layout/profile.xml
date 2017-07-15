@@ -2,15 +2,10 @@
 <layout version="0.1.0">
     <default>
     </default>
-    <profile_index_index>
-        <reference name="content">
-            <block type="profile/profile" name="profile_options" template="profile/option.phtml"/>
-        </reference>
-    </profile_index_index>
     <catalog_product_view>
         <reference name="head">
             <action method="addCss">
-                <stylesheet>profile/profile.css</stylesheet>
+                <stylesheet>profile/profile-alan.css</stylesheet>
             </action>
             <action method="addJs">
                 <script>bigone/profile.js</script>
@@ -23,23 +18,9 @@
             <block type="profile/product_view_customizebutton" name="customize_button" template="profile/customize_button.phtml"/>
         </reference>
     </catalog_product_view>
-<!--    <checkout_cart_index>
-        <reference name="checkout.cart">
-            <action method="addItemRender">
-                <type>simple</type>
-                <block>checkout/cart_item_renderer</block>
-                <template>profile/checkout/cart/item/default.phtml</template>
-            </action>
-            <action method="addItemRender">
-                <type>grouped</type>
-                <block>checkout/cart_item_renderer_grouped</block>
-                <template>profile/checkout/cart/item/default.phtml</template>
-            </action>
-            <action method="addItemRender">
-                <type>configurable</type>
-                <block>checkout/cart_item_renderer_configurable</block>
-                <template>profile/checkout/cart/item/default.phtml</template>
-            </action>
+    <sales_order_view translate="label">
+        <reference name="my.account.wrapper">
+            <block type="profile/sales_order_prescription" after="sales.order.info" name="order_prescription" template="profile/sales/order/prescription.phtml"/>
         </reference>
-    </checkout_cart_index>-->
+    </sales_order_view>
 </layout>

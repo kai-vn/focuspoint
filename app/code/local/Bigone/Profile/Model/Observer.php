@@ -17,7 +17,7 @@ class Bigone_Profile_Model_Observer {
     public function createBlockQuestionProfile($observer) {
         $block = $observer->getEvent()->getBlock();
         $transport = $observer->getEvent()->getTransport();
-        $html = $transport->getHtml();
+        $html = $transport->getHtml(); 
         if ($block instanceof Mage_Catalog_Block_Product_View_Tabs) {
             $html .= Mage::app()->getLayout()->createBlock('profile/option')->toHtml();
         }
@@ -29,10 +29,9 @@ class Bigone_Profile_Model_Observer {
         $item = $obs->getQuoteItem();
         $infoBuyRequest = unserialize($item->getOptionByCode('info_buyRequest')->getValue());
         if (!empty($infoBuyRequest['profile'])) {
+            $additionalOptions = array();
             $profileData = serialize($infoBuyRequest['profile']);
             $item->setData('bigone_profile_data', $profileData);
-            $productId = $item->getProductId();
-            $item->addOption(unserialize($item->getBigoneProfileData()));
             $item->getProduct()->setIsSuperMode(true);
         }
     }

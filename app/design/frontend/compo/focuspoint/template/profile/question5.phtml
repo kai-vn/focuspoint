@@ -1,5 +1,21 @@
-<?php ?>
-
+<style>
+    .table-order {
+        width: 100%;
+        border: 1px solid #dddddd;
+    }
+    .table-order tr {
+        height : 50px;
+    }
+    .table-order td,th {
+        border: 1px solid #dddddd;
+        text-align: center;
+    }
+    .table-order th {
+        font-weight: bold;
+    }
+</style>
+<?php $orders = $this->getOrders(); ?>
+<?php $helper = Mage::helper('profile')?>
 <div class="info-container" >
     <div class="title-question"><?php echo $this->__('Q5: Please Enter Your Prescription') ?></div>
     <div class="pres-method-fill">
@@ -11,12 +27,8 @@
     </div>
     <div  class="form-pres" id="form-pres-fill">
         <div class="form-field">
-            <th>
-                <label>Prescription Name :</label>
-            </th>
-            <th>
-                <input type="text" name="profile[p_name]" id="pres-name" placeholder="e.g Jason leon April 2017"/>
-            </th>
+            <label>Prescription Name :</label>
+            <input type="text" name="profile[p_name]" id="p_name" placeholder="e.g Jason leon April 2017"/>
         </div>
         <table class="form-table">
             <tr class="form-field">
@@ -29,81 +41,115 @@
             <tr class="form-field">
                 <td class="th-title" width="20%">Right(OD)</td>
                 <td width="20%">
-                    <select name="profile[p_right_sph]">
-                        <option value="1">Yes</option>
-                        <option value="0">No</option>
+                    <select name="profile[p_right_sph]" id="p_right_sph">
+                        <?php foreach ($this->getOptions(-14, 0.25, 0) as $value): ?>
+                            <option value="<?php echo $value ?>"><?php echo $value ?></option>
+                        <?php endforeach; ?>
+                        <?php echo $this->getOptionText() ?>
+                        <?php foreach ($this->getOptions(0.25, 0.25, 9) as $value): ?>
+                            <option value="<?php echo $value ?>"><?php echo $value ?></option>
+                        <?php endforeach; ?>
                     </select>
                 </td>
                 <td width="20%">
-                    <select name="profile[p_right_cyn]">
-                        <option value="1">Yes</option>
-                        <option value="0">No</option>
+                    <select name="profile[p_right_cyn]" id="p_right_cyn">
+                        <?php foreach ($this->getOptions(-5, 0.25, 0) as $value): ?>
+                            <option value="<?php echo $value ?>"><?php echo $value ?></option>
+                        <?php endforeach; ?>
+                        <?php echo $this->getOptionText() ?>
+                        <?php foreach ($this->getOptions(0.25, 0.25, 5) as $value): ?>
+                            <option value="<?php echo $value ?>"><?php echo $value ?></option>
+                        <?php endforeach; ?>
                     </select>
                 </td>
                 <td width="20%">
-                    <select name="profile[p_right_axi]">
-                        <option value="1">Yes</option>
-                        <option value="0">No</option>
+                    <select name="profile[p_right_axi]" id="p_right_axi">
+                        <option value="" selected="selected">None</option>
+                        <?php foreach ($this->getOptions(1, 1, 180) as $value): ?>
+                            <option value="<?php echo $value ?>"><?php echo $value ?></option>
+                        <?php endforeach; ?>
                     </select>
                 </td>
                 <td width="20%">
-                    <select name="profile[p_right_near]">
-                        <option value="1">Yes</option>
-                        <option value="0">No</option>
+                    <select name="profile[p_right_near]" id="p_right_near">
+                        <option value="" selected="selected">None</option>
+                        <?php foreach ($this->getOptions(0.75, 0.25, 3.5) as $value): ?>
+                            <option value="<?php echo $value ?>"><?php echo $value ?></option>
+                        <?php endforeach; ?>
                     </select>
                 </td>
             </tr>
             <tr class="form-field">
                 <td class="th-title">Left(OS)</td>
                 <td>
-                    <select name="profile[p_left_sph]">
-                        <option value="1">Yes</option>
-                        <option value="0">No</option>
+                    <select name="profile[p_left_sph]" id="p_left_sph">
+                        <?php foreach ($this->getOptions(-14, 0.25, 0) as $value): ?>
+                            <option value="<?php echo $value ?>"><?php echo $value ?></option>
+                        <?php endforeach; ?>
+                        <?php echo $this->getOptionText() ?>
+                        <?php foreach ($this->getOptions(0.25, 0.25, 9) as $value): ?>
+                            <option value="<?php echo $value ?>"><?php echo $value ?></option>
+                        <?php endforeach; ?>
                     </select>
                 </td>
                 <td>
-                    <select name="profile[p_left_cyn]">
-                        <option value="1">Yes</option>
-                        <option value="0">No</option>
+                    <select name="profile[p_left_cyn]" id="p_left_cyn">
+                        <?php foreach ($this->getOptions(-5, 0.25, 0) as $value): ?>
+                            <option value="<?php echo $value ?>"><?php echo $value ?></option>
+                        <?php endforeach; ?>
+                        <?php echo $this->getOptionText() ?>
+                        <?php foreach ($this->getOptions(0.25, 0.25, 5) as $value): ?>
+                            <option value="<?php echo $value ?>"><?php echo $value ?></option>
+                        <?php endforeach; ?>
                     </select>
                 </td>
                 <td>
-                    <select name="profile[p_left_axi]">
-                        <option value="1">Yes</option>
-                        <option value="0">No</option>
+                    <select name="profile[p_left_axi]" id="p_left_axi">
+                        <option value="" selected="selected">None</option>
+                        <?php foreach ($this->getOptions(1, 1, 180) as $value): ?>
+                            <option value="<?php echo $value ?>"><?php echo $value ?></option>
+                        <?php endforeach; ?>
                     </select>
                 </td>
                 <td>
-                    <select name="profile[p_left_near]">
-                        <option value="1">Yes</option>
-                        <option value="0">No</option>
+                    <select name="profile[p_left_near]" id="p_left_near">
+                        <option value="" selected="selected">None</option>
+                        <?php foreach ($this->getOptions(0.75, 0.25, 3.5) as $value): ?>
+                            <option value="<?php echo $value ?>"><?php echo $value ?></option>
+                        <?php endforeach; ?>
                     </select>
                 </td>
             </tr>
             <tr class="form-field">
                 <td class="th-title">PD</td>
                 <td>
-                    <select name="profile[p_pd_sph]">
-                        <option value="0">None</option>
+                    <select name="profile[p_pd_sph]" id="p_pd_sph">
+                        <option value="" selected="selected">None</option>
                         <?php foreach ($this->getOptions(25.5, 0.5, 40) as $value): ?>
                             <option value="<?php echo $value ?>"><?php echo $value ?></option>
                         <?php endforeach; ?>
                     </select>
                 </td>
                 <td>
-                    <select name="profile[p_pd_cyn]">
-                        <option value="0">None</option>
+                    <select name="profile[p_pd_cyn]" id="p_pd_cyn" style="display: none;">
+                        <option value="" selected="selected">None</option>
                         <?php foreach ($this->getOptions(25.5, 0.5, 40) as $value): ?>
                             <option value="<?php echo $value ?>"><?php echo $value ?></option>
                         <?php endforeach; ?>
                     </select>
+                </td>
+                <td>
+                    <div>
+                        <input type="checkbox" id="pd_check" />
+                        <label><?php echo $this->__('I have 2 numbers')?></label>
+                    </div>
                 </td>
             </tr>
             <tr class="form-field">
                 <td class="th-title">Near PD</td>
                 <td>
-                    <select name="profile[p_near_sph]">
-                        <option value="0">None</option>
+                    <select name="profile[p_near_sph]" id="p_near_sph">
+                        <option value="" selected="selected">None</option>
                         <?php foreach ($this->getOptions(40, 0.5, 70) as $value): ?>
                             <option value="<?php echo $value ?>"><?php echo $value ?></option>
                         <?php endforeach; ?>
@@ -113,39 +159,120 @@
         </table>
         <div class="form-field">
             <label>Additional Remarks</label>
-            <textarea rows="4" cols="100" name="profile[remark]"></textarea>
+            <textarea rows="4" cols="100" name="profile[remark]" id="remark"></textarea>
         </div>
     </div>
     <div class="form-pres" id="form-pres-upload">
+        <input type="hidden"/>
         <div class="form-content">
             <div class="form-upload-method">Send Prescription Via Mail</div>
             <div class="form-upload-method">
-                <input class="input-text required-entry" type="file"  id="profile_upload" name="profile_upload" />
+                <input type="hidden" name="profile[upload_file]" id="profile_upload_file"/>
+                <input class="input-text required-entry" type="file"  id="profile_upload"/>
             </div>
         </div>
     </div>
     <div class="form-pres" id="form-pres-saved">
         <div class="form-content">
-
+        <?php if (count($orders)) : ?>
+            <table class="table-order">
+                <colgroup span="4"></colgroup>
+                <tr>
+                    <th></th>
+                    <th>Order#</th>
+                    <th>Date</th>
+                    <th></th>
+                </tr>
+                <?php foreach ($orders as $_order) : ?>
+                    <tr>
+                        <td><input type="radio" name="p_order" value="<?php echo $_order->getId() ?>" /></td>
+                        <td><?php echo $_order->getIncrementId() ?></td>
+                        <td><?php echo $_order->getCreatedAt() ?></td>
+                        <td><a href="<?php echo $this->getViewUrl($_order) ?>"><?php echo $this->__('View Order') ?></a></td>
+                    </tr>
+                <?php endforeach; ?>
+            </table>
+        <?php else : ?>
+            <div><p style="font-size: 20px;padding: 10px"><?php echo $this->__('You don\'t have any complete orders.')?></p></div>
+        <?php endif;?>
         </div>
     </div>
+    <input type="hidden" name="profile[method]" id="pres_method"/>
 </div>
 
 <script>
     var $j = jQuery.noConflict();
+    function assignSavedData(dataPres) {
+        console.log('assignSavedData');
+        if ($j('#p_right_sph'))
+            $j('#p_right_sph').val(dataPres.p_right_sph);
+        if ($j('#p_right_cyn'))
+            $j('#p_right_cyn').val(dataPres.p_right_cyn);
+        if ($j('#p_right_axi'))
+            $j('#p_right_axi').val(dataPres.p_right_axi);
+        if ($j('#p_right_near'))
+            $j('#p_right_near').val(dataPres.p_right_near);
+        if ($j('#p_left_sph'))
+            $j('#p_left_sph').val(dataPres.p_right_sph);
+        if ($j('#p_left_cyn'))
+            $j('#p_left_cyn').val(dataPres.p_left_cyn);
+        if ($j('#p_left_axi'))
+            $j('#p_left_axi').val(dataPres.p_left_axi);
+        if ($j('#p_left_near'))
+            $j('#p_left_near').val(dataPres.p_left_near);
+        if ($j('#p_pd_sph'))
+            $j('#p_pd_sph').val(dataPres.p_pd_sph);
+        if ($j('#p_pd_cyn'))
+            $j('#p_pd_cyn').val(dataPres.p_pd_cyn);
+        if ($j('#p_near_sph'))
+            $j('#p_near_sph').val(dataPres.p_near_sph);
+        if ($j('#remark'))
+            $j('#remark').val(dataPres.remark);
+        if ($j('#pres_method').length) $j('#pres_method').val(dataPres.method);
+        if ($j('#profile_upload_file').length) $j('#profile_upload_file').val(dataPres.upload_file);
+    }
+    function resetFormPres() {
+        if ($j('#p_right_sph'))
+            $j('#p_right_sph').val('');
+        if ($j('#p_right_cyn'))
+            $j('#p_right_cyn').val('');
+        if ($j('#p_right_axi'))
+            $j('#p_right_axi').val('');
+        if ($j('#p_right_near'))
+            $j('#p_right_near').val('');
+        if ($j('#p_left_sph'))
+            $j('#p_left_sph').val('');
+        if ($j('#p_left_cyn'))
+            $j('#p_left_cyn').val('');
+        if ($j('#p_left_axi'))
+            $j('#p_left_axi').val('');
+        if ($j('#p_left_near'))
+            $j('#p_left_near').val('');
+        if ($j('#p_pd_sph'))
+            $j('#p_pd_sph').val('');
+        if ($j('#p_pd_cyn'))
+            $j('#p_pd_cyn').val('');
+        if ($j('#p_near_sph'))
+            $j('#p_near_sph').val('');
+        if ($j('#remark'))
+            $j('#remark').val('');
+    }
     $j(document).ready(function () {
-       
         $j('.method-fill').click(function () {
             $j('.method-fill').css('border', 'none');
             $j(this).css('border', '3px solid #cc1454');
             $j('.form-pres').hide();
             var methodId = $j(this).attr('data-id');
+            if ($j('#pres_method'))
+                $j('#pres_method').val(methodId);
             switch (methodId) {
                 case '1' :
                     $j('#form-pres-fill').show();
+//                    resetFormPres();
                     break;
                 case '2' :
                     $j('#form-pres-upload').show();
+                    resetFormPres();
                     break;
                 case '3' :
                     $j('#form-pres-saved').show();
@@ -155,21 +282,52 @@
             }
         });
         $j('#profile_upload').change(function () {
-            var file_data = $j('#profile_upload').prop('files')[0];
+            var file_data = $j(this).prop('files')[0];
             var form_data = new FormData();
             form_data.append('file', file_data);
             $j.ajax({
-                url: '<?php echo Mage::getUrl('profile/ajax/upload')?>',
+                url: '<?php echo Mage::getUrl('profile/ajax/upload') ?>',
                 dataType: 'text',
                 cache: false,
                 contentType: false,
                 processData: false,
                 data: form_data,
-                type: 'post',
+                method: 'post',
                 success: function () {
-                    console.log('ok');
+                    $j('#profile_upload_file').val(file_data.name);
                 }
             });
+        });
+        $radios = $j("input:radio[name=p_order]");
+        if ($radios) {
+            var url = '<?php echo $this->getAjaxUrlOrder() ?>';
+            $radios.change(function () {
+                var order = $j(this).val();
+                new Ajax.Request(
+                        url,
+                        {
+                            parameters: {
+                                order: order
+                            },
+                            method: 'POST',
+                            onSuccess: function (transport) {
+                                var data = transport.responseJSON;
+                                console.log(data);
+                                assignSavedData(data);
+                            }
+                        }
+                );
+            });
+        }
+        $j('#pd_check').change(function() {
+            if ($j('#p_pd_cyn').length) {
+                if(this.checked) {
+                    $j('#p_pd_cyn').show();
+                } else { 
+                    $j('#p_pd_cyn').hide();
+                    $j('#p_pd_cyn').val('');
+                }
+            }
         });
     });
 </script>

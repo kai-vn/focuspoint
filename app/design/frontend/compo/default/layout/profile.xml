@@ -7,9 +7,4 @@
             <block type="profile/profile" name="profile_options" template="profile/option.phtml"/>
         </referece>
     </profile_index_index>
-<!--    <catalog_product_view>
-        <reference name="product.info.options.wrapper">
-            <block type="profile/profile" name="profile_options" template="profile/option.phtml"/>
-        </reference>
-    </catalog_product_view>-->
 </layout> 

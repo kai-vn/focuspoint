@@ -242,4 +242,8 @@ class Bigone_Profile_Adminhtml_BrandController extends Mage_Adminhtml_Controller
         $this->getResponse()->setBody($body);
     }
 
+    public function editPresAction() {
+        Zend_debug::dump('asdasd');die();
+    }
+
 }

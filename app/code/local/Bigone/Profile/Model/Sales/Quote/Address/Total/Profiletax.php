@@ -32,16 +32,13 @@ class Bigone_Profile_Model_Sales_Quote_Address_Total_Profiletax extends Mage_Sal
 
     public function fetch(Mage_Sales_Model_Quote_Address $address) {
         $amt = $address->getProfileTaxAmount();
-        if ($address->getChargesAmount() != 0) {
+        if ($amt != 0) {
             $address->addTotal(array(
                 'code' => $this->getCode(),
                 'title' => $this->_label,
                 'value' => $amt
             ));
         }
-
-
-
         return $this;
     }
 

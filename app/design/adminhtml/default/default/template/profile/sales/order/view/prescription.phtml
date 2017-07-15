@@ -1,0 +1,155 @@
+<?php
+$profileData = $this->getProfiledData();
+$path = Mage::getBaseUrl('media') . 'profile/';
+$helper = Mage::helper('profile');
+?>
+<?php if (!empty($profileData)) : ?>
+    <div class="grid">
+        <div class="hor-scroll">
+            <table cellspacing="0" class="data" id="order_prescription_table">
+                <colgroup>
+                    <col>
+                    <col>
+                    <col>
+                    <col>
+                    <col>
+                    <col>
+                </colgroup>
+                <thead>
+                    <tr class="headings">
+                        <th><span class="profile-title">Item</span></th>
+                        <th><span class="profile-title">Brand</span></th>
+                        <th><span class="profile-title">Glass</span></th>
+                        <th><span class="profile-title">Lens</span></th>
+                        <th><span class="profile-title">Coating Add On</span></th>
+                        <th><span class="profile-title">Prescription Detail</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+    <!--                <tr class="even">
+                        <td class="empty-text a-center" colspan="8">No records found.</td>
+                    </tr>-->
+                    <?php foreach ($profileData as $key => $itemData): ?>
+                        <?php $logo = (!empty($itemData['brand'])) ? $helper->getLogoBrandById($itemData['brand']) : '' ?>
+                        <?php $glassData = (!empty($itemData['glass'])) ? $helper->getDataGlassById($itemData['glass']) : array(); ?>
+                        <?php $lensData = (!empty($itemData['lens'])) ? $helper->getDataLensById($itemData['lens']) : array(); ?>
+                        <?php $coatingData = (!empty($itemData['coating'])) ? $helper->getDataCoatingById($itemData['coating']) : array(); ?>
+                        <tr class="profile-prescription">
+                            <td class="item-name"><?php echo Mage::getModel('sales/order_item')->load($key)->getName() ?></td>
+                            <td class="profile-logo">
+                                <img src="<?php echo $logo; ?>"
+                                     height="100px" width="150px"
+                                     />
+                            </td>
+                            <td class="profile-option">
+                                <p>
+                                    <?php if (!empty($glassData)): ?>
+                                        <?php echo $glassData['title'] . '<br>' ?>
+                                        <?php echo $glassData['subtitle'] . '<br>' ?>
+                                        <?php echo 'RM' . $glassData['price'] ?>
+                                    <?php endif; ?>
+                                </p>
+                            </td>
+                            <td class="profile-option">
+                                <p>
+                                    <?php if (!empty($lensData)): ?>
+                                        <?php echo $lensData['title'] . '<br>' ?>
+                                        <?php echo $lensData['subtitle'] . '<br>' ?>
+                                        <?php echo 'RM' . $lensData['price'] ?>
+                                    <?php endif; ?>
+                                </p>
+                            </td>
+                            <td class="profile-option">
+                                <p>
+                                    <?php if (!empty($coatingData)): ?>
+                                        <?php echo $coatingData['title'] . '<br>' ?>
+                                        <?php echo $coatingData['subtitle'] . '<br>' ?>
+                                        <?php echo 'RM' . $coatingData['price'] ?>
+                                    <?php endif; ?>
+                                </p>
+                            </td>
+                            <td>   
+                            <?php if (!empty($itemData['method'])) :?>
+                                <p class="profile pres-method"><?php echo $helper->getMethodPresTitle($itemData['method']) ?></p>
+                                <?php if ($itemData['method'] == '1' || $itemData['method'] == '3') : ?>
+                                    <div class="profile-pres">
+                                        <dl>
+                                            <dt class="pres-field">Prescription : <?php echo $itemData['p_name'] ?></dt>
+                                            <dt class="pres-field">Right</dt> 
+                                            <dd>Sphere : <?php echo $itemData['p_right_sph'] ?: 'None' ?></dd>
+                                            <dd>Cylinder : <?php echo $itemData['p_right_cyn'] ?: 'None' ?></dd>
+                                            <dd>Axis : <?php echo $itemData['p_right_axi'] ?: 'None' ?></dd>
+                                            <dt class="pres-field">Left</dt>
+                                            <dd>Sphere : <?php echo $itemData['p_left_sph'] ?: 'None' ?></dd>
+                                            <dd>Cylinder : <?php echo $itemData['p_left_cyn'] ?: 'None' ?></dd>
+                                            <dd>Axis : <?php echo $itemData['p_left_axi'] ?: 'None' ?></dd>
+                                            <dt class="pres-field">PD</dt>
+                                            <dd>Sphere : <?php echo $itemData['p_pd_sph'] ?: 'None' ?></dd>
+                                            <dd>Cylinder : <?php echo $itemData['p_pd_cyn'] ?: 'None' ?></dd>
+                                            <dt class="pres-field">Near PD</dt>
+                                            <dd>Sphere : <?php echo $itemData['p_pd_sph'] ?: 'None' ?></dd>
+                                            <dt class="pres-field">Additional Remarks</dt>
+                                            <dd><?php echo $itemData['remark'] ?></dd>
+                                        </dl>
+                                    </div>
+                                <?php endif; ?>
+                                <?php if ($itemData['method'] == '2') : ?>
+                                    <div class="profile-upload">
+                                        <?php if (!empty($itemData['upload_file'])) : ?>
+                                            <img id="profile_upload" src="<?php echo $path . $itemData['upload_file'] ?>" width="150px" height="150px"/>
+                                            <button type="button" id="button_edit" onclick="editUpload()"><?php echo $this->__('Edit') ?></button>
+                                            <div id="profil_popup" style="display: none">
+                                                <input type="file" id="profile_edit" name="profile_edit"/>
+                                            </div>
+                                        <?php endif; ?>
+                                    </div>
+                                    <script type="text/javascript">
+                                        var form_upload = $('profil_popup');
+                                        var button_edit = $('button_edit');
+                                        var itemId = '<?php echo $key?>';
+                                        var url = "<?php echo Mage::getUrl('profile/ajax/editOrder');?>";
+                                        function editUpload() {
+                                            console.log('edit');
+                                            if (form_upload.visible()) {
+                                                form_upload.hide();
+                                            } else {
+                                                form_upload.show();
+                                            }
+                                        }
+                                        function uploadFile(file) {
+                                            var xhr = new XMLHttpRequest();
+                                            var fd = new FormData();
+                                            xhr.open("POST", url, true);
+                                            xhr.onreadystatechange = function () {
+                                                if (xhr.readyState == 4 && xhr.status == 200) {
+                                                    var data = JSON.parse(xhr.responseText);
+                                                    if (data.status) {
+                                                        var upload = file['name'];
+                                                        var path = '<?php echo $path ?>';
+                                                        $('profile_upload').src = path.concat(upload);
+                                                        $('profil_popup').hide();
+                                                    }
+                                                }
+                                            };
+                                            fd.append("file", file);
+                                            fd.append("itemId",itemId);
+                                            xhr.send(fd);
+                                        }
+                                        $(document).observe('dom:loaded', function(){
+                                            Event.observe('profile_edit', 'change', function() {
+                                                var file = this.files[0];
+                                                uploadFile(file);
+                                            });
+                                        });
+                                        
+                                    </script>
+                                <?php endif; ?>
+                            </td>
+                            <?php endif; ?>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+<?php endif; ?>

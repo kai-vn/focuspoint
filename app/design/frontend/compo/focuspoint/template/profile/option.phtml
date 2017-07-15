@@ -1,12 +1,14 @@
 <?php
-$productId = $this->getProductId();
+$productId = $this->getProduct()->getId();
+$helper = Mage::helper('profile');
 $brands = $this->getBrandData($productId);
 ?>
 <?php if (Mage::getSingleton('customer/session')->isLoggedIn()): ?>
     <?php if ($brands): ?>
-        <div id="question-container" style="display:none">
+        <div id="question-container" style="display: none;">
             <div class="brand-container">
                 <input type="hidden" name="profile[brand]" id="profile-brand">
+                <input type="hidden" name="profile[profile_cost]" id="profile_cost">
                 <div class="title-question"><?php echo $this->__('Q1: Please Choose Brand') ?></div>
                 <div class="item-list">
                     <?php if (count($brands)) : ?>
@@ -25,19 +27,34 @@ $brands = $this->getBrandData($productId);
             </div>
             <div id="profile-container"></div>
             <div id="pres-container" style="display:none"><?php echo $this->getChildHtml('question5') ?></div>
-            <button type="button" class="btn btn-primary type-2" 
-                    id="bigone-addtocart-btn" title="<?php echo $this->getButtonAddCartTitle()?>"
-                    style="margin: 20px"><?php echo $this->getButtonAddCartTitle()?></button>
+            <div id="bigone-custom-addcartbox" style="margin-left: 30px; display:none;">
+                <div class="quantity-wrapper clearfix">
+                    <label for="qty"><?php echo $this->__('Qty:') ?></label>
+                    <input readonly type="text" name="profile[qty]" id="qty_custom" maxlength="12" value="1" 
+                           title="<?php echo Mage::helper('core')->quoteEscape($this->__('Qty')); ?>" class="form-control qty" />
+                </div>
+                <button type="button" class="btn btn-primary type-2" 
+                        id="bigone-addtocart-btn" title="<?php echo $this->getButtonAddCartTitle() ?>"
+                        ><?php echo $this->getButtonAddCartTitle() ?></button>
+                <p class="profile-price-box">Profile Charge: RM<span id="profile-charge">0.00</span></p>
+            </div>
         </div>
     <?php endif; ?>
 <?php endif; ?>
-<script>
+<script type="text/javascript">
     var $j = jQuery.noConflict();
+    var qty_el_cus = document.getElementById('qty_custom');
+    var qty_el = document.getElementById('qty');
+
     $j(document).ready(function () {
         $j('.item-brand').click(function () {
+            if ($j('#profile_cost')) $j('#profile_cost').val('0.00');
+            if ($j('#pres-container')) $j('#pres-container').hide();
+            if ($j('#bigone-custom-addcartbox')) $j('#bigone-custom-addcartbox').hide();
+            
             $j('.item-brand').css('border', 'none');
             $j(this).css('border', '3px solid #cc1454');
-            var brandId = $j(this).attr('data-id');
+            var brandId = $j(this).attr('data-id');console.log();
             $j('#profile-brand').val(brandId);
             var post_url = '<?php echo Mage::helper('profile')->getAjaxUrlBrand() ?>';
             new Ajax.Request(
@@ -55,7 +72,13 @@ $brands = $this->getBrandData($productId);
                             var data = transport.responseJSON;
                             $j('#profile-container').html(data.html);
                             if ($j('#glass-container')) {
-                                $j('#glass-container').show();
+                                var hash = '#glass-container';
+                                $j('#glass-container').fadeIn();
+                                $j('html, body').animate({
+                                    scrollTop: $j(hash).offset().top
+                                }, 800, function(){
+                                window.location.hash = hash;
+        });
                             }
                         }
                     }

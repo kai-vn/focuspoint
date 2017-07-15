@@ -1,6 +1,5 @@
 <?php
 $helper = Mage::helper('profile');
-$productId = $this->getProductId();
 $brandId = $this->getBrand();
 $data = $helper->getDataByBrand($brandId);
 ?>
@@ -14,12 +13,13 @@ $data = $helper->getDataByBrand($brandId);
             foreach ($data['glass'] as $glass) :
                 $glassId = $glass['glasses_id'];
                 ?>
-                <div class="item-profile item-glass"  id="item-glass-<?php echo $glassId ?>" onclick="changeGlass('<?php echo $glassId ?>')" >
+                <div class="item-profile item-glass" id="item-glass-<?php echo $glassId ?>" onclick="changeGlass('<?php echo $glassId ?>')" >
                     <div class="item-info " data-id="<?php echo $glassId ?>">
-                        <div class="item-title">
-                            <div><?php echo $glass['title'] ?></div>
+                        <div class="item-title" >
+                            <div class="item-main-title" ><span style="display: inline-block;"><?php echo $glass['title'] ?>
+                                <span class="item-tooltip" data-tooltip="<?php echo $glass['tooltip'] ?>">?</span></span>
+                            </div>
                             <div><?php echo $glass['subtitle'] ?></div>
-                            <div class="item-tooltip" style="display:none"><?php echo $glass['tooltip'] ?></div>
                         </div>
                         <div class="item-description"><?php echo $glass['description'] ?></div>
                         <div class="item-price"><?php echo ((int) $glass['price'] != 0) ? '+RM' . $glass['price'] : 'Free' ?></div>
@@ -41,8 +41,10 @@ $data = $helper->getDataByBrand($brandId);
                 ?>
                 <div class="item-profile item-len" id="item-len-<?php echo $lenId ?>" onclick="changeLen('<?php echo $lenId ?>')"  >
                     <div class="item-info " data-id="<?php echo $lenId ?>" >
-                        <div class="item-title">
-                            <div><?php echo $len['title'] ?></div>
+                        <div class="item-title" >
+                            <div class="item-main-title" ><span style="display: inline-block;"><?php echo $len['title'] ?>
+                                <span class="item-tooltip" data-tooltip="<?php echo $len['tooltip'] ?>">?</span></span>
+                            </div>
                             <div><?php echo $len['subtitle'] ?></div>
                         </div>
                         <div class="item-description"><?php echo $len['description'] ?></div>
@@ -65,8 +67,11 @@ $data = $helper->getDataByBrand($brandId);
                 ?>
                 <div class="item-profile item-coating" id="item-coating-<?php echo $coatingId ?>" onclick="changeCoating('<?php echo $coatingId ?>')">
                     <div class="item-info " data-id="<?php echo $coatingId ?>" >
-                        <div class="item-title">
-                            <div><?php echo $coating['title'] ?></div>
+                        <div class="item-title" >
+                            <div class="item-main-title" >
+                                <span style="display: inline-block;"><?php echo $coating['title'] ?><span class="item-tooltip" data-tooltip="<?php echo $coating['tooltip'] ?>">?</span></span>
+                        
+                            </div>
                             <div><?php echo $coating['subtitle'] ?></div>
                         </div>
                         <div class="item-description"><?php echo $coating['description'] ?></div>
@@ -77,30 +82,45 @@ $data = $helper->getDataByBrand($brandId);
         </div>
     </div>
 <?php endif; ?>
-<div><input type="hidden" name="profile[profile_cost]" id="profile_cost"></div>
 <script type="text/javascript">
     // change glasses
     var data = <?php echo json_encode($data) ?>;
-    var glass_price =0;
+    var glass_price = 0;
     var lens_price = 0;
     var coating_price = 0;
     var profile_cost = 0;
-    
+    var profile_cost_el = $j('#profile_cost');
+    function scrollOption(hash) {
+        $j('html, body').animate({
+            scrollTop: $j(hash).offset().top
+        }, 800, function(){
+        window.location.hash = hash;
+        });
+    }
+    var hash;
     function changeGlass(glassId) {
         $j('#profile-glass').val(glassId);
         profile_cost -= glass_price;
         glass_price = 0;
         glass_price = parseFloat(data.glass[glassId].price);
         profile_cost += glass_price;
-        $j('#profile_cost').val(profile_cost);
+        profile_cost_el.val(profile_cost);
+        $j('#profile-charge').html(profile_cost.toFixed(2));
         $j('#glass_price').val(glass_price)
-        if ($j('#lens-container')) {
-            $j('#lens-container').show();
+        if ($j('#lens-container').length) {
+            $j('#lens-container').fadeIn();
+            hash = '#lens-container';
+        } else if ($j('#coating-container').length) {    
+            $j('#coating-container').fadeIn();
+            hash = '#coating-container';
         } else {
-            if ($j('#coating-container')) {
-                $j('#lens-container').show();
+            $j('#pres-container').fadeIn();
+            if ($j('#bigone-custom-addcartbox').length) {
+                $j('#bigone-custom-addcartbox').fadeIn();
             }
+            hash = '#pres-container';
         }
+        scrollOption(hash);
         $j('.item-glass').css('border', 'none');
         $j('#item-glass-' + glassId).css('border', '3px solid #cc1454');
     }
@@ -111,10 +131,21 @@ $data = $helper->getDataByBrand($brandId);
         lens_price = parseFloat(data.lens[lenId].price);
         profile_cost += lens_price;
         $j('#lens_price').val(lens_price);
-        $j('#profile_cost').val(profile_cost);
-        if ($j('#coating-container')) {
-            $j('#coating-container').show();
+        profile_cost_el.val(profile_cost);
+        $j('#profile-charge').html(profile_cost.toFixed(2));
+        if ($j('#coating-container').length) {
+            $j('#coating-container').fadeIn();
+            hash = '#coating-container';
+        } else {
+            if ($j('#pres-container').length) {
+                $j('#pres-container').fadeIn();
+            }
+            if ($j('#bigone-custom-addcartbox').length) {
+                $j('#bigone-custom-addcartbox').fadeIn();
+            }
+            hash = '#pres-container';
         }
+        scrollOption(hash);
         $j('.item-len').css('border', 'none');
         $j('#item-len-' + lenId).css('border', '3px solid #cc1454');
     }
@@ -125,11 +156,17 @@ $data = $helper->getDataByBrand($brandId);
         coating_price = parseFloat(data.coating[coatingId].price);
         profile_cost += coating_price;
         $j('#coating_price').val(coating_price);
-        $j('#profile_cost').val(profile_cost);
-        if ($j('#pres-container')) {
-            $j('#pres-container').show();
+        profile_cost_el.val(profile_cost);
+        $j('#profile-charge').html(profile_cost.toFixed(2));
+        if ($j('#pres-container').length) {
+            $j('#pres-container').fadeIn();
+        }
+        if ($j('#bigone-custom-addcartbox').length) {
+            $j('#bigone-custom-addcartbox').fadeIn();
         }
         $j('.item-coating').css('border', 'none');
         $j('#item-coating-' + coatingId).css('border', '3px solid #cc1454');
+        var hash = '#pres-container'
+        scrollOption(hash);
     }
 </script>

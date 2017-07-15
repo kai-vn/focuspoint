@@ -34,21 +34,21 @@ class Bigone_Profile_Helper_Data extends Mage_Core_Helper_Abstract {
         $maxId = max($this->getCoatingIds()) ?: 0;
         return $maxId;
     }
-    
+
     public function getLoginUrl() {
         return Mage::getUrl('customer/account/login');
     }
-    
+
     public function getAjaxUrlBrand() {
         return Mage::getUrl('profile/ajax/index');
     }
-    
+
     public function getAjaxUrlPres() {
         return Mage::getUrl('profile/ajax/changePres');
     }
-    
+
     public function getDataByBrand($brandId) {
-        
+
         $data = array();
         $glasses = Mage::getModel('profile/glasses')->getCollection()
                 ->addFieldToFilter('brand', $brandId);
@@ -67,4 +67,106 @@ class Bigone_Profile_Helper_Data extends Mage_Core_Helper_Abstract {
         }
         return $data;
     }
+
+    public function isCustomerLoggedIn() {
+        return Mage::getSingleton('customer/session')->isLoggedIn();
+    }
+
+    public function getSavedPrescription($orderId) {
+        $_order = Mage::getModel('sales/order')->load($orderId);
+        $data = array();
+        $items = array();
+        foreach ($_order->getAllVisibleItems() as $item) {
+            if ($item->getBigoneProfileData()) {
+                $items[] = $item->getId();
+            }
+        }
+        if (!empty($items)) {
+            $id = max($items);
+            $data = unserialize(Mage::getModel('sales/order_item')->load($id)->getBigoneProfileData());
+        }
+        return $data;
+    }
+
+    public function getLogoBrandById($id = null) {
+        $logo = '';
+        if ($id) {
+            $brand = Mage::getModel('profile/brand')->load($id);
+            if ($brand->getId()) {
+                $logo = $brand->getLogo();
+            }
+        }
+        return $logo;
+    }
+
+    public function getDataGlassById($glass_id = null) {
+        $data = array();
+        if ($glass_id) {
+            $glass = Mage::getModel('profile/glasses')->load($glass_id);
+            if ($glass->getId()) {
+                $data = array(
+                    'title' => $glass->getTitle(),
+                    'subtitle' => $glass->getSubtitle(),
+                    'price' => $this->_convertPrice($glass->getPrice())
+                );
+            }
+        }
+        return $data;
+    }
+
+    public function getDataLensById($len_id = null) {
+        $data = array();
+        if ($len_id) {
+            $lens = Mage::getModel('profile/lens')->load($len_id);
+            if ($lens->getId()) {
+                $data = array(
+                    'title' => $lens->getTitle(),
+                    'subtitle' => $lens->getSubtitle(),
+                    'price' => $this->_convertPrice($lens->getPrice())
+                );
+            }
+        }
+        return $data;
+    }
+
+    public function getDataCoatingById($coating_id = null) {
+        $data = array();
+        if ($coating_id) {
+            $coating = Mage::getModel('profile/coating')->load($coating_id);
+            if ($coating->getId()) {
+                $data = array(
+                    'title' => $coating->getTitle(),
+                    'subtitle' => $coating->getSubtitle(),
+                    'price' => $this->_convertPrice($coating->getPrice())
+                );
+            }
+        }
+        return $data;
+    }
+    
+    protected function _convertPrice($str) {
+        $price = (!empty($str) && floatval($str) != 0) ? $str : 'Free';
+        return $price;
+    }
+    
+    public function getMethodPresTitle($id) {
+        $title = '';
+        switch ($id) {
+            case '1':
+                $title = 'Fill it out online';
+                break;
+            case '2':
+                $title = 'Send later';
+                break;
+            case '3':
+                $title = 'Use my saved prescription';
+                break;
+        }
+        return $title;
+    }
+
+    public function getUrlEditOrder() {
+        return Mage::getUrl('profile/ajax/editOrder');
+    }
+
 }

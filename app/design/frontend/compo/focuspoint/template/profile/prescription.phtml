@@ -1,4 +1,4 @@
-<?php $helper = Mage::helper('profile'); ?>
+<?php if ($this->checkHasBrand()) : ?>
 <div class="profile-container">
     <div class="profile-prescription">
         <div class="question">
@@ -6,54 +6,37 @@
             <input type="radio" name="q-0" value="1" <?php if (Mage::getSingleton('customer/session')->getQuestion() == '1') echo 'checked'; ?>> Prescription<br>
             <input type="radio" name="q-0" value="0" <?php if (Mage::getSingleton('customer/session')->getQuestion() == '0') echo 'checked' ?>> Non-Prescription
         </div>
-        <div class="profile-login" style="display:none">
-            <?php if (!Mage::getSingleton('customer/session')->isLoggedIn()): ?>
-                <p>Please <span ><a href="<?php echo Mage::helper('profile')->getLoginUrl(); ?>" class="various">Login</a></span> to choose your profile !</p>
-            <?php endif; ?>
-        </div>
     </div>
 </div>
 <script type="text/javascript">
     var $j = jQuery.noConflict();
     $j(document).ready(function () {
-        var session_q = (Boolean)(<?php echo Mage::getSingleton('customer/session')->getQuestion() ?>);
-        var is_login = (Boolean)(<?php echo Mage::getSingleton('customer/session')->isLoggedIn() ?>);
-        console.log(session_q);
-        console.log(is_login);
-        var btn_show_pres = $j('#bigone-show-prescription-button');
         var btn_add_to_cart = $j('#product-addtocart-button');
-        if (is_login && session_q) {
-//            btn_add_to_cart.hide();
-            btn_show_pres.show();
-        } else {
-            btn_add_to_cart.show();
-            btn_show_pres.hide();
-        }
-        if (session_q && $j('#question-container')) {
-            $j('.profile-login').show();
-        }
+        var qty_box = $j('.quantity-wrapper');
+        var qty_el = $j('#qty');
+        var custom_box = $j('#profile-pres-custom');
+
         $radios = $j("input:radio[name=q-0]");
         if ($radios) {
             var url = '<?php echo Mage::helper('profile')->getAjaxUrlPres() ?>';
             $radios.change(function () {
                 var pres = $j(this).val();
                 if (pres == '1') {
-                    if (btn_show_pres)
-                        btn_show_pres.show();
-                    $j('.profile-login').show();
-                    if (is_login)
-                        btn_add_to_cart.hide();
+                    if (custom_box) custom_box.show();
+                    if (qty_box) qty_box.hide();
+                    if (btn_add_to_cart) btn_add_to_cart.hide();
+                    if (qty_el.length) qty_el.val(1); 
                 } else {
-                    if (btn_show_pres) btn_show_pres.hide();
+                    if (custom_box) custom_box.hide();
+                    if (qty_box) qty_box.show();
                     if (btn_add_to_cart) btn_add_to_cart.show();
-                    $j('.profile-login').hide();
                     if ($j('#question-container')) $j('#question-container').hide();
                 }
                 new Ajax.Request(
                         url,
                         {
                             parameters: {
-                                pres: pres,
+                                pres: pres
                             },
                             method: 'GET',
                             onSuccess: function (transport) {
@@ -67,3 +50,4 @@
         }
     });
 </script>
+<?php endif;?>

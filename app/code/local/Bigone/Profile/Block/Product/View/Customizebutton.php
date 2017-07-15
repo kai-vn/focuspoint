@@ -1,6 +1,6 @@
 <?php
 
-class Bigone_Profile_Block_Product_View_Customizebutton extends Mage_Core_Block_Template
+class Bigone_Profile_Block_Product_View_Customizebutton extends Bigone_Profile_Block_Profile
 {
     public function getButtonTitle()
     {

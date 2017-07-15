@@ -1,5 +1,5 @@
 <?php
-class Bigone_Profile_Block_Brand extends Mage_Core_Block_Template
+class Bigone_Profile_Block_Brand extends Mage_Catalog_Block_Product_Abstract
 {
 	public function _prepareLayout()
     {

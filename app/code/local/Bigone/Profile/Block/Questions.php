@@ -1,6 +1,6 @@
 <?php
 
-class Bigone_Profile_Block_Questions extends Mage_Core_Block_Template {
+class Bigone_Profile_Block_Questions extends Mage_Catalog_Block_Product_Abstract {
 
     public function __construct() {
         parent::__construct();

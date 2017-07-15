@@ -1,0 +1,141 @@
+<style>
+    .profile-pres {
+        display: flex;
+    }
+    .profile-pres-box {
+        flex: 1;
+        border-right: 1px solid #dddddd;
+        padding: 10px;
+    }
+</style>
+<?php
+$data = $this->getProfileData();
+$helper = Mage::helper('profile');
+$path = Mage::getBaseUrl('media') . 'profile/';
+?>
+<?php if (!empty($data)) : ?>
+    <?php
+    $logo = (!empty($data['brand'])) ? $helper->getLogoBrandById($data['brand']) : '';
+    $glassData = (!empty($data['glass'])) ? $helper->getDataGlassById($data['glass']) : array();
+    $lensData = (!empty($data['lens'])) ? $helper->getDataLensById($data['lens']) : array();
+    $coatingData = (!empty($data['coating'])) ? $helper->getDataCoatingById($data['coating']) : array();
+    ?>
+    <!-- Prescription info -->
+    <div class="row order-info-box">
+        <div class="col-sm-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2 class="panel-title"><?php echo $this->__('Brand for the lens') ?></h2>
+                </div>
+                <div class="panel-body">
+                    <div>
+                        <img src="<?php echo $logo; ?>"
+                             height="100px" width="150px"
+                             />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2 class="panel-title"><?php echo $this->__('Your Glasses') ?></h2>
+                </div>
+                <div class="panel-body">
+                    <?php if (!empty($glassData)): ?>
+                        <?php echo $glassData['title'] . '<br>' ?>
+                        <?php echo $glassData['subtitle'] . '<br>' ?>
+                        <?php echo 'RM' . $glassData['price'] ?>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row order-info-box">
+        <div class="col-sm-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2 class="panel-title"><?php echo $this->__('Lens Package') ?></h2>
+                </div>
+                <div class="panel-body">
+                    <?php if (!empty($lensData)): ?>
+                        <?php echo $lensData['title'] . '<br>' ?>
+                        <?php echo $lensData['subtitle'] . '<br>' ?>
+                        <?php echo 'RM' . $lensData['price'] ?>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2 class="panel-title"><?php echo $this->__('Coating Add On') ?></h2>
+                </div>
+                <div class="panel-body">
+                    <?php if (!empty($coatingData)): ?>
+                        <?php echo $coatingData['title'] . '<br>' ?>
+                        <?php echo $coatingData['subtitle'] . '<br>' ?>
+                        <?php echo 'RM' . $coatingData['price'] ?>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php if (!empty($data['method'])) : ?>
+        <div class="row order-info-box">
+            <div class="col-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h2 class="panel-title"><?php echo $this->__('Your Prescription : ') ?></h2>
+                    </div>
+                    <div class="panel-body">
+
+                        <?php if ($data['method'] == '1' || $data['method'] == '3') : ?>
+                            <div class="profile-pres">
+                                <div class="profile-pres-box">
+                                    <h4><?php echo $helper->getMethodPresTitle($data['method']) ?></h4>
+                                    Prescription : <?php echo $data['p_name'] ?>
+                                </div>
+                                <div class="profile-pres-box">
+                                    <dl>
+                                        <dt class="pres-field">Right</dt> 
+                                        <dd>Sphere : <?php echo $data['p_right_sph'] ?: 'None' ?></dd>
+                                        <dd>Cylinder : <?php echo $data['p_right_cyn'] ?: 'None' ?></dd>
+                                        <dd>Axis : <?php echo $data['p_right_axi'] ?: 'None' ?></dd>
+                                    </dl>
+                                </div>
+                                <div class="profile-pres-box">
+                                    <dt class="pres-field">Left</dt>
+                                    <dd>Sphere : <?php echo $data['p_left_sph'] ?: 'None' ?></dd>
+                                    <dd>Cylinder : <?php echo $data['p_left_cyn'] ?: 'None' ?></dd>
+                                    <dd>Axis : <?php echo $data['p_left_axi'] ?: 'None' ?></dd>
+                                </div>
+                                <div class="profile-pres-box">
+                                    <dt class="pres-field">PD</dt>
+                                    <dd>Sphere : <?php echo $data['p_pd_sph'] ?: 'None' ?></dd>
+                                    <dd>Cylinder : <?php echo $data['p_pd_cyn'] ?: 'None' ?></dd>
+                                    <dt class="pres-field">Near PD</dt>
+                                    <dd>Sphere : <?php echo $data['p_pd_sph'] ?: 'None' ?></dd>
+                                    <dt class="pres-field">Additional Remarks</dt>
+                                    <dd><?php echo $data['remark'] ?></dd>
+                                </div>
+                            </div>
+                        <?php endif; ?>
+                        <?php if ($data['method'] == '2') : ?>
+                            <div class="profile-pres">
+                                <div class="profile-pres-box">
+                                    <h4><?php echo $helper->getMethodPresTitle($data['method']) ?></h4>
+                                </div>
+                                <div class="profile-pres-box">
+                                    <?php if (!empty($data['upload_file'])) : ?>
+                                        <img src="<?php echo $path . $data['upload_file'] ?>" alt="$data['upload_file']" width="150px"/>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php endif; ?>
+<?php endif; ?>

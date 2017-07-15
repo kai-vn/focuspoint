@@ -1,31 +1,42 @@
-<?php if ($this->isCustomerLoggedIn()): ?>
-    <button type="button" title="<?php echo $this->getButtonTitle() ?>" id="bigone-show-prescription-button"
-            class="btn btn-primary type-2"
-            onclick="showPrescription(this)"><span><span><?php echo $this->getButtonTitle() ?></span></span>
-    </button>
-    <script type="text/javascript">
-        //<![CDATA[
-        document.observe("dom:loaded", bodyOnload);
-        function bodyOnload() {
-            <?php if (Mage::getSingleton('customer/session')->getQuestion()): ?>
+
+<?php if($this->checkHasBrand()) : ?>
+<div id="profile-pres-custom">
+    <?php if ($this->isCustomerLoggedIn()) : ?>
+        <button type="button" title="<?php echo $this->getButtonTitle() ?>" id="bigone-show-prescription-button"
+                class="btn btn-primary type-2"
+                onclick="showPrescription(this)"><span><span><?php echo $this->getButtonTitle() ?></span></span>
+        </button>
+    <?php else : ?>
+        <div class="profile-login">
+            <p>Please <span ><a href="<?php echo Mage::helper('profile')->getLoginUrl(); ?>" class="various">Login</a></span> to choose your profile !</p>
+        </div>
+    <?php endif; ?>
+</div>
+<script type="text/javascript">
+    //<![CDATA[
+    document.observe("dom:loaded", bodyOnload);
+    function bodyOnload() {
+<?php if (Mage::getSingleton('customer/session')->getQuestion()): ?>
             $('product_addtocart_form').down('#product-addtocart-button').hide();
-            $('product_addtocart_form').down('#bigone-show-prescription-button').show();
-            <?php else: ?>
+            $('product_addtocart_form').down('.quantity-wrapper').hide();
+            $('product_addtocart_form').down('#profile-pres-custom').show();
+<?php else: ?>
             $('product_addtocart_form').down('#product-addtocart-button').show();
-            $('product_addtocart_form').down('#bigone-show-prescription-button').hide();
-            <?php endif; ?>
-        }
-        showPrescription = function (button) {
-            var questionContainer = button.up('.product-view').down('#question-container');
-            if (questionContainer && questionContainer.visible()) {
-                questionContainer.hide();
-            } else if (questionContainer && !questionContainer.visible()) {
-                questionContainer.show();
-                Effect.ScrollTo(questionContainer, 1000);
-            } else {
-                console.warn('The add to cart button was not found');
-            }
-        };
-        //]]>
-    </script>
+            $('product_addtocart_form').down('.quantity-wrapper').show();
+            $('product_addtocart_form').down('#profile-pres-custom').hide();
 <?php endif; ?>
+    }
+    showPrescription = function (button) {
+        var questionContainer = button.up('.product-view').down('#question-container');
+        if (questionContainer && questionContainer.visible()) {
+            questionContainer.hide();
+        } else if (questionContainer && !questionContainer.visible()) {
+            questionContainer.show();
+            Effect.ScrollTo(questionContainer, 1000);
+        } else {
+            console.warn('The add to cart button was not found');
+        }
+    };
+    //]]>
+</script>
+<?php endif;?>
