@@ -60,7 +60,7 @@ class Bigone_Profile_Model_Sales_Quote_Address_Total_Charges extends Mage_Sales_
         if ($amt != 0) {
             $address->addTotal(array(
                 'code' => $this->getCode(),
-                'title' => Mage::helper('profile')->__('Profile Charges'),
+                'title' => Mage::helper('profile')->__('Prescription Charges'),
                 'value' => $amt
             ));
         }

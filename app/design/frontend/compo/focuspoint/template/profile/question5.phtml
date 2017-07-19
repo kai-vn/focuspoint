@@ -150,7 +150,7 @@
                 <td>
                     <select name="profile[p_near_sph]" id="p_near_sph">
                         <option value="" selected="selected">None</option>
-                        <?php foreach ($this->getOptions(40, 0.5, 70) as $value): ?>
+                        <?php foreach ($this->getOptions(40, 0.5, 60) as $value): ?>
                             <option value="<?php echo $value ?>"><?php echo $value ?></option>
                         <?php endforeach; ?>
                     </select>
@@ -258,6 +258,7 @@
             $j('#remark').val('');
     }
     $j(document).ready(function () {
+        $j('#pres_method').val(1);
         $j('.method-fill').click(function () {
             $j('.method-fill').css('border', 'none');
             $j(this).css('border', '3px solid #cc1454');

@@ -16,7 +16,7 @@ class Bigone_Profile_Block_Sales_Order_Totals extends Mage_Sales_Block_Order_Tot
                 'code' => 'charges',
                 'value' => $amount,
                 'base_value' => $amount,
-                'label' => $this->helper('profile')->__('Profile Charges'),
+                'label' => $this->helper('profile')->__('Prescription Charges'),
                     )), 'tax');
         }
 

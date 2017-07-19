@@ -29,3 +29,7 @@
 .profile-upload img{
     border : 1px solid #dddddd;
 }
+.profile-data {
+    margin-top: 10px;
+    float: left;
+}

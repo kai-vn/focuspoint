@@ -11,7 +11,7 @@
 <?php
 $data = $this->getProfileData();
 $helper = Mage::helper('profile');
-$path = Mage::getBaseUrl('media') . 'profile/';
+$pathMedia = Mage::getBaseUrl('media');
 ?>
 <?php if (!empty($data)) : ?>
     <?php
@@ -29,7 +29,7 @@ $path = Mage::getBaseUrl('media') . 'profile/';
                 </div>
                 <div class="panel-body">
                     <div>
-                        <img src="<?php echo $logo; ?>"
+                        <img src="<?php echo $pathMedia.'profile_brand/'.$logo ?>"
                              height="100px" width="150px"
                              />
                     </div>
@@ -45,7 +45,7 @@ $path = Mage::getBaseUrl('media') . 'profile/';
                     <?php if (!empty($glassData)): ?>
                         <?php echo $glassData['title'] . '<br>' ?>
                         <?php echo $glassData['subtitle'] . '<br>' ?>
-                        <?php echo 'RM' . $glassData['price'] ?>
+                        <?php echo $helper->formatPrice($glassData['price']) ?>
                     <?php endif; ?>
                 </div>
             </div>
@@ -61,7 +61,7 @@ $path = Mage::getBaseUrl('media') . 'profile/';
                     <?php if (!empty($lensData)): ?>
                         <?php echo $lensData['title'] . '<br>' ?>
                         <?php echo $lensData['subtitle'] . '<br>' ?>
-                        <?php echo 'RM' . $lensData['price'] ?>
+                        <?php echo $helper->formatPrice($lensData['price']) ?>
                     <?php endif; ?>
                 </div>
             </div>
@@ -75,7 +75,7 @@ $path = Mage::getBaseUrl('media') . 'profile/';
                     <?php if (!empty($coatingData)): ?>
                         <?php echo $coatingData['title'] . '<br>' ?>
                         <?php echo $coatingData['subtitle'] . '<br>' ?>
-                        <?php echo 'RM' . $coatingData['price'] ?>
+                        <?php echo $helper->formatPrice($coatingData['price']) ?>
                     <?php endif; ?>
                 </div>
             </div>
@@ -102,6 +102,7 @@ $path = Mage::getBaseUrl('media') . 'profile/';
                                         <dd>Sphere : <?php echo $data['p_right_sph'] ?: 'None' ?></dd>
                                         <dd>Cylinder : <?php echo $data['p_right_cyn'] ?: 'None' ?></dd>
                                         <dd>Axis : <?php echo $data['p_right_axi'] ?: 'None' ?></dd>
+                                        <dd>Near Addition : <?php echo $data['p_right_near'] ?: 'None' ?></dd>
                                     </dl>
                                 </div>
                                 <div class="profile-pres-box">
@@ -109,6 +110,7 @@ $path = Mage::getBaseUrl('media') . 'profile/';
                                     <dd>Sphere : <?php echo $data['p_left_sph'] ?: 'None' ?></dd>
                                     <dd>Cylinder : <?php echo $data['p_left_cyn'] ?: 'None' ?></dd>
                                     <dd>Axis : <?php echo $data['p_left_axi'] ?: 'None' ?></dd>
+                                    <dd>Near Addition : <?php echo $data['p_left_near'] ?: 'None' ?></dd>
                                 </div>
                                 <div class="profile-pres-box">
                                     <dt class="pres-field">PD</dt>
@@ -128,7 +130,7 @@ $path = Mage::getBaseUrl('media') . 'profile/';
                                 </div>
                                 <div class="profile-pres-box">
                                     <?php if (!empty($data['upload_file'])) : ?>
-                                        <img src="<?php echo $path . $data['upload_file'] ?>" alt="$data['upload_file']" width="150px"/>
+                                        <img src="<?php echo $pathMedia.'profile/'.$data['upload_file'] ?>" alt="$data['upload_file']" width="150px"/>
                                     <?php endif; ?>
                                 </div>
                             </div>

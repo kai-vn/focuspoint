@@ -50,7 +50,7 @@ class Bigone_Profile_Block_Question5 extends Mage_Catalog_Block_Product_Abstract
         $orderCollection = Mage::getResourceModel('sales/order_collection')
                 ->addFieldToSelect('*')
                 ->addFieldToFilter('customer_id', $customerId)
-                // ->addFieldToFilter('state', 'complete')
+                ->addFieldToFilter('state', 'complete')
                 ->setOrder('created_at', 'desc');
         return $orderCollection;
     }

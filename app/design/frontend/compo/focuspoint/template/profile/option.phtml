@@ -2,6 +2,7 @@
 $productId = $this->getProduct()->getId();
 $helper = Mage::helper('profile');
 $brands = $this->getBrandData($productId);
+$path = Mage::getBaseUrl('media') .'profile_brand/';
 ?>
 <?php if (Mage::getSingleton('customer/session')->isLoggedIn()): ?>
     <?php if ($brands): ?>
@@ -14,7 +15,7 @@ $brands = $this->getBrandData($productId);
                     <?php if (count($brands)) : ?>
                         <?php foreach ($brands as $brand) : ?>
                             <div class="item-brand" data-id="<?php echo $brand['brand_id'] ?>" id="item-brand-<?php echo $brand['brand_id'] ?>">
-                                <img src="<?php echo $brand['logo'] ?> " alt="<?php echo $brand['title'] ?>" 
+                                <img src="<?php echo $path.$brand['logo'] ?> " alt="<?php echo $brand['title'] ?>" 
                                      title="<?php echo $brand['title'] ?>" style="width:250px;height:100px; "/>
                             </div>
                         <?php endforeach; ?>
@@ -27,7 +28,7 @@ $brands = $this->getBrandData($productId);
             </div>
             <div id="profile-container"></div>
             <div id="pres-container" style="display:none"><?php echo $this->getChildHtml('question5') ?></div>
-            <div id="bigone-custom-addcartbox" style="margin-left: 30px; display:none;">
+            <div id="bigone-custom-addcartbox" style="margin: 30px; display:none;">
                 <div class="quantity-wrapper clearfix">
                     <label for="qty"><?php echo $this->__('Qty:') ?></label>
                     <input readonly type="text" name="profile[qty]" id="qty_custom" maxlength="12" value="1" 
@@ -36,7 +37,10 @@ $brands = $this->getBrandData($productId);
                 <button type="button" class="btn btn-primary type-2" 
                         id="bigone-addtocart-btn" title="<?php echo $this->getButtonAddCartTitle() ?>"
                         ><?php echo $this->getButtonAddCartTitle() ?></button>
-                <p class="profile-price-box">Profile Charge: RM<span id="profile-charge">0.00</span></p>
+                <div class="profile-price-box">
+                    <?php echo $this->getChildHtml('custom_price')?>
+                    <p>Profile Charge: RM<span id="profile-charge">0.00</span></p>
+                </div>
             </div>
         </div>
     <?php endif; ?>
@@ -84,5 +88,25 @@ $brands = $this->getBrandData($productId);
                     }
             );
         });
+        // custom price box
+        var price_box_el = $$('.price-box')[0];
+        var price_0 = price_box_el.down('.price');
+        var price_1 = price_box_el.down('.price',1);
+        var price_custom_el = $$('.profile-price-box')[0];
+        
+        price_0.on('DOMSubtreeModified',function(){
+            console.log(price_0.innerHTML);
+            if (price_custom_el) price_custom_el.down('.price').update(price_0.innerHTML);
+        });
+        if (price_1) {
+            price_1.on('DOMSubtreeModified',function(){
+                prop = price_1.getAttribute('itemprop');
+                if (prop) {
+                    console.log(price_1.innerHTML);
+                    if (price_custom_el) price_custom_el.down('.price',1).update(price_1.innerHTML);
+                }
+            });
+        }
+        
     });
 </script>

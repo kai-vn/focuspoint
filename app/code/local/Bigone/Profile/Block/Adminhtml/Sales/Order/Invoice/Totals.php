@@ -17,7 +17,7 @@ class Bigone_Profile_Block_Adminhtml_Sales_Order_Invoice_Totals extends Mage_Adm
                 'code'      => 'charges',
                 'value'     => $amount,
                 'base_value'=> $amount,
-                'label'     => $this->helper('profile')->__('Profile Charges'),
+                'label'     => $this->helper('profile')->__('Prescription Charges'),
             ), array('shipping', 'tax')));
 
             

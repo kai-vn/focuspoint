@@ -9,6 +9,8 @@ class Bigone_Profile_Block_Adminhtml_Brand_Edit_Tab_General extends Mage_Adminht
 
         $fieldset = $form->addFieldset('brand_form', array('legend'=>$helper->__('Brand information')));
         
+        $fieldset->addType('logo', 'Bigone_Profile_Block_Adminhtml_Brand_Edit_Form_Renderer_Fieldset_Logo');
+
         $fieldset->addField('title', 'text', array(
             'label' => $helper->__('Brand Name'),
             'name' => 'title',
@@ -16,9 +18,8 @@ class Bigone_Profile_Block_Adminhtml_Brand_Edit_Tab_General extends Mage_Adminht
             'required' => true
         ));
         
-        $fieldset->addField('logo', 'image', array(
+        $fieldset->addField('logo', 'logo', array(
             'label' => $helper->__('Brand Logo'),
-            'name' => 'logo',
             'name' => 'logo',
             'required' => true
         ));

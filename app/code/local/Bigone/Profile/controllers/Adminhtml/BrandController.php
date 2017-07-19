@@ -107,7 +107,7 @@ class Bigone_Profile_Adminhtml_BrandController extends Mage_Adminhtml_Controller
                 } catch (Exception $e) {
                     
                 }
-                $data['logo'] = Mage::getBaseUrl('media') . 'profile_brand/' . $_FILES['logo']['name'];
+                $data['logo'] = $_FILES['logo']['name'];
             }
 
             $model->setData($data);

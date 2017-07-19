@@ -9,9 +9,15 @@ class Bigone_Profile_Model_Observer {
         $item = Mage::getModel('profile/brandassign')->getCollection()
                         ->addFieldToFilter('product_id', $productId)->getFirstItem();
         if ($item->getId()) {
-            $item->load($item->getId())->setBrands($brands)->save();
-        } else
-            Mage::getModel('profile/brandassign')->setBrands($brands)->setProductId($productId)->save();
+            $item = $item->load($item->getId());
+            if(!empty($brands)) {
+                $item->setBrands($brands)->save();
+            } else $item->delete();
+        } else {
+            if(!empty($brands)) {
+                Mage::getModel('profile/brandassign')->setBrands($brands)->setProductId($productId)->save();
+            }
+        }
     }
 
     public function createBlockQuestionProfile($observer) {

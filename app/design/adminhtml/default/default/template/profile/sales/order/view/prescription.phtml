@@ -1,6 +1,6 @@
 <?php
 $profileData = $this->getProfiledData();
-$path = Mage::getBaseUrl('media') . 'profile/';
+$pathMedia = Mage::getBaseUrl('media');
 $helper = Mage::helper('profile');
 ?>
 <?php if (!empty($profileData)) : ?>
@@ -37,7 +37,7 @@ $helper = Mage::helper('profile');
                         <tr class="profile-prescription">
                             <td class="item-name"><?php echo Mage::getModel('sales/order_item')->load($key)->getName() ?></td>
                             <td class="profile-logo">
-                                <img src="<?php echo $logo; ?>"
+                                <img src="<?php echo $pathMedia.'profile_brand/'.$logo; ?>"
                                      height="100px" width="150px"
                                      />
                             </td>
@@ -46,7 +46,7 @@ $helper = Mage::helper('profile');
                                     <?php if (!empty($glassData)): ?>
                                         <?php echo $glassData['title'] . '<br>' ?>
                                         <?php echo $glassData['subtitle'] . '<br>' ?>
-                                        <?php echo 'RM' . $glassData['price'] ?>
+                                        <?php echo $helper->formatPrice($glassData['price']) ?>
                                     <?php endif; ?>
                                 </p>
                             </td>
@@ -55,7 +55,7 @@ $helper = Mage::helper('profile');
                                     <?php if (!empty($lensData)): ?>
                                         <?php echo $lensData['title'] . '<br>' ?>
                                         <?php echo $lensData['subtitle'] . '<br>' ?>
-                                        <?php echo 'RM' . $lensData['price'] ?>
+                                        <?php echo $helper->formatPrice($lensData['price']) ?>
                                     <?php endif; ?>
                                 </p>
                             </td>
@@ -64,7 +64,7 @@ $helper = Mage::helper('profile');
                                     <?php if (!empty($coatingData)): ?>
                                         <?php echo $coatingData['title'] . '<br>' ?>
                                         <?php echo $coatingData['subtitle'] . '<br>' ?>
-                                        <?php echo 'RM' . $coatingData['price'] ?>
+                                        <?php echo $helper->formatPrice($coatingData['price']) ?>
                                     <?php endif; ?>
                                 </p>
                             </td>
@@ -79,15 +79,17 @@ $helper = Mage::helper('profile');
                                             <dd>Sphere : <?php echo $itemData['p_right_sph'] ?: 'None' ?></dd>
                                             <dd>Cylinder : <?php echo $itemData['p_right_cyn'] ?: 'None' ?></dd>
                                             <dd>Axis : <?php echo $itemData['p_right_axi'] ?: 'None' ?></dd>
+                                            <dd>Near Addition : <?php echo $itemData['p_right_near'] ?: 'None' ?></dd>
                                             <dt class="pres-field">Left</dt>
                                             <dd>Sphere : <?php echo $itemData['p_left_sph'] ?: 'None' ?></dd>
                                             <dd>Cylinder : <?php echo $itemData['p_left_cyn'] ?: 'None' ?></dd>
                                             <dd>Axis : <?php echo $itemData['p_left_axi'] ?: 'None' ?></dd>
+                                            <dd>Near Addition : <?php echo $itemData['p_left_near'] ?: 'None' ?></dd>
                                             <dt class="pres-field">PD</dt>
                                             <dd>Sphere : <?php echo $itemData['p_pd_sph'] ?: 'None' ?></dd>
                                             <dd>Cylinder : <?php echo $itemData['p_pd_cyn'] ?: 'None' ?></dd>
                                             <dt class="pres-field">Near PD</dt>
-                                            <dd>Sphere : <?php echo $itemData['p_pd_sph'] ?: 'None' ?></dd>
+                                            <dd>Sphere : <?php echo $itemData['p_near_sph'] ?: 'None' ?></dd>
                                             <dt class="pres-field">Additional Remarks</dt>
                                             <dd><?php echo $itemData['remark'] ?></dd>
                                         </dl>
@@ -96,7 +98,7 @@ $helper = Mage::helper('profile');
                                 <?php if ($itemData['method'] == '2') : ?>
                                     <div class="profile-upload">
                                         <?php if (!empty($itemData['upload_file'])) : ?>
-                                            <img id="profile_upload" src="<?php echo $path . $itemData['upload_file'] ?>" width="150px" height="150px"/>
+                                            <img id="profile_upload" src="<?php echo $pathMedia.'profile/'.$itemData['upload_file'] ?>" width="150px" height="150px"/>
                                             <button type="button" id="button_edit" onclick="editUpload()"><?php echo $this->__('Edit') ?></button>
                                             <div id="profil_popup" style="display: none">
                                                 <input type="file" id="profile_edit" name="profile_edit"/>
@@ -125,7 +127,7 @@ $helper = Mage::helper('profile');
                                                     var data = JSON.parse(xhr.responseText);
                                                     if (data.status) {
                                                         var upload = file['name'];
-                                                        var path = '<?php echo $path ?>';
+                                                        var path = '<?php echo $pathMedia.'profile/' ?>';
                                                         $('profile_upload').src = path.concat(upload);
                                                         $('profil_popup').hide();
                                                     }

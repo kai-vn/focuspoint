@@ -107,7 +107,7 @@ class Bigone_Profile_Helper_Data extends Mage_Core_Helper_Abstract {
                 $data = array(
                     'title' => $glass->getTitle(),
                     'subtitle' => $glass->getSubtitle(),
-                    'price' => $this->_convertPrice($glass->getPrice())
+                    'price' => $glass->getPrice()
                 );
             }
         }
@@ -122,7 +122,7 @@ class Bigone_Profile_Helper_Data extends Mage_Core_Helper_Abstract {
                 $data = array(
                     'title' => $lens->getTitle(),
                     'subtitle' => $lens->getSubtitle(),
-                    'price' => $this->_convertPrice($lens->getPrice())
+                    'price' => $lens->getPrice()
                 );
             }
         }
@@ -137,15 +137,15 @@ class Bigone_Profile_Helper_Data extends Mage_Core_Helper_Abstract {
                 $data = array(
                     'title' => $coating->getTitle(),
                     'subtitle' => $coating->getSubtitle(),
-                    'price' => $this->_convertPrice($coating->getPrice())
+                    'price' => $coating->getPrice()
                 );
             }
         }
         return $data;
     }
     
-    protected function _convertPrice($str) {
-        $price = (!empty($str) && floatval($str) != 0) ? $str : 'Free';
+    public function formatPrice($str) {
+        $price = (!empty($str) && floatval($str) != 0) ? 'RM'.$str : 'Free';
         return $price;
     }
     

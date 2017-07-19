@@ -18,8 +18,9 @@ class Bigone_Profile_Block_Profile extends Mage_Catalog_Block_Product_Abstract {
         $brands = array();
         $collection = Mage::getModel('profile/brandassign')->getCollection();
         $item = $collection->addFieldToFilter('product_id', $productId)->getFirstItem();
-        if ($item->getId()) {
-            $brands = explode(',', $item->getBrands());
+        $brandStr = $item->getBrands();
+        if ($item->getId() && !empty($brandStr)) {
+            $brands = explode(',', $brandStr);
         }
         return $brands;
     }
