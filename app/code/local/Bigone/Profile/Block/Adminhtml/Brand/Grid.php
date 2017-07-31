@@ -6,7 +6,7 @@ class Bigone_Profile_Block_Adminhtml_Brand_Grid extends Mage_Adminhtml_Block_Wid
         parent::__construct();
 
         $this->setId('profileBrandId');
-        $this->setDefaultSort('brand_id');
+        $this->setDefaultSort('sort_order');
         $this->setDefaultDir(Varien_Data_Collection::SORT_ORDER_ASC);
         $this->setSaveParametersInSession(true);
         $this->setUseAjax(true);
@@ -71,8 +71,8 @@ class Bigone_Profile_Block_Adminhtml_Brand_Grid extends Mage_Adminhtml_Block_Wid
             'getter' => 'getId',
             'actions' => array(
                 array(
-                    'caption' => $helper->__('Delete'),
-                    'url' => array('base' => '*/*/delete'),
+                    'caption' => $helper->__('Edit'),
+                    'url' => array('base' => '*/*/edit'),
                     'field' => 'id'
                 )),
             'filter' => false,

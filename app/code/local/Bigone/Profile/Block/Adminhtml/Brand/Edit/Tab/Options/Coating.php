@@ -30,7 +30,12 @@ class Bigone_Profile_Block_Adminhtml_Brand_Edit_Tab_Options_Coating extends Mage
     	$data = Mage::registry('coating_data');
     	$values = array();
     	if ($data) {
-    		foreach ($data as $value) {
+    		foreach ($data as &$value) {
+                $value['subprice'] = unserialize($value['subprice']);
+                foreach ($value['subprice'] as $key => $sub) {
+                    $value['subprice_'.$key] = $sub;
+                }
+                unset($value['subprice']);
     			$values[] = new Varien_Object($value);
     		}
     	}
@@ -47,8 +52,21 @@ class Bigone_Profile_Block_Adminhtml_Brand_Edit_Tab_Options_Coating extends Mage
         return 'options[coating]';
     }
     
-    public function getAddButtonId() {
+    public function getAddButtonId()
+    {
         return 'add_new_coating';
+    }
+
+    public function getListLens()
+    {
+        $list = array();
+        $data_lens = Mage::registry('lens_data');
+        if (!empty($data_lens)) {
+            foreach ($data_lens as $lens) {
+                $list[$lens['lens_id']] = $lens['title'];
+            }
+        }
+        return $list;
     }
 
 }

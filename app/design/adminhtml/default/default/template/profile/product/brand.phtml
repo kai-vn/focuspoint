@@ -10,6 +10,7 @@
 	.profile-brand label {
 		text-transform: uppercase;
 	}
+	.profile-inclue label{font-size: 13px;font-weight: bold}
 
 </style>
 <div >
@@ -25,4 +26,8 @@
 	</li>
 <?php endforeach;?>
 </ol>
+<div class="profile-inclue">
+	<input type="checkbox" <?php if (Mage::helper('profile')->isIncludeTest($productId)) echo 'checked' ?> value="<?php echo 'profile_include' ?>" name="profile_include" />
+    <label><?php echo $this->__('Include Eye Test ?') ?></label>
+</div>
 </div>

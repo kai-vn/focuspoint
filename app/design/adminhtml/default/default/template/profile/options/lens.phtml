@@ -32,8 +32,6 @@
         maxId: <?php if ($this->getRequest()->getControllerName() == 'brand') echo $helper->getMaxLenId();
 else echo '0'; ?>,
         add: function (data) {
-
-            console.log(data);
             this.template = new Template(this.templateText, this.templateSyntax);
             data.id = data.lens_id;
             if (!data.id) {

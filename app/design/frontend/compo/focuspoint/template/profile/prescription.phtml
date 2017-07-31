@@ -1,11 +1,10 @@
-<a download href="<?php echo Mage::getBaseUrl('media').'profile/Report_Lokie.xlsx'?>"> Clicking on this link will force download the file</a>
 <?php if ($this->checkHasBrand()) : ?>
 <div class="profile-container">
     <div class="profile-prescription">
         <div class="question">
             <p style="font-weight: bold">Select method add to cart:</p>
-            <input type="radio" name="q-0" value="1" <?php if (Mage::getSingleton('customer/session')->getQuestion() == '1') echo 'checked'; ?>> Prescription<br>
-            <input type="radio" name="q-0" value="0" <?php if (Mage::getSingleton('customer/session')->getQuestion() == '0') echo 'checked' ?>> Non-Prescription
+            <input type="radio" name="q-0" value="1" <?php if (Mage::getSingleton('customer/session')->getQuestion() == '1') echo 'checked'; ?> id="prescription"><label class="profile-checkbox-label" for="prescription">Prescription</label><br>
+            <input type="radio" name="q-0" value="0" <?php if (Mage::getSingleton('customer/session')->getQuestion() == '0') echo 'checked' ?> id="frameonly"><label class="profile-checkbox-label" for="frameonly">Frame Only</label>
         </div>
     </div>
 </div>

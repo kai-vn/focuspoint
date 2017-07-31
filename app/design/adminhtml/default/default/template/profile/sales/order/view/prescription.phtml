@@ -1,6 +1,29 @@
+<style>
+    .pres-new-file {
+        display: flex;
+        background: #dadee5;
+    }
+    .file_info {
+        padding: 10px;
+        font-weight: bold;
+    }
+    .pres_label{
+        background: #988383;
+        text-align: center;
+        color: #fff;
+        height: 30px;
+        font-weight: bold;
+        font-size: 13px;
+        padding: 2px;
+    }
+    .pres_label label {
+        color: #fff;
+    }
+</style>
 <?php
-$profileData = $this->getProfiledData();
+$profileData = $this->getProfiledData();//Zend_debug::dump($profileData);
 $pathMedia = Mage::getBaseUrl('media');
+$pathSkin = $this->getSkinUrl('profile');
 $helper = Mage::helper('profile');
 ?>
 <?php if (!empty($profileData)) : ?>
@@ -17,12 +40,14 @@ $helper = Mage::helper('profile');
                 </colgroup>
                 <thead>
                     <tr class="headings">
+                        <!-- <th><span class="profile-title">ID</span></th> -->
                         <th><span class="profile-title">Item</span></th>
                         <th><span class="profile-title">Brand</span></th>
                         <th><span class="profile-title">Glass</span></th>
                         <th><span class="profile-title">Lens</span></th>
                         <th><span class="profile-title">Coating Add On</span></th>
                         <th><span class="profile-title">Prescription Detail</span></th>
+                        <th><span class="profile-title">Eye Test</span></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -85,69 +110,122 @@ $helper = Mage::helper('profile');
                                             <dd>Cylinder : <?php echo $itemData['p_left_cyn'] ?: 'None' ?></dd>
                                             <dd>Axis : <?php echo $itemData['p_left_axi'] ?: 'None' ?></dd>
                                             <dd>Near Addition : <?php echo $itemData['p_left_near'] ?: 'None' ?></dd>
-                                            <dt class="pres-field">PD</dt>
-                                            <dd>Sphere : <?php echo $itemData['p_pd_sph'] ?: 'None' ?></dd>
-                                            <dd>Cylinder : <?php echo $itemData['p_pd_cyn'] ?: 'None' ?></dd>
-                                            <dt class="pres-field">Near PD</dt>
-                                            <dd>Sphere : <?php echo $itemData['p_near_sph'] ?: 'None' ?></dd>
-                                            <dt class="pres-field">Additional Remarks</dt>
+                                            <?php if(!empty($itemData['pd_number']) && $itemData['pd_number']=='1'):?>
+                                                <dt class="pres-field">PD : <?php echo $itemData['p_pd_left'] ?></dt>
+                                            <?php elseif ($itemData['pd_number']=='2') :?>
+                                                <dt class="pres-field">PD</dt>
+                                                <dd>Right : <?php echo $itemData['p_pd_left'] ?: 'None' ?></dd>
+                                                <dd>Left : <?php echo $itemData['p_pd_right'] ?: 'None' ?></dd>
+                                            <?php endif;?>
+                                            <?php if(isset($itemData['p_near'])):?>
+                                                <dt class="pres-field">Near PD: <?php echo $itemData['p_near'] ?: 'None' ?></dt>
+                                            <?php endif;?>
+                                            <dt class="pres-field">Additional Remarks:</dt>
                                             <dd><?php echo $itemData['remark'] ?></dd>
                                         </dl>
                                     </div>
                                 <?php endif; ?>
                                 <?php if ($itemData['method'] == '2') : ?>
-                                    <div class="profile-upload">
-                                        <?php if (!empty($itemData['upload_file'])) : ?>
-                                            <img id="profile_upload" src="<?php echo $pathMedia.'profile/'.$itemData['upload_file'] ?>" width="150px" height="150px"/>
-                                            <button type="button" id="button_edit" onclick="editUpload()"><?php echo $this->__('Edit') ?></button>
-                                            <div id="profil_popup" style="display: none">
-                                                <input type="file" id="profile_edit" name="profile_edit"/>
-                                            </div>
-                                        <?php endif; ?>
-                                    </div>
-                                    <script type="text/javascript">
-                                        var form_upload = $('profil_popup');
-                                        var button_edit = $('button_edit');
-                                        var itemId = '<?php echo $key?>';
-                                        var url = "<?php echo Mage::getUrl('profile/ajax/editOrder');?>";
-                                        function editUpload() {
-                                            console.log('edit');
-                                            if (form_upload.visible()) {
-                                                form_upload.hide();
+                                    <?php $fileName = $itemData['upload_file']; ?>
+                                    <?php $ex = !empty($fileName) ? $helper->getExtensionFile($fileName) : '';
+                                        $src = '';
+                                    ?>
+                                    
+                                    <div class="pres-new-file">
+                                        <div class="file-logo-box">
+                                            <div class="file-logo">
+                                            <?php 
+                                            if ($helper->isImage($fileName)) {
+                                                $src = $pathMedia.'profile/'.$fileName;
                                             } else {
-                                                form_upload.show();
+                                                switch ($ex) {
+                                                    case 'txt':
+                                                        $src = $pathSkin.'/i-docx.png';
+                                                        break;
+                                                    case 'docx':
+                                                        $src = $pathSkin.'/i-docx.png';
+                                                        break;
+                                                    case 'xlsx':
+                                                        $src = $pathSkin.'/i-xlsx.png';
+                                                        break;
+                                                    case 'pdf':
+                                                        $src = $pathSkin.'/i-pdf.png';
+                                                        break;
+                                                    default:
+                                                        break;
+                                                }
                                             }
-                                        }
-                                        function uploadFile(file) {
-                                            var xhr = new XMLHttpRequest();
-                                            var fd = new FormData();
-                                            xhr.open("POST", url, true);
-                                            xhr.onreadystatechange = function () {
-                                                if (xhr.readyState == 4 && xhr.status == 200) {
-                                                    var data = JSON.parse(xhr.responseText);
-                                                    if (data.status) {
-                                                        var upload = file['name'];
-                                                        var path = '<?php echo $pathMedia.'profile/' ?>';
-                                                        $('profile_upload').src = path.concat(upload);
-                                                        $('profil_popup').hide();
+                                            ?>
+                                                <img id="file_logo_icon_<?php echo $key?>" src="<?php echo $src?>" width="100px" height="100px"/>
+                                            </div>
+                                        </div>
+                                        <div class="file_info"><span id="pres_filename_<?php echo $key ?>"><?php echo $fileName ?></span></div>
+                                    </div>
+                                    <div>
+                                        <div class="pres_label"><label for="file_upload_<?php echo $key ?>">Choose File To Upload</label></div>
+                                        <input type="file" id="file_upload_<?php echo $key ?>" name="file_upload_<?php echo $key?>" style="display: none">
+                                    </div>
+                                <?php endif; ?>
+                                <script type="text/javascript">
+                                    var $j = jQuery.noConflict();
+                                    var path = '<?php echo $pathMedia.'profile/'?>';
+                                    var pathSkin = '<?php echo $this->getSkinUrl('profile').'/' ?>';
+                                    var list_img = ['jpg', 'jpeg', 'gif', 'png'];
+                                    
+                                    $j('#file_upload_<?php echo $key?>').change(function () {
+                                        var itemId =  <?php echo $key?>;
+                                        var file_data = $j(this).prop('files')[0];
+                                        var fileName = file_data.name;
+                                        var type = fileName.split('.').pop();
+                                        var form_data = new FormData();
+                                        form_data.append('file', file_data);
+                                        form_data.append('itemId',itemId);
+                                        $j.ajax({
+                                            url: '<?php echo Mage::getUrl('profile/ajax/editOrder') ?>',
+                                            dataType: 'text',
+                                            cache: false,
+                                            contentType: false,
+                                            processData: false,
+                                            data: form_data,
+                                            method: 'post',
+                                            parameters: {
+                                                itemId: itemId,
+                                            },
+                                            success: function () {
+                                                console.log('ok');
+                                                $j('#pres_filename_'+itemId).text(fileName);
+                                                if (list_img.indexOf(type) !== -1) {
+                                                    $j("#file_logo_icon_"+itemId).attr("src",path+fileName);
+                                                } else {
+                                                    switch(type) {
+                                                        case 'txt':
+                                                            $j("#file_logo_icon_"+itemId).attr("src",pathSkin+'i-docx.png');
+                                                            break;
+                                                        case 'docx':
+                                                            $j("#file_logo_icon_"+itemId).attr("src",pathSkin+'i-docx.png');
+                                                            break;
+                                                        case 'xlsx':
+                                                            $j("#file_logo_icon_"+itemId).attr("src",pathSkin+'i-xlsx.png');
+                                                            break;
+                                                        case 'pdf':
+                                                            $j("#file_logo_icon_"+itemId).attr("src",pathSkin+'i-pdf.png');
+                                                            break;
+                                                        default:
                                                     }
                                                 }
-                                            };
-                                            fd.append("file", file);
-                                            fd.append("itemId",itemId);
-                                            xhr.send(fd);
-                                        }
-                                        $(document).observe('dom:loaded', function(){
-                                            Event.observe('profile_edit', 'change', function() {
-                                                var file = this.files[0];
-                                                uploadFile(file);
-                                            });
+                                            }
                                         });
-                                        
-                                    </script>
-                                <?php endif; ?>
-                            </td>
+                                    });
+                                </script>
                             <?php endif; ?>
+                            </td>
+                            <td class="profile-option">
+                                <?php if(!empty($itemData['include_test']) && $itemData['include_test']=='1') :?>
+                                    <div>Yes</div>
+                                <?php else : ?>
+                                    <div>No</div>
+                                <?php endif?>
+                            </td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
@@ -155,3 +233,4 @@ $helper = Mage::helper('profile');
         </div>
     </div>
 <?php endif; ?>
+

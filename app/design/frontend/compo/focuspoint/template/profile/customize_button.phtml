@@ -1,10 +1,9 @@
-
 <?php if($this->checkHasBrand()) : ?>
 <div id="profile-pres-custom">
     <?php if ($this->isCustomerLoggedIn()) : ?>
         <button type="button" title="<?php echo $this->getButtonTitle() ?>" id="bigone-show-prescription-button"
                 class="btn btn-primary type-2"
-                onclick="showPrescription(this)"><span><span><?php echo $this->getButtonTitle() ?></span></span>
+                onclick="showPrescription(this)"><span><span><!--?php echo $this->getButtonTitle() ?-->Customize prescription</span></span>
         </button>
     <?php else : ?>
         <div class="profile-login">

@@ -1,7 +1,8 @@
 <style>
-
+    .len_title{text-transform: uppercase;width: 100px;}
 </style>
 <?php $helper = Mage::helper('profile'); ?>
+<?php $listLens = $this->getListLens() ?>
 <script type="text/javascript">
     var column = '<div class="option-column" >'
             + '<div><h4 class="column-fieldset">New Column</h4>'
@@ -14,6 +15,10 @@
             + 'required-entry">{{description}}</textarea></td>'
             + '<tr><td class="label"><label for="price">Price<span class="required">*</span></label></td>'
             + '<td class="value"><input id="<?php echo $this->getFieldId() ?>_{{id}}_price" name="<?php echo $this->getFieldName() ?>[{{id}}][price]" value="{{price}}" type="text" class=" input-text required-entry"></td>'
+            + '<tr><td class="label"><label for="subprice">Sub Price<span class="required">*</span></label></td>'
+            + '<td class="value"><table><thead><tr><th>Lens</th><th>Price</th></tr></thead>'
+            + '<tbody><?php foreach ($listLens as $key => $value) { ?>'
+            + '<tr><td class="len_title"><?php echo $value?></td><td><input id="<?php echo $this->getFieldId() ?>_{{id}}_subprice_<?php echo $key?>" name="<?php echo $this->getFieldName() ?>[{{id}}][subprice][<?php echo $key?>]" value="{{subprice_<?php echo $key?>}}"/></td></tr><?php }?></tbody></table></td>'
             + '<tr><td class="label"><label for="status">Status<span class="required">*</span></label></td>'
             + '<td class="value"><select id="<?php echo $this->getFieldId() ?>_{{id}}_status" name="<?php echo $this->getFieldName() ?>[{{id}}][status]" value="{{status}}" class=" input-text required-entry">'
             + '<option value="1">Enabled</option>'
@@ -26,6 +31,7 @@
         maxId: <?php if ($this->getRequest()->getControllerName() == 'brand') echo $helper->getMaxCoatingId();
 else echo '0'; ?>,
         add: function (data) {
+            console.log(data);
             this.template = new Template(this.templateText, this.templateSyntax);
             data.id = data.coating_id;
             if (!data.id) {

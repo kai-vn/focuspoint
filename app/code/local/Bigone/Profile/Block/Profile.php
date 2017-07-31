@@ -29,6 +29,7 @@ class Bigone_Profile_Block_Profile extends Mage_Catalog_Block_Product_Abstract {
         $data = array();
         $collectionBrands = Mage::getModel('profile/brand')->getCollection()
                 ->addFieldToFilter('brand_id', array('in' => $this->getBrandsByProduct($productId)));
+        $collectionBrands->setOrder('sort_order','ASC');
         foreach ($collectionBrands as $brand) {
             $data[$brand->getId()] = $brand->getData();
         }

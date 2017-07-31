@@ -3,6 +3,7 @@
 class Bigone_Profile_Model_Observer {
 
     public function saveProductBrand($observer) {
+        $include = Mage::app()->getRequest()->getPost('profile_include') ? 1 : 0;
         $productId = $observer->getEvent()->getProduct()->getId();
         $param_brand = Mage::app()->getRequest()->getPost('profile_brand');
         $brands = (!empty($param_brand)) ? implode(',', $param_brand) : '';
@@ -10,12 +11,13 @@ class Bigone_Profile_Model_Observer {
                         ->addFieldToFilter('product_id', $productId)->getFirstItem();
         if ($item->getId()) {
             $item = $item->load($item->getId());
-            if(!empty($brands)) {
-                $item->setBrands($brands)->save();
+            if(!empty($brands) || $include) {
+                $item->setBrands($brands)->setIncludeTest($include)->save();
             } else $item->delete();
         } else {
-            if(!empty($brands)) {
-                Mage::getModel('profile/brandassign')->setBrands($brands)->setProductId($productId)->save();
+            if(!empty($brands) || $include) {
+                $model = Mage::getModel('profile/brandassign')->setProductId($productId);
+                $model->setBrands($brands)->setIncludeTest($include)->save();
             }
         }
     }

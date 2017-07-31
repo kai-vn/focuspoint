@@ -38,4 +38,5 @@ class Bigone_Profile_Block_Adminhtml_Product_Brand extends Mage_Adminhtml_Block_
         return false;
     }
 
+    
 }

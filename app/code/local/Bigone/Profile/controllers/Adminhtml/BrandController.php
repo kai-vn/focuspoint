@@ -152,11 +152,18 @@ class Bigone_Profile_Adminhtml_BrandController extends Mage_Adminhtml_Controller
                 if ($brandId) {
                     if (isset($data['options']['coating'])) {
                         $coatings = $data['options']['coating'];
+                        // foreach ($coatings as $key => &$coating) {
+                            
+                        // }
+                        
                         ksort($coatings);
                         $coatingIds = Mage::helper('profile')->getCoatingIds();
-                        foreach ($coatings as $key => $value) {
+                        foreach ($coatings as $key => &$value) {
+                            $value['subprice'] = serialize($value['subprice']);
+
                             $modelCoating = Mage::getModel('profile/coating');
-                            $modelCoating->setData($value)->setBrand($brandId);
+                            $modelCoating->setData($value)->setBrand($brandId); 
+                            // Zend_debug::dump($modelCoating->getData());die('sss');
                             if (in_array($key, $coatingIds)) {
                                 $modelCoating->setId($key);
                             }

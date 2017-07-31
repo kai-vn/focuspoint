@@ -17,7 +17,7 @@
 <?php $orders = $this->getOrders(); ?>
 <?php $helper = Mage::helper('profile')?>
 <div class="info-container" >
-    <div class="title-question"><?php echo $this->__('Q5: Please Enter Your Prescription') ?></div>
+    <div class="title-question"><?php echo $this->__('Q5: Enter your prescription') ?></div>
     <div class="pres-method-fill">
         <div class="method-fill" data-id="1"><?php echo $this->__('Fill it out online'); ?></div>
         <div class="method-fill" data-id="2"><?php echo $this->__('Upload or send later'); ?></div>
@@ -25,11 +25,14 @@
             <div class="method-fill" data-id="3"><?php echo $this->__('Use my saved prescription'); ?></div>
         <?php endif ?>
     </div>
-    <div  class="form-pres" id="form-pres-fill">
+
+    <div  class="form-pres custom-form-pres" id="form-pres-fill" style="clear:both;">
         <div class="form-field">
             <label>Prescription Name :</label>
             <input type="text" name="profile[p_name]" id="p_name" placeholder="e.g Jason leon April 2017"/>
         </div>
+<div class="item-len-list-scroll-tablesmall">
+<div class="profile-scroll-width-tablesmall">
         <table class="form-table">
             <tr class="form-field">
                 <th class="th-title"></th>
@@ -42,24 +45,23 @@
                 <td class="th-title" width="20%">Right(OD)</td>
                 <td width="20%">
                     <select name="profile[p_right_sph]" id="p_right_sph">
-                        <?php foreach ($this->getOptions(-14, 0.25, 0) as $value): ?>
+						<option value="" selected="selected">None</option>
+                        <?php foreach ($this->getOptions(-12, 0.25, 6) as $value): ?>
                             <option value="<?php echo $value ?>"><?php echo $value ?></option>
                         <?php endforeach; ?>
-                        <?php echo $this->getOptionText() ?>
-                        <?php foreach ($this->getOptions(0.25, 0.25, 9) as $value): ?>
+                        <?php //echo $this->getOptionText() ?>
+                        <?php foreach ($this->getOptions(-012, 0.25, 6) as $value): ?>
                             <option value="<?php echo $value ?>"><?php echo $value ?></option>
                         <?php endforeach; ?>
                     </select>
                 </td>
                 <td width="20%">
                     <select name="profile[p_right_cyn]" id="p_right_cyn">
-                        <?php foreach ($this->getOptions(-5, 0.25, 0) as $value): ?>
+						<option value="" selected="selected">None</option>
+                        <?php foreach ($this->getOptions(-2.0, 0.25, -0.25) as $value): ?>
                             <option value="<?php echo $value ?>"><?php echo $value ?></option>
                         <?php endforeach; ?>
-                        <?php echo $this->getOptionText() ?>
-                        <?php foreach ($this->getOptions(0.25, 0.25, 5) as $value): ?>
-                            <option value="<?php echo $value ?>"><?php echo $value ?></option>
-                        <?php endforeach; ?>
+                        <?php// echo $this->getOptionText() ?>
                     </select>
                 </td>
                 <td width="20%">
@@ -72,8 +74,8 @@
                 </td>
                 <td width="20%">
                     <select name="profile[p_right_near]" id="p_right_near">
-                        <option value="" selected="selected">None</option>
-                        <?php foreach ($this->getOptions(0.75, 0.25, 3.5) as $value): ?>
+                        <option value="" selected="selected">None</option>s
+                        <?php foreach ($this->getOptions(0.5, 0.25, 4) as $value): ?>
                             <option value="<?php echo $value ?>"><?php echo $value ?></option>
                         <?php endforeach; ?>
                     </select>
@@ -83,22 +85,24 @@
                 <td class="th-title">Left(OS)</td>
                 <td>
                     <select name="profile[p_left_sph]" id="p_left_sph">
-                        <?php foreach ($this->getOptions(-14, 0.25, 0) as $value): ?>
+						<option value="" selected="selected">None</option>
+                        <?php foreach ($this->getOptions(-12, 0.25, 6) as $value): ?>
                             <option value="<?php echo $value ?>"><?php echo $value ?></option>
                         <?php endforeach; ?>
-                        <?php echo $this->getOptionText() ?>
-                        <?php foreach ($this->getOptions(0.25, 0.25, 9) as $value): ?>
+                        <?php //echo $this->getOptionText() ?>
+                        <?php foreach ($this->getOptions(-12, 0.25, 6) as $value): ?>
                             <option value="<?php echo $value ?>"><?php echo $value ?></option>
                         <?php endforeach; ?>
                     </select>
                 </td>
                 <td>
                     <select name="profile[p_left_cyn]" id="p_left_cyn">
-                        <?php foreach ($this->getOptions(-5, 0.25, 0) as $value): ?>
+						<option value="" selected="selected">None</option>
+                        <?php foreach ($this->getOptions(-0.25, 0.25, 2) as $value): ?>
                             <option value="<?php echo $value ?>"><?php echo $value ?></option>
                         <?php endforeach; ?>
-                        <?php echo $this->getOptionText() ?>
-                        <?php foreach ($this->getOptions(0.25, 0.25, 5) as $value): ?>
+                        <?php //echo $this->getOptionText() ?>
+                        <?php foreach ($this->getOptions(-0.25, 0.25, 2) as $value): ?>
                             <option value="<?php echo $value ?>"><?php echo $value ?></option>
                         <?php endforeach; ?>
                     </select>
@@ -114,7 +118,7 @@
                 <td>
                     <select name="profile[p_left_near]" id="p_left_near">
                         <option value="" selected="selected">None</option>
-                        <?php foreach ($this->getOptions(0.75, 0.25, 3.5) as $value): ?>
+                        <?php foreach ($this->getOptions(25, 0.05, 40) as $value): ?>
                             <option value="<?php echo $value ?>"><?php echo $value ?></option>
                         <?php endforeach; ?>
                     </select>
@@ -123,49 +127,52 @@
             <tr class="form-field">
                 <td class="th-title">PD</td>
                 <td>
-                    <select name="profile[p_pd_sph]" id="p_pd_sph">
+                    <select name="profile[p_pd_left]" id="p_pd_left">
                         <option value="" selected="selected">None</option>
-                        <?php foreach ($this->getOptions(25.5, 0.5, 40) as $value): ?>
+                        <?php foreach ($this->getOptions(50,1,80) as $value): ?>
                             <option value="<?php echo $value ?>"><?php echo $value ?></option>
                         <?php endforeach; ?>
                     </select>
                 </td>
                 <td>
-                    <select name="profile[p_pd_cyn]" id="p_pd_cyn" style="display: none;">
+                    <select name="profile[p_pd_right]" id="p_pd_right" style="display: none;">
                         <option value="" selected="selected">None</option>
-                        <?php foreach ($this->getOptions(25.5, 0.5, 40) as $value): ?>
+                        <?php foreach ($this->getOptions(25, 0.05, 40) as $value): ?>
                             <option value="<?php echo $value ?>"><?php echo $value ?></option>
                         <?php endforeach; ?>
                     </select>
                 </td>
-                <td>
+                <td colspan="2">
                     <div>
-                        <input type="checkbox" id="pd_check" />
-                        <label><?php echo $this->__('I have 2 numbers')?></label>
+                        <input type="hidden" name="profile[pd_number]" id="pd_number" />
+                        <input type="checkbox" id="pd_check"/>
+                        <label for="pd_check"><?php echo $this->__('I have 2 numbers')?></label>
                     </div>
                 </td>
             </tr>
             <tr class="form-field">
                 <td class="th-title">Near PD</td>
                 <td>
-                    <select name="profile[p_near_sph]" id="p_near_sph">
+                    <select name="profile[p_near]" id="p_near">
                         <option value="" selected="selected">None</option>
-                        <?php foreach ($this->getOptions(40, 0.5, 60) as $value): ?>
+                        <?php foreach ($this->getOptions(50, 1, 80) as $value): ?>
                             <option value="<?php echo $value ?>"><?php echo $value ?></option>
                         <?php endforeach; ?>
                     </select>
                 </td>
             </tr>
         </table>
-        <div class="form-field">
-            <label>Additional Remarks</label>
+</div>
+</div>
+        <div class="form-field form-field-textarea">
+            <label style="display:block;">Additional Remarks</label>
             <textarea rows="4" cols="100" name="profile[remark]" id="remark"></textarea>
         </div>
     </div>
     <div class="form-pres" id="form-pres-upload">
         <input type="hidden"/>
         <div class="form-content">
-            <div class="form-upload-method">Send Prescription Via Mail</div>
+            <div class="form-upload-method">I will email my prescription to <a href="mailto:online@focus-point.com">online@focus-point.com</a></div>
             <div class="form-upload-method">
                 <input type="hidden" name="profile[upload_file]" id="profile_upload_file"/>
                 <input class="input-text required-entry" type="file"  id="profile_upload"/>
@@ -193,7 +200,7 @@
                 <?php endforeach; ?>
             </table>
         <?php else : ?>
-            <div><p style="font-size: 20px;padding: 10px"><?php echo $this->__('You don\'t have any complete orders.')?></p></div>
+            <div><p style="font-size: 15px;padding: 10px"><?php echo $this->__('You don\'t have any complete orders.')?></p></div>
         <?php endif;?>
         </div>
     </div>
@@ -220,12 +227,12 @@
             $j('#p_left_axi').val(dataPres.p_left_axi);
         if ($j('#p_left_near'))
             $j('#p_left_near').val(dataPres.p_left_near);
-        if ($j('#p_pd_sph'))
-            $j('#p_pd_sph').val(dataPres.p_pd_sph);
-        if ($j('#p_pd_cyn'))
-            $j('#p_pd_cyn').val(dataPres.p_pd_cyn);
-        if ($j('#p_near_sph'))
-            $j('#p_near_sph').val(dataPres.p_near_sph);
+        if ($j('#p_pd_left'))
+            $j('#p_pd_left').val(dataPres.p_pd_left);
+        if ($j('#p_pd_right'))
+            $j('#p_pd_right').val(dataPres.p_pd_right);
+        if ($j('#p_near'))
+            $j('#p_near').val(dataPres.p_near);
         if ($j('#remark'))
             $j('#remark').val(dataPres.remark);
         if ($j('#pres_method').length) $j('#pres_method').val(dataPres.method);
@@ -248,20 +255,21 @@
             $j('#p_left_axi').val('');
         if ($j('#p_left_near'))
             $j('#p_left_near').val('');
-        if ($j('#p_pd_sph'))
-            $j('#p_pd_sph').val('');
-        if ($j('#p_pd_cyn'))
-            $j('#p_pd_cyn').val('');
-        if ($j('#p_near_sph'))
-            $j('#p_near_sph').val('');
+        if ($j('#p_pd_left'))
+            $j('#p_pd_left').val('');
+        if ($j('#p_pd_right'))
+            $j('#p_pd_right').val('');
+        if ($j('#p_near'))
+            $j('#p_near').val('');
         if ($j('#remark'))
             $j('#remark').val('');
     }
     $j(document).ready(function () {
         $j('#pres_method').val(1);
         $j('.method-fill').click(function () {
+            $j('#eyetest-container').show();
             $j('.method-fill').css('border', 'none');
-            $j(this).css('border', '3px solid #cc1454');
+            $j(this).css('border', '2px solid #000000');
             $j('.form-pres').hide();
             var methodId = $j(this).attr('data-id');
             if ($j('#pres_method'))
@@ -320,13 +328,28 @@
                 );
             });
         }
+        var pd_right = $j('#p_pd_right');
+        var pd_left = $j('#p_pd_left');
+        $j('#pd_number').val(1);
         $j('#pd_check').change(function() {
-            if ($j('#p_pd_cyn').length) {
+            if (pd_right .length) {
                 if(this.checked) {
-                    $j('#p_pd_cyn').show();
+                    $j('#pd_number').val(2);
+                    pd_right .show();
+                    pd_left.empty();
+                    pd_left.append('<option value="" selected="selected">None</option>'
+                        +'<?php foreach ($this->getOptions(25,0.05,40) as $value): ?>'
+                        +'<option value="<?php echo $value ?>"><?php echo $value ?></option>'
+                        +'<?php endforeach; ?>');
                 } else { 
-                    $j('#p_pd_cyn').hide();
-                    $j('#p_pd_cyn').val('');
+                    $j('#pd_number').val(1);
+                    $j('#p_pd_right').hide();
+                    $j('#p_pd_right').val('');
+                    pd_left.empty();
+                    pd_left.append('<option value="" selected="selected">None</option>'
+                        +'<?php foreach ($this->getOptions(50,1,80) as $value): ?>'
+                        +'<option value="<?php echo $value ?>"><?php echo $value ?></option>'
+                        +'<?php endforeach; ?>');
                 }
             }
         });

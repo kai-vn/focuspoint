@@ -1,0 +1,31 @@
+<?php $helper = Mage::helper('profile')?>
+<div class="info-container" >
+    <div class="title-question"><?php echo $this->__('Q6: Do you need an eye test') ?></div>
+    <div class="eyetest-list">
+    	<ul>
+    		<li class="eyetest-option">
+    			<input type="radio" value="1" name="include_test">
+    			<label>Yes,I do</label>
+    		</li>
+    		<li class="eyetest-option">
+    			<input type="radio" value="0" name="include_test">
+    			<label>No,thanks</label>
+    		</li>
+    	</ul>
+    </div>
+    <input type="hidden" id="include_test" name="profile[include_test]">
+</div>
+<script type="text/javascript">
+	var $j = jQuery.noConflict();
+	$radio = $j("input:radio[name=include_test]");
+	if ($radio) {
+		$radio.change(function () {
+			var test = $j(this).val(); 
+			if ($j('#include_test')) $j('#include_test').val(test);
+			var cart_box = $j('#bigone-custom-addcartbox');
+			if (cart_box.length && !cart_box.is(":visible")) {
+				cart_box.fadeIn();
+			}
+		});
+	}
+</script>

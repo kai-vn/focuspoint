@@ -52,18 +52,26 @@ class Bigone_Profile_Helper_Data extends Mage_Core_Helper_Abstract {
         $data = array();
         $glasses = Mage::getModel('profile/glasses')->getCollection()
                 ->addFieldToFilter('brand', $brandId);
+        $glasses->setOrder('glasses_id','DESC');
         foreach ($glasses as $item) {
             $data['glass'][$item->getId()] = $item->getData();
         }
         $lens = Mage::getModel('profile/lens')->getCollection()
                 ->addFieldToFilter('brand', $brandId);
+        $lens->setOrder('lens_id','DESC');
         foreach ($lens as $item) {
             $data['lens'][$item->getId()] = $item->getData();
         }
         $coatings = Mage::getModel('profile/coating')->getCollection()
                 ->addFieldToFilter('brand', $brandId);
+        $coatings->setOrder('coating_id','DESC');
         foreach ($coatings as $item) {
             $data['coating'][$item->getId()] = $item->getData();
+        }
+        if (!empty($data['coating'])) {
+            foreach ($data['coating'] as $key => &$coating) {
+                $coating['subprice'] = unserialize($coating['subprice']);
+            }
         }
         return $data;
     }
@@ -167,6 +175,31 @@ class Bigone_Profile_Helper_Data extends Mage_Core_Helper_Abstract {
 
     public function getUrlEditOrder() {
         return Mage::getUrl('profile/ajax/editOrder');
+    }
+
+    public function getExtensionFile($fileName) {
+        $ex = '';
+        if ($fileName) {
+            $arr = explode('.', $fileName);
+            $ex = end($arr);
+        }
+        return $ex;
+    }
+
+    public function isImage($fileName) {
+        $ex = $this->getExtensionFile($fileName);
+        $extension_img = array('jpg', 'jpeg', 'gif', 'png');
+        return (in_array($ex, $extension_img)) ? true : false;
+    }
+
+    public function isIncludeTest($productId)
+    {
+        $item = Mage::getModel('profile/brandassign')->getCollection()
+                        ->addFieldToFilter('product_id', $productId)->getFirstItem();
+        if ($item->getId()) {
+            return $item->getIncludeTest() ? true : false;
+        }
+        return false;
     }
 
 }

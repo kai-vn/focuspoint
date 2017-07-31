@@ -54,7 +54,7 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
             <?php $profileData = unserialize($_item->getBigoneProfileData()); ?>
             <?php if (!empty($profileData['profile_cost']) && (floatval($profileData['profile_cost']))): ?>
                 <div class="profile-data" style="float:left">
-                    <p style="font-size:18px">Profile:</p>
+                    <p style="font-size:18px">Prescription:</p>
                     <ul class="list-profile-data" style="margin-left:20px">
                         <?php if (!empty($profileData['glass_price']) && (floatval($profileData['glass_price']))): ?>
                             <li>Glasses : <?php echo 'RM' . $profileData['glass_price'] ?></li>
@@ -65,7 +65,7 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
                         <?php if (!empty($profileData['coating_price']) && (floatval($profileData['coating_price']))): ?>
                             <li>Coating : <?php echo 'RM' . $profileData['coating_price'] ?></li>
                         <?php endif; ?>
-                        <li>Profile Total Cost: <?php echo 'RM' . $profileData['profile_cost'] ?></li>
+                        <li>Prescription Total Cost: <?php echo 'RM' . $profileData['profile_cost'] ?></li>
                     </ul>
                 </div>
             <?php endif; ?>

@@ -155,7 +155,7 @@ class Meigee_AjaxKit_Block_Frontend_AddToCart_AjaxResult extends Meigee_AjaxKit_
                     $params['qty'] = $filter->filter($params['qty']);
 
                     //process bigone-profile data
-                    if (!empty($params['profile'])) {
+                    if (!empty($params['profile'])) {Zend_debug::dump($params);die('asdsd');
                         if (Mage::getSingleton('customer/session')->getQuestion() == '1') {
                             $profileOptions = array();
                             if ($profileOption = $product->getCustomOption('profile_options')) {

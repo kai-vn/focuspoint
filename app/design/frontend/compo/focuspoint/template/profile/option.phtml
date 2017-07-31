@@ -10,11 +10,11 @@ $path = Mage::getBaseUrl('media') .'profile_brand/';
             <div class="brand-container">
                 <input type="hidden" name="profile[brand]" id="profile-brand">
                 <input type="hidden" name="profile[profile_cost]" id="profile_cost">
-                <div class="title-question"><?php echo $this->__('Q1: Please Choose Brand') ?></div>
-                <div class="item-list">
+                <div class="title-question"><?php echo $this->__('Q1: Which band do you prefer for the lens?') ?></div>
+                <div class="item-list item-list-brand">
                     <?php if (count($brands)) : ?>
                         <?php foreach ($brands as $brand) : ?>
-                            <div class="item-brand" data-id="<?php echo $brand['brand_id'] ?>" id="item-brand-<?php echo $brand['brand_id'] ?>">
+                            <div class="item-brand <?php //echo $class ?>" data-id="<?php echo $brand['brand_id'] ?>" id="item-brand-<?php echo $brand['brand_id'] ?>">
                                 <img src="<?php echo $path.$brand['logo'] ?> " alt="<?php echo $brand['title'] ?>" 
                                      title="<?php echo $brand['title'] ?>" style="width:250px;height:100px; "/>
                             </div>
@@ -28,7 +28,8 @@ $path = Mage::getBaseUrl('media') .'profile_brand/';
             </div>
             <div id="profile-container"></div>
             <div id="pres-container" style="display:none"><?php echo $this->getChildHtml('question5') ?></div>
-            <div id="bigone-custom-addcartbox" style="margin: 30px; display:none;">
+            <div id="eyetest-container" style="display:none"><?php echo $this->getChildHtml('eyetest') ?></div>
+            <div id="bigone-custom-addcartbox" style="padding:30px; display:none;">
                 <div class="quantity-wrapper clearfix">
                     <label for="qty"><?php echo $this->__('Qty:') ?></label>
                     <input readonly type="text" name="profile[qty]" id="qty_custom" maxlength="12" value="1" 
@@ -38,8 +39,7 @@ $path = Mage::getBaseUrl('media') .'profile_brand/';
                         id="bigone-addtocart-btn" title="<?php echo $this->getButtonAddCartTitle() ?>"
                         ><?php echo $this->getButtonAddCartTitle() ?></button>
                 <div class="profile-price-box">
-                    <?php echo $this->getChildHtml('custom_price')?>
-                    <p>Profile Charge: RM<span id="profile-charge">0.00</span></p>
+                    <?php echo $this->getChildHtml('custom_price')?><div style="display:inline-block;"> + RM<span id="profile-charge">0.00</span> (Prescription)</div>
                 </div>
             </div>
         </div>
@@ -57,7 +57,7 @@ $path = Mage::getBaseUrl('media') .'profile_brand/';
             if ($j('#bigone-custom-addcartbox')) $j('#bigone-custom-addcartbox').hide();
             
             $j('.item-brand').css('border', 'none');
-            $j(this).css('border', '3px solid #cc1454');
+            $j(this).css('border', '1px solid #707070');
             var brandId = $j(this).attr('data-id');console.log();
             $j('#profile-brand').val(brandId);
             var post_url = '<?php echo Mage::helper('profile')->getAjaxUrlBrand() ?>';

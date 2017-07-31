@@ -1,5 +1,15 @@
 <?xml version="1.0"?>
 <layout version="0.1.0">
+    <default>
+        <reference name="head">
+            <action method="addJs">
+                <script>lib/jquery/jquery-1.10.2.js</script>
+            </action>
+            <action method="addJs">
+                <script>lib/jquery/noconflict.js</script>
+            </action>
+        </reference>
+    </default>
     <adminhtml_brand_index>
         <reference name="content">
             <block type="profile/adminhtml_brand" name="brand" />

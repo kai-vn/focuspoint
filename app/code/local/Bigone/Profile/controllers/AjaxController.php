@@ -55,7 +55,7 @@ class Bigone_Profile_AjaxController extends Mage_Core_Controller_Front_Action {
         //upload image
             $uploader = new Varien_File_Uploader('file');
 
-            $uploader->setAllowedExtensions(array('jpg', 'jpeg', 'gif', 'png','txt','docx','xlsx'));
+            $uploader->setAllowedExtensions(array('jpg', 'jpeg', 'gif', 'png','txt','docx','xlsx','xls','csv'));
             $uploader->setAllowRenameFiles(false);
 
             $uploader->setFilesDispersion(false);
@@ -69,18 +69,13 @@ class Bigone_Profile_AjaxController extends Mage_Core_Controller_Front_Action {
             if ($item->getId()) {
                 // change data order item
                 $profileData = unserialize($item->getBigoneProfileData());
-                if (!empty($profileData['upload_file'])) {
-                    $profileData['upload_file'] = $fileName;
-                }
-                $item->setBigoneProfileData(serialize($profileData))->save();
+                $profileData['upload_file'] = $fileName;
+                $profileData = serialize($profileData);
+                $item->setBigoneProfileData($profileData)->save();
                 //change data quote item
                 $quoteItem = Mage::getModel('sales/quote_item')->load($item->getQuoteItemId());
                 if ($quoteItem->getId()) {
-                    $profileQuoteData = unserialize($quoteItem->getBigoneProfileData());
-                    if (!empty($profileQuoteData['upload_file'])) {
-                        $profileQuoteData['upload_file'] = $fileName;
-                    }
-                    $item->setBigoneProfileData(serialize($profileQuoteData))->save();
+                    $quoteItem->setBigoneProfileData($profileData)->save();
                 }
             }
         } else $result['status'] = 0;

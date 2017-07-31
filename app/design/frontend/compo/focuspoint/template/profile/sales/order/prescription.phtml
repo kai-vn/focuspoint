@@ -113,11 +113,16 @@ $pathMedia = Mage::getBaseUrl('media');
                                     <dd>Near Addition : <?php echo $data['p_left_near'] ?: 'None' ?></dd>
                                 </div>
                                 <div class="profile-pres-box">
+                                <?php if(!empty($data['pd_number']) && $data['pd_number']=='1'):?>
+                                    <dt class="pres-field">PD : <?php echo $data['p_pd_left'] ?></dt>
+                                <?php elseif ($data['pd_number']=='2') :?>
                                     <dt class="pres-field">PD</dt>
-                                    <dd>Sphere : <?php echo $data['p_pd_sph'] ?: 'None' ?></dd>
-                                    <dd>Cylinder : <?php echo $data['p_pd_cyn'] ?: 'None' ?></dd>
-                                    <dt class="pres-field">Near PD</dt>
-                                    <dd>Sphere : <?php echo $data['p_pd_sph'] ?: 'None' ?></dd>
+                                    <dd>Right : <?php echo $data['p_pd_left'] ?: 'None' ?></dd>
+                                    <dd>Left : <?php echo $data['p_pd_right'] ?: 'None' ?></dd>
+                                <?php endif;?>
+                                    <?php if(isset($data['p_near'])):?>
+                                        <dt class="pres-field">Near PD: <?php echo $data['p_near'] ?: 'None' ?></dt>
+                                    <?php endif;?>
                                     <dt class="pres-field">Additional Remarks</dt>
                                     <dd><?php echo $data['remark'] ?></dd>
                                 </div>
